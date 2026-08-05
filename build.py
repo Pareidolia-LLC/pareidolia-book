@@ -9,6 +9,7 @@ data = json.load(open(os.path.join(HERE, "data.json"), encoding="utf-8"))
 
 TEMPLATE = r"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
 <title>Pareidolia — The Book</title>
 <style>
   :root{
