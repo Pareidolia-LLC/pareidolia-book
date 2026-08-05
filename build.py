@@ -73,6 +73,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .state.fail{color:var(--down); background:color-mix(in srgb,var(--down) 15%,transparent)}
   .rc-note{margin-top:15px; font-size:13px; color:var(--muted); line-height:1.6}
   .rc-note b{color:var(--ink); font-weight:600}
+  .con{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px}
+  .con .box{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .con .box.ok{border-top:3px solid var(--up)}
+  .con .box.no{border-top:3px solid var(--down)}
+  .con .box h4{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 10px}
+  .con ul{margin:0; padding-left:18px} .con li{font-size:13px; margin:5px 0; color:var(--ink)}
   .bars{display:flex; flex-direction:column; gap:9px}
   .bar{display:grid; grid-template-columns:74px 1fr 62px; align-items:center; gap:14px}
   .bar .name{font-family:var(--mono); font-weight:600; font-size:13px; letter-spacing:.02em}
@@ -99,7 +105,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .appr p{margin:0; font-size:13px; color:var(--muted); line-height:1.55}
   footer{margin-top:clamp(34px,5vw,54px); padding-top:18px; border-top:1px solid var(--line); font-size:11.5px; color:var(--faint); line-height:1.6}
   footer .meth{font-family:var(--mono); font-size:10.5px; letter-spacing:.03em}
-  @media (max-width:560px){ .stats{grid-template-columns:1fr} .dials{grid-template-columns:1fr} .bar{grid-template-columns:60px 1fr 50px; gap:10px} }
+  @media (max-width:560px){ .stats{grid-template-columns:1fr} .dials{grid-template-columns:1fr} .con{grid-template-columns:1fr} .bar{grid-template-columns:60px 1fr 50px; gap:10px} }
   @media (prefers-reduced-motion:reduce){ .bar .fill{transition:none} }
 </style></head>
 <body>
@@ -150,6 +156,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Selective outright holds with a written thesis and a hard stop. Used sparingly — conviction is sized, not indulged.</p></div>
     </div>
     <p class="tag" style="margin-top:16px">Risk framework: per-name position limits, a cash buffer, package-level stop-losses, and active drawdown management — the discipline that protects the engine from the punts.</p>
+  </section>
+  <section aria-label="Mandate and constraints">
+    <p class="eyebrow">Mandate &amp; Constraints</p>
+    <h2 id="con-title"></h2>
+    <div class="con" id="con"></div>
+    <p class="rc-note" id="connote"></p>
   </section>
   <footer>
     <p>Figures are time-weighted returns and portfolio weights. Absolute balances, share counts, and dollar P&amp;L are withheld by design — transparent on performance, discreet on size.</p>
@@ -207,12 +219,22 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   (function(){
     var tb=document.getElementById("ledger");
-    DATA.positions.filter(function(p){return p.r!==null;}).forEach(function(p){
-      var chip=p.s==="wheel"?'<span class="chip wheel">Wheel</span>':'<span class="chip dir">Directional</span>';
+    var CHIP={wheel:'<span class="chip wheel">Wheel</span>',dir:'<span class="chip dir">Directional</span>',cash:'<span class="chip">Cash</span>',event:'<span class="chip">Event</span>'};
+    DATA.positions.forEach(function(p){
+      var ret=(p.r===null)?'<td class="num r" style="color:var(--faint)">—</td>':'<td class="num r '+cls(p.r)+'">'+fmt(p.r)+'</td>';
       var tr=document.createElement("tr");
-      tr.innerHTML='<td class="tk">'+p.t+'</td><td>'+chip+'</td><td class="num r">'+p.w.toFixed(1)+'%</td><td class="num r '+cls(p.r)+'">'+fmt(p.r)+'</td>';
+      tr.innerHTML='<td class="tk">'+p.t+'</td><td>'+(CHIP[p.s]||'')+'</td><td class="num r">'+p.w.toFixed(1)+'%</td>'+ret;
       tb.appendChild(tr);
     });
+  })();
+
+  (function(){
+    var c=DATA.constraints; if(!c) return;
+    document.getElementById("con-title").textContent=c.title;
+    document.getElementById("con").innerHTML=
+      '<div class="box ok"><h4>Permitted</h4><ul>'+c.permitted.map(function(x){return "<li>"+x+"</li>";}).join("")+'</ul></div>'+
+      '<div class="box no"><h4>Restricted by broker</h4><ul>'+c.restricted.map(function(x){return "<li>"+x+"</li>";}).join("")+'</ul></div>';
+    document.getElementById("connote").innerHTML='<b>Note:</b> '+c.note;
   })();
 
   var CPS=DATA.curve.cps, cv=document.getElementById("curve"), ctx=cv.getContext("2d");
