@@ -1,0 +1,253 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pareidolia — The Book</title>
+<style>
+  :root{
+    --bg:#E9EBEE; --panel:#F6F7F8; --panel-2:#EEF0F3; --line:#D3D7DD;
+    --ink:#171B22; --muted:#616B78; --faint:#8A93A0;
+    --accent:#9C6F22; --accent-soft:rgba(156,111,34,.14);
+    --slate:#697585; --up:#1F8E6A; --down:#C1543B;
+    --grid:rgba(23,27,34,.09); --warn:#C67E22;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"SFMono-Regular","SF Mono",ui-monospace,"Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0D1015; --panel:#141922; --panel-2:#10151d; --line:#232B36;
+      --ink:#E8EBEF; --muted:#8B95A2; --faint:#66707D;
+      --accent:#D2A24C; --accent-soft:rgba(210,162,76,.15);
+      --slate:#7E8A99; --up:#39B588; --down:#D8694E; --grid:rgba(232,235,239,.08);
+    }
+  }
+  *{box-sizing:border-box} body{margin:0}
+  .wrap{background:var(--bg); color:var(--ink); font-family:var(--sans); min-height:100vh; padding:clamp(20px,4vw,56px); -webkit-font-smoothing:antialiased; line-height:1.5}
+  .sheet{max-width:920px; margin:0 auto}
+  .masthead{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; border-bottom:1.5px solid var(--ink); padding-bottom:18px}
+  .mark{font-family:var(--serif); font-size:clamp(34px,6vw,58px); line-height:.95; letter-spacing:.01em; font-weight:600; text-wrap:balance}
+  .mark .dot{color:var(--accent)}
+  .tag{font-size:12.5px; color:var(--muted); margin-top:9px; max-width:44ch; letter-spacing:.02em}
+  .asof{font-family:var(--mono); font-size:11px; color:var(--faint); text-transform:uppercase; letter-spacing:.14em; text-align:right; white-space:nowrap}
+  .asof b{color:var(--muted); font-weight:600}
+  section{margin-top:clamp(30px,5vw,52px)}
+  .eyebrow{font-family:var(--mono); font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; display:flex; align-items:center; gap:12px}
+  .eyebrow::after{content:""; flex:1; height:1px; background:var(--line)}
+  h2{font-family:var(--serif); font-weight:600; font-size:22px; margin:0 0 4px}
+  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px}
+  .stat{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px 20px 16px}
+  .stat .k{font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+  .stat .v{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:clamp(26px,4.4vw,34px); font-weight:600; margin-top:8px; letter-spacing:-.01em}
+  .stat .m{font-size:11px; color:var(--faint); margin-top:3px}
+  .pos{color:var(--up)} .neg{color:var(--down)}
+  .chart-card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px 20px 16px; margin-top:14px}
+  .chart-head{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap}
+  .chart-head .sub{font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.04em}
+  canvas#curve{display:block; width:100%; height:290px; margin-top:6px}
+  .marks{display:flex; gap:22px; flex-wrap:wrap; margin-top:6px; padding-top:12px; border-top:1px solid var(--line); font-family:var(--mono); font-size:11px; color:var(--muted)}
+  .marks span{display:inline-flex; gap:7px; align-items:center}
+  .marks b{color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums}
+  .swatch{width:9px;height:9px;border-radius:2px;display:inline-block}
+  .rc-head{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:6px; margin-bottom:16px}
+  .grade{font-family:var(--serif); font-weight:600; font-size:34px; line-height:1; padding:5px 16px; border-radius:10px; border:1.5px solid var(--down); color:var(--down)}
+  .rc-head .wk{font-family:var(--mono); font-size:12px; color:var(--muted); line-height:1.7}
+  .rc-head .wkret{font-weight:600}
+  .dials{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .dial{background:var(--panel); border:1px solid var(--line); border-top:3px solid var(--line); border-radius:10px; padding:15px 16px 14px}
+  .dial.pass{border-top-color:var(--up)} .dial.warn{border-top-color:var(--warn)} .dial.fail{border-top-color:var(--down)}
+  .dial .dk{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted)}
+  .dial .dv{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:21px; font-weight:600; margin:9px 0 3px}
+  .dial .rule{font-size:11.5px; color:var(--faint); line-height:1.45}
+  .state{display:inline-block; font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; padding:3px 9px; border-radius:20px}
+  .state.pass{color:var(--up); background:color-mix(in srgb,var(--up) 15%,transparent)}
+  .state.warn{color:var(--warn); background:color-mix(in srgb,var(--warn) 17%,transparent)}
+  .state.fail{color:var(--down); background:color-mix(in srgb,var(--down) 15%,transparent)}
+  .rc-note{margin-top:15px; font-size:13px; color:var(--muted); line-height:1.6}
+  .rc-note b{color:var(--ink); font-weight:600}
+  .bars{display:flex; flex-direction:column; gap:9px}
+  .bar{display:grid; grid-template-columns:74px 1fr 62px; align-items:center; gap:14px}
+  .bar .name{font-family:var(--mono); font-weight:600; font-size:13px; letter-spacing:.02em}
+  .bar .track{height:22px; background:var(--panel-2); border:1px solid var(--line); border-radius:5px; overflow:hidden; position:relative}
+  .bar .fill{height:100%; border-radius:4px 0 0 4px; transform-origin:left; transform:scaleX(0); transition:transform .9s cubic-bezier(.22,.61,.36,1)}
+  .bar .pct{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:12.5px; text-align:right; color:var(--muted)}
+  .legend-strat{display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; font-size:11.5px; color:var(--muted)}
+  .legend-strat span{display:inline-flex; gap:7px; align-items:center}
+  .tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:10px}
+  table{width:100%; border-collapse:collapse; min-width:440px}
+  thead th{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); text-align:left; padding:12px 16px; border-bottom:1px solid var(--line); font-weight:600}
+  th.r,td.r{text-align:right}
+  tbody td{padding:11px 16px; border-bottom:1px solid var(--line); font-size:13.5px}
+  tbody tr:last-child td{border-bottom:0}
+  td.tk{font-family:var(--mono); font-weight:600; letter-spacing:.02em}
+  td.num{font-family:var(--mono); font-variant-numeric:tabular-nums}
+  .chip{display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:20px; border:1px solid var(--line); color:var(--muted)}
+  .chip.wheel{color:var(--accent); border-color:var(--accent-soft); background:var(--accent-soft)}
+  .chip.dir{color:var(--slate); border-color:var(--line)}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+  .appr{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px 18px 16px}
+  .appr h3{font-family:var(--serif); font-size:16px; margin:0 0 8px; font-weight:600}
+  .appr h3 .idx{font-family:var(--mono); font-size:11px; color:var(--accent); margin-right:8px; letter-spacing:.05em}
+  .appr p{margin:0; font-size:13px; color:var(--muted); line-height:1.55}
+  footer{margin-top:clamp(34px,5vw,54px); padding-top:18px; border-top:1px solid var(--line); font-size:11.5px; color:var(--faint); line-height:1.6}
+  footer .meth{font-family:var(--mono); font-size:10.5px; letter-spacing:.03em}
+  @media (max-width:560px){ .stats{grid-template-columns:1fr} .dials{grid-template-columns:1fr} .bar{grid-template-columns:60px 1fr 50px; gap:10px} }
+  @media (prefers-reduced-motion:reduce){ .bar .fill{transition:none} }
+</style></head>
+<body>
+<div class="wrap"><div class="sheet">
+  <header class="masthead">
+    <div>
+      <div class="mark">Pareidolia<span class="dot">.</span></div>
+      <div class="tag">A private multi-asset book — equities, options, FX, and event contracts. Pattern recognition in market noise, held to a written risk framework.</div>
+    </div>
+    <div class="asof">The Book<br><b id="asof"></b></div>
+  </header>
+  <section aria-label="Headline returns"><div class="stats" id="stats"></div></section>
+  <section aria-label="Cumulative return">
+    <p class="eyebrow">Performance</p>
+    <div class="chart-card">
+      <div class="chart-head"><h2>Cumulative return</h2><span class="sub" id="curvesub"></span></div>
+      <canvas id="curve" role="img" aria-label="Cumulative time-weighted return, year to date."></canvas>
+      <div class="marks" id="marks"></div>
+    </div>
+  </section>
+  <section aria-label="Weekly report card">
+    <p class="eyebrow">Weekly Report Card</p>
+    <div class="rc-head" id="rchead"></div>
+    <div class="dials" id="dials"></div>
+    <p class="rc-note" id="rcnote"></p>
+  </section>
+  <section aria-label="Allocation">
+    <p class="eyebrow">The Book · Allocation by Weight</p>
+    <h2>Where the capital sits</h2>
+    <p class="tag" style="margin:6px 0 18px">Weights as a share of net asset value. Totals may run slightly over 100% — modest margin.</p>
+    <div class="bars" id="bars"></div>
+    <div class="legend-strat">
+      <span><i class="swatch" style="background:var(--accent)"></i>Wheel — covered-call equities</span>
+      <span><i class="swatch" style="background:var(--slate)"></i>Directional — outright</span>
+      <span><i class="swatch" style="background:var(--faint)"></i>Cash &amp; event contracts</span>
+    </div>
+  </section>
+  <section aria-label="Holdings">
+    <p class="eyebrow">Holdings</p>
+    <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Strategy</th><th class="r">Weight</th><th class="r">Position return</th></tr></thead><tbody id="ledger"></tbody></table></div>
+  </section>
+  <section aria-label="Approach">
+    <p class="eyebrow">Approach</p>
+    <h2>How the book is run</h2>
+    <div class="cards" style="margin-top:16px">
+      <div class="appr"><h3><span class="idx">A</span>The Wheel</h3><p>The engine. Own retail-momentum names and sell calls against them, laddering expiries and buying back cheap. Premium is the recurring return; the shares are the collateral.</p></div>
+      <div class="appr"><h3><span class="idx">B</span>Event contracts</h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes — traded only where there's an actual read, kept to a small, capped sleeve.</p></div>
+      <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Selective outright holds with a written thesis and a hard stop. Used sparingly — conviction is sized, not indulged.</p></div>
+    </div>
+    <p class="tag" style="margin-top:16px">Risk framework: per-name position limits, a cash buffer, package-level stop-losses, and active drawdown management — the discipline that protects the engine from the punts.</p>
+  </section>
+  <footer>
+    <p>Figures are time-weighted returns and portfolio weights. Absolute balances, share counts, and dollar P&amp;L are withheld by design — transparent on performance, discreet on size.</p>
+    <p class="meth">PAREIDOLIA LLC · PRIVATE BOOK · FOR REVIEW ONLY · NOT AN OFFERING OR SOLICITATION · PAST PERFORMANCE IS NOT INDICATIVE OF FUTURE RESULTS</p>
+  </footer>
+</div></div>
+<script>
+(function(){
+  "use strict";
+  var DATA = {"asOf": "Aug 5, 2026", "curveLabel": "Time-weighted · Jan 1 – Aug 5, 2026", "returns": [{"k": "Return · YTD 2026", "v": -6.55, "m": "Time-weighted, net"}, {"k": "Return · Trailing 12M", "v": -6.86, "m": "Since inception, Oct 2025"}, {"k": "Return · Last 7 Days", "v": 1.17, "m": "Recovering off the July low"}], "reportCard": {"grade": "C−", "weekLabel": "Week of Jul 29 – Aug 5, 2026", "weekRet": 1.17, "dials": [{"key": "Dial 1 · Position size", "state": "fail", "value": "SRPT 30.2%", "rule": "Cap ≤ 20% of book per name · GRPN also 20.6%"}, {"key": "Dial 2 · Cash buffer", "state": "fail", "value": "1.7%", "rule": "Floor ≥ 10% · buying power near zero, leverage 1.05×"}, {"key": "Dial 3 · Event sleeve", "state": "warn", "value": "JPUSD active", "rule": "Thesis-only · within the dollar cap, but a banned name is back on"}], "note": "the market handed you a +1.2% bounce, but you spent the cash buffer and averaged up a losing directional (SPCX −23%). Greener week, thinner margin for error — the controllable leaks widened while P&L recovered. Cut SRPT to ≤ 20% and rebuild the cash floor before the next drawdown does it for you."}, "positions": [{"t": "SRPT", "s": "wheel", "w": 30.24, "r": -12.35}, {"t": "GRPN", "s": "wheel", "w": 20.61, "r": 1.97}, {"t": "SERV", "s": "wheel", "w": 10.61, "r": -12.49}, {"t": "SPCX", "s": "dir", "w": 10.12, "r": -23.07}, {"t": "NIQ", "s": "wheel", "w": 8.73, "r": -1.22}, {"t": "KVYO", "s": "wheel", "w": 6.56, "r": -1.19}, {"t": "PLTR", "s": "dir", "w": 5.9, "r": -1.84}, {"t": "NU", "s": "wheel", "w": 5.4, "r": 2.56}, {"t": "BBAI", "s": "wheel", "w": 3.4, "r": -12.09}, {"t": "Cash + events", "s": "cash", "w": 2.0, "r": null}], "curve": {"cps": [0.00020065, 0.02824103, 0.0572058, 0.08065435, 0.0606519, 0.07562113, 0.06827422, 0.07123878, 0.06360045, 0.07373698, 0.08314546, 0.08904246, 0.08690815, 0.07779709, 0.09797672, 0.09554547, 0.09411951, 0.0746519, 0.08721628, 0.08209301, 0.06899624, 0.04105331, 0.05984683, 0.04618617, 0.03345925, 0.01434752, 0.04588184, 0.0579048, 0.05892859, 0.05098251, 0.02986747, 0.03165115, 0.0317201, 0.03251008, 0.05128108, 0.03220767, 0.0260714, 0.00698791, 0.03536578, 0.06358527, 0.07449192, 0.020371, 0.0329675, 0.00869916, 0.01299402, 0.01904577, -0.02165905, -0.01890141, -0.02742216, -0.06400007, -0.08392961, -0.07676346, -0.06553205, -0.04139548, -0.04292189, -0.04834537, -0.03978926, -0.02593662, -0.03235175, 0.01932406, -0.00666716, -0.02644993, -0.01372515, 0.0077329, -0.02294972, -0.02008795, -0.02046597, -0.03161353, -0.02313488, -0.04510901, -0.04533448, -0.05850683, -0.03332798, 0.01699681, 0.03724374, 0.02305249, 0.03716814, 0.03943407, 0.03038135, 0.04076972, 0.0235827, 0.00827351, 0.00559214, -0.00037186, 0.00651674, 0.05135579, 0.06490471, 0.0695723, 0.09687917, 0.09491388, 0.07610344, 0.0791807, 0.05888308, 0.05812182, 0.05770881, 0.05326967, 0.02921997, 0.03365387, 0.02940058, 0.05081192, 0.06958526, 0.06483111, 0.06483111, 0.06715306, 0.07148824, 0.0588342, 0.08085427, 0.07921519, 0.05057795, 0.03667532, 0.06896663, 0.04243042, 0.01845355, 0.04016483, 0.02649951, 0.04326666, 0.04895218, 0.05454282, 0.07602415, 0.06292128, 0.06645705, 0.06249673, 0.04264733, 0.01956997, -0.01195026, -0.01619654, -0.00104894, -0.00151697, 0.0116601, 0.0092391, 0.02843332, 0.02807981, 0.02602562, 0.01469724, 0.00349014, 0.01966035, -0.00782063, -0.02631218, -0.02040477, -0.02262707, -0.02431143, -0.03923416, -0.03531133, -0.05352759, -0.05655897, -0.07935712, -0.0774468, -0.06468947, -0.06259575, -0.07632742, -0.06122059, -0.07649581, -0.04654875, -0.04351747, -0.06550257], "dates": ["20260101", "20260102", "20260105", "20260106", "20260107", "20260108", "20260109", "20260112", "20260113", "20260114", "20260115", "20260116", "20260119", "20260120", "20260121", "20260122", "20260123", "20260126", "20260127", "20260128", "20260129", "20260130", "20260202", "20260203", "20260204", "20260205", "20260206", "20260209", "20260210", "20260211", "20260212", "20260213", "20260216", "20260217", "20260218", "20260219", "20260220", "20260223", "20260224", "20260225", "20260226", "20260227", "20260302", "20260303", "20260304", "20260305", "20260306", "20260309", "20260310", "20260311", "20260312", "20260313", "20260316", "20260317", "20260318", "20260319", "20260320", "20260323", "20260324", "20260325", "20260326", "20260327", "20260330", "20260331", "20260401", "20260402", "20260403", "20260406", "20260407", "20260408", "20260409", "20260410", "20260413", "20260414", "20260415", "20260416", "20260417", "20260420", "20260421", "20260422", "20260423", "20260424", "20260427", "20260428", "20260429", "20260430", "20260501", "20260504", "20260505", "20260506", "20260507", "20260508", "20260511", "20260512", "20260513", "20260514", "20260515", "20260518", "20260519", "20260520", "20260521", "20260522", "20260525", "20260526", "20260527", "20260528", "20260529", "20260601", "20260602", "20260603", "20260604", "20260605", "20260608", "20260609", "20260610", "20260611", "20260612", "20260615", "20260616", "20260617", "20260618", "20260619", "20260622", "20260623", "20260624", "20260625", "20260626", "20260629", "20260630", "20260701", "20260702", "20260703", "20260706", "20260707", "20260708", "20260709", "20260710", "20260713", "20260714", "20260715", "20260716", "20260717", "20260720", "20260721", "20260722", "20260723", "20260724", "20260727", "20260728", "20260729", "20260730", "20260731", "20260803", "20260804", "20260805"]}};
+  var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var css=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();};
+  var fmt=function(v){return (v>=0?"+":"−")+Math.abs(v).toFixed(2)+"%";};
+  var cls=function(v){return v>=0?"pos":"neg";};
+
+  document.getElementById("asof").textContent="As of "+DATA.asOf;
+  document.getElementById("curvesub").textContent=DATA.curveLabel;
+
+  (function(){
+    var el=document.getElementById("stats");
+    DATA.returns.forEach(function(s){
+      var d=document.createElement("div"); d.className="stat";
+      d.innerHTML='<div class="k">'+s.k+'</div><div class="v '+cls(s.v)+'">'+fmt(s.v)+'</div><div class="m">'+s.m+'</div>';
+      el.appendChild(d);
+    });
+  })();
+
+  (function(){
+    var h=document.getElementById("rchead"), rc=DATA.reportCard;
+    h.innerHTML='<div class="grade">'+rc.grade+'</div><div><div class="wk">'+rc.weekLabel+'</div>'+
+      '<div class="wk">Return this week <span class="wkret '+cls(rc.weekRet)+'">'+fmt(rc.weekRet)+'</span></div></div>';
+    var dl=document.getElementById("dials");
+    rc.dials.forEach(function(d){
+      var lbl={pass:"Pass",warn:"Watch",fail:"Breach"}[d.state];
+      var el=document.createElement("div"); el.className="dial "+d.state;
+      el.innerHTML='<div class="dk">'+d.key+'</div><div><span class="state '+d.state+'">'+lbl+'</span></div>'+
+        '<div class="dv">'+d.value+'</div><div class="rule">'+d.rule+'</div>';
+      dl.appendChild(el);
+    });
+    document.getElementById("rcnote").innerHTML='<b>Read:</b> '+rc.note;
+  })();
+
+  (function(){
+    var wrap=document.getElementById("bars");
+    var max=Math.max.apply(null,DATA.positions.map(function(p){return p.w;}));
+    DATA.positions.forEach(function(p){
+      var col=p.s==="wheel"?"var(--accent)":p.s==="dir"?"var(--slate)":"var(--faint)";
+      var row=document.createElement("div"); row.className="bar";
+      row.innerHTML='<div class="name">'+p.t+'</div><div class="track"><div class="fill" style="background:'+col+'"></div></div><div class="pct">'+p.w.toFixed(1)+'%</div>';
+      wrap.appendChild(row);
+      var f=row.querySelector(".fill");
+      requestAnimationFrame(function(){requestAnimationFrame(function(){f.style.transform="scaleX("+(p.w/max)+")";});});
+    });
+  })();
+
+  (function(){
+    var tb=document.getElementById("ledger");
+    DATA.positions.filter(function(p){return p.r!==null;}).forEach(function(p){
+      var chip=p.s==="wheel"?'<span class="chip wheel">Wheel</span>':'<span class="chip dir">Directional</span>';
+      var tr=document.createElement("tr");
+      tr.innerHTML='<td class="tk">'+p.t+'</td><td>'+chip+'</td><td class="num r">'+p.w.toFixed(1)+'%</td><td class="num r '+cls(p.r)+'">'+fmt(p.r)+'</td>';
+      tb.appendChild(tr);
+    });
+  })();
+
+  var CPS=DATA.curve.cps, cv=document.getElementById("curve"), ctx=cv.getContext("2d");
+  var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var vals=CPS.map(function(x){return x*100;});
+  var lo=Math.min.apply(null,vals), hi=Math.max.apply(null,vals);
+  var yMin=Math.floor((lo-2)/5)*5, yMax=Math.ceil((hi+2)/5)*5;
+  (function(){
+    var m=document.getElementById("marks");
+    m.innerHTML='<span><i class="swatch" style="background:var(--up)"></i>Peak <b>'+fmt(hi)+'</b></span>'+
+      '<span><i class="swatch" style="background:var(--down)"></i>Trough <b>'+fmt(lo)+'</b></span>'+
+      '<span><i class="swatch" style="background:var(--accent)"></i>Current <b>'+fmt(vals[vals.length-1])+'</b></span>';
+  })();
+  function ticks(){var o=[],seen={};for(var i=0;i<DATA.curve.dates.length;i++){var mo=DATA.curve.dates[i].slice(4,6);if(!seen[mo]){seen[mo]=1;o.push({i:i,label:MONTHS[parseInt(mo,10)-1]});}}return o;}
+  function draw(p){
+    var dpr=window.devicePixelRatio||1, W=cv.clientWidth, H=cv.clientHeight;
+    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
+    var padL=8,padR=44,padT=14,padB=22, n=vals.length;
+    var mut=css("--muted"),grid=css("--grid"),acc=css("--accent"),dn=css("--down");
+    var X=function(i){return padL+(i/(n-1))*(W-padL-padR);};
+    var Y=function(v){return padT+(1-(v-yMin)/(yMax-yMin))*(H-padT-padB);};
+    ctx.font="11px "+css("--mono"); ctx.textBaseline="middle";
+    var step=(yMax-yMin)/4;
+    for(var g=yMin; g<=yMax+0.001; g+=step){
+      var y=Y(g); ctx.strokeStyle=(Math.abs(g)<0.001)?mut:grid; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-padR,y); ctx.stroke();
+      ctx.fillStyle=mut; ctx.textAlign="left"; ctx.fillText((g>0?"+":"")+Math.round(g)+"%", W-padR+7, y);
+    }
+    ctx.textAlign="center"; ctx.textBaseline="alphabetic"; ctx.fillStyle=mut;
+    ticks().forEach(function(t){ ctx.fillText(t.label, X(t.i), H-5); });
+    var last=Math.max(1,Math.floor(n*p)), zeroY=Y(0);
+    var grad=ctx.createLinearGradient(0,padT,0,H-padB); grad.addColorStop(0,acc+"33"); grad.addColorStop(1,acc+"05");
+    ctx.beginPath(); ctx.moveTo(X(0),zeroY);
+    for(var i=0;i<last;i++){ctx.lineTo(X(i),Y(vals[i]));}
+    ctx.lineTo(X(last-1),zeroY); ctx.closePath(); ctx.fillStyle=grad; ctx.fill();
+    ctx.beginPath();
+    for(var j=0;j<last;j++){var xx=X(j),yy=Y(vals[j]); j?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}
+    ctx.strokeStyle=acc; ctx.lineWidth=2; ctx.lineJoin="round"; ctx.stroke();
+    if(p>=1){var ex=X(n-1),ey=Y(vals[n-1]); ctx.beginPath(); ctx.arc(ex,ey,4,0,Math.PI*2); ctx.fillStyle=css("--bg"); ctx.fill(); ctx.lineWidth=2; ctx.strokeStyle=dn; ctx.stroke();}
+  }
+  var start=null,DUR=850;
+  function anim(ts){if(start===null)start=ts;var p=Math.min(1,(ts-start)/DUR);draw(p);if(p<1)requestAnimationFrame(anim);}
+  if(reduce){draw(1);}else{requestAnimationFrame(anim);}
+  var rt; window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){draw(1);},120);});
+  new MutationObserver(function(){draw(1);}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+  if(window.matchMedia){window.matchMedia("(prefers-color-scheme:dark)").addEventListener("change",function(){draw(1);});}
+})();
+</script></body></html>
