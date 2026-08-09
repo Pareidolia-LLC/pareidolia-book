@@ -17,6 +17,12 @@
     ],
     "note": "The turnaround week. SRPT — 30% of the book for three weeks — was fully offloaded via assignment, taking cash from 1.7% to 30.8% and sizing back under the cap. First clean sweep on all three dials. Watch: SERV is past its −15% stop, and SPCX bounced on luck, not thesis — don't let either become the next SRPT."
   },
+  "history": [
+    {"w": "Jul 13", "g": "C", "r": -4.7},
+    {"w": "Jul 25", "g": "C−", "r": -4.03},
+    {"w": "Aug 5", "g": "C−", "r": 1.17},
+    {"w": "Aug 9", "g": "A−", "r": 3.02, "now": true}
+  ],
   "positions": [
     {"t": "GRPN", "s": "wheel", "w": 18.36, "r": -7.52},
     {"t": "SPCX", "s": "dir", "w": 12.33, "r": -4.55},

@@ -28,5 +28,6 @@ Intended cadence: **Fridays 5:00 PM America/Chicago** (cron `0 23 * * 5` in UTC 
 - `asOf` (str), `curveLabel` (str)
 - `returns`: `[{k,v,m}]` — v is a percentage number (e.g. -6.55)
 - `reportCard`: `{grade, weekLabel, weekRet, dials:[{key,state,value,rule}], note}` — state ∈ `pass|warn|fail`
+- `history`: `[{w,g,r,now?}]` — grade-trend strip, one entry per graded week (`w`=short label, `g`=letter grade, `r`=week return %). Each refresh, **append** the new week and move `now:true` to it; keep prior weeks.
 - `positions`: `[{t,s,w,r}]` — s ∈ `wheel|dir|cash`; w,r are percentages; r=null hides it from the ledger
 - `curve`: `{cps:[fractions], dates:["YYYYMMDD"]}` — parallel arrays

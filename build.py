@@ -79,6 +79,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .con .box.no{border-top:3px solid var(--down)}
   .con .box h4{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 10px}
   .con ul{margin:0; padding-left:18px} .con li{font-size:13px; margin:5px 0; color:var(--ink)}
+  .hlabel{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:20px 0 8px}
+  .hist{display:flex; gap:10px; overflow-x:auto; padding-bottom:4px}
+  .gcard{flex:0 0 auto; min-width:80px; background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:10px 12px; text-align:center}
+  .gcard.now{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent)}
+  .gw{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.04em}
+  .gg{font-family:var(--serif); font-size:26px; font-weight:600; line-height:1.15; margin:3px 0}
+  .gr{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
   .bars{display:flex; flex-direction:column; gap:9px}
   .bar{display:grid; grid-template-columns:74px 1fr 62px; align-items:center; gap:14px}
   .bar .name{font-family:var(--mono); font-weight:600; font-size:13px; letter-spacing:.02em}
@@ -131,6 +138,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <div class="rc-head" id="rchead"></div>
     <div class="dials" id="dials"></div>
     <p class="rc-note" id="rcnote"></p>
+    <p class="hlabel">Grade history</p>
+    <div class="hist" id="hist"></div>
   </section>
   <section aria-label="Allocation">
     <p class="eyebrow">The Book · Allocation by Weight</p>
@@ -202,6 +211,17 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       dl.appendChild(el);
     });
     document.getElementById("rcnote").innerHTML='<b>Read:</b> '+rc.note;
+  })();
+
+  (function(){
+    var h=DATA.history; if(!h||!h.length) return;
+    var wrap=document.getElementById("hist");
+    h.forEach(function(x){
+      var t=x.g.charAt(0), col=(t==="A")?"var(--up)":(t==="B")?"var(--accent)":(t==="C")?"var(--warn)":"var(--down)";
+      var d=document.createElement("div"); d.className="gcard"+(x.now?" now":"");
+      d.innerHTML='<div class="gw">'+x.w+'</div><div class="gg" style="color:'+col+'">'+x.g+'</div><div class="gr '+cls(x.r)+'">'+fmt(x.r)+'</div>';
+      wrap.appendChild(d);
+    });
   })();
 
   (function(){
