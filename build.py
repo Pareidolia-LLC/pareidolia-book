@@ -13,21 +13,21 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 <title>Pareidolia — The Book</title>
 <style>
   :root{
-    --bg:#E9EBEE; --panel:#F6F7F8; --panel-2:#EEF0F3; --line:#D3D7DD;
-    --ink:#171B22; --muted:#616B78; --faint:#8A93A0;
-    --accent:#9C6F22; --accent-soft:rgba(156,111,34,.14);
-    --slate:#697585; --up:#1F8E6A; --down:#C1543B;
-    --grid:rgba(23,27,34,.09); --warn:#C67E22;
+    --bg:#F2ECDD; --panel:#FAF6EC; --panel-2:#EBE3D1; --line:#E0D6C0;
+    --ink:#2B2517; --muted:#7D7159; --faint:#AAA089;
+    --accent:#A9801F; --accent-soft:rgba(169,128,31,.16);
+    --slate:#8A7E64; --up:#5F8A3C; --down:#B4552F;
+    --grid:rgba(43,37,23,.10); --warn:#C46A1C;
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --mono:"SFMono-Regular","SF Mono",ui-monospace,"Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
   }
   @media (prefers-color-scheme:dark){
     :root{
-      --bg:#0D1015; --panel:#141922; --panel-2:#10151d; --line:#232B36;
-      --ink:#E8EBEF; --muted:#8B95A2; --faint:#66707D;
-      --accent:#D2A24C; --accent-soft:rgba(210,162,76,.15);
-      --slate:#7E8A99; --up:#39B588; --down:#D8694E; --grid:rgba(232,235,239,.08);
+      --bg:#1A150C; --panel:#231D11; --panel-2:#15110A; --line:#372C1B;
+      --ink:#EEE7D4; --muted:#AC9E80; --faint:#7A6E55;
+      --accent:#D9AF52; --accent-soft:rgba(217,175,82,.16);
+      --slate:#93866B; --up:#7FB152; --down:#D67B50; --grid:rgba(238,231,212,.08);
     }
   }
   *{box-sizing:border-box} body{margin:0}
