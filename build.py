@@ -137,6 +137,29 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     canvas#curve{height:330px}
   }
   @media (prefers-reduced-motion:reduce){ .bar .fill{transition:none} }
+  /* centered editorial layout */
+  .sheet{text-align:center}
+  .masthead{flex-direction:column; align-items:center; text-align:center}
+  .asof{text-align:center}
+  .tag{margin-left:auto; margin-right:auto}
+  .tabs{justify-content:center}
+  .eyebrow{justify-content:center}
+  .eyebrow::before{content:""; flex:1; height:1px; background:var(--line)}
+  .chart-head{justify-content:center}
+  .tlviews{justify-content:center}
+  .marks{justify-content:center}
+  .rc-head{justify-content:center}
+  .hist{justify-content:safe center}
+  .legend-strat{justify-content:center}
+  .prose,.rc-note{margin-left:auto; margin-right:auto}
+  .proselist{max-width:70ch; margin-left:auto; margin-right:auto}
+  .proselist li{padding-left:0}
+  .proselist li::before{position:static; display:inline-block; margin-right:9px; vertical-align:middle}
+  .con ul{list-style:none; padding-left:0}
+  thead th,tbody td,th.r,td.r{text-align:center}
+  .asofline{text-align:center}
+  footer{text-align:center}
+  .prose a,.rc-note a{color:var(--accent); text-decoration:underline; text-underline-offset:3px}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
