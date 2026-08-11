@@ -86,7 +86,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .gw{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.04em}
   .gg{font-family:var(--serif); font-size:26px; font-weight:600; line-height:1.15; margin:3px 0}
   .gr{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
-  .tabs{display:flex; gap:2px; margin-top:22px; border-bottom:1px solid var(--line); overflow-x:auto; position:sticky; top:0; z-index:5; background:var(--bg)}
+  .tabs{display:flex; gap:2px; margin-top:22px; border-bottom:1px solid var(--line); overflow-x:auto; position:sticky; top:0; z-index:5; background:var(--bg); scrollbar-width:none; -ms-overflow-style:none}
+  .tabs::-webkit-scrollbar{display:none}
   .tab{flex:0 0 auto; background:none; border:0; cursor:pointer; font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:13px 16px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .15s}
   .tab:hover{color:var(--ink)}
   .tab.active{color:var(--accent); border-bottom-color:var(--accent)}
@@ -328,7 +329,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     ctx.textAlign="left"; ctx.textBaseline="middle"; ctx.fillStyle=mut; ctx.fillText("0%", W-padR+7, z0);
     ctx.textAlign="center"; ctx.textBaseline="alphabetic"; ctx.fillStyle=mut;
     var tk=ticks(), plotW=W-padL-padR, skip=Math.max(1,Math.ceil(tk.length*56/plotW));
-    tk.forEach(function(t,idx){ if(idx%skip===0){ ctx.fillText(t.label, X(t.i), H-5); } });
+    tk.forEach(function(t,idx){ if(idx%skip===0){ ctx.textAlign=(idx===0)?"left":(idx===tk.length-1?"right":"center"); ctx.fillText(t.label, X(t.i), H-5); } });
     var last=Math.max(1,Math.floor(n*p)), zeroY=Y(0);
     var grad=ctx.createLinearGradient(0,padT,0,H-padB); grad.addColorStop(0,acc+"33"); grad.addColorStop(1,acc+"05");
     ctx.beginPath(); ctx.moveTo(X(0),zeroY);
@@ -358,12 +359,17 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   (function(){
     function idxFrom(th){for(var i=0;i<ALLD.length;i++){if(parseInt(ALLD[i],10)>=th)return i;}return ALLD.length-1;}
     function mBack(n){var d=ALLD[ALLD.length-1],y=parseInt(d.slice(0,4),10),m=parseInt(d.slice(4,6),10)-n;while(m<1){m+=12;y-=1;}return y*10000+m*100+1;}
+    function dBack(n){var d=ALLD[ALLD.length-1],dt=new Date(parseInt(d.slice(0,4),10),parseInt(d.slice(4,6),10)-1,parseInt(d.slice(6,8),10));dt.setDate(dt.getDate()-n);return dt.getFullYear()*10000+(dt.getMonth()+1)*100+dt.getDate();}
     var VIEWS=[
       {label:"Inception",startIdx:0,sub:"Since inception, Oct 2025"},
       {label:"YTD",startIdx:idxFrom(20260101),sub:"Year to date, 2026"},
       {label:"6M",startIdx:idxFrom(mBack(6)),sub:"Trailing 6 months"},
       {label:"3M",startIdx:idxFrom(mBack(3)),sub:"Trailing 3 months"},
-      {label:"1M",startIdx:idxFrom(mBack(1)),sub:"Trailing 1 month"}
+      {label:"1M",startIdx:idxFrom(mBack(1)),sub:"Trailing month"},
+      {label:"45D",startIdx:idxFrom(dBack(45)),sub:"Trailing 45 days"},
+      {label:"21D",startIdx:idxFrom(dBack(21)),sub:"Trailing 21 days"},
+      {label:"7D",startIdx:idxFrom(dBack(7)),sub:"Trailing 7 days"},
+      {label:"1D",startIdx:Math.max(0,ALLD.length-2),sub:"Latest trading day"}
     ];
     var host=document.getElementById("tlviews");
     VIEWS.forEach(function(v,i){
