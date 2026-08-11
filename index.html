@@ -308,8 +308,8 @@
       return o;
     }
     var seen={};
-    for(var j=0;j<D.length;j++){var yy=D[j].slice(2,4),mm=D[j].slice(4,6),k=yy+mm;
-      if(!seen[k]){seen[k]=1;o.push({i:j,label:MONTHS[parseInt(mm,10)-1]+" '"+yy});}}
+    for(var j=0;j<D.length;j++){var yy=D[j].slice(2,4),mm=D[j].slice(4,6),m=parseInt(mm,10),k=yy+mm;
+      if(!seen[k]){seen[k]=1;o.push({i:j,label:MONTHS[m-1]+(m===1?" '"+yy:"")});}}
     return o;
   }
   function draw(p){
