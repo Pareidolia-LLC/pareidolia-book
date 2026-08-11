@@ -77,6 +77,14 @@
   .gw{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.04em}
   .gg{font-family:var(--serif); font-size:26px; font-weight:600; line-height:1.15; margin:3px 0}
   .gr{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
+  .tabs{display:flex; gap:2px; margin-top:22px; border-bottom:1px solid var(--line); overflow-x:auto; position:sticky; top:0; z-index:5; background:var(--bg)}
+  .tab{flex:0 0 auto; background:none; border:0; cursor:pointer; font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:13px 16px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .15s}
+  .tab:hover{color:var(--ink)}
+  .tab.active{color:var(--accent); border-bottom-color:var(--accent)}
+  .tab:focus-visible{outline:2px solid var(--accent); outline-offset:-3px}
+  .panel{display:none}
+  .panel.active{display:block}
+  .panel.active>section:first-child{margin-top:26px}
   .bars{display:flex; flex-direction:column; gap:9px}
   .bar{display:grid; grid-template-columns:74px 1fr 62px; align-items:center; gap:14px}
   .bar .name{font-family:var(--mono); font-weight:600; font-size:13px; letter-spacing:.02em}
@@ -115,6 +123,13 @@
     </div>
     <div class="asof">The Book<br><b id="asof"></b></div>
   </header>
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab active" data-panel="overview" role="tab">Overview</button>
+    <button class="tab" data-panel="report" role="tab">Report Card</button>
+    <button class="tab" data-panel="book" role="tab">The Book</button>
+    <button class="tab" data-panel="approach" role="tab">Approach</button>
+  </nav>
+  <div class="panel active" id="panel-overview">
   <section aria-label="Headline returns"><div class="stats" id="stats"></div></section>
   <section aria-label="Cumulative return">
     <p class="eyebrow">Performance</p>
@@ -124,6 +139,8 @@
       <div class="marks" id="marks"></div>
     </div>
   </section>
+  </div>
+  <div class="panel" id="panel-report">
   <section aria-label="Weekly report card">
     <p class="eyebrow">Weekly Report Card</p>
     <div class="rc-head" id="rchead"></div>
@@ -132,6 +149,8 @@
     <p class="hlabel">Grade history</p>
     <div class="hist" id="hist"></div>
   </section>
+  </div>
+  <div class="panel" id="panel-book">
   <section aria-label="Allocation">
     <p class="eyebrow">The Book · Allocation by Weight</p>
     <h2>Where the capital sits</h2>
@@ -147,6 +166,8 @@
     <p class="eyebrow">Holdings</p>
     <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Strategy</th><th class="r">Weight</th><th class="r">Position return</th></tr></thead><tbody id="ledger"></tbody></table></div>
   </section>
+  </div>
+  <div class="panel" id="panel-approach">
   <section aria-label="Approach">
     <p class="eyebrow">Approach</p>
     <h2>How the book is run</h2>
@@ -163,6 +184,7 @@
     <div class="con" id="con"></div>
     <p class="rc-note" id="connote"></p>
   </section>
+  </div>
   <footer>
     <p>Figures are time-weighted returns and portfolio weights. Absolute balances, share counts, and dollar P&amp;L are withheld by design — transparent on performance, discreet on size.</p>
     <p class="meth">PAREIDOLIA LLC · PRIVATE BOOK · FOR REVIEW ONLY · NOT AN OFFERING OR SOLICITATION · PAST PERFORMANCE IS NOT INDICATIVE OF FUTURE RESULTS</p>
@@ -221,11 +243,16 @@
     DATA.positions.forEach(function(p){
       var col=p.s==="wheel"?"var(--accent)":p.s==="dir"?"var(--slate)":"var(--faint)";
       var row=document.createElement("div"); row.className="bar";
-      row.innerHTML='<div class="name">'+p.t+'</div><div class="track"><div class="fill" style="background:'+col+'"></div></div><div class="pct">'+p.w.toFixed(1)+'%</div>';
+      row.innerHTML='<div class="name">'+p.t+'</div><div class="track"><div class="fill" data-w="'+(p.w/max)+'" style="background:'+col+'"></div></div><div class="pct">'+p.w.toFixed(1)+'%</div>';
       wrap.appendChild(row);
-      var f=row.querySelector(".fill");
-      requestAnimationFrame(function(){requestAnimationFrame(function(){f.style.transform="scaleX("+(p.w/max)+")";});});
     });
+    window.__animBars=function(){
+      Array.prototype.forEach.call(wrap.querySelectorAll(".fill"),function(f){
+        f.style.transform="scaleX(0)";
+        requestAnimationFrame(function(){requestAnimationFrame(function(){f.style.transform="scaleX("+f.getAttribute("data-w")+")";});});
+      });
+    };
+    window.__animBars();
   })();
 
   (function(){
@@ -289,8 +316,23 @@
   var start=null,DUR=850;
   function anim(ts){if(start===null)start=ts;var p=Math.min(1,(ts-start)/DUR);draw(p);if(p<1)requestAnimationFrame(anim);}
   if(reduce){draw(1);}else{requestAnimationFrame(anim);}
+  window.__drawCurve=function(){draw(1);};
   var rt; window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){draw(1);},120);});
   new MutationObserver(function(){draw(1);}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
   if(window.matchMedia){window.matchMedia("(prefers-color-scheme:dark)").addEventListener("change",function(){draw(1);});}
+
+  (function(){
+    var tabs=Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    var ids=["overview","report","book","approach"];
+    var panels={}; ids.forEach(function(id){panels[id]=document.getElementById("panel-"+id);});
+    function activate(id){
+      tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("data-panel")===id);});
+      ids.forEach(function(k){panels[k].classList.toggle("active",k===id);});
+      if(id==="overview" && window.__drawCurve) window.__drawCurve();
+      if(id==="book" && window.__animBars) window.__animBars();
+      window.scrollTo(0,0);
+    }
+    tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
+  })();
 })();
 </script></body></html>
