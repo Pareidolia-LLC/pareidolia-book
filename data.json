@@ -6,22 +6,43 @@
     {"k": "Return · Trailing 12M", "v": -5.18, "m": "Since inception, Oct 2025"},
     {"k": "Return · Last 7 Days", "v": 3.02, "m": "SRPT closed; cash rebuilt"}
   ],
-  "reportCard": {
-    "grade": "A−",
-    "weekLabel": "Week of Jul 31 – Aug 9, 2026",
-    "weekRet": 3.02,
-    "dials": [
-      {"key": "Dial 1 · Position size", "state": "pass", "value": "GRPN 18.4%", "rule": "Top name under the 20% cap · SRPT (was 30%) fully offloaded"},
-      {"key": "Dial 2 · Cash buffer", "state": "pass", "value": "30.8%", "rule": "Well above the 10% floor · leverage 0.7×"},
-      {"key": "Dial 3 · Event sleeve", "state": "pass", "value": "None open", "rule": "No event contracts; JPUSD flat"}
-    ],
-    "note": "The turnaround week. SRPT — 30% of the book for three weeks — was fully offloaded via assignment, taking cash from 1.7% to 30.8% and sizing back under the cap. First clean sweep on all three dials. Watch: SERV is past its −15% stop, and SPCX bounced on luck, not thesis — don't let either become the next SRPT."
-  },
-  "history": [
-    {"w": "Jul 13", "g": "C", "r": -4.7},
-    {"w": "Jul 25", "g": "C−", "r": -4.03},
-    {"w": "Aug 5", "g": "C−", "r": 1.17},
-    {"w": "Aug 9", "g": "A−", "r": 3.02, "now": true}
+  "reports": [
+    {
+      "w": "Jul 13", "weekLabel": "Week of Jul 13 – 18, 2026", "grade": "C", "weekRet": -4.7,
+      "dials": [
+        {"key": "Dial 1 · Position size", "state": "fail", "value": "SRPT ~31%", "rule": "Over the 20% cap · SPCX −29% not offloaded"},
+        {"key": "Dial 2 · Cash buffer", "state": "pass", "value": "17.6%", "rule": "Above the 10% floor — rebuilt this week"},
+        {"key": "Dial 3 · Event sleeve", "state": "warn", "value": "JPUSD active", "rule": "Over cap 2 of 6 days early; a banned name traded"}
+      ],
+      "note": "Cash floor fixed (17.6%), but the oversized names just sat — SRPT ~31%, SPCX −29%, SERV hit its stop — and new names went on without journal lines. The engine's fine; the discipline isn't there yet."
+    },
+    {
+      "w": "Jul 25", "weekLabel": "Week of Jul 19 – 25, 2026", "grade": "C−", "weekRet": -4.03,
+      "dials": [
+        {"key": "Dial 1 · Position size", "state": "fail", "value": "SRPT 29.9%", "rule": "≈30% of book, cap is 20% · GRPN 19.4%"},
+        {"key": "Dial 2 · Cash buffer", "state": "pass", "value": "14.4%", "rule": "Above the 10% floor"},
+        {"key": "Dial 3 · Event sleeve", "state": "fail", "value": "92% of trades", "rule": "ForecastX churn · 18 JPUSD (banned) trades"}
+      ],
+      "note": "The market did most of the −4% — mark-to-market on names you already held; realized trading was quiet. But the controllable leak, SRPT at 30%, stayed wide open two weeks after it was flagged. Cash discipline was the bright spot."
+    },
+    {
+      "w": "Aug 5", "weekLabel": "Week of Jul 29 – Aug 5, 2026", "grade": "C−", "weekRet": 1.17,
+      "dials": [
+        {"key": "Dial 1 · Position size", "state": "fail", "value": "SRPT 30.2%", "rule": "Cap ≤ 20% per name · GRPN also 20.6%"},
+        {"key": "Dial 2 · Cash buffer", "state": "fail", "value": "1.7%", "rule": "Floor ≥ 10% · buying power near zero, leverage 1.05×"},
+        {"key": "Dial 3 · Event sleeve", "state": "warn", "value": "JPUSD active", "rule": "Within the dollar cap, but a banned name is back on"}
+      ],
+      "note": "The market handed you a +1.2% bounce, but you spent the cash buffer and averaged up a losing directional (SPCX −23%). Greener week, thinner margin for error — the controllable leaks widened while P&L recovered."
+    },
+    {
+      "w": "Aug 9", "weekLabel": "Week of Jul 31 – Aug 9, 2026", "grade": "A−", "weekRet": 3.02, "now": true,
+      "dials": [
+        {"key": "Dial 1 · Position size", "state": "pass", "value": "GRPN 18.4%", "rule": "Top name under the 20% cap · SRPT (was 30%) fully offloaded"},
+        {"key": "Dial 2 · Cash buffer", "state": "pass", "value": "30.8%", "rule": "Well above the 10% floor · leverage 0.7×"},
+        {"key": "Dial 3 · Event sleeve", "state": "pass", "value": "None open", "rule": "No event contracts; JPUSD flat"}
+      ],
+      "note": "The turnaround week. SRPT — 30% of the book for three weeks — was fully offloaded via assignment, taking cash from 1.7% to 30.8% and sizing back under the cap. First clean sweep on all three dials. Watch: SERV is past its −15% stop, and SPCX bounced on luck, not thesis — don't let either become the next SRPT."
+    }
   ],
   "positions": [
     {"t": "GRPN", "s": "wheel", "w": 18.36, "r": -7.52},

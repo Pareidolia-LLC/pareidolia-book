@@ -81,8 +81,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .con ul{margin:0; padding-left:18px} .con li{font-size:13px; margin:5px 0; color:var(--ink)}
   .hlabel{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:20px 0 8px}
   .hist{display:flex; gap:10px; overflow-x:auto; padding-bottom:4px}
-  .gcard{flex:0 0 auto; min-width:80px; background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:10px 12px; text-align:center}
-  .gcard.now{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent)}
+  .gcard{flex:0 0 auto; min-width:82px; background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:10px 12px; text-align:center; cursor:pointer; font:inherit; color:inherit; transition:border-color .15s, box-shadow .15s}
+  .gcard:hover{border-color:var(--accent)}
+  .gcard:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .gcard.active{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent)}
+  .gnow{font-family:var(--mono); font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-top:3px}
   .gw{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.04em}
   .gg{font-family:var(--serif); font-size:26px; font-weight:600; line-height:1.15; margin:3px 0}
   .gr{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
@@ -160,7 +163,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <div class="rc-head" id="rchead"></div>
     <div class="dials" id="dials"></div>
     <p class="rc-note" id="rcnote"></p>
-    <p class="hlabel">Grade history</p>
+    <p class="hlabel">Grade history — select a week to read its card</p>
     <div class="hist" id="hist"></div>
   </section>
   </div>
@@ -226,29 +229,39 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   })();
 
   (function(){
-    var h=document.getElementById("rchead"), rc=DATA.reportCard;
-    h.innerHTML='<div class="grade">'+rc.grade+'</div><div><div class="wk">'+rc.weekLabel+'</div>'+
-      '<div class="wk">Return this week <span class="wkret '+cls(rc.weekRet)+'">'+fmt(rc.weekRet)+'</span></div></div>';
-    var dl=document.getElementById("dials");
-    rc.dials.forEach(function(d){
-      var lbl={pass:"Pass",warn:"Watch",fail:"Breach"}[d.state];
-      var el=document.createElement("div"); el.className="dial "+d.state;
-      el.innerHTML='<div class="dk">'+d.key+'</div><div><span class="state '+d.state+'">'+lbl+'</span></div>'+
-        '<div class="dv">'+d.value+'</div><div class="rule">'+d.rule+'</div>';
-      dl.appendChild(el);
-    });
-    document.getElementById("rcnote").innerHTML='<b>Read:</b> '+rc.note;
-  })();
-
-  (function(){
-    var h=DATA.history; if(!h||!h.length) return;
-    var wrap=document.getElementById("hist");
-    h.forEach(function(x){
-      var t=x.g.charAt(0), col=(t==="A")?"var(--up)":(t==="B")?"var(--accent)":(t==="C")?"var(--warn)":"var(--down)";
-      var d=document.createElement("div"); d.className="gcard"+(x.now?" now":"");
-      d.innerHTML='<div class="gw">'+x.w+'</div><div class="gg" style="color:'+col+'">'+x.g+'</div><div class="gr '+cls(x.r)+'">'+fmt(x.r)+'</div>';
-      wrap.appendChild(d);
-    });
+    var reports=DATA.reports; if(!reports||!reports.length) return;
+    var head=document.getElementById("rchead"), dl=document.getElementById("dials"),
+        note=document.getElementById("rcnote"), strip=document.getElementById("hist");
+    function gcol(g){var t=g.charAt(0);return (t==="A")?"var(--up)":(t==="B")?"var(--accent)":(t==="C")?"var(--warn)":"var(--down)";}
+    function card(rc){
+      var c=gcol(rc.grade);
+      head.innerHTML='<div class="grade" style="border-color:'+c+';color:'+c+'">'+rc.grade+'</div>'+
+        '<div><div class="wk">'+rc.weekLabel+'</div>'+
+        '<div class="wk">Return this week <span class="wkret '+cls(rc.weekRet)+'">'+fmt(rc.weekRet)+'</span></div></div>';
+      dl.innerHTML="";
+      rc.dials.forEach(function(d){
+        var lbl={pass:"Pass",warn:"Watch",fail:"Breach"}[d.state];
+        var el=document.createElement("div"); el.className="dial "+d.state;
+        el.innerHTML='<div class="dk">'+d.key+'</div><div><span class="state '+d.state+'">'+lbl+'</span></div>'+
+          '<div class="dv">'+d.value+'</div><div class="rule">'+d.rule+'</div>';
+        dl.appendChild(el);
+      });
+      note.innerHTML='<b>Read:</b> '+rc.note;
+    }
+    function chips(active){
+      strip.innerHTML="";
+      reports.forEach(function(x,i){
+        var b=document.createElement("button"); b.type="button"; b.className="gcard"+(i===active?" active":"");
+        b.setAttribute("aria-label",x.weekLabel+", grade "+x.grade);
+        b.innerHTML='<div class="gw">'+x.w+'</div><div class="gg" style="color:'+gcol(x.grade)+'">'+x.grade+'</div>'+
+          '<div class="gr '+cls(x.weekRet)+'">'+fmt(x.weekRet)+'</div>'+(x.now?'<div class="gnow">now</div>':'');
+        b.addEventListener("click",function(){ pick(i); });
+        strip.appendChild(b);
+      });
+    }
+    function pick(i){ card(reports[i]); chips(i); }
+    var def=0; reports.forEach(function(x,i){ if(x.now) def=i; });
+    pick(def);
   })();
 
   (function(){

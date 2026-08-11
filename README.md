@@ -27,7 +27,6 @@ Intended cadence: **Fridays 5:00 PM America/Chicago** (cron `0 23 * * 5` in UTC 
 
 - `asOf` (str), `curveLabel` (str)
 - `returns`: `[{k,v,m}]` — v is a percentage number (e.g. -6.55)
-- `reportCard`: `{grade, weekLabel, weekRet, dials:[{key,state,value,rule}], note}` — state ∈ `pass|warn|fail`
-- `history`: `[{w,g,r,now?}]` — grade-trend strip, one entry per graded week (`w`=short label, `g`=letter grade, `r`=week return %). Each refresh, **append** the new week and move `now:true` to it; keep prior weeks.
+- `reports`: `[{w, weekLabel, grade, weekRet, dials:[{key,state,value,rule}], note, now?}]` — full weekly report cards, oldest→newest; state ∈ `pass|warn|fail`. Both the clickable grade-history strip and the card view render from this. Each refresh, **append** the new week's full card and move `now:true` to it; keep prior weeks. The card defaults to the `now` entry; clicking a chip shows that week.
 - `positions`: `[{t,s,w,r}]` — s ∈ `wheel|dir|cash`; w,r are percentages; r=null hides it from the ledger
 - `curve`: `{cps:[fractions], dates:["YYYYMMDD"]}` — parallel arrays
