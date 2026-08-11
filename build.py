@@ -202,7 +202,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <div class="mark">Pareidolia<span class="dot">.</span></div>
       <div class="tag">A private multi-asset book — pattern recognition in market noise.</div>
     </div>
-    <div class="asof">The Book</div>
   </header>
   <div class="dateline"><span>Pareidolia LLC</span><span><b id="dlDate"></b></span><span>Est. October 2025</span></div>
   <nav class="tabs" role="tablist" aria-label="Sections">
