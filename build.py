@@ -194,13 +194,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .tab:hover{color:var(--bg)}
   .tab.active{color:color-mix(in srgb, var(--accent) 72%, #F2ECDD 28%); border-bottom-color:var(--accent)}
   .tab:focus-visible{outline-offset:-4px}
-  /* performance page: overview beside report card */
+  /* performance page: returns + curve, report card below */
   .perfgrid{margin-top:26px}
-  .perfgrid>div>section:first-child{margin-top:0}
-  @media (min-width:860px){
-    .perfgrid{display:grid; grid-template-columns:1.15fr 1fr; gap:38px; align-items:start}
-    .perfgrid canvas#curve{height:290px}
-  }
+  .perfgrid>div:first-child>section:first-child{margin-top:0}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
