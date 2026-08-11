@@ -129,6 +129,30 @@
       "note": "The turnaround week. SRPT — 30% of the book for three weeks — was fully offloaded via assignment, taking cash from 1.7% to 30.8% and sizing back under the cap. First clean sweep on all three dials. Watch: SERV is past its −15% stop, and SPCX bounced on luck, not thesis — don't let either become the next SRPT."
     }
   ],
+  "career": {
+    "sinceLabel": "Oct 2025",
+    "asOfLabel": "Aug 6, 2026",
+    "headline": [
+      { "k": "Closed trades", "v": "2,000", "m": "Round-trip realizations" },
+      { "k": "Win rate", "v": "60.1%", "m": "1,202 won · 798 lost" },
+      { "k": "Profit factor", "v": "0.90", "m": "Gross wins ÷ gross losses" },
+      { "k": "Payoff ratio", "v": "0.60", "m": "Avg win ÷ avg loss" },
+      { "k": "Names traded", "v": "97", "m": "Distinct symbols" },
+      { "k": "Profitable months", "v": "6 / 11", "m": "By realized P&L" }
+    ],
+    "buckets": [
+      { "name": "Covered-call premium", "tag": "wheel", "tone": "up", "win": 77.8, "pf": 3.57, "closes": 153, "note": "The engine. Premium capture on held shares — managed, rolled, and bought back cheap." },
+      { "name": "Share legs", "tag": "equity", "tone": "down", "win": 66.7, "pf": 0.25, "closes": 30, "note": "Where the damage clusters — a small number of oversized names, not the process." },
+      { "name": "Event contracts", "tag": "forecast", "tone": "warn", "win": 58.5, "pf": 0.87, "closes": 1817, "note": "High-volume churn near break-even; negative once costs are counted. Being wound down." }
+    ],
+    "insights": [
+      "Loss asymmetry is the leak: the average losing trade runs 1.7× the average winner, so a 60% win rate still nets out behind. Selection is fine — loss-sizing is the work.",
+      "The engine is real: covered-call premium wins 78% of its closes at a 3.6 profit factor. That edge is the business; everything else is management around it.",
+      "Event contracts are 91% of all closes and contribute roughly nothing — a lot of motion for no return. The sleeve is being retired in favor of the engine.",
+      "Share legs carry a 0.25 profit factor across just 30 closes — nearly all of it traceable to two names held past their stops. The per-name cap exists because of this line.",
+      "Consistency: 6 of 11 months green on realized P&L; the last two ran red on a single concentrated unwind."
+    ]
+  },
   "positions": [
     {
       "t": "GRPN",

@@ -178,6 +178,19 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <p class="hlabel">Grade history — select a week to read its card</p>
     <div class="hist" id="hist"></div>
   </section>
+  <section aria-label="Career trading stats">
+    <p class="eyebrow">Career Ledger · Cumulative</p>
+    <h2>The record since inception</h2>
+    <p class="tag" style="margin:6px 0 0" id="careersub"></p>
+    <div class="stats" id="careerstats"></div>
+    <div class="dials" id="careerbuckets" style="margin-top:14px"></div>
+  </section>
+  <section aria-label="Observations beyond the weekly cards">
+    <p class="eyebrow">Between the Report Cards</p>
+    <h2>What the weekly grades don't show</h2>
+    <ul class="proselist" id="careerinsights"></ul>
+    <p class="rc-note" id="careermeth"></p>
+  </section>
   </div>
   <div class="panel" id="panel-book">
   <div id="booksummary"></div>
@@ -280,6 +293,35 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     function pick(i){ card(reports[i]); chips(i); }
     var def=0; reports.forEach(function(x,i){ if(x.now) def=i; });
     pick(def);
+  })();
+
+  (function(){
+    var c=DATA.career; if(!c) return;
+    document.getElementById("careersub").textContent=
+      "Realized, closed-trade record since inception ("+c.sinceLabel+") — every closing execution, deduplicated. "+
+      "Refreshed with the weekly report card. Figures through "+c.asOfLabel+".";
+    var st=document.getElementById("careerstats");
+    c.headline.forEach(function(s){
+      var d=document.createElement("div"); d.className="stat";
+      d.innerHTML='<div class="k">'+s.k+'</div><div class="v">'+s.v+'</div><div class="m">'+s.m+'</div>';
+      st.appendChild(d);
+    });
+    var TONE={up:"pass",warn:"warn",down:"fail"};
+    var bk=document.getElementById("careerbuckets");
+    c.buckets.forEach(function(b){
+      var el=document.createElement("div"); el.className="dial "+(TONE[b.tone]||"");
+      el.innerHTML='<div class="dk">'+b.name+'</div>'+
+        '<div class="dv">'+b.win.toFixed(0)+'% win · '+b.pf.toFixed(2)+' PF</div>'+
+        '<div class="rule">'+b.closes.toLocaleString("en-US")+' closes — '+b.note+'</div>';
+      bk.appendChild(el);
+    });
+    var ul=document.getElementById("careerinsights");
+    c.insights.forEach(function(x){
+      var li=document.createElement("li"); li.textContent=x; ul.appendChild(li);
+    });
+    document.getElementById("careermeth").innerHTML=
+      '<b>Method:</b> Counted per realized closing execution across the full account history, brokerage-reported. '+
+      'Dollar figures are withheld by design — rates, ratios, and counts only.';
   })();
 
   (function(){
