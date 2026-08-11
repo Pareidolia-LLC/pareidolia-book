@@ -149,12 +149,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   </header>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button class="tab active" data-panel="overview" role="tab">Overview</button>
-    <button class="tab" data-panel="report" role="tab">Report Card</button>
+    <button class="tab" data-panel="story" role="tab">Our Story</button>
     <button class="tab" data-panel="book" role="tab">The Book</button>
+    <button class="tab" data-panel="report" role="tab">Report Card</button>
     <button class="tab" data-panel="approach" role="tab">Approach</button>
     <button class="tab" data-panel="concepts" role="tab">Concepts</button>
-    <button class="tab" data-panel="discipline" role="tab">Discipline</button>
-    <button class="tab" data-panel="story" role="tab">Our Story</button>
   </nav>
   <div class="panel active" id="panel-overview">
   <section aria-label="Headline returns"><div class="stats" id="stats"></div></section>
@@ -211,6 +210,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     </div>
     <p class="tag" style="margin-top:16px">Risk framework: per-name position limits, a cash buffer, package-level stop-losses, and active drawdown management — the discipline that protects the engine from the punts.</p>
   </section>
+  <div id="page-discipline-inline"></div>
   <section aria-label="Mandate and constraints">
     <p class="eyebrow">Mandate &amp; Constraints</p>
     <h2 id="con-title"></h2>
@@ -219,7 +219,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   </section>
   </div>
   <div class="panel" id="panel-concepts"></div>
-  <div class="panel" id="panel-discipline"></div>
   <div class="panel" id="panel-story"></div>
   <footer>
     <p>Figures are time-weighted returns and portfolio weights. Absolute balances, share counts, and dollar P&amp;L are withheld by design — transparent on performance, discreet on size.</p>
@@ -336,7 +335,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     blocks(document.getElementById("booksummary"), DATA.book);
     var pg=DATA.pages||{};
     blocks(document.getElementById("panel-concepts"), pg.concepts);
-    blocks(document.getElementById("panel-discipline"), pg.discipline);
+    blocks(document.getElementById("page-discipline-inline"), pg.discipline);
     blocks(document.getElementById("panel-story"), pg.story);
   })();
 
@@ -465,7 +464,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   (function(){
     var tabs=Array.prototype.slice.call(document.querySelectorAll(".tab"));
-    var ids=["overview","report","book","approach","concepts","discipline","story"];
+    var ids=["overview","report","book","approach","concepts","story"];
     var panels={}; ids.forEach(function(id){panels[id]=document.getElementById("panel-"+id);});
     function activate(id){
       tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("data-panel")===id);});
