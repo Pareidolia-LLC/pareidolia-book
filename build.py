@@ -152,6 +152,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .hist{justify-content:safe center}
   .legend-strat{justify-content:center}
   .prose,.rc-note{margin-left:auto; margin-right:auto; max-width:none}
+  section .tag{max-width:none}
   .proselist{max-width:none; margin-left:auto; margin-right:auto}
   .proselist li{padding-left:0; margin:12px 0}
   .proselist li::before{content:none}
