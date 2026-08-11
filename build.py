@@ -40,6 +40,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .stat .k{font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
   .stat .v{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:clamp(26px,4.4vw,34px); font-weight:600; margin-top:8px; letter-spacing:-.01em}
   .stat .m{font-size:11px; color:var(--faint); margin-top:3px}
+  .asofline{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); text-align:right; margin:12px 2px 0}
+  .asofline b{color:var(--muted); font-weight:600}
   .pos{color:var(--up)} .neg{color:var(--down)}
   .chart-card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px 20px 16px; margin-top:14px; position:relative}
   .ctip{position:absolute; display:none; pointer-events:none; z-index:6; transform:translate(-50%,-100%); background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:4px 9px; font-family:var(--mono); font-size:11px; white-space:nowrap; box-shadow:0 3px 10px rgba(43,37,23,.18)}
@@ -143,7 +145,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <div class="mark">Pareidolia<span class="dot">.</span></div>
       <div class="tag">A private multi-asset book — pattern recognition in market noise.</div>
     </div>
-    <div class="asof">The Book<br><b id="asof"></b></div>
+    <div class="asof">The Book</div>
   </header>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button class="tab active" data-panel="overview" role="tab">Overview</button>
@@ -156,6 +158,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   </nav>
   <div class="panel active" id="panel-overview">
   <section aria-label="Headline returns"><div class="stats" id="stats"></div></section>
+  <p class="asofline">Figures as of <b id="asof"></b></p>
   <section aria-label="Cumulative return">
     <p class="eyebrow">Performance</p>
     <div class="chart-card">
@@ -232,7 +235,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   var fmt=function(v){return (v>=0?"+":"−")+Math.abs(v).toFixed(2)+"%";};
   var cls=function(v){return v>=0?"pos":"neg";};
 
-  document.getElementById("asof").textContent="As of "+DATA.asOf;
+  document.getElementById("asof").textContent=DATA.asOf;
   document.getElementById("curvesub").textContent=DATA.curveLabel;
 
   (function(){
