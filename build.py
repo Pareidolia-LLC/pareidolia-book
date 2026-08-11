@@ -386,6 +386,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     function dBack(n){var d=ALLD[ALLD.length-1],dt=new Date(parseInt(d.slice(0,4),10),parseInt(d.slice(4,6),10)-1,parseInt(d.slice(6,8),10));dt.setDate(dt.getDate()-n);return dt.getFullYear()*10000+(dt.getMonth()+1)*100+dt.getDate();}
     var VIEWS=[
       {label:"Inception",startIdx:0,sub:"Since inception, Oct 2025"},
+      {label:"1Y",startIdx:idxFrom(mBack(12)),sub:"Trailing 12 months"},
       {label:"YTD",startIdx:idxFrom(20260101),sub:"Year to date, 2026"},
       {label:"6M",startIdx:idxFrom(mBack(6)),sub:"Trailing 6 months"},
       {label:"3M",startIdx:idxFrom(mBack(3)),sub:"Trailing 3 months"},
