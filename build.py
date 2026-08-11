@@ -141,7 +141,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   <header class="masthead">
     <div>
       <div class="mark">Pareidolia<span class="dot">.</span></div>
-      <div class="tag">A private multi-asset book — equities, options, FX, and event contracts. Pattern recognition in market noise, held to a written risk framework.</div>
+      <div class="tag">A private multi-asset book — pattern recognition in market noise.</div>
     </div>
     <div class="asof">The Book<br><b id="asof"></b></div>
   </header>
