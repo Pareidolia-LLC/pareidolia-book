@@ -299,12 +299,17 @@
   var ALLC=DATA.curve.cps, ALLD=DATA.curve.dates, cv=document.getElementById("curve"), ctx=cv.getContext("2d");
   var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
   var marksEl=document.getElementById("marks"), subEl=document.getElementById("curvesub");
-  var vals=[], D=[], yMin=0, yMax=0, hoverIdx=-1;
+  var vals=[], D=[], yMin=0, yMax=0, hoverIdx=-1, curGran="month";
   var PADL=8,PADR=44,PADT=14,PADB=22, tip=document.getElementById("ctip");
   function ticks(){
-    var o=[],seen={};
-    for(var i=0;i<D.length;i++){var yy=D[i].slice(2,4),mm=D[i].slice(4,6),k=yy+mm;
-      if(!seen[k]){seen[k]=1;o.push({i:i,label:MONTHS[parseInt(mm,10)-1]+" '"+yy});}}
+    var o=[];
+    if(curGran==="day"){
+      for(var i=0;i<D.length;i++){o.push({i:i,label:MONTHS[parseInt(D[i].slice(4,6),10)-1]+" "+parseInt(D[i].slice(6,8),10)});}
+      return o;
+    }
+    var seen={};
+    for(var j=0;j<D.length;j++){var yy=D[j].slice(2,4),mm=D[j].slice(4,6),k=yy+mm;
+      if(!seen[k]){seen[k]=1;o.push({i:j,label:MONTHS[parseInt(mm,10)-1]+" '"+yy});}}
     return o;
   }
   function draw(p){
@@ -354,6 +359,7 @@
   window.__drawCurve=function(){draw(1);};
   function setView(v){
     hoverIdx=-1; if(tip){tip.style.display="none";}
+    curGran=v.gran||"month";
     var base=ALLC[v.startIdx];
     D=ALLD.slice(v.startIdx);
     vals=ALLC.slice(v.startIdx).map(function(c){return ((1+c)/(1+base)-1)*100;});
@@ -374,11 +380,11 @@
       {label:"YTD",startIdx:idxFrom(20260101),sub:"Year to date, 2026"},
       {label:"6M",startIdx:idxFrom(mBack(6)),sub:"Trailing 6 months"},
       {label:"3M",startIdx:idxFrom(mBack(3)),sub:"Trailing 3 months"},
-      {label:"1M",startIdx:idxFrom(mBack(1)),sub:"Trailing month"},
-      {label:"45D",startIdx:idxFrom(dBack(45)),sub:"Trailing 45 days"},
-      {label:"21D",startIdx:idxFrom(dBack(21)),sub:"Trailing 21 days"},
-      {label:"7D",startIdx:idxFrom(dBack(7)),sub:"Trailing 7 days"},
-      {label:"1D",startIdx:Math.max(0,ALLD.length-2),sub:"Latest trading day"}
+      {label:"1M",startIdx:idxFrom(mBack(1)),sub:"Trailing month",gran:"day"},
+      {label:"45D",startIdx:idxFrom(dBack(45)),sub:"Trailing 45 days",gran:"day"},
+      {label:"21D",startIdx:idxFrom(dBack(21)),sub:"Trailing 21 days",gran:"day"},
+      {label:"7D",startIdx:idxFrom(dBack(7)),sub:"Trailing 7 days",gran:"day"},
+      {label:"1D",startIdx:Math.max(0,ALLD.length-2),sub:"Latest trading day",gran:"day"}
     ];
     var host=document.getElementById("tlviews");
     VIEWS.forEach(function(v,i){
