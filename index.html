@@ -142,10 +142,10 @@
   .rc-head{justify-content:center}
   .hist{justify-content:safe center}
   .legend-strat{justify-content:center}
-  .prose,.rc-note{margin-left:auto; margin-right:auto}
-  .proselist{max-width:70ch; margin-left:auto; margin-right:auto}
-  .proselist li{padding-left:0}
-  .proselist li::before{position:static; display:inline-block; margin-right:9px; vertical-align:middle}
+  .prose,.rc-note{margin-left:auto; margin-right:auto; max-width:none}
+  .proselist{max-width:none; margin-left:auto; margin-right:auto}
+  .proselist li{padding-left:0; margin:12px 0}
+  .proselist li::before{content:none}
   .con ul{list-style:none; padding-left:0}
   thead th,tbody td,th.r,td.r{text-align:center}
   .asofline{text-align:center}
@@ -195,7 +195,7 @@
   <section aria-label="Career trading stats">
     <p class="eyebrow">Career Ledger · Cumulative</p>
     <h2>The record since inception</h2>
-    <p class="tag" style="margin:6px 0 0" id="careersub"></p>
+    <p class="tag" style="margin-top:6px" id="careersub"></p>
     <div class="stats" id="careerstats"></div>
     <div class="dials" id="careerbuckets" style="margin-top:14px"></div>
   </section>
@@ -212,7 +212,7 @@
   <section aria-label="Allocation">
     <p class="eyebrow">The Book · Allocation by Weight</p>
     <h2>Where the capital sits</h2>
-    <p class="tag" style="margin:6px 0 18px">Weights as a share of net asset value. Totals may run slightly over 100% — modest margin.</p>
+    <p class="tag" style="margin-top:6px;margin-bottom:18px">Weights as a share of net asset value. Totals may run slightly over 100% — modest margin.</p>
     <div class="bars" id="bars"></div>
     <div class="legend-strat">
       <span><i class="swatch" style="background:var(--accent)"></i>Wheel — covered-call equities</span>
