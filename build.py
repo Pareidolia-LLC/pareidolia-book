@@ -41,7 +41,10 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .stat .v{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:clamp(26px,4.4vw,34px); font-weight:600; margin-top:8px; letter-spacing:-.01em}
   .stat .m{font-size:11px; color:var(--faint); margin-top:3px}
   .pos{color:var(--up)} .neg{color:var(--down)}
-  .chart-card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px 20px 16px; margin-top:14px}
+  .chart-card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px 20px 16px; margin-top:14px; position:relative}
+  .ctip{position:absolute; display:none; pointer-events:none; z-index:6; transform:translate(-50%,-100%); background:var(--bg); border:1px solid var(--line); border-radius:7px; padding:4px 9px; font-family:var(--mono); font-size:11px; white-space:nowrap; box-shadow:0 3px 10px rgba(43,37,23,.18)}
+  .ctip .tdate{color:var(--muted); margin-right:9px}
+  .ctip .tval{font-weight:600}
   .chart-head{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap}
   .chart-head .sub{font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.04em}
   canvas#curve{display:block; width:100%; height:290px; margin-top:4px}
@@ -152,6 +155,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <div class="chart-head"><h2>Cumulative return</h2><span class="sub" id="curvesub"></span></div>
       <div class="tlviews" id="tlviews" role="tablist" aria-label="Timeline range"></div>
       <canvas id="curve" role="img" aria-label="Cumulative time-weighted return over the selected timeline."></canvas>
+      <div class="ctip" id="ctip"></div>
       <div class="marks" id="marks"></div>
     </div>
   </section>
@@ -304,7 +308,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   var ALLC=DATA.curve.cps, ALLD=DATA.curve.dates, cv=document.getElementById("curve"), ctx=cv.getContext("2d");
   var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
   var marksEl=document.getElementById("marks"), subEl=document.getElementById("curvesub");
-  var vals=[], D=[], yMin=0, yMax=0;
+  var vals=[], D=[], yMin=0, yMax=0, hoverIdx=-1;
+  var PADL=8,PADR=44,PADT=14,PADB=22, tip=document.getElementById("ctip");
   function ticks(){
     var o=[],seen={};
     for(var i=0;i<D.length;i++){var yy=D[i].slice(2,4),mm=D[i].slice(4,6),k=yy+mm;
@@ -314,7 +319,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   function draw(p){
     var dpr=window.devicePixelRatio||1, W=cv.clientWidth, H=cv.clientHeight;
     cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
-    var padL=8,padR=44,padT=14,padB=22, n=vals.length;
+    var padL=PADL,padR=PADR,padT=PADT,padB=PADB, n=vals.length;
     var mut=css("--muted"),grid=css("--grid"),acc=css("--accent"),dn=css("--down");
     var X=function(i){return padL+(n<2?0.5:i/(n-1))*(W-padL-padR);};
     var Y=function(v){return padT+(1-(v-yMin)/(yMax-yMin))*(H-padT-padB);};
@@ -328,8 +333,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     var z0=Y(0); ctx.strokeStyle=mut; ctx.lineWidth=1.25; ctx.beginPath(); ctx.moveTo(padL,z0); ctx.lineTo(W-padR,z0); ctx.stroke();
     ctx.textAlign="left"; ctx.textBaseline="middle"; ctx.fillStyle=mut; ctx.fillText("0%", W-padR+7, z0);
     ctx.textAlign="center"; ctx.textBaseline="alphabetic"; ctx.fillStyle=mut;
-    var tk=ticks(), plotW=W-padL-padR, skip=Math.max(1,Math.ceil(tk.length*56/plotW));
-    tk.forEach(function(t,idx){ if(idx%skip===0){ ctx.textAlign=(idx===0)?"left":(idx===tk.length-1?"right":"center"); ctx.fillText(t.label, X(t.i), H-5); } });
+    var tk=ticks(), prevR=-1e9;
+    for(var ti=0;ti<tk.length;ti++){
+      var tx=X(tk[ti].i), tw=ctx.measureText(tk[ti].label).width,
+          al=(ti===0)?"left":(ti===tk.length-1?"right":"center"),
+          le=(al==="left")?tx:(al==="right")?tx-tw:tx-tw/2;
+      if(le>=prevR+8){ ctx.textAlign=al; ctx.fillText(tk[ti].label, tx, H-5); prevR=le+tw; }
+    }
     var last=Math.max(1,Math.floor(n*p)), zeroY=Y(0);
     var grad=ctx.createLinearGradient(0,padT,0,H-padB); grad.addColorStop(0,acc+"33"); grad.addColorStop(1,acc+"05");
     ctx.beginPath(); ctx.moveTo(X(0),zeroY);
@@ -339,12 +349,20 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     for(var j=0;j<last;j++){var xx=X(j),yy=Y(vals[j]); j?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}
     ctx.strokeStyle=acc; ctx.lineWidth=2; ctx.lineJoin="round"; ctx.stroke();
     if(p>=1){var ex=X(n-1),ey=Y(vals[n-1]); ctx.beginPath(); ctx.arc(ex,ey,4,0,Math.PI*2); ctx.fillStyle=css("--bg"); ctx.fill(); ctx.lineWidth=2; ctx.strokeStyle=dn; ctx.stroke();}
+    if(hoverIdx>=0 && hoverIdx<n){
+      var hx=X(hoverIdx), hy=Y(vals[hoverIdx]);
+      ctx.setLineDash([3,3]); ctx.strokeStyle=css("--faint"); ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(hx,padT); ctx.lineTo(hx,H-padB); ctx.stroke(); ctx.setLineDash([]);
+      ctx.beginPath(); ctx.arc(hx,hy,4.5,0,Math.PI*2); ctx.fillStyle=acc; ctx.fill();
+      ctx.lineWidth=1.5; ctx.strokeStyle=css("--bg"); ctx.stroke();
+    }
   }
   var start=null,DUR=850;
   function anim(ts){if(start===null)start=ts;var p=Math.min(1,(ts-start)/DUR);draw(p);if(p<1)requestAnimationFrame(anim);}
   function render(){ start=null; if(reduce){draw(1);}else{requestAnimationFrame(anim);} }
   window.__drawCurve=function(){draw(1);};
   function setView(v){
+    hoverIdx=-1; if(tip){tip.style.display="none";}
     var base=ALLC[v.startIdx];
     D=ALLD.slice(v.startIdx);
     vals=ALLC.slice(v.startIdx).map(function(c){return ((1+c)/(1+base)-1)*100;});
@@ -382,6 +400,23 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     });
     setView(VIEWS[0]);
   })();
+  function fmtDate(s){return MONTHS[parseInt(s.slice(4,6),10)-1]+" "+parseInt(s.slice(6,8),10)+" '"+s.slice(2,4);}
+  function tipAt(idx){
+    var W=cv.clientWidth,H=cv.clientHeight,n=vals.length,plotW=W-PADL-PADR;
+    var x=PADL+(n<2?0.5:idx/(n-1))*plotW, y=PADT+(1-(vals[idx]-yMin)/(yMax-yMin))*(H-PADT-PADB);
+    tip.innerHTML='<span class="tdate">'+fmtDate(D[idx])+'</span><span class="tval '+cls(vals[idx])+'">'+fmt(vals[idx])+'</span>';
+    tip.style.display="block"; tip.style.left=(cv.offsetLeft+x)+"px"; tip.style.top=(cv.offsetTop+y-12)+"px";
+  }
+  if(tip){
+    cv.addEventListener("mousemove",function(e){
+      var n=vals.length; if(!n) return;
+      var plotW=cv.clientWidth-PADL-PADR;
+      var idx=(n<2)?n-1:Math.round(((e.offsetX-PADL)/plotW)*(n-1));
+      idx=Math.max(0,Math.min(n-1,idx));
+      hoverIdx=idx; draw(1); tipAt(idx);
+    });
+    cv.addEventListener("mouseleave",function(){ hoverIdx=-1; draw(1); tip.style.display="none"; });
+  }
   var rt; window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){draw(1);},120);});
   new MutationObserver(function(){draw(1);}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
   if(window.matchMedia){window.matchMedia("(prefers-color-scheme:dark)").addEventListener("change",function(){draw(1);});}
