@@ -185,6 +185,13 @@
   .tab:hover{color:var(--bg)}
   .tab.active{color:color-mix(in srgb, var(--accent) 72%, #F2ECDD 28%); border-bottom-color:var(--accent)}
   .tab:focus-visible{outline-offset:-4px}
+  /* performance page: overview beside report card */
+  .perfgrid{margin-top:26px}
+  .perfgrid>div>section:first-child{margin-top:0}
+  @media (min-width:860px){
+    .perfgrid{display:grid; grid-template-columns:1.15fr 1fr; gap:38px; align-items:start}
+    .perfgrid canvas#curve{height:290px}
+  }
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -196,18 +203,19 @@
   </header>
   <div class="dateline"><span>Pareidolia LLC</span><span><b id="dlDate"></b></span><span>Est. October 2025</span></div>
   <nav class="tabs" role="tablist" aria-label="Sections">
-    <button class="tab active" data-panel="overview" role="tab">Overview</button>
+    <button class="tab active" data-panel="report" role="tab">Performance</button>
     <button class="tab" data-panel="story" role="tab">Our Story</button>
     <button class="tab" data-panel="book" role="tab">The Book</button>
-    <button class="tab" data-panel="report" role="tab">Performance</button>
     <button class="tab" data-panel="approach" role="tab">Approach</button>
     <button class="tab" data-panel="concepts" role="tab">Concepts</button>
   </nav>
-  <div class="panel active" id="panel-overview">
+  <div class="panel active" id="panel-report">
+  <div class="perfgrid">
+  <div>
   <section aria-label="Headline returns"><div class="stats" id="stats"></div></section>
   <p class="asofline">Figures as of <b id="asof"></b></p>
   <section aria-label="Cumulative return">
-    <p class="eyebrow">Performance</p>
+    <p class="eyebrow">Return Curve</p>
     <div class="chart-card">
       <div class="chart-head"><h2>Cumulative return</h2><span class="sub" id="curvesub"></span></div>
       <div class="tlviews" id="tlviews" role="tablist" aria-label="Timeline range"></div>
@@ -217,7 +225,7 @@
     </div>
   </section>
   </div>
-  <div class="panel" id="panel-report">
+  <div>
   <section aria-label="Weekly report card">
     <p class="eyebrow">Weekly Report Card</p>
     <div class="rc-head" id="rchead"></div>
@@ -226,6 +234,8 @@
     <p class="hlabel">Grade history — select a week to read its card</p>
     <div class="hist" id="hist"></div>
   </section>
+  </div>
+  </div>
   <section aria-label="Career trading stats">
     <p class="eyebrow">Career Ledger · Cumulative</p>
     <h2>The record since inception</h2>
@@ -555,12 +565,12 @@
 
   (function(){
     var tabs=Array.prototype.slice.call(document.querySelectorAll(".tab"));
-    var ids=["overview","report","book","approach","concepts","story"];
+    var ids=["report","book","approach","concepts","story"];
     var panels={}; ids.forEach(function(id){panels[id]=document.getElementById("panel-"+id);});
     function activate(id){
       tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("data-panel")===id);});
       ids.forEach(function(k){panels[k].classList.toggle("active",k===id);});
-      if(id==="overview" && window.__drawCurve) window.__drawCurve();
+      if(id==="report" && window.__drawCurve) window.__drawCurve();
       if(id==="book" && window.__animBars) window.__animBars();
       window.scrollTo(0,0);
     }
