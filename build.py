@@ -320,6 +320,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-padR,y); ctx.stroke();
       ctx.fillStyle=mut; ctx.textAlign="left"; ctx.fillText((g>0?"+":"")+Math.round(g)+"%", W-padR+7, y);
     }
+    var z0=Y(0); ctx.strokeStyle=mut; ctx.lineWidth=1.25; ctx.beginPath(); ctx.moveTo(padL,z0); ctx.lineTo(W-padR,z0); ctx.stroke();
+    ctx.textAlign="left"; ctx.textBaseline="middle"; ctx.fillStyle=mut; ctx.fillText("0%", W-padR+7, z0);
     ctx.textAlign="center"; ctx.textBaseline="alphabetic"; ctx.fillStyle=mut;
     ticks().forEach(function(t){ ctx.fillText(t.label, X(t.i), H-5); });
     var last=Math.max(1,Math.floor(n*p)), zeroY=Y(0);
