@@ -75,7 +75,7 @@ def main():
         "asOf": asof,
         "since": span0,
         "headline": [
-            {"k": "Closed trades", "v": f"{len(closers):,}", "m": "round-trip realizations"},
+            {"k": "Closed trades", "v": f"{len(closers):,}", "m": "positions opened, closed & booked"},
             {"k": "Win rate", "v": f"{len(wins)/len(closers)*100:.1f}%", "m": f"{len(wins):,} won · {len(losses):,} lost"},
             {"k": "Profit factor", "v": f"{gp/abs(gl):.2f}", "m": "gross wins ÷ gross losses"},
             {"k": "Payoff ratio", "v": f"{avg_w/abs(avg_l):.2f}", "m": "avg win ÷ avg loss"},
