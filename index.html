@@ -23,7 +23,7 @@
   }
   *{box-sizing:border-box} body{margin:0}
   .wrap{background:var(--bg); color:var(--ink); font-family:var(--sans); min-height:100vh; padding:clamp(20px,4vw,56px); -webkit-font-smoothing:antialiased; line-height:1.5}
-  .sheet{max-width:920px; margin:0 auto}
+  .sheet{max-width:1120px; margin:0 auto}
   .masthead{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; border-bottom:1.5px solid var(--ink); padding-bottom:18px}
   .mark{font-family:var(--serif); font-size:clamp(34px,6vw,58px); line-height:.95; letter-spacing:.01em; font-weight:600; text-wrap:balance}
   .mark .dot{color:var(--accent)}
@@ -62,7 +62,7 @@
   .state.pass{color:var(--up); background:color-mix(in srgb,var(--up) 15%,transparent)}
   .state.warn{color:var(--warn); background:color-mix(in srgb,var(--warn) 17%,transparent)}
   .state.fail{color:var(--down); background:color-mix(in srgb,var(--down) 15%,transparent)}
-  .rc-note{margin-top:15px; font-size:13px; color:var(--muted); line-height:1.6}
+  .rc-note{margin-top:15px; font-size:13px; color:var(--muted); line-height:1.6; max-width:78ch}
   .rc-note b{color:var(--ink); font-weight:600}
   .con{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px}
   .con .box{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
@@ -112,6 +112,11 @@
   footer{margin-top:clamp(34px,5vw,54px); padding-top:18px; border-top:1px solid var(--line); font-size:11.5px; color:var(--faint); line-height:1.6}
   footer .meth{font-family:var(--mono); font-size:10.5px; letter-spacing:.03em}
   @media (max-width:560px){ .stats{grid-template-columns:1fr} .dials{grid-template-columns:1fr} .con{grid-template-columns:1fr} .bar{grid-template-columns:60px 1fr 50px; gap:10px} }
+  @media (min-width:860px){
+    #panel-book.active{display:grid; grid-template-columns:1.15fr 1fr; gap:34px; align-items:start}
+    #panel-book.active>section{margin-top:26px}
+    canvas#curve{height:330px}
+  }
   @media (prefers-reduced-motion:reduce){ .bar .fill{transition:none} }
 </style></head>
 <body>
