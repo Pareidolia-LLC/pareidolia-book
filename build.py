@@ -89,8 +89,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .gw{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.04em}
   .gg{font-family:var(--serif); font-size:26px; font-weight:600; line-height:1.15; margin:3px 0}
   .gr{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
-  .tabs{display:flex; gap:2px; margin-top:22px; border-bottom:1px solid var(--line); overflow-x:auto; position:sticky; top:0; z-index:5; background:var(--bg); scrollbar-width:none; -ms-overflow-style:none}
-  .tabs::-webkit-scrollbar{display:none}
+  .tabs{display:flex; flex-wrap:wrap; gap:2px 4px; margin-top:22px; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; background:var(--bg)}
   .tab{flex:0 0 auto; background:none; border:0; cursor:pointer; font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:13px 16px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .15s}
   .tab:hover{color:var(--ink)}
   .tab.active{color:var(--accent); border-bottom-color:var(--accent)}
@@ -122,12 +121,17 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .appr h3{font-family:var(--serif); font-size:16px; margin:0 0 8px; font-weight:600}
   .appr h3 .idx{font-family:var(--mono); font-size:11px; color:var(--accent); margin-right:8px; letter-spacing:.05em}
   .appr p{margin:0; font-size:13px; color:var(--muted); line-height:1.55}
+  .prose{font-size:14px; color:var(--muted); line-height:1.65; max-width:70ch; margin-top:9px}
+  .proselist{margin:12px 0 0; padding-left:0; max-width:70ch; list-style:none}
+  .proselist li{position:relative; font-size:13.5px; color:var(--ink); line-height:1.55; margin:9px 0; padding-left:18px}
+  .proselist li::before{content:""; position:absolute; left:0; top:8px; width:5px; height:5px; border-radius:1px; background:var(--accent)}
+  #booksummary>section:first-child{margin-top:26px}
   footer{margin-top:clamp(34px,5vw,54px); padding-top:18px; border-top:1px solid var(--line); font-size:11.5px; color:var(--faint); line-height:1.6}
   footer .meth{font-family:var(--mono); font-size:10.5px; letter-spacing:.03em}
   @media (max-width:560px){ .stats{grid-template-columns:1fr} .dials{grid-template-columns:1fr} .con{grid-template-columns:1fr} .bar{grid-template-columns:60px 1fr 50px; gap:10px} }
   @media (min-width:860px){
-    #panel-book.active{display:grid; grid-template-columns:1.15fr 1fr; gap:34px; align-items:start}
-    #panel-book.active>section{margin-top:26px}
+    .bookgrid{display:grid; grid-template-columns:1.15fr 1fr; gap:34px; align-items:start}
+    .bookgrid>section{margin-top:26px}
     canvas#curve{height:330px}
   }
   @media (prefers-reduced-motion:reduce){ .bar .fill{transition:none} }
@@ -146,6 +150,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <button class="tab" data-panel="report" role="tab">Report Card</button>
     <button class="tab" data-panel="book" role="tab">The Book</button>
     <button class="tab" data-panel="approach" role="tab">Approach</button>
+    <button class="tab" data-panel="concepts" role="tab">Concepts</button>
+    <button class="tab" data-panel="discipline" role="tab">Discipline</button>
+    <button class="tab" data-panel="story" role="tab">Our Story</button>
   </nav>
   <div class="panel active" id="panel-overview">
   <section aria-label="Headline returns"><div class="stats" id="stats"></div></section>
@@ -171,6 +178,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   </section>
   </div>
   <div class="panel" id="panel-book">
+  <div id="booksummary"></div>
+  <div class="bookgrid">
   <section aria-label="Allocation">
     <p class="eyebrow">The Book · Allocation by Weight</p>
     <h2>Where the capital sits</h2>
@@ -186,6 +195,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <p class="eyebrow">Holdings</p>
     <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Strategy</th><th class="r">Weight</th><th class="r">Position return</th></tr></thead><tbody id="ledger"></tbody></table></div>
   </section>
+  </div>
   </div>
   <div class="panel" id="panel-approach">
   <section aria-label="Approach">
@@ -205,6 +215,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <p class="rc-note" id="connote"></p>
   </section>
   </div>
+  <div class="panel" id="panel-concepts"></div>
+  <div class="panel" id="panel-discipline"></div>
+  <div class="panel" id="panel-story"></div>
   <footer>
     <p>Figures are time-weighted returns and portfolio weights. Absolute balances, share counts, and dollar P&amp;L are withheld by design — transparent on performance, discreet on size.</p>
     <p class="meth">PAREIDOLIA LLC · PRIVATE BOOK · FOR REVIEW ONLY · NOT AN OFFERING OR SOLICITATION · PAST PERFORMANCE IS NOT INDICATIVE OF FUTURE RESULTS</p>
@@ -303,6 +316,25 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       '<div class="box ok"><h4>Permitted</h4><ul>'+c.permitted.map(function(x){return "<li>"+x+"</li>";}).join("")+'</ul></div>'+
       '<div class="box no"><h4>Restricted by broker</h4><ul>'+c.restricted.map(function(x){return "<li>"+x+"</li>";}).join("")+'</ul></div>';
     document.getElementById("connote").innerHTML='<b>Note:</b> '+c.note;
+  })();
+
+  (function(){
+    function blocks(el, arr){
+      if(!el||!arr) return;
+      arr.forEach(function(b){
+        var s=document.createElement("section"), h="";
+        if(b.eyebrow) h+='<p class="eyebrow">'+b.eyebrow+'</p>';
+        if(b.h) h+='<h2>'+b.h+'</h2>';
+        if(b.p) b.p.forEach(function(x){ h+='<p class="prose">'+x+'</p>'; });
+        if(b.ul) h+='<ul class="proselist">'+b.ul.map(function(x){return "<li>"+x+"</li>";}).join("")+'</ul>';
+        s.innerHTML=h; el.appendChild(s);
+      });
+    }
+    blocks(document.getElementById("booksummary"), DATA.book);
+    var pg=DATA.pages||{};
+    blocks(document.getElementById("panel-concepts"), pg.concepts);
+    blocks(document.getElementById("panel-discipline"), pg.discipline);
+    blocks(document.getElementById("panel-story"), pg.story);
   })();
 
   var ALLC=DATA.curve.cps, ALLD=DATA.curve.dates, cv=document.getElementById("curve"), ctx=cv.getContext("2d");
@@ -430,7 +462,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   (function(){
     var tabs=Array.prototype.slice.call(document.querySelectorAll(".tab"));
-    var ids=["overview","report","book","approach"];
+    var ids=["overview","report","book","approach","concepts","discipline","story"];
     var panels={}; ids.forEach(function(id){panels[id]=document.getElementById("panel-"+id);});
     function activate(id){
       tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("data-panel")===id);});

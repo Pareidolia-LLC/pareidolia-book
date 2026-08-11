@@ -197,6 +197,29 @@
     ],
     "note": "Interactive Brokers currently limits this account to selling covered calls. Cash-secured puts — a core strategy in the principal's personal account and a preferred source of entry — are not permitted here. A mandate expansion is under review pending a business-plan revision."
   },
+  "book": [
+    {"eyebrow":"Book Summary","h":"Current posture","p":["The book is a concentrated set of retail-momentum equities wheeled with covered calls, sitting on a large cash buffer after trimming risk. It runs unlevered, with a small, defined-risk event-contract sleeve. The stance today is deliberately defensive — dry powder ready, single-name sizing back under the cap."]},
+    {"eyebrow":"General themes","ul":["Covered-call premium on liquid small-cap momentum names — the engine of returns.","Cash treated as a position: a meaningful buffer, ready to deploy into dislocation.","Selective directional holds, sized small and governed by a written thesis.","A small event-contract sleeve for short-dated, defined-risk views."]},
+    {"eyebrow":"Risk profile","ul":["Single-name concentration capped at 20% of NAV.","Unlevered — no financing or margin-call risk.","Broker mandate currently limits options activity to selling covered calls (see Approach).","Sizing, cash floor, and event exposure reviewed on a weekly discipline check."]}
+  ],
+  "pages": {
+    "concepts": [
+      {"eyebrow":"Manifesto","h":"How we think about markets","ul":["Edge is process, not prediction.","Harvest premium; don't chase direction.","Position size is the real risk lever — not the entry.","Define the risk before the entry, always.","Most of the tape is noise; the work is separating it from signal."]},
+      {"eyebrow":"Mental models","p":["We trade a handful of durable ideas: asymmetry — small, defined risk for convex payoff; premium capture on names the crowd overpays to insure; and the humility that sizing, not selection, is where most books die.","Looking like a mad hatter today and being right over the long run is a feature, not a bug — provided the fundamentals underwrite the view."]},
+      {"eyebrow":"What we're watching","p":["[A rotating space for current themes, theses, and names on the radar — updated as the read evolves.]"]}
+    ],
+    "discipline": [
+      {"eyebrow":"The core risk","h":"Our biggest risk is us","p":["The largest threat to this book isn't the market — it's behavior. Conviction that becomes oversizing; a winner that invites a bigger bet; a loser held past its stop. We treat temperament as the primary risk to manage."]},
+      {"eyebrow":"The guardrails","h":"Rules that hold when discipline is hardest","ul":["Max 20% of the book in any single name — conviction is expressed, not indulged.","A 10% cash floor at all times — dry powder is a position.","Hard stops, honored; no averaging down a losing thesis.","Every sizeable position carries a written thesis: catalyst, target, stop."]},
+      {"eyebrow":"Why the rules exist","p":["A single oversized position once gave back months of grinding. The position cap, the cash floor, and the stop discipline are scar tissue from lessons like that — codified so they never have to be re-learned the hard way."]},
+      {"eyebrow":"Process over outcome","p":["The book is graded weekly on discipline, not only P&L — the Report Card is the enforcement mechanism. A green week with a broken rule still counts as a bad week."]}
+    ],
+    "story": [
+      {"eyebrow":"Our Story","h":"Finding the signal in the noise","p":["Pareidolia is the mind's tendency to see meaningful patterns — faces — in random noise. The idea began as a university capstone and was rebuilt for markets: read the world like an operator, keep the fundamentals in hand, and be willing to look like a mad hatter today if the long arc proves the read right.","Independent analysis. Independent taste. We form our own view, size it deliberately, and let a written framework — not the mood of the tape — govern the book."]},
+      {"eyebrow":"The ambition","h":"Bootstrapped, by design","p":["Pareidolia was built from the ground up, on partner capital and no outside scaffolding. The intent was never to stay small — it is to compound a durable, inspectable process into something far larger, one disciplined decision at a time."]},
+      {"eyebrow":"Contact","p":["[Add a contact email or link here.]"]}
+    ]
+  },
   "curve": {
     "cps": [
       0,
