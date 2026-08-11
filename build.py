@@ -180,6 +180,14 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   footer{border-top:3px double var(--ink); font-family:var(--serif); font-style:italic; font-size:12.5px; color:var(--muted)}
   footer .meth{font-family:var(--mono); font-style:normal}
   @media (max-width:560px){ .dateline{justify-content:center} }
+  /* justified body text + drop caps (blended edition) */
+  .prose,.proselist li,.rc-note{text-align:justify; text-justify:inter-word; hyphens:auto}
+  #panel-story section:first-of-type h2 + .prose::first-letter,
+  #booksummary section:first-of-type h2 + .prose::first-letter,
+  #page-discipline-inline section:first-of-type h2 + .prose::first-letter,
+  #panel-concepts section:nth-of-type(2) .eyebrow + .prose::first-letter{
+    float:left; font-family:var(--serif); font-size:3.4em; line-height:.82;
+    font-weight:700; padding:8px 10px 0 0; color:var(--accent)}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -190,7 +198,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     </div>
     <div class="asof">The Book</div>
   </header>
-  <div class="dateline"><span>Pareidolia LLC</span><span>Private Edition — <b id="dlDate"></b></span><span>Est. October 2025</span></div>
+  <div class="dateline"><span>Pareidolia LLC</span><span><b id="dlDate"></b></span><span>Est. October 2025</span></div>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button class="tab active" data-panel="overview" role="tab">Overview</button>
     <button class="tab" data-panel="story" role="tab">Our Story</button>
