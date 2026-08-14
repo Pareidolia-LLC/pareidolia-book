@@ -266,7 +266,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <div class="legend-strat">
       <span><i class="swatch" style="background:var(--accent)"></i>Wheel — covered-call equities</span>
       <span><i class="swatch" style="background:var(--slate)"></i>Directional — outright</span>
-      <span><i class="swatch" style="background:var(--faint)"></i>Cash &amp; event contracts</span>
+      <span><i class="swatch" style="background:var(--faint)"></i>Cash</span>
     </div>
   </section>
   <section aria-label="Holdings">
@@ -281,7 +281,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <h2>How the book is run</h2>
     <div class="cards" style="margin-top:16px">
       <div class="appr"><h3><span class="idx">A</span>The Wheel</h3><p>The engine. Own retail-momentum names and sell calls against them, laddering expiries and buying back cheap. Premium is the recurring return; the shares are the collateral.</p></div>
-      <div class="appr"><h3><span class="idx">B</span>Event contracts</h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes — traded only where there's an actual read, kept to a small, capped sleeve.</p></div>
+      <div class="appr"><h3><span class="idx">B</span>Event contracts <span class="tag">retired</span></h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes. The sleeve was wound down in August 2026 — it accounted for most of the account's activity and almost none of its return. Nothing is open.</p></div>
       <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Selective outright holds with a written thesis and a hard stop. Used sparingly — conviction is sized, not indulged.</p></div>
     </div>
     <p class="tag" style="margin-top:16px">Risk framework: per-name position limits, a cash buffer, package-level stop-losses, and active drawdown management — the discipline that protects the engine from the punts.</p>
