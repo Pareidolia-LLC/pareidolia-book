@@ -2,10 +2,21 @@
 """Pareidolia book — static site generator.
 Reads data.json, writes index.html (served by GitHub Pages).
 Weekly refresh = overwrite data.json with a fresh broker pull, then run this."""
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 data = json.load(open(os.path.join(HERE, "data.json"), encoding="utf-8"))
+
+# The career ledger ships with the weekly report card, so it must carry the same
+# date as the rest of the page. Refusing to build is the whole point: it catches
+# a refresh that updated the returns and the card but skipped the career step.
+_career_as_of = data.get("career", {}).get("asOfLabel")
+if _career_as_of != data.get("asOf"):
+    sys.exit(
+        "career ledger is out of step with the page: career.asOfLabel is %r but "
+        "asOf is %r.\nRe-pull the trade dumps and run:\n"
+        "    python career_stats.py --write ../data/trades_ytd_2026.json ../data/trades_q4_2025.json"
+        % (_career_as_of, data.get("asOf")))
 
 TEMPLATE = r"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">

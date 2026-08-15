@@ -158,7 +158,7 @@
   ],
   "career": {
     "sinceLabel": "Oct 2025",
-    "asOfLabel": "Aug 12, 2026",
+    "asOfLabel": "Aug 14, 2026",
     "headline": [
       {
         "k": "Closed trades",
@@ -195,28 +195,28 @@
       {
         "name": "Covered-call premium",
         "tag": "wheel",
-        "tone": "up",
         "win": 78.3,
         "pf": 3.68,
         "closes": 157,
+        "tone": "up",
         "note": "The engine. Premium capture on held shares — managed, rolled, and bought back cheap."
       },
       {
         "name": "Share legs",
         "tag": "equity",
-        "tone": "down",
         "win": 63.6,
         "pf": 0.23,
         "closes": 33,
+        "tone": "down",
         "note": "Where the damage clusters — a small number of oversized names, not the process."
       },
       {
         "name": "Event contracts",
         "tag": "forecast",
-        "tone": "warn",
         "win": 58.4,
         "pf": 0.88,
         "closes": 1849,
+        "tone": "warn",
         "note": "High-volume churn near break-even; negative once costs are counted. Now wound down."
       }
     ],

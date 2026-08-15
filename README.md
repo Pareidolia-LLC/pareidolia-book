@@ -21,7 +21,7 @@ git add -A && git commit -m "book: refresh $(date +%F)" && git push
 
 Intended cadence: **Fridays 5:00 PM America/Chicago** (cron `0 23 * * 5` in UTC when CDT; `0 23` = 5 PM CDT). A cloud agent runs this prompt — **requires the brokerage MCP attached as a connector**:
 
-> Refresh the Pareidolia book. 1) Pull the brokerage account: get_account_positions, get_account_summary, get_account_balances, get_pa_performance_all_periods. **Before using any of it, run the settlement check below** — if it fails, re-pull after the close and use the second pull. 2) Recompute for `trading-system/book/data.json`: headline TWR returns (YTD, trailing-12M, last-7-days); the YTD `curve` (cps + dates arrays); each stock position's weight = market_value / net_liquidation (as %) and return = unrealized_pnl / (avg_price × shares) (as %), tagged `wheel` if it has short calls else `dir`; the report-card dials — Position size (fail if any name > 20% of NAV), Cash buffer (fail if cash < 10% of NAV), Event sleeve (watch if a banned name like JPUSD is active). Write a one-paragraph `note`. 3) Career stats: pull get_account_trades for YEAR_TO_DATE plus every completed quarter back to inception (Oct 2025), save the dumps to `trading-system/data/trades_*.json`, run `python career_stats.py <files>`, and update the `career` block (headline/buckets stay script-generated; hand-polish `insights` — keep them dollar-free). 4) `python build.py`. 5) `git add -A && git commit -m "book: weekly refresh" && git push`.
+> Refresh the Pareidolia book. 1) Pull the brokerage account: get_account_positions, get_account_summary, get_account_balances, get_pa_performance_all_periods. **Before using any of it, run the settlement check below** — if it fails, re-pull after the close and use the second pull. 2) Recompute for `trading-system/book/data.json`: headline TWR returns (YTD, trailing-12M, last-7-days); the YTD `curve` (cps + dates arrays); each stock position's weight = market_value / net_liquidation (as %) and return = unrealized_pnl / (avg_price × shares) (as %), tagged `wheel` if it has short calls else `dir`; the report-card dials — Position size (fail if any name > 20% of NAV), Cash buffer (fail if cash < 10% of NAV), Event sleeve (watch if a banned name like JPUSD is active). Write a one-paragraph `note`. 3) Career record: pull get_account_trades for YEAR_TO_DATE plus every completed quarter back to inception (Oct 2025), overwrite the dumps at `trading-system/data/trades_*.json`, then run `python career_stats.py --write <files>` — it merges the figures into `data.json` itself. Read what it reports as moved, and revise `insights` by hand if the numbers no longer match the prose (keep them dollar-free). 4) `python build.py`. 5) `git add -A && git commit -m "book: weekly refresh" && git push`.
 
 ## Settlement check — run this before writing any figures
 
@@ -35,11 +35,31 @@ Three checks, all cheap:
 
 If any check fails, re-pull after the close. Assignments book at `realized_pnl: 0` in the trade feed, so they do **not** move the career ledger — only positions, cash, leverage, and the cash-buffer dial.
 
+## Career record — regenerate it every refresh
+
+The career ledger is not hand-maintained. Re-pull the trade dumps, overwrite them in place, and let the script write the block:
+
+```bash
+python career_stats.py --write ../data/trades_ytd_2026.json ../data/trades_q4_2025.json
+```
+
+`--write` merges the generated figures into `data.json` — headline tiles, bucket win/pf/closes, and the `sinceLabel`/`asOfLabel`. It deliberately leaves `insights` and the bucket prose alone, because those are hand-written; it prints the freshly generated insights beneath so you can see whether the hand-written ones still hold. It also prints every figure that moved since the last run — read that list, it is the fastest signal of what the week actually changed.
+
+### The ledger and the report card share one date
+
+They ship together on the Performance tab, so they carry the same date — always. `--write` sets `career.asOfLabel` from the page's own `asOf`, and **`build.py` exits non-zero if the two ever drift**, naming the fix. A refresh that updates the returns and the card but forgets the career step cannot reach the site.
+
+The date reads as a cutoff — *figures through Aug 14* — not as the date something last happened. That distinction matters, because a week can book no closes at all: Aug 10–12 were entirely opens, with the last realized close sitting back on Aug 7. Dating the ledger by its last close would have stamped it a week behind the card for no reason. The script still reports the true last close in its output, so you know when the record has genuinely gone quiet.
+
+One related trap the script handles: zero-P&L fills — assignments and expiries — carry a UTC timestamp past midnight, so they are excluded from the closed-trade count and never drag the date a session ahead of the market.
+
+The dumps live outside this repo on purpose — they contain dollar figures.
+
 ## data.json schema
 
 - `asOf` (str), `curveLabel` (str)
 - `returns`: `[{k,v,m}]` — v is a percentage number (e.g. -6.55)
 - `reports`: `[{w, weekLabel, grade, weekRet, dials:[{key,state,value,rule}], note, now?}]` — full weekly report cards, oldest→newest; state ∈ `pass|warn|fail`. Both the clickable grade-history strip and the card view render from this. Each refresh, **append** the new week's full card and move `now:true` to it; keep prior weeks. The card defaults to the `now` entry; clicking a chip shows that week.
-- `career`: cumulative closed-trade record shown on the Performance tab under the weekly card. **Dollar-free by design — rates, ratios, counts only.** `sinceLabel`/`asOfLabel` (strs); `headline`: `[{k,v,m}]` stat tiles (v is a preformatted string); `buckets`: `[{name,tag,tone,win,pf,closes,note}]` — tone ∈ `up|warn|down` colors the card; `insights`: `[str]` — the "Between the Report Cards" observations. Regenerate with `python career_stats.py <trade dumps>` each refresh.
+- `career`: cumulative closed-trade record shown on the Performance tab under the weekly card. **Dollar-free by design — rates, ratios, counts only.** `sinceLabel`/`asOfLabel` (strs); `headline`: `[{k,v,m}]` stat tiles (v is a preformatted string); `buckets`: `[{name,tag,tone,win,pf,closes,note}]` — tone ∈ `up|warn|down` colors the card; `insights`: `[str]` — the "Between the Report Cards" observations. Script-owned except `insights` and the bucket `note`s: regenerate with `python career_stats.py --write <trade dumps>` each refresh (see above).
 - `positions`: `[{t,s,w,r}]` — s ∈ `wheel|dir|cash`; w,r are percentages; r=null hides it from the ledger
 - `curve`: `{cps:[fractions], dates:["YYYYMMDD"]}` — parallel arrays
