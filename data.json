@@ -15,7 +15,7 @@
     {
       "k": "Return · Last 7 Days",
       "v": 3.17,
-      "m": "Cash redeployed; leverage 1.09×"
+      "m": "NU called away at expiry; cash back to 16.7%"
     }
   ],
   "reports": [
@@ -130,7 +130,7 @@
     {
       "w": "Aug 14",
       "weekLabel": "Week of Aug 10 – 14, 2026",
-      "grade": "B−",
+      "grade": "B+",
       "weekRet": 3.17,
       "now": true,
       "dials": [
@@ -138,13 +138,13 @@
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "NIQ 18.6%",
-          "rule": "Top name under the 20% cap · but four names now sit above 14%"
+          "rule": "Top name under the 20% cap · three names above 15%"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
-          "value": "0.7%",
-          "rule": "Floor ≥ 10% · buffer fully redeployed in three days, leverage 1.09×"
+          "state": "pass",
+          "value": "16.7%",
+          "rule": "Back above the 10% floor after the NU assignment · sat at 0.7% mid-week"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -153,7 +153,7 @@
           "rule": "No event contract since Aug 6 · JPUSD flat since Aug 5"
         }
       ],
-      "note": "Best week of the year on the tape — +3.2%, led by NIQ and NU — and the per-name cap held under real temptation. But the 30.8% cash buffer earned by the SRPT exit was spent in three sessions, straight back into the same book, ending at 0.7% cash and 1.09× leverage. That is the familiar pattern: the win funds the size. Nothing is over the cap, yet there is no dry powder left and no room to be wrong twice."
+      "note": "The week closed clean on all three dials — it just didn't stay clean in between. The 30.8% buffer earned by the SRPT exit was spent across three sessions into NU, NIQ, XNDU, PLTR, SPCX and BBAI, taking cash to 0.7% and gross to 1.09× by midweek. Friday's expiry undid it: the NU $15 calls were assigned, 300 shares called away at the strike, and the buffer rebuilt itself to 16.7% with the book back under 1×. Credit where it's due — that exit was pre-arranged by the covered call, which is the strategy working exactly as designed. But the floor was breached for two days first, and that part was a decision, not an accident. +3.2% on the week, the per-name cap held, and the event sleeve stayed shut."
     }
   ],
   "career": {
@@ -232,61 +232,55 @@
     {
       "t": "NIQ",
       "s": "wheel",
-      "w": 18.56,
-      "r": 29.48
-    },
-    {
-      "t": "NU",
-      "s": "wheel",
-      "w": 16.19,
-      "r": 9.97
+      "w": 18.63,
+      "r": 30.1
     },
     {
       "t": "GRPN",
       "s": "wheel",
-      "w": 15.36,
-      "r": -20.13
+      "w": 15.45,
+      "r": -19.57
     },
     {
       "t": "SPCX",
       "s": "dir",
-      "w": 14.97,
-      "r": 0.56
+      "w": 15.01,
+      "r": 0.96
     },
     {
       "t": "PLTR",
       "s": "dir",
       "w": 9.29,
-      "r": 5.44
+      "r": 5.5
     },
     {
       "t": "SERV",
       "s": "wheel",
-      "w": 8.85,
-      "r": -23.22
+      "w": 8.88,
+      "r": -22.92
     },
     {
       "t": "XNDU",
       "s": "wheel",
-      "w": 8.33,
-      "r": 11.55
+      "w": 8.21,
+      "r": 10.02
     },
     {
       "t": "KVYO",
       "s": "wheel",
-      "w": 6.55,
-      "r": 3.72
+      "w": 6.58,
+      "r": 4.35
     },
     {
       "t": "BBAI",
       "s": "wheel",
-      "w": 5.81,
-      "r": -4.29
+      "w": 5.82,
+      "r": -3.99
     },
     {
       "t": "Cash",
       "s": "cash",
-      "w": 0.71,
+      "w": 16.73,
       "r": null
     }
   ],
@@ -307,14 +301,14 @@
       "eyebrow": "Book Summary",
       "h": "Current posture",
       "p": [
-        "The book is a concentrated set of retail-momentum equities wheeled with covered calls. After the SRPT exit freed roughly a third of the account, that cash was redeployed across nine names in a single week: the book now runs close to fully invested at about 1.09× gross, with the cash buffer down to under 1%. Single-name sizing stays inside the 20% cap, and the event-contract sleeve has been retired — nothing open."
+        "The book is a concentrated set of retail-momentum equities wheeled with covered calls. The SRPT exit freed roughly a third of the account and it was redeployed across the book within a week; Friday's NU assignment then handed a working buffer back, leaving cash near 17% and gross exposure under 1× — the book runs unlevered. Single-name sizing stays inside the 20% cap, and the event-contract sleeve has been retired — nothing open."
       ]
     },
     {
       "eyebrow": "General themes",
       "ul": [
         "Covered-call premium on liquid small-cap momentum names — the engine of returns.",
-        "Cash treated as a position — currently spent, and rebuilding it is the open task.",
+        "Cash treated as a position — a working buffer, most recently rebuilt by assignment.",
         "Selective directional holds, sized small and governed by a written thesis.",
         "The event-contract sleeve has been wound down; the book is equities and covered calls."
       ]
@@ -323,7 +317,7 @@
       "eyebrow": "Risk profile",
       "ul": [
         "Single-name concentration capped at 20% of NAV — held this week at 18.6%.",
-        "Gross exposure about 1.09× NAV — modest margin in use, against a 10% cash floor now breached.",
+        "Unlevered — gross exposure about 0.92× NAV, cash near 17% against a 10% floor.",
         "Broker mandate currently limits options activity to selling covered calls (see Approach).",
         "Sizing, cash floor, and event exposure reviewed on a weekly discipline check."
       ]
