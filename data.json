@@ -285,7 +285,7 @@
     }
   ],
   "constraints": {
-    "title": "Rules of engagement — what this account may trade",
+    "title": "Mandate — what this account may trade",
     "permitted": [
       "Selling covered calls against held shares"
     ],
@@ -294,7 +294,7 @@
       "Buying calls or puts (long options)",
       "Other multi-leg options strategies"
     ],
-    "note": "Interactive Brokers restricts this account to selling covered calls. Cash-secured puts — a core strategy in the principal's personal account and the preferred way to take an entry — are not permitted here. A mandate expansion is under review pending a business-plan revision."
+    "note": "Interactive Brokers restricts this account to selling covered calls. Cash-secured puts — a core strategy in the principal's personal account and the preferred way to get long a name — are not permitted here. A mandate expansion is under review pending a business-plan revision."
   },
   "book": [
     {
@@ -353,31 +353,31 @@
     "discipline": [
       {
         "eyebrow": "The core risk",
-        "h": "The threat is internal",
+        "h": "The largest position is the trader",
         "p": [
-          "The largest threat to this book is not the market — it is behavior. Conviction that becomes oversizing. A winner that invites a bigger bet. A loser held past its stop. Temperament is treated as the primary risk to manage, and it is the one that has cost the most."
+          "The threat to this book is not the tape — it is the person marking it. Conviction that turns into size. A winner that talks you into a bigger bet. A loser held because selling it makes the loss real. Temperament is the position that has cost the most, and it gets managed like one."
         ]
       },
       {
-        "eyebrow": "Standing orders",
+        "eyebrow": "The limits",
         "h": "Rules that hold when discipline is hardest",
         "ul": [
-          "No more than 20% of the book in any single name. Conviction is expressed, never indulged.",
-          "A 10% cash floor at all times. Reserve is a position.",
-          "Stops set before entry and honored. No averaging down a losing thesis.",
+          "No more than 20% of the book in any single name. Conviction gets expressed in the thesis, not in the size.",
+          "A 10% cash floor at all times. Dry powder is a position — it is the one that buys the dislocation.",
+          "Stops marked before the order goes in, and honored. No averaging down a broken thesis.",
           "Every sizeable position carries a written thesis: catalyst, target, stop."
         ]
       },
       {
-        "eyebrow": "Why the orders exist",
+        "eyebrow": "Why the limits exist",
         "p": [
-          "One oversized position gave back months of grinding. The per-name cap, the cash floor, and the stop discipline are scar tissue — codified so the lesson never has to be bought twice."
+          "One oversized position gave back months of grinding. The per-name limit, the cash floor, and the stop discipline are scar tissue — written down so the lesson does not get paid for twice."
         ]
       },
       {
         "eyebrow": "Process over outcome",
         "p": [
-          "The book is graded every week on discipline, not on P&L alone, and the after-action is the enforcement mechanism. A green week with a broken rule is still a bad week, and it is recorded as one."
+          "The book is marked every week on discipline, not on P&L alone, and the after-action is where that gets enforced. A green week with a broken limit is still a bad week, and it goes into the record as one."
         ]
       }
     ],
@@ -394,7 +394,7 @@
         "eyebrow": "The intent",
         "h": "Bootstrapped, by design",
         "p": [
-          "Built from the ground up on partner capital, with no outside scaffolding and nobody else to carry the loss. The intent was never to stay small — it is to compound a durable, inspectable process into something far larger, one disciplined decision at a time."
+          "Pareidolia was built from the ground up, on partner capital and no outside scaffolding. The intent was never to stay small — it is to compound a durable, inspectable process into something far larger, one disciplined decision at a time."
         ]
       },
       {

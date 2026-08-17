@@ -289,13 +289,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   <div class="panel" id="panel-approach">
   <section aria-label="Approach">
     <p class="eyebrow">Operations</p>
-    <h2>How the book is fought</h2>
+    <h2>How the book is run</h2>
     <div class="cards" style="margin-top:16px">
-      <div class="appr"><h3><span class="idx">A</span>The Wheel</h3><p>The engine. Hold retail-momentum names and sell calls against them, laddering expiries and buying the contracts back cheap. Premium is the recurring take; the shares are collateral that pays while it waits.</p></div>
-      <div class="appr"><h3><span class="idx">B</span>Event contracts <span class="tag">decommissioned</span></h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes. Shut down in August 2026 — the sleeve generated most of the account's activity and almost none of its return. Volume is not work. Nothing open.</p></div>
-      <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Outright holds, taken rarely. Written thesis, a target, and a stop set before the entry. Conviction gets sized, never indulged.</p></div>
+      <div class="appr"><h3><span class="idx">A</span>The Wheel</h3><p>The engine. Own liquid retail-momentum names and sell calls against them, laddering expiries and buying the contracts back cheap. Premium is the carry; the shares are collateral that earns while it waits.</p></div>
+      <div class="appr"><h3><span class="idx">B</span>Event contracts <span class="tag">wound down</span></h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes. Closed out in August 2026 — the sleeve carried most of the account's turnover and almost none of its P&amp;L. Turnover is not edge. The book is flat here.</p></div>
+      <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Outright risk, taken rarely. Written thesis, a target, and a stop marked before the order goes in. Conviction gets sized against the book, never talked up after the fill.</p></div>
     </div>
-    <p class="tag" style="margin-top:16px">Rules of engagement: a hard per-name cap, a standing cash reserve, stops set before entry, and drawdowns managed rather than waited out — the discipline that keeps the engine from being spent on the punts.</p>
+    <p class="tag" style="margin-top:16px">Risk framework: a hard per-name limit, a standing cash reserve, stops marked before entry, and drawdowns cut rather than nursed — the discipline that stops the carry from funding the punts.</p>
   </section>
   <div id="page-discipline-inline"></div>
   <section aria-label="Mandate and constraints">
