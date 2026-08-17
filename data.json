@@ -44,7 +44,7 @@
           "rule": "Over cap 2 of 6 days early; a banned name traded"
         }
       ],
-      "note": "The cash floor was restored to 17.6%, and that is the only credit on offer. The oversized names sat untouched — SRPT near 31%, SPCX at −29%, SERV through its stop — and new positions went on with no written thesis behind them. The engine is sound. The discipline around it is not."
+      "note": "The cash floor was restored to 17.6%, and that is the only credit on offer. The oversized names sat untouched — SRPT near 31%, SPCX at −29%, SERV through its stop — and new positions went on with no thesis behind them. The engine is sound. The discipline around it is not."
     },
     {
       "w": "Jul 25",
@@ -309,7 +309,7 @@
       "ul": [
         "Covered-call premium on liquid small-cap momentum names — the engine, and the only line that reliably pays.",
         "Cash is materiel, not an idle balance — held to be committed, most recently resupplied by assignment.",
-        "Directional holds taken sparingly, sized small, each carrying a written thesis and a stop set before entry.",
+        "Directional holds taken sparingly, sized small, each carrying a thesis and a stop set before entry.",
         "The event-contract sleeve is decommissioned. The book is equities and covered calls."
       ]
     },
@@ -365,7 +365,7 @@
           "<b>Concentration</b> — no more than 20% of NAV in any single name. A hard limit, not a target.",
           "<b>Liquidity</b> — a 10% cash floor at all times. Dry powder is a position, and it is the one that buys the dislocation.",
           "<b>Loss control</b> — stops marked before the order goes in, and honored. No averaging down a broken thesis.",
-          "<b>Documentation</b> — every sizeable position carries a written thesis: catalyst, target, stop, recorded before entry."
+          "<b>Thesis</b> — every sizeable position has one before entry: catalyst, target, stop."
         ]
       },
       {
