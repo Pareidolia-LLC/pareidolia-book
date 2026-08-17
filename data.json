@@ -365,7 +365,7 @@
           "<b>Concentration</b> — no more than 20% of NAV in any single name. A hard limit, not a target.",
           "<b>Liquidity</b> — a 10% cash floor at all times. Dry powder is a position, and it is the one that buys the dislocation.",
           "<b>Loss control</b> — stops marked before the order goes in, and honored. No averaging down a broken thesis.",
-          "<b>Thesis</b> — every sizeable position has one before it goes on: entry, target, exit."
+          "<b>Thesis</b> — every position carries one before it is sized. The typical trade runs entry, target, exit; investments are held outright and not collateralized."
         ]
       },
       {
