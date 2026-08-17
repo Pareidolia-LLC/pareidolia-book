@@ -294,7 +294,7 @@
       "Buying calls or puts (long options)",
       "Other multi-leg options strategies"
     ],
-    "note": "Interactive Brokers restricts this account to selling covered calls. Cash-secured puts — a core strategy in the principal's personal account and the preferred way to get long a name — are not permitted here. A mandate expansion is under review pending a business-plan revision."
+    "note": "Interactive Brokers restricts this account to selling covered calls. Cash-secured puts — a core strategy in the principal's personal account and the preferred way to get long a name — are not permitted here, and no position is structured to work around the restriction. A mandate expansion is under review pending a business-plan revision."
   },
   "book": [
     {
@@ -352,32 +352,38 @@
     ],
     "discipline": [
       {
-        "eyebrow": "The core risk",
+        "eyebrow": "Principal risk",
         "h": "The largest position is the trader",
         "p": [
-          "The threat to this book is not the tape — it is the person marking it. Conviction that turns into size. A winner that talks you into a bigger bet. A loser held because selling it makes the loss real. Temperament is the position that has cost the most, and it gets managed like one."
+          "The principal risk to this book is not the tape — it is the person marking it. Conviction that turns into size. A winner that talks you into a bigger bet. A loser held because selling it makes the loss real. Temperament is the position that has cost the most, and the control framework exists to constrain it rather than to trust it."
         ]
       },
       {
         "eyebrow": "The limits",
-        "h": "Rules that hold when discipline is hardest",
+        "h": "Position limits and hard floors",
         "ul": [
-          "No more than 20% of the book in any single name. Conviction gets expressed in the thesis, not in the size.",
-          "A 10% cash floor at all times. Dry powder is a position — it is the one that buys the dislocation.",
-          "Stops marked before the order goes in, and honored. No averaging down a broken thesis.",
-          "Every sizeable position carries a written thesis: catalyst, target, stop."
+          "<b>Concentration</b> — no more than 20% of NAV in any single name. A hard limit, not a target.",
+          "<b>Liquidity</b> — a 10% cash floor at all times. Dry powder is a position, and it is the one that buys the dislocation.",
+          "<b>Loss control</b> — stops marked before the order goes in, and honored. No averaging down a broken thesis.",
+          "<b>Documentation</b> — every sizeable position carries a written thesis: catalyst, target, stop, recorded before entry."
+        ]
+      },
+      {
+        "eyebrow": "Monitoring and escalation",
+        "p": [
+          "Positions are marked daily; the limits are tested every Friday in the after-action. Three dials — concentration, cash floor, event exposure — each passed or breached, and the week is graded on discipline rather than on P&L alone. A green week with a breached limit still grades badly. Breaches are not quietly closed out: cash ran to 0.7% against a 10% floor in the week to Aug 14, and that sits in the permanent record next to the +3.2%."
         ]
       },
       {
         "eyebrow": "Why the limits exist",
         "p": [
-          "One oversized position gave back months of grinding. The per-name limit, the cash floor, and the stop discipline are scar tissue — written down so the lesson does not get paid for twice."
+          "One oversized position gave back months of grinding. The per-name limit, the cash floor, and the stop discipline are scar tissue — written down so the lesson does not get paid for twice. Limits are set when the book is calm and enforced when it is not. That is the whole reason they are written down at all."
         ]
       },
       {
-        "eyebrow": "Process over outcome",
+        "eyebrow": "Independence",
         "p": [
-          "The book is marked every week on discipline, not on P&L alone, and the after-action is where that gets enforced. A green week with a broken limit is still a bad week, and it goes into the record as one."
+          "This is a single-manager book. There is no independent risk function here and no second line of defence, and the framework does not pretend otherwise. It compensates the only way it can: the limits are mechanical, the tests are identical every week, and the results are published whether or not they flatter. Self-reporting is worth nothing unless the failures appear too."
         ]
       }
     ],

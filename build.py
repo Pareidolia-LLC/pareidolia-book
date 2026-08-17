@@ -130,10 +130,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .chip.wheel{color:var(--accent); border-color:var(--accent-soft); background:var(--accent-soft)}
   .chip.dir{color:var(--slate); border-color:var(--line)}
   .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
-  .appr{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px 18px 16px}
+  .appr{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px 18px 16px; display:flex; flex-direction:column}
   .appr h3{font-family:var(--serif); font-size:16px; margin:0 0 8px; font-weight:600}
   .appr h3 .idx{font-family:var(--mono); font-size:11px; color:var(--accent); margin-right:8px; letter-spacing:.05em}
   .appr p{margin:0; font-size:13px; color:var(--muted); line-height:1.55}
+  .appr p:not(.ctl){padding-bottom:13px}
+  .appr .ctl{margin-top:auto; padding-top:9px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+  .appr .ctl b{color:var(--accent); font-weight:600}
   .prose{font-size:14px; color:var(--muted); line-height:1.65; max-width:70ch; margin-top:9px}
   .proselist{margin:12px 0 0; padding-left:0; max-width:70ch; list-style:none}
   .proselist li{position:relative; font-size:13.5px; color:var(--ink); line-height:1.55; margin:9px 0; padding-left:18px}
@@ -291,11 +294,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <p class="eyebrow">Operations</p>
     <h2>How the book is run</h2>
     <div class="cards" style="margin-top:16px">
-      <div class="appr"><h3><span class="idx">A</span>The Wheel</h3><p>The engine. Own liquid retail-momentum names and sell calls against them, laddering expiries and buying the contracts back cheap. Premium is the carry; the shares are collateral that earns while it waits.</p></div>
-      <div class="appr"><h3><span class="idx">B</span>Event contracts <span class="tag">wound down</span></h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes. Closed out in August 2026 — the sleeve carried most of the account's turnover and almost none of its P&amp;L. Turnover is not edge. The book is flat here.</p></div>
-      <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Outright risk, taken rarely. Written thesis, a target, and a stop marked before the order goes in. Conviction gets sized against the book, never talked up after the fill.</p></div>
+      <div class="appr"><h3><span class="idx">A</span>The Wheel</h3><p>The engine. Own liquid retail-momentum names and sell calls against them, laddering expiries and buying the contracts back cheap. Premium is the carry; the shares are collateral that earns while it waits.</p><p class="ctl"><b>Limit</b> · 20% of NAV per name · tested weekly</p></div>
+      <div class="appr"><h3><span class="idx">B</span>Event contracts <span class="tag">wound down</span></h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes. Closed out in August 2026 — the sleeve carried most of the account's turnover and almost none of its P&amp;L. Turnover is not edge. The book is flat here.</p><p class="ctl"><b>Status</b> · closed · no exposure since Aug 6, 2026</p></div>
+      <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Outright risk, taken rarely. Written thesis, a target, and a stop marked before the order goes in. Conviction gets sized against the book, never talked up after the fill.</p><p class="ctl"><b>Control</b> · thesis, target and stop recorded pre-entry</p></div>
     </div>
-    <p class="tag" style="margin-top:16px">Risk framework: a hard per-name limit, a standing cash reserve, stops marked before entry, and drawdowns cut rather than nursed — the discipline that stops the carry from funding the punts.</p>
+    <p class="tag" style="margin-top:16px">Control framework: a hard 20% per-name limit, a 10% cash floor, stops marked before entry, and drawdowns cut rather than nursed. The limits are hard, not advisory — a breach is written into the weekly after-action whether or not the week made money.</p>
   </section>
   <div id="page-discipline-inline"></div>
   <section aria-label="Mandate and constraints">
