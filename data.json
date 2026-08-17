@@ -44,7 +44,7 @@
           "rule": "Over cap 2 of 6 days early; a banned name traded"
         }
       ],
-      "note": "Cash floor fixed (17.6%), but the oversized names just sat — SRPT ~31%, SPCX −29%, SERV hit its stop — and new names went on without journal lines. The engine's fine; the discipline isn't there yet."
+      "note": "The cash floor was restored to 17.6%, and that is the only credit on offer. The oversized names sat untouched — SRPT near 31%, SPCX at −29%, SERV through its stop — and new positions went on with no written thesis behind them. The engine is sound. The discipline around it is not."
     },
     {
       "w": "Jul 25",
@@ -71,7 +71,7 @@
           "rule": "ForecastX churn · 18 JPUSD (banned) trades"
         }
       ],
-      "note": "The market did most of the −4% — mark-to-market on names you already held; realized trading was quiet. But the controllable leak, SRPT at 30%, stayed wide open two weeks after it was flagged. Cash discipline was the bright spot."
+      "note": "The market did most of the −4% — marks on names already held; realized activity was quiet. But the controllable leak, SRPT at 30% of the book, stayed wide open two weeks after it was flagged. Cash discipline was the only line held."
     },
     {
       "w": "Aug 5",
@@ -98,7 +98,7 @@
           "rule": "Within the dollar cap, but a banned name is back on"
         }
       ],
-      "note": "The market handed you a +1.2% bounce, but you spent the cash buffer and averaged up a losing directional (SPCX −23%). Greener week, thinner margin for error — the controllable leaks widened while P&L recovered."
+      "note": "A +1.2% bounce handed over by the tape, and it was spent: the reserve went to 1.7% and a losing directional (SPCX −23%) got averaged up. Greener week, thinner margin for error. The controllable leaks widened while the marks recovered."
     },
     {
       "w": "Aug 9",
@@ -125,7 +125,7 @@
           "rule": "No event contracts; JPUSD flat"
         }
       ],
-      "note": "The turnaround week. SRPT — 30% of the book for three weeks — was fully offloaded via assignment, taking cash from 1.7% to 30.8% and sizing back under the cap. First clean sweep on all three dials. Watch: SERV is past its −15% stop, and SPCX bounced on luck, not thesis — don't let either become the next SRPT."
+      "note": "The turn. SRPT — 30% of the book for three weeks — was fully offloaded via assignment, taking cash from 1.7% to 30.8% and sizing back under the cap. First clean sweep on all three dials. Standing watch: SERV is through its −15% stop, and SPCX bounced on luck rather than thesis. Neither becomes the next SRPT."
     },
     {
       "w": "Aug 14",
@@ -153,7 +153,7 @@
           "rule": "No event contract since Aug 6 · JPUSD flat since Aug 5"
         }
       ],
-      "note": "The week closed clean on all three dials — it just didn't stay clean in between. The 30.8% buffer earned by the SRPT exit was spent across three sessions into NU, NIQ, XNDU, PLTR, SPCX and BBAI, taking cash to 0.7% and gross to 1.09× by midweek. Friday's expiry undid it: the NU $15 calls were assigned, 300 shares called away at the strike, and the buffer rebuilt itself to 16.7% with the book back under 1×. Credit where it's due — that exit was pre-arranged by the covered call, which is the strategy working exactly as designed. But the floor was breached for two days first, and that part was a decision, not an accident. +3.2% on the week, the per-name cap held, and the event sleeve stayed shut."
+      "note": "All three dials closed clean. They did not stay clean. The 30.8% reserve taken off the SRPT exit was committed across three sessions into NU, NIQ, XNDU, PLTR, SPCX and BBAI, running cash to 0.7% and gross to 1.09× by midweek. Friday's expiry reversed it: the NU $15 calls were assigned, 300 shares called away at the strike, reserve rebuilt to 16.7%, book back under 1×. Credit where it is due — that exit was pre-arranged by the covered call, the strategy working as designed. But the floor was breached for two days first, and that was a decision, not an accident. +3.2% on the week, the cap held, the sleeve stayed shut."
     }
   ],
   "career": {
@@ -163,7 +163,7 @@
       {
         "k": "Closed trades",
         "v": "2,039",
-        "m": "Positions opened, closed & booked"
+        "m": "Engagements opened, closed & booked"
       },
       {
         "k": "Win rate",
@@ -199,7 +199,7 @@
         "pf": 3.68,
         "closes": 157,
         "tone": "up",
-        "note": "The engine. Premium capture on held shares — managed, rolled, and bought back cheap."
+        "note": "The engine. Premium taken on shares already held — managed, rolled, and bought back cheap. This is the line that pays."
       },
       {
         "name": "Share legs",
@@ -208,7 +208,7 @@
         "pf": 0.23,
         "closes": 33,
         "tone": "down",
-        "note": "Where the damage clusters — a small number of oversized names, not the process."
+        "note": "Where the casualties are. A small number of oversized names, not a failure of selection."
       },
       {
         "name": "Event contracts",
@@ -217,15 +217,15 @@
         "pf": 0.88,
         "closes": 1849,
         "tone": "warn",
-        "note": "High-volume churn near break-even; negative once costs are counted. Now wound down."
+        "note": "High-volume churn at break-even, negative once costs are counted. Decommissioned — activity mistaken for work."
       }
     ],
     "insights": [
-      "Loss asymmetry is the leak: the average losing trade runs 1.7× the average winner, so a 60% win rate still nets out behind. Selection is fine — loss-sizing is the work.",
-      "The engine is real: covered-call premium wins 78% of its closes at a 3.7 profit factor. That edge is the business; everything else is management around it.",
-      "The event sleeve is now closed, not just shrinking — nothing traded since Aug 6. It was 91% of all closes for roughly no contribution, and retiring it removes the loudest source of noise in the record.",
-      "Share legs carry a 0.23 profit factor across just 33 closes — nearly all of it traceable to two names held past their stops. The per-name cap exists because of this line.",
-      "The honest trend: profit factor slipped from 0.92 to 0.88 and the payoff ratio from 0.61 to 0.59 this month. Marks recovered faster than the realized record did."
+      "Loss asymmetry is the leak. The average loser runs 1.7× the average winner, so a 60% hit rate still finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
+      "The engine is real: covered-call premium takes 78% of its closes at a 3.7 profit factor. That is the business. Everything else is management around it.",
+      "The event sleeve is shut, not shrinking — nothing traded since Aug 6. It was 91% of all closes for effectively no contribution, and retiring it strips the loudest noise out of the record.",
+      "Share legs run a 0.23 profit factor across 33 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line.",
+      "The honest read: profit factor slipped from 0.92 to 0.88 this month and payoff from 0.61 to 0.59. Marks recovered faster than the realized record did, and marks are not money."
     ]
   },
   "positions": [
@@ -285,7 +285,7 @@
     }
   ],
   "constraints": {
-    "title": "What this account may trade",
+    "title": "Rules of engagement — what this account may trade",
     "permitted": [
       "Selling covered calls against held shares"
     ],
@@ -294,107 +294,107 @@
       "Buying calls or puts (long options)",
       "Other multi-leg options strategies"
     ],
-    "note": "Interactive Brokers currently limits this account to selling covered calls. Cash-secured puts — a core strategy in the principal's personal account and a preferred source of entry — are not permitted here. A mandate expansion is under review pending a business-plan revision."
+    "note": "Interactive Brokers restricts this account to selling covered calls. Cash-secured puts — a core strategy in the principal's personal account and the preferred way to take an entry — are not permitted here. A mandate expansion is under review pending a business-plan revision."
   },
   "book": [
     {
       "eyebrow": "Book Summary",
       "h": "Current posture",
       "p": [
-        "The book is a concentrated set of retail-momentum equities wheeled with covered calls. The SRPT exit freed roughly a third of the account and it was redeployed across the book within a week; Friday's NU assignment then handed a working buffer back, leaving cash near 17% and gross exposure under 1× — the book runs unlevered. Single-name sizing stays inside the 20% cap, and the event-contract sleeve has been retired — nothing open."
+        "The book is a concentrated set of retail-momentum equities held as collateral and worked for premium with covered calls. SRPT was cut in early August, freeing roughly a third of the account; that capital was committed across the book inside a week, and Friday's NU assignment handed a working reserve back. Cash sits near 17%, gross exposure under 1× — no leverage in use, and no single name over the 20% cap. The event-contract sleeve is shut: nothing open, nothing planned."
       ]
     },
     {
-      "eyebrow": "General themes",
+      "eyebrow": "Concept of operations",
       "ul": [
-        "Covered-call premium on liquid small-cap momentum names — the engine of returns.",
-        "Cash treated as a position — a working buffer, most recently rebuilt by assignment.",
-        "Selective directional holds, sized small and governed by a written thesis.",
-        "The event-contract sleeve has been wound down; the book is equities and covered calls."
+        "Covered-call premium on liquid small-cap momentum names — the engine, and the only line that reliably pays.",
+        "Cash is materiel, not an idle balance — held to be committed, most recently resupplied by assignment.",
+        "Directional holds taken sparingly, sized small, each carrying a written thesis and a stop set before entry.",
+        "The event-contract sleeve is decommissioned. The book is equities and covered calls."
       ]
     },
     {
-      "eyebrow": "Risk profile",
+      "eyebrow": "Risk posture",
       "ul": [
-        "Single-name concentration capped at 20% of NAV — held this week at 18.6%.",
-        "Unlevered — gross exposure about 0.92× NAV, cash near 17% against a 10% floor.",
-        "Broker mandate currently limits options activity to selling covered calls (see Approach).",
-        "Sizing, cash floor, and event exposure reviewed on a weekly discipline check."
+        "Hard cap of 20% of NAV in any single name — held this week at 18.6%.",
+        "No leverage — gross exposure about 0.92× NAV, cash near 17% against a 10% floor.",
+        "Broker mandate restricts options activity to selling covered calls (see Operations).",
+        "Sizing, reserve, and event exposure inspected every week — findings published whether or not they flatter."
       ]
     }
   ],
   "pages": {
     "concepts": [
       {
-        "eyebrow": "Manifesto",
-        "h": "How we think about markets",
+        "eyebrow": "Doctrine",
+        "h": "What we hold to be true",
         "ul": [
           "Edge is process, not prediction.",
-          "Harvest premium; don't chase direction.",
-          "Position size is the real risk lever — not the entry.",
-          "Define the risk before the entry, always.",
-          "Most of the tape is noise; the work is separating it from signal."
+          "Harvest premium. Do not chase direction.",
+          "Size is the risk lever. The entry is not.",
+          "Define the loss before taking the position.",
+          "Most of the tape is noise. Separating it is the work."
         ]
       },
       {
         "eyebrow": "Mental models",
         "p": [
-          "We trade a handful of durable ideas: asymmetry — small, defined risk for convex payoff; premium capture on names the crowd overpays to insure; and the humility that sizing, not selection, is where most books die.",
-          "Looking like a mad hatter today and being right over the long run is a feature, not a bug — provided the fundamentals underwrite the view."
+          "A handful of durable ideas carry the book: asymmetry — small, defined risk against convex payoff; premium taken from names the crowd overpays to insure; and the discipline to accept that sizing, not selection, is where most books are killed.",
+          "Looking like a mad hatter today and being right over the long run is the intended outcome, provided the fundamentals underwrite the view."
         ]
       },
       {
-        "eyebrow": "What we're watching",
+        "eyebrow": "Target set",
         "p": [
-          "The watchlist runs across financials, defense, technology, and petrochemicals. Themes of current interest: artificial intelligence, robotics, satellite communications, credit and insurance, and founder-led firms — along with several concepts kept off the page for brevity."
+          "The watchlist runs across financials, defense, technology, and petrochemicals. Themes under current interest: artificial intelligence, robotics, satellite communications, credit and insurance, and founder-led firms — with several more held off the page."
         ]
       }
     ],
     "discipline": [
       {
         "eyebrow": "The core risk",
-        "h": "Our biggest risk is us",
+        "h": "The threat is internal",
         "p": [
-          "The largest threat to this book isn't the market — it's behavior. Conviction that becomes oversizing; a winner that invites a bigger bet; a loser held past its stop. We treat temperament as the primary risk to manage."
+          "The largest threat to this book is not the market — it is behavior. Conviction that becomes oversizing. A winner that invites a bigger bet. A loser held past its stop. Temperament is treated as the primary risk to manage, and it is the one that has cost the most."
         ]
       },
       {
-        "eyebrow": "The guardrails",
+        "eyebrow": "Standing orders",
         "h": "Rules that hold when discipline is hardest",
         "ul": [
-          "Max 20% of the book in any single name — conviction is expressed, not indulged.",
-          "A 10% cash floor at all times — dry powder is a position.",
-          "Hard stops, honored; no averaging down a losing thesis.",
+          "No more than 20% of the book in any single name. Conviction is expressed, never indulged.",
+          "A 10% cash floor at all times. Reserve is a position.",
+          "Stops set before entry and honored. No averaging down a losing thesis.",
           "Every sizeable position carries a written thesis: catalyst, target, stop."
         ]
       },
       {
-        "eyebrow": "Why the rules exist",
+        "eyebrow": "Why the orders exist",
         "p": [
-          "A single oversized position once gave back months of grinding. The position cap, the cash floor, and the stop discipline are scar tissue from lessons like that — codified so they never have to be re-learned the hard way."
+          "One oversized position gave back months of grinding. The per-name cap, the cash floor, and the stop discipline are scar tissue — codified so the lesson never has to be bought twice."
         ]
       },
       {
         "eyebrow": "Process over outcome",
         "p": [
-          "The book is graded weekly on discipline, not only P&L — the Report Card is the enforcement mechanism. A green week with a broken rule still counts as a bad week."
+          "The book is graded every week on discipline, not on P&L alone, and the after-action is the enforcement mechanism. A green week with a broken rule is still a bad week, and it is recorded as one."
         ]
       }
     ],
     "story": [
       {
-        "eyebrow": "Our Story",
-        "h": "Finding the signal in the noise",
+        "eyebrow": "Origin",
+        "h": "Reading faces in the noise",
         "p": [
-          "Pareidolia is the mind's tendency to see meaningful patterns — faces — in random noise. The idea began as a university capstone and was rebuilt for markets: read the world like an operator, keep the fundamentals in hand, and be willing to look like a mad hatter today if the long arc proves the read right.",
-          "Independent analysis. Independent taste. We form our own view, size it deliberately, and let a written framework — not the mood of the tape — govern the book."
+          "Pareidolia is the mind's tendency to see meaningful patterns — faces — in random noise. The idea started as a university capstone and was rebuilt for markets: read the world like an operator, keep the fundamentals in hand, and accept looking like a mad hatter today if the long arc proves the read.",
+          "No house view and no consensus to hide behind. We form the read ourselves, size it deliberately, and let a written framework — not the mood of the tape — hold the book."
         ]
       },
       {
-        "eyebrow": "The ambition",
+        "eyebrow": "The intent",
         "h": "Bootstrapped, by design",
         "p": [
-          "Pareidolia was built from the ground up, on partner capital and no outside scaffolding. The intent was never to stay small — it is to compound a durable, inspectable process into something far larger, one disciplined decision at a time."
+          "Built from the ground up on partner capital, with no outside scaffolding and nobody else to carry the loss. The intent was never to stay small — it is to compound a durable, inspectable process into something far larger, one disciplined decision at a time."
         ]
       },
       {

@@ -214,16 +214,16 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   <header class="masthead">
     <div>
       <div class="mark">Pareidolia<span class="dot">.</span></div>
-      <div class="tag">A private multi-asset book — pattern recognition in market noise.</div>
+      <div class="tag">A private book run under doctrine — pattern recognition in a hostile tape.</div>
     </div>
   </header>
   <div class="dateline"><span>Pareidolia LLC</span><span><b id="dlDate"></b></span><span>Est. October 2025</span></div>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button class="tab active" data-panel="report" role="tab">Performance</button>
-    <button class="tab" data-panel="story" role="tab">Our Story</button>
+    <button class="tab" data-panel="story" role="tab">Origin</button>
     <button class="tab" data-panel="book" role="tab">The Book</button>
-    <button class="tab" data-panel="approach" role="tab">Approach</button>
-    <button class="tab" data-panel="concepts" role="tab">Concepts</button>
+    <button class="tab" data-panel="approach" role="tab">Operations</button>
+    <button class="tab" data-panel="concepts" role="tab">Doctrine</button>
   </nav>
   <div class="panel active" id="panel-report">
   <div class="perfgrid">
@@ -243,25 +243,25 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   </div>
   <div>
   <section aria-label="Weekly report card">
-    <p class="eyebrow">Weekly Report Card</p>
+    <p class="eyebrow">Weekly After-Action</p>
     <div class="rc-head" id="rchead"></div>
     <div class="dials" id="dials"></div>
     <p class="rc-note" id="rcnote"></p>
-    <p class="hlabel">Grade history — select a week to read its card</p>
+    <p class="hlabel">Prior after-actions — select a week to read the full report</p>
     <div class="hist" id="hist"></div>
   </section>
   </div>
   </div>
   <section aria-label="Career trading stats">
-    <p class="eyebrow">Career Ledger · Cumulative</p>
-    <h2>The record since inception</h2>
+    <p class="eyebrow">Service Record · Cumulative</p>
+    <h2>Every engagement, booked</h2>
     <p class="tag" style="margin-top:6px" id="careersub"></p>
     <div class="stats" id="careerstats"></div>
     <div class="dials" id="careerbuckets" style="margin-top:14px"></div>
   </section>
   <section aria-label="Observations beyond the weekly cards">
-    <p class="eyebrow">Between the Report Cards</p>
-    <h2>What the weekly grades don't show</h2>
+    <p class="eyebrow">Between the After-Actions</p>
+    <h2>What the weekly grade doesn't show</h2>
     <ul class="proselist" id="careerinsights"></ul>
     <p class="rc-note" id="careermeth"></p>
   </section>
@@ -271,8 +271,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   <div class="bookgrid">
   <section aria-label="Allocation">
     <p class="eyebrow">The Book · Allocation by Weight</p>
-    <h2>Where the capital sits</h2>
-    <p class="tag" style="margin-top:6px;margin-bottom:18px">Weights as a share of net asset value. Totals may run slightly over 100% — modest margin.</p>
+    <h2>Where the capital is committed</h2>
+    <p class="tag" style="margin-top:6px;margin-bottom:18px">Weights as a share of net asset value. Totals may exceed 100% when margin is in use.</p>
     <div class="bars" id="bars"></div>
     <div class="legend-strat">
       <span><i class="swatch" style="background:var(--accent)"></i>Wheel — covered-call equities</span>
@@ -281,21 +281,21 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     </div>
   </section>
   <section aria-label="Holdings">
-    <p class="eyebrow">Holdings</p>
+    <p class="eyebrow">Positions</p>
     <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Strategy</th><th class="r">Weight</th><th class="r">Position return</th></tr></thead><tbody id="ledger"></tbody></table></div>
   </section>
   </div>
   </div>
   <div class="panel" id="panel-approach">
   <section aria-label="Approach">
-    <p class="eyebrow">Approach</p>
-    <h2>How the book is run</h2>
+    <p class="eyebrow">Operations</p>
+    <h2>How the book is fought</h2>
     <div class="cards" style="margin-top:16px">
-      <div class="appr"><h3><span class="idx">A</span>The Wheel</h3><p>The engine. Own retail-momentum names and sell calls against them, laddering expiries and buying back cheap. Premium is the recurring return; the shares are the collateral.</p></div>
-      <div class="appr"><h3><span class="idx">B</span>Event contracts <span class="tag">retired</span></h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes. The sleeve was wound down in August 2026 — it accounted for most of the account's activity and almost none of its return. Nothing is open.</p></div>
-      <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Selective outright holds with a written thesis and a hard stop. Used sparingly — conviction is sized, not indulged.</p></div>
+      <div class="appr"><h3><span class="idx">A</span>The Wheel</h3><p>The engine. Hold retail-momentum names and sell calls against them, laddering expiries and buying the contracts back cheap. Premium is the recurring take; the shares are collateral that pays while it waits.</p></div>
+      <div class="appr"><h3><span class="idx">B</span>Event contracts <span class="tag">decommissioned</span></h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes. Shut down in August 2026 — the sleeve generated most of the account's activity and almost none of its return. Volume is not work. Nothing open.</p></div>
+      <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Outright holds, taken rarely. Written thesis, a target, and a stop set before the entry. Conviction gets sized, never indulged.</p></div>
     </div>
-    <p class="tag" style="margin-top:16px">Risk framework: per-name position limits, a cash buffer, package-level stop-losses, and active drawdown management — the discipline that protects the engine from the punts.</p>
+    <p class="tag" style="margin-top:16px">Rules of engagement: a hard per-name cap, a standing cash reserve, stops set before entry, and drawdowns managed rather than waited out — the discipline that keeps the engine from being spent on the punts.</p>
   </section>
   <div id="page-discipline-inline"></div>
   <section aria-label="Mandate and constraints">
@@ -308,7 +308,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   <div class="panel" id="panel-concepts"></div>
   <div class="panel" id="panel-story"></div>
   <footer>
-    <p>Figures are time-weighted returns and portfolio weights. Absolute balances, share counts, and dollar P&amp;L are withheld by design — transparent on performance, discreet on size.</p>
+    <p>Figures are time-weighted returns and portfolio weights. Absolute balances, share counts, and dollar P&amp;L are withheld by design — transparent on performance, silent on size.</p>
     <p class="meth">PAREIDOLIA LLC · PRIVATE BOOK · FOR REVIEW ONLY · NOT AN OFFERING OR SOLICITATION · PAST PERFORMANCE IS NOT INDICATIVE OF FUTURE RESULTS</p>
   </footer>
 </div></div>
@@ -352,7 +352,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           '<div class="dv">'+d.value+'</div><div class="rule">'+d.rule+'</div>';
         dl.appendChild(el);
       });
-      note.innerHTML='<b>Read:</b> '+rc.note;
+      note.innerHTML='<b>Assessment:</b> '+rc.note;
     }
     function chips(active){
       strip.innerHTML="";
@@ -373,8 +373,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   (function(){
     var c=DATA.career; if(!c) return;
     document.getElementById("careersub").textContent=
-      "Realized, closed-trade record since inception ("+c.sinceLabel+") — every closing execution, deduplicated. "+
-      "Refreshed with the weekly report card. Figures through "+c.asOfLabel+".";
+      "Realized record since inception ("+c.sinceLabel+") — every closing execution, deduplicated, wins and losses alike. "+
+      "Filed with the weekly after-action. Figures through "+c.asOfLabel+".";
     var st=document.getElementById("careerstats");
     c.headline.forEach(function(s){
       var d=document.createElement("div"); d.className="stat";

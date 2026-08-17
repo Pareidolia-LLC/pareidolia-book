@@ -143,7 +143,7 @@ def main():
         "sinceLabel": month_year(span0),
         "asOfLabel": long_date(span1),
         "headline": [
-            {"k": "Closed trades", "v": f"{len(closers):,}", "m": "Positions opened, closed & booked"},
+            {"k": "Closed trades", "v": f"{len(closers):,}", "m": "Engagements opened, closed & booked"},
             {"k": "Win rate", "v": f"{len(wins)/len(closers)*100:.1f}%", "m": f"{len(wins):,} won · {len(losses):,} lost"},
             {"k": "Profit factor", "v": f"{gp/abs(gl):.2f}", "m": "Gross wins ÷ gross losses"},
             {"k": "Payoff ratio", "v": f"{avg_w/abs(avg_l):.2f}", "m": "Avg win ÷ avg loss"},
