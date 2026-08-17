@@ -278,8 +278,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <p class="tag" style="margin-top:6px;margin-bottom:18px">Weights as a share of net asset value. Totals may exceed 100% when margin is in use.</p>
     <div class="bars" id="bars"></div>
     <div class="legend-strat">
-      <span><i class="swatch" style="background:var(--accent)"></i>Wheel — covered-call equities</span>
-      <span><i class="swatch" style="background:var(--slate)"></i>Directional — outright</span>
+      <span><i class="swatch" style="background:var(--accent)"></i>Wheel — covered-call securities</span>
+      <span><i class="swatch" style="background:var(--slate)"></i>Outright — held, not collateralized</span>
       <span><i class="swatch" style="background:var(--faint)"></i>Cash</span>
     </div>
   </section>
@@ -296,7 +296,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <div class="cards" style="margin-top:16px">
       <div class="appr"><h3><span class="idx">A</span>The Wheel</h3><p>The engine. Own liquid retail-momentum names and sell calls against them, laddering expiries and buying the contracts back cheap. Premium is the carry; the shares are collateral that earns while it waits.</p><p class="ctl"><b>Limit</b> · 20% of NAV per name · tested weekly</p></div>
       <div class="appr"><h3><span class="idx">B</span>Event contracts <span class="tag">wound down</span></h3><p>Short-dated, defined-risk positions on crypto ranges, FX fixings, and index closes. Closed out in August 2026 — the sleeve carried most of the account's turnover and almost none of its P&amp;L. Turnover is not edge. The book is flat here.</p><p class="ctl"><b>Status</b> · closed · no exposure since Aug 6, 2026</p></div>
-      <div class="appr"><h3><span class="idx">C</span>Directional</h3><p>Outright risk, taken rarely — investments rather than trades. Held and not collateralized, so no calls are written against them. The thesis comes before the size, and conviction gets expressed in the position, never talked up after the fill.</p><p class="ctl"><b>Control</b> · thesis before size · held, not collateralized</p></div>
+      <div class="appr"><h3><span class="idx">C</span>Outright</h3><p>Risk taken directly, and taken rarely — investments rather than trades. Held and not collateralized, so no calls are written against them. The thesis comes before the size, and conviction gets expressed in the position, never talked up after the fill.</p><p class="ctl"><b>Control</b> · thesis before size · held, not collateralized</p></div>
     </div>
     <p class="tag" style="margin-top:16px">Control framework: a hard 20% per-name limit, a 10% cash floor, stops marked before entry, and drawdowns cut rather than nursed. The limits are hard, not advisory — a breach is written into the weekly after-action whether or not the week made money.</p>
   </section>
@@ -422,7 +422,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   (function(){
     var tb=document.getElementById("ledger");
-    var CHIP={wheel:'<span class="chip wheel">Wheel</span>',dir:'<span class="chip dir">Directional</span>',cash:'<span class="chip">Cash</span>',event:'<span class="chip">Event</span>'};
+    var CHIP={wheel:'<span class="chip wheel">Wheel</span>',dir:'<span class="chip dir">Outright</span>',cash:'<span class="chip">Cash</span>',event:'<span class="chip">Event</span>'};
     DATA.positions.forEach(function(p){
       var ret=(p.r===null)?'<td class="num r" style="color:var(--faint)">—</td>':'<td class="num r '+cls(p.r)+'">'+fmt(p.r)+'</td>';
       var tr=document.createElement("tr");

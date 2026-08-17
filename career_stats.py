@@ -152,7 +152,7 @@ def main():
         ],
         "buckets": [
             {"name": "Covered-call premium", "tag": "wheel", "win": opt["win"], "pf": opt["pf"], "closes": opt["closes"], "tone": "up", "note": "The engine — premium capture, managed and rolled."},
-            {"name": "Share legs", "tag": "equity", "win": stk["win"], "pf": stk["pf"], "closes": stk["closes"], "tone": "down", "note": "Where losses cluster — a few oversized names."},
+            {"name": "Share legs", "tag": "securities", "win": stk["win"], "pf": stk["pf"], "closes": stk["closes"], "tone": "down", "note": "Where losses cluster — a few oversized names."},
             {"name": "Event contracts", "tag": "forecast", "win": fop["win"], "pf": fop["pf"], "closes": fop["closes"], "tone": "warn", "note": "High-volume churn; near break-even, negative net of costs."},
         ],
         "insights": [

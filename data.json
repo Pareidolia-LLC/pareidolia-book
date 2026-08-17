@@ -203,7 +203,7 @@
       },
       {
         "name": "Share legs",
-        "tag": "equity",
+        "tag": "securities",
         "win": 63.6,
         "pf": 0.23,
         "closes": 33,
@@ -301,7 +301,7 @@
       "eyebrow": "Book Summary",
       "h": "Current posture",
       "p": [
-        "The book is a concentrated set of retail-momentum equities held as collateral and worked for premium with covered calls. SRPT was cut in early August, freeing roughly a third of the account; that capital was committed across the book inside a week, and Friday's NU assignment handed a working reserve back. Cash sits near 17%, gross exposure under 1× — no leverage in use, and no single name over the 20% cap. The event-contract sleeve is shut: nothing open, nothing planned."
+        "The book is a concentrated set of retail-momentum securities held as collateral and worked for premium with covered calls. SRPT was cut in early August, freeing roughly a third of the account; that capital was committed across the book inside a week, and Friday's NU assignment handed a working reserve back. Cash sits near 17%, gross exposure under 1× — no leverage in use, and no single name over the 20% cap. The event-contract sleeve is shut: nothing open, nothing planned."
       ]
     },
     {
@@ -309,8 +309,8 @@
       "ul": [
         "Covered-call premium on liquid small-cap momentum names — the engine, and the only line that reliably pays.",
         "Cash is materiel, not an idle balance — held to be committed, most recently resupplied by assignment.",
-        "Directional holds taken sparingly, sized small, each carrying a written thesis and a stop set before entry.",
-        "The event-contract sleeve is decommissioned. The book is equities and covered calls."
+        "Outright holds taken sparingly, sized small, each carrying a written thesis and a stop set before entry.",
+        "The event-contract sleeve is decommissioned. The book is securities and covered calls."
       ]
     },
     {
