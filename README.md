@@ -33,7 +33,9 @@ Three checks, all cheap:
 2. **Scan for expiries dated today or earlier.** Any short call in the position list whose expiry has passed should already be gone. If one is still listed, the pull predates settlement.
 3. **Check the trade feed.** `get_account_trades` with `DAYS_7` — an assignment appears as a SELL of the shares at exactly the strike, paired with a BUY of the short call at 0, both timestamped just after the close (UTC date is the *following* day).
 
-If any check fails, re-pull after the close. Assignments book at `realized_pnl: 0` in the trade feed, so they do **not** move the career ledger — only positions, cash, leverage, and the cash-buffer dial.
+If any check fails, re-pull after the close.
+
+**An assignment is not in the trade feed on the day it happens.** The Aug 14 NU assignment was missing from that afternoon's `YEAR_TO_DATE` pull entirely, showed up in the `DAYS_7` pull carrying `realized_pnl: 0`, and only settled into the feed days later with its true realized P&L of +$403.92. So in the week an assignment lands, the career ledger is understated — the close gets counted on the *following* refresh, not the current one. Do not read a flat career ledger as proof the assignment was immaterial.
 
 ## Career record — regenerate it every refresh
 
@@ -51,7 +53,7 @@ They ship together on the Performance tab, so they carry the same date — alway
 
 The date reads as a cutoff — *figures through Aug 14* — not as the date something last happened. That distinction matters, because a week can book no closes at all: Aug 10–12 were entirely opens, with the last realized close sitting back on Aug 7. Dating the ledger by its last close would have stamped it a week behind the card for no reason. The script still reports the true last close in its output, so you know when the record has genuinely gone quiet.
 
-One related trap the script handles: zero-P&L fills — assignments and expiries — carry a UTC timestamp past midnight, so they are excluded from the closed-trade count and never drag the date a session ahead of the market.
+One related trap the script handles: fills that arrive showing `realized_pnl: 0` — assignments and expiries booked in the hours after the close — carry a UTC timestamp past midnight. Zero-P&L rows are excluded from the closed-trade count, which keeps them from dragging the ledger date a session ahead of the market. Treat that as a timing artifact rather than a verdict: the same fill reappears later with real P&L (see the settlement check above) and is counted then.
 
 The dumps live outside this repo on purpose — they contain dollar figures.
 
