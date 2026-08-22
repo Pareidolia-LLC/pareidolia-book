@@ -1,21 +1,21 @@
 {
-  "asOf": "Aug 21, 2026",
+  "asOf": "Aug 22, 2026",
   "curveLabel": "Time-weighted · Since inception, Oct 2025",
   "returns": [
     {
       "k": "Return · YTD 2026",
-      "v": -4.37,
+      "v": -4.15,
       "m": "Time-weighted, net"
     },
     {
       "k": "Return · Trailing 12M",
-      "v": -4.69,
+      "v": -4.46,
       "m": "Since inception, Oct 2025"
     },
     {
       "k": "Return · Last 7 Days",
-      "v": -2.7,
-      "m": "NIQ calls unassigned; cash at 2.4%"
+      "v": -2.48,
+      "m": "NIQ called away at $15; cash at 18.8%"
     }
   ],
   "reports": [
@@ -157,21 +157,21 @@
     {
       "w": "Aug 21",
       "weekLabel": "Week of Aug 17 – 21, 2026",
-      "grade": "C−",
-      "weekRet": -2.7,
+      "grade": "C+",
+      "weekRet": -2.57,
       "now": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
-          "value": "NIQ 20.4%",
-          "rule": "Through the 20% cap · the Aug 21 calls had not assigned at the close"
+          "state": "pass",
+          "value": "PLTR 16.4%",
+          "rule": "Top name under the 20% cap once NIQ was called away"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
-          "value": "2.4%",
-          "rule": "Floor ≥ 10% · 1.14× gross, committed ahead of cash that has not settled"
+          "state": "pass",
+          "value": "18.8%",
+          "rule": "Back above the 10% floor on the NIQ assignment · sat at 2.4% into the weekend"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -180,12 +180,12 @@
           "rule": "No event contract since Aug 6 · JPUSD flat since Aug 5"
         }
       ],
-      "note": "Two dials down and a standing order broken. Cash ran to 2.4% and gross to 1.14×, committed into KEEL — a new 500-share name — and into PLTR, against $4,500 that has not arrived: the NIQ $15 calls sit deep in the money but had not assigned at the close. NIQ therefore marks at 20.4% of NAV and prints a cap breach, though the short call has effectively sold it at the strike; on assignment the position leaves and both dials clear. The uncontested failure is SERV — 200 shares added at 4.87 to 4.90 into a name already 17% underwater. That is averaging down a broken thesis, which is prohibited outright, and no dial catches it. GRPN's calls were rolled down from the $40 strike to $23 and $26, capping the recovery on a name 27% below cost. −2.7% on the week, and the reserve was spent on the expectation of an assignment rather than on the fact of one."
+      "note": "The NIQ $15 calls assigned overnight — 300 shares called away at the strike, $4,500 back in the account — and all three dials close clean: top name 16.4%, cash 18.8%, gross back to 0.90×. That is the wheel doing exactly what it is built to do, and it is the second week running that an assignment has repaired the reserve. It is also the second week running that the reserve was spent before the assignment arrived: cash ran to 2.4% and gross to 1.14× on Monday and Tuesday, into a new 500-share KEEL position and more PLTR, against money that had not settled. The grade is held down by SERV, where 200 shares were added at 4.87 to 4.90 into a name already 17% underwater. Averaging down a broken thesis is prohibited outright, no dial catches it, and it is the one thing here that was not rescued by an expiry. GRPN's calls were also rolled down from the $40 strike to $23 and $26, capping the recovery on a name 27% below cost. −2.6% on the week."
     }
   ],
   "career": {
     "sinceLabel": "Oct 2025",
-    "asOfLabel": "Aug 21, 2026",
+    "asOfLabel": "Aug 22, 2026",
     "headline": [
       {
         "k": "Closed trades",
@@ -252,68 +252,62 @@
       "The engine is real: covered-call premium takes 78% of its closes at a 3.8 profit factor across 165 closes. That is the business. Everything else is management around it.",
       "The event sleeve is shut, not shrinking — nothing traded since Aug 6. It was 90% of all closes for effectively no contribution, and retiring it strips the loudest noise out of the record.",
       "Share legs run a 0.27 profit factor across 34 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it was breached again this week.",
-      "The ledger improved without a position being closed for it: NU's August assignment only settled into the trade feed this week, lifting profit factor from 0.88 to 0.91 and the share-leg line from 0.23 to 0.27. The record moves on the back office's schedule, not the market's — worth knowing before reading a one-week change as progress."
+      "The ledger moves on the back office's schedule, not the market's. NU's August assignment only reached the trade feed a week after the fact, lifting profit factor from 0.88 to 0.91 and the share-leg line from 0.23 to 0.27. NIQ's assignment is sitting in the feed right now at zero realized P&L and is not counted below yet — expect the same quiet revision next week, and do not read either move as something the market did."
     ]
   },
   "positions": [
     {
-      "t": "NIQ",
-      "s": "wheel",
-      "w": 20.37,
-      "r": 38.3
-    },
-    {
       "t": "PLTR",
       "s": "dir",
-      "w": 16.44,
-      "r": 6.83
+      "w": 16.43,
+      "r": 7.01
     },
     {
       "t": "SPCX",
       "s": "dir",
-      "w": 15.02,
-      "r": -1.72
+      "w": 14.98,
+      "r": -1.78
     },
     {
       "t": "GRPN",
       "s": "wheel",
-      "w": 14.35,
-      "r": -27.35
+      "w": 14.46,
+      "r": -26.61
     },
     {
       "t": "SERV",
       "s": "wheel",
-      "w": 12.81,
-      "r": -16.93
+      "w": 12.73,
+      "r": -17.26
     },
     {
       "t": "XNDU",
       "s": "wheel",
-      "w": 7.97,
-      "r": 3.91
+      "w": 8.03,
+      "r": 4.96
     },
     {
       "t": "KVYO",
       "s": "wheel",
-      "w": 6.7,
-      "r": 3.39
+      "w": 6.69,
+      "r": 3.44
     },
     {
       "t": "KEEL",
       "s": "wheel",
-      "w": 6.09,
-      "r": -12.11
+      "w": 6.26,
+      "r": -9.48
     },
     {
       "t": "BBAI",
       "s": "wheel",
-      "w": 5.89,
+      "w": 5.88,
       "r": -5.46
     },
     {
       "t": "Cash",
       "s": "cash",
-      "w": 2.38,
+      "w": 18.81,
       "r": null
     }
   ],
@@ -334,7 +328,7 @@
       "eyebrow": "Book Summary",
       "h": "Current posture",
       "p": [
-        "The book is a concentrated set of retail-momentum securities held as collateral and worked for premium with covered calls. The week added KEEL and took PLTR up, spending the reserve down to 2.4% of NAV and running gross exposure to 1.14× — the book carries margin. NIQ marks above the 20% single-name cap, but its $15 calls expired in the money on Aug 21 and had not assigned when these figures were struck; on settlement the position is called away and roughly a sixth of the book returns to cash. The event-contract sleeve stays shut."
+        "The book is a concentrated set of retail-momentum securities held as collateral and worked for premium with covered calls. NIQ was called away at $15 on the August 21 expiry, returning roughly a sixth of the account to cash and taking the reserve back to 18.8% with gross exposure at 0.90× — the book is unlevered again. Eight names remain, none above the 20% single-name cap, and the week added KEEL alongside a larger PLTR position. The event-contract sleeve stays shut."
       ]
     },
     {
@@ -349,8 +343,8 @@
     {
       "eyebrow": "Risk posture",
       "ul": [
-        "Single-name cap of 20% of NAV — breached this week at 20.4%, pending the NIQ assignment.",
-        "Gross exposure about 1.14× NAV — margin in use, against a 10% cash floor now at 2.4%.",
+        "Single-name cap of 20% of NAV — top name 16.4% after the NIQ assignment.",
+        "Unlevered — gross exposure about 0.90× NAV, cash at 18.8% against a 10% floor.",
         "Broker mandate restricts options activity to selling covered calls (see Operations).",
         "Sizing, reserve, and event exposure inspected every week — findings published whether or not they flatter."
       ]
@@ -667,7 +661,8 @@
       -0.05391777,
       -0.05259918,
       -0.06622746,
-      -0.04688268
+      -0.04553287,
+      -0.04464671
     ],
     "dates": [
       "20251016",
@@ -891,7 +886,8 @@
       "20260818",
       "20260819",
       "20260820",
-      "20260821"
+      "20260821",
+      "20260822"
     ]
   }
 }
