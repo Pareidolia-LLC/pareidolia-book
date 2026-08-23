@@ -122,6 +122,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .bar .track{height:22px; background:var(--panel-2); border:1px solid var(--line); border-radius:5px; overflow:hidden; position:relative}
   .bar .fill{height:100%; border-radius:4px 0 0 4px; transform-origin:left; transform:scaleX(0); transition:transform .9s cubic-bezier(.22,.61,.36,1)}
   .bar .pct{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:12.5px; text-align:right; color:var(--muted)}
+  #panel-record .bookgrid{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+  #panel-record table{min-width:0}
+  #panel-record .stats{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
   .legend-strat{display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; font-size:11.5px; color:var(--muted)}
   .legend-strat span{display:inline-flex; gap:7px; align-items:center}
   .tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:10px}
@@ -233,6 +236,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <button class="tab" data-panel="book" role="tab">The Book</button>
     <button class="tab" data-panel="approach" role="tab">Operations</button>
     <button class="tab" data-panel="concepts" role="tab">Doctrine</button>
+    <button class="tab" data-panel="record" role="tab">Best &amp; Worst</button>
   </nav>
   <div class="panel active" id="panel-report">
   <div class="perfgrid">
@@ -316,6 +320,46 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   </section>
   </div>
   <div class="panel" id="panel-concepts"></div>
+  <div class="panel" id="panel-record">
+  <section aria-label="Accolades">
+    <p class="eyebrow">Accolades</p>
+    <h2>What went right</h2>
+    <div class="stats" id="accolades"></div>
+  </section>
+  <section aria-label="Failures">
+    <p class="eyebrow">Failures</p>
+    <h2>What went wrong</h2>
+    <div class="stats" id="failures"></div>
+  </section>
+  <section aria-label="Discipline record">
+    <p class="eyebrow">Discipline · the tally</p>
+    <h2>How often the limits actually held</h2>
+    <div class="stats" id="disc"></div>
+  </section>
+  <div class="bookgrid">
+  <section aria-label="Best executions">
+    <p class="eyebrow">Best closes</p>
+    <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Date</th><th>Type</th><th class="r">Share of NAV</th></tr></thead><tbody id="twins"></tbody></table></div>
+  </section>
+  <section aria-label="Worst executions">
+    <p class="eyebrow">Worst closes</p>
+    <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Date</th><th>Type</th><th class="r">Share of NAV</th></tr></thead><tbody id="tlosses"></tbody></table></div>
+  </section>
+  </div>
+  <section aria-label="Where money was made and lost">
+    <p class="eyebrow">By name · shares of the whole record</p>
+    <h2>Where the money was made and lost</h2>
+    <div class="tablewrap"><table><thead><tr><th>Name</th><th class="r">Closes</th><th class="r">Win</th><th class="r">Profit factor</th><th class="r">Share of gains</th><th class="r">Share of losses</th></tr></thead><tbody id="nmtbl"></tbody></table></div>
+  </section>
+  <section aria-label="Event contracts by name">
+    <p class="eyebrow">Event sleeve · by contract</p>
+    <div class="tablewrap"><table><thead><tr><th>Contract</th><th class="r">Closes</th><th class="r">Win</th><th class="r">Profit factor</th><th class="r">Share of gains</th><th class="r">Share of losses</th></tr></thead><tbody id="evtbl"></tbody></table></div>
+  </section>
+  <section aria-label="How to read this">
+    <p class="eyebrow">How to read this</p>
+    <ul class="proselist" id="recnotes"></ul>
+  </section>
+  </div>
   <div class="panel" id="panel-story"></div>
   <footer>
     <p>Figures are time-weighted returns and portfolio weights. Absolute balances, share counts, and dollar P&amp;L are withheld by design — transparent on performance, silent on size.</p>
@@ -434,6 +478,44 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       });
     };
     window.__animBars();
+  })();
+
+  (function(){
+    var R=DATA.record; if(!R) return;
+    function tiles(id,arr){
+      var el=document.getElementById(id); if(!el) return;
+      arr.forEach(function(x){
+        var v=document.createElement("div"); v.className="stat";
+        var c = x.v.charAt(0)==="+" ? "pos" : (x.v.charAt(0)==="−"||x.v.charAt(0)==="-") ? "neg" : "";
+        v.innerHTML='<div class="k">'+x.k+'</div><div class="v '+c+'">'+x.v+'</div><div class="m">'+x.m+'</div>';
+        el.appendChild(v);
+      });
+    }
+    tiles("accolades",R.accolades); tiles("failures",R.failures); tiles("disc",R.discipline);
+    function trows(id,arr){
+      var tb=document.getElementById(id); if(!tb) return;
+      arr.forEach(function(x){
+        var tr=document.createElement("tr");
+        tr.innerHTML='<td class="tk">'+x.t+'</td><td>'+x.d+'</td><td>'+x.s+'</td>'+
+          '<td class="num r '+cls(parseFloat(x.v))+'">'+x.v+'</td>';
+        tb.appendChild(tr);
+      });
+    }
+    trows("twins",R.wins); trows("tlosses",R.losses);
+    function nrows(id,arr){
+      var tb=document.getElementById(id); if(!tb) return;
+      arr.forEach(function(x){
+        var pf = (x.pf===null||x.pf>50) ? "—" : x.pf.toFixed(2);
+        var tr=document.createElement("tr");
+        tr.innerHTML='<td class="tk">'+x.t+'</td><td class="num r">'+x.closes+'</td>'+
+          '<td class="num r">'+x.win+'%</td><td class="num r">'+pf+'</td>'+
+          '<td class="num r pos">'+x.g.toFixed(1)+'%</td><td class="num r neg">'+x.l.toFixed(1)+'%</td>';
+        tb.appendChild(tr);
+      });
+    }
+    nrows("nmtbl",R.names); nrows("evtbl",R.events);
+    var ul=document.getElementById("recnotes");
+    if(ul) R.notes.forEach(function(t){ var li=document.createElement("li"); li.textContent=t; ul.appendChild(li); });
   })();
 
   (function(){
@@ -600,7 +682,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   (function(){
     var tabs=Array.prototype.slice.call(document.querySelectorAll(".tab"));
-    var ids=["report","book","approach","concepts","story"];
+    var ids=["report","book","approach","concepts","story","record"];
     var panels={}; ids.forEach(function(id){panels[id]=document.getElementById("panel-"+id);});
     function activate(id){
       tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("data-panel")===id);});

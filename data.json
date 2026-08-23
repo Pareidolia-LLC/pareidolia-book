@@ -22,7 +22,7 @@
     {
       "w": "Oct 24",
       "weekLabel": "Week of Oct 20 – Oct 24, 2025",
-      "grade": "D−",
+      "grade": "F",
       "weekRet": 3.48,
       "recon": true,
       "dials": [
@@ -40,17 +40,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "62 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.57",
+          "rule": "11 event closes, 64% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "ASTS carried 71.2% of NAV against a 20% cap. Stock was 94% of NAV — the reserve sat close enough to the floor that this reconstruction cannot call it either way. 12 closes booked, 67% won."
+      "note": "ASTS carried 71.2% of NAV against a 20% cap. Stock was 94% of NAV — too close to the floor for this reconstruction to call either way. The event sleeve turned over 11 closes at 64% won for a 0.57 profit factor. 12 closes booked in all, 67% won."
     },
     {
       "w": "Oct 31",
       "weekLabel": "Week of Oct 27 – Oct 31, 2025",
-      "grade": "D−",
+      "grade": "D",
       "weekRet": 6.97,
       "recon": true,
       "dials": [
@@ -68,12 +68,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "51 event contracts traded"
+          "state": "pass",
+          "value": "carried · pf 2.23",
+          "rule": "19 event closes, 58% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "ASTS carried 72.5% of NAV against a 20% cap. Stock was 92% of NAV — the reserve sat close enough to the floor that this reconstruction cannot call it either way. 21 closes booked, 62% won."
+      "note": "ASTS carried 72.5% of NAV against a 20% cap. Stock was 92% of NAV — too close to the floor for this reconstruction to call either way. The event sleeve turned over 19 closes at 58% won for a 2.23 profit factor. 21 closes booked in all, 62% won."
     },
     {
       "w": "Nov 7",
@@ -96,12 +96,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "59 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.90",
+          "rule": "29 event closes, 62% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "ASTS carried 69.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. 31 closes booked, 65% won."
+      "note": "ASTS carried 69.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. The event sleeve turned over 29 closes at 62% won for a 0.90 profit factor. 31 closes booked in all, 65% won."
     },
     {
       "w": "Nov 14",
@@ -124,17 +124,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "42 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.48",
+          "rule": "18 event closes, 56% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "ASTS carried 65.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. 21 closes booked, 62% won."
+      "note": "ASTS carried 65.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 18 closes at 56% won for a 0.48 profit factor. 21 closes booked in all, 62% won."
     },
     {
       "w": "Nov 21",
       "weekLabel": "Week of Nov 17 – Nov 21, 2025",
-      "grade": "F",
+      "grade": "D−",
       "weekRet": -10.48,
       "recon": true,
       "dials": [
@@ -152,12 +152,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "61 event contracts traded"
+          "state": "pass",
+          "value": "carried · pf 2.04",
+          "rule": "20 event closes, 85% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "ASTS carried 61.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. 22 closes booked, 86% won."
+      "note": "ASTS carried 61.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. The event sleeve turned over 20 closes at 85% won for a 2.04 profit factor. 22 closes booked in all, 86% won."
     },
     {
       "w": "Nov 28",
@@ -181,11 +181,11 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "warn",
-          "value": "active",
-          "rule": "82 event contracts traded"
+          "value": "flat · pf 1.20",
+          "rule": "44 event closes, 68% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "ASTS carried 61.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. 45 closes booked, 69% won."
+      "note": "ASTS carried 61.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 44 closes at 68% won for a 1.20 profit factor. 45 closes booked in all, 69% won."
     },
     {
       "w": "Dec 5",
@@ -208,12 +208,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "111 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.78",
+          "rule": "42 event closes, 62% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "ASTS carried 74.7% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 43 closes booked, 63% won."
+      "note": "ASTS carried 74.7% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 42 closes at 62% won for a 0.78 profit factor. 43 closes booked in all, 63% won."
     },
     {
       "w": "Dec 12",
@@ -236,17 +236,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "114 event contracts traded"
+          "state": "pass",
+          "value": "carried · pf 1.89",
+          "rule": "51 event closes, 78% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 31.1% of NAV against a 20% cap. Stock was 37% of NAV, so the reserve held. 52 closes booked, 77% won."
+      "note": "OWL carried 31.1% of NAV against a 20% cap. Stock was 37% of NAV, so the reserve held. The event sleeve turned over 51 closes at 78% won for a 1.89 profit factor. 52 closes booked in all, 77% won."
     },
     {
       "w": "Dec 19",
       "weekLabel": "Week of Dec 15 – Dec 19, 2025",
-      "grade": "D",
+      "grade": "D−",
       "weekRet": 0.46,
       "recon": true,
       "dials": [
@@ -264,12 +264,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "87 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.78",
+          "rule": "41 event closes, 61% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 45.7% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. OWL was added to below carry. 42 closes booked, 62% won."
+      "note": "OWL carried 45.7% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 41 closes at 61% won for a 0.78 profit factor. 42 closes booked in all, 62% won."
     },
     {
       "w": "Dec 26",
@@ -292,17 +292,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "80 event contracts traded"
+          "state": "pass",
+          "value": "carried · pf 1.70",
+          "rule": "46 event closes, 76% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. 46 closes booked, 76% won."
+      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. The event sleeve turned over 46 closes at 76% won for a 1.70 profit factor. 46 closes booked in all, 76% won."
     },
     {
       "w": "Jan 2",
       "weekLabel": "Week of Dec 29 – Jan 2, 2026",
-      "grade": "D−",
+      "grade": "D",
       "weekRet": 1.87,
       "recon": true,
       "dials": [
@@ -320,17 +320,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 7 times"
+          "state": "pass",
+          "value": "carried · pf 2.21",
+          "rule": "70 event closes, 77% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. JPUSD, a name since banned from the book, traded 7 times. 71 closes booked, 77% won."
+      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. The event sleeve turned over 70 closes at 77% won for a 2.21 profit factor. 71 closes booked in all, 77% won."
     },
     {
       "w": "Jan 9",
       "weekLabel": "Week of Jan 5 – Jan 9, 2026",
-      "grade": "D",
+      "grade": "D−",
       "weekRet": 3.89,
       "recon": true,
       "dials": [
@@ -348,17 +348,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "99 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.89",
+          "rule": "37 event closes, 68% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 44.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. 39 closes booked, 69% won."
+      "note": "OWL carried 44.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. The event sleeve turned over 37 closes at 68% won for a 0.89 profit factor. 39 closes booked in all, 69% won."
     },
     {
       "w": "Jan 16",
       "weekLabel": "Week of Jan 12 – Jan 16, 2026",
-      "grade": "D−",
+      "grade": "D",
       "weekRet": 1.94,
       "recon": true,
       "dials": [
@@ -376,17 +376,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 12 times"
+          "state": "warn",
+          "value": "flat · pf 1.02",
+          "rule": "79 event closes, 67% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "CMA carried 47.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. OWL and ZETA were added to below carry. JPUSD, a name since banned from the book, traded 12 times. 81 closes booked, 68% won."
+      "note": "CMA carried 47.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. OWL and ZETA were added to below carry. The event sleeve turned over 79 closes at 67% won for a 1.02 profit factor. 81 closes booked in all, 68% won."
     },
     {
       "w": "Jan 23",
       "weekLabel": "Week of Jan 19 – Jan 23, 2026",
-      "grade": "B−",
+      "grade": "C",
       "weekRet": 0.47,
       "recon": true,
       "dials": [
@@ -404,12 +404,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "198 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.68",
+          "rule": "93 event closes, 55% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "CMA carried 28.6% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. ZETA was added to below carry. 96 closes booked, 56% won."
+      "note": "CMA carried 28.6% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. ZETA was added to below carry. The event sleeve turned over 93 closes at 55% won for a 0.68 profit factor. 96 closes booked in all, 56% won."
     },
     {
       "w": "Jan 30",
@@ -432,17 +432,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "173 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.89",
+          "rule": "96 event closes, 69% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "CMA carried 30.9% of NAV against a 20% cap. Stock was 91% of NAV — the reserve sat close enough to the floor that this reconstruction cannot call it either way. OWL was added to below carry. 98 closes booked, 69% won."
+      "note": "CMA carried 30.9% of NAV against a 20% cap. Stock was 91% of NAV — too close to the floor for this reconstruction to call either way. OWL was added to below carry. The event sleeve turned over 96 closes at 69% won for a 0.89 profit factor. 98 closes booked in all, 69% won."
     },
     {
       "w": "Feb 6",
       "weekLabel": "Week of Feb 2 – Feb 6, 2026",
-      "grade": "D−",
+      "grade": "F",
       "weekRet": 0.46,
       "recon": true,
       "dials": [
@@ -460,17 +460,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "178 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.49",
+          "rule": "86 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "FITB carried 36.9% of NAV against a 20% cap. Stock alone came to 101% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. 87 closes booked, 51% won."
+      "note": "FITB carried 36.9% of NAV against a 20% cap. Stock alone came to 101% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. The event sleeve turned over 86 closes at 50% won for a 0.49 profit factor. 87 closes booked in all, 51% won."
     },
     {
       "w": "Feb 13",
       "weekLabel": "Week of Feb 9 – Feb 13, 2026",
-      "grade": "D−",
+      "grade": "F",
       "weekRet": -1.36,
       "recon": true,
       "dials": [
@@ -488,17 +488,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "24 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.48",
+          "rule": "21 event closes, 52% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "FITB carried 35.9% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 23 closes booked, 57% won."
+      "note": "FITB carried 35.9% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 21 closes at 52% won for a 0.48 profit factor. 23 closes booked in all, 57% won."
     },
     {
       "w": "Feb 20",
       "weekLabel": "Week of Feb 16 – Feb 20, 2026",
-      "grade": "B−",
+      "grade": "C",
       "weekRet": -0.54,
       "recon": true,
       "dials": [
@@ -516,12 +516,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "active",
-          "rule": "17 event contracts traded"
+          "state": "fail",
+          "value": "drag · pf 0.35",
+          "rule": "10 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 29.8% of NAV against a 20% cap. Stock was 46% of NAV, so the reserve held. 15 closes booked, 67% won."
+      "note": "OWL carried 29.8% of NAV against a 20% cap. Stock was 46% of NAV, so the reserve held. The event sleeve turned over 10 closes at 50% won for a 0.35 profit factor. 15 closes booked in all, 67% won."
     },
     {
       "w": "Feb 27",
@@ -543,7 +543,7 @@
           "rule": "Stock at 102% of NAV — borrowed, so the 10% floor was breached"
         }
       ],
-      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 20 closes booked, 65% won."
+      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 20 closes booked in all, 65% won."
     },
     {
       "w": "Mar 6",
@@ -567,11 +567,11 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 14 times"
+          "value": "drag · pf 0.53",
+          "rule": "10 event closes, 70% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 88.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. OWL was added to below carry. JPUSD, a name since banned from the book, traded 14 times. 26 closes booked, 81% won."
+      "note": "OWL carried 88.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 10 closes at 70% won for a 0.53 profit factor. 26 closes booked in all, 81% won."
     },
     {
       "w": "Mar 13",
@@ -594,12 +594,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 51 times"
+          "state": "warn",
+          "value": "flat · pf 0.94",
+          "rule": "59 event closes, 66% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SRPT was added to below carry. JPUSD, a name since banned from the book, traded 51 times. 67 closes booked, 70% won."
+      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SRPT was added to below carry. The event sleeve turned over 59 closes at 66% won for a 0.94 profit factor. 67 closes booked in all, 70% won."
     },
     {
       "w": "Mar 20",
@@ -623,11 +623,11 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 25 times"
+          "value": "drag · pf 0.77",
+          "rule": "21 event closes, 43% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 84.3% of NAV against a 20% cap. Stock alone came to 109% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and SRPT were added to below carry. JPUSD, a name since banned from the book, traded 25 times. 22 closes booked, 45% won."
+      "note": "OWL carried 84.3% of NAV against a 20% cap. Stock alone came to 109% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and SRPT were added to below carry. The event sleeve turned over 21 closes at 43% won for a 0.77 profit factor. 22 closes booked in all, 45% won."
     },
     {
       "w": "Mar 27",
@@ -650,12 +650,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 41 times"
+          "state": "warn",
+          "value": "flat · pf 1.01",
+          "rule": "26 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 82.6% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. JPUSD, a name since banned from the book, traded 41 times. 32 closes booked, 50% won."
+      "note": "OWL carried 82.6% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 26 closes at 50% won for a 1.01 profit factor. 32 closes booked in all, 50% won."
     },
     {
       "w": "Apr 3",
@@ -679,11 +679,11 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 50 times"
+          "value": "drag · pf 0.72",
+          "rule": "102 event closes, 57% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 50 times. 106 closes booked, 58% won."
+      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 102 closes at 57% won for a 0.72 profit factor. 106 closes booked in all, 58% won."
     },
     {
       "w": "Apr 10",
@@ -707,11 +707,11 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 35 times"
+          "value": "drag · pf 0.84",
+          "rule": "38 event closes, 76% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 79.5% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 35 times. 49 closes booked, 82% won."
+      "note": "OWL carried 79.5% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 38 closes at 76% won for a 0.84 profit factor. 49 closes booked in all, 82% won."
     },
     {
       "w": "Apr 17",
@@ -734,12 +734,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 46 times"
+          "state": "warn",
+          "value": "flat · pf 1.20",
+          "rule": "42 event closes, 62% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 86.4% of NAV against a 20% cap. Stock alone came to 116% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 46 times. 51 closes booked, 51% won."
+      "note": "OWL carried 86.4% of NAV against a 20% cap. Stock alone came to 116% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 42 closes at 62% won for a 1.20 profit factor. 51 closes booked in all, 51% won."
     },
     {
       "w": "Apr 24",
@@ -762,12 +762,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 44 times"
+          "state": "pass",
+          "value": "carried · pf 1.46",
+          "rule": "39 event closes, 64% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 44 times. 39 closes booked, 64% won."
+      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 39 closes at 64% won for a 1.46 profit factor. 39 closes booked in all, 64% won."
     },
     {
       "w": "May 1",
@@ -791,11 +791,11 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 31 times"
+          "value": "drag · pf 0.54",
+          "rule": "29 event closes, 76% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 85.3% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 31 times. 34 closes booked, 79% won."
+      "note": "OWL carried 85.3% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 29 closes at 76% won for a 0.54 profit factor. 34 closes booked in all, 79% won."
     },
     {
       "w": "May 8",
@@ -819,11 +819,11 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 26 times"
+          "value": "drag · pf 0.78",
+          "rule": "30 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 89.0% of NAV against a 20% cap. Stock alone came to 115% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 26 times. 30 closes booked, 50% won."
+      "note": "OWL carried 89.0% of NAV against a 20% cap. Stock alone came to 115% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 30 closes at 50% won for a 0.78 profit factor. 30 closes booked in all, 50% won."
     },
     {
       "w": "May 15",
@@ -846,12 +846,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 25 times"
+          "state": "warn",
+          "value": "flat · pf 0.92",
+          "rule": "21 event closes, 29% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 83.6% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 25 times. 21 closes booked, 29% won."
+      "note": "OWL carried 83.6% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 21 closes at 29% won for a 0.92 profit factor. 21 closes booked in all, 29% won."
     },
     {
       "w": "May 22",
@@ -874,12 +874,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 20 times"
+          "state": "pass",
+          "value": "carried · pf 1.27",
+          "rule": "11 event closes, 73% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 86.0% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 20 times. 11 closes booked, 73% won."
+      "note": "OWL carried 86.0% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 11 closes at 73% won for a 1.27 profit factor. 11 closes booked in all, 73% won."
     },
     {
       "w": "May 29",
@@ -902,12 +902,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 12 times"
+          "state": "pass",
+          "value": "carried · pf ∞",
+          "rule": "6 event closes, 100% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 76.8% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 12 times. 8 closes booked, 88% won."
+      "note": "OWL carried 76.8% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 6 closes at 100% won for a n/a profit factor. 8 closes booked in all, 88% won."
     },
     {
       "w": "Jun 5",
@@ -930,12 +930,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 19 times"
+          "state": "pass",
+          "value": "carried · pf 1.75",
+          "rule": "7 event closes, 86% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 85.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. JPUSD, a name since banned from the book, traded 19 times. 10 closes booked, 80% won."
+      "note": "OWL carried 85.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 7 closes at 86% won for a 1.75 profit factor. 10 closes booked in all, 80% won."
     },
     {
       "w": "Jun 12",
@@ -958,12 +958,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 53 times"
+          "state": "pass",
+          "value": "carried · pf 1.43",
+          "rule": "66 event closes, 46% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 84.0% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 53 times. 73 closes booked, 51% won."
+      "note": "OWL carried 84.0% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 66 closes at 46% won for a 1.43 profit factor. 73 closes booked in all, 51% won."
     },
     {
       "w": "Jun 19",
@@ -986,12 +986,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 259 times"
+          "state": "pass",
+          "value": "carried · pf 1.36",
+          "rule": "49 event closes, 67% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 81.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 259 times. 50 closes booked, 68% won."
+      "note": "OWL carried 81.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 49 closes at 67% won for a 1.36 profit factor. 50 closes booked in all, 68% won."
     },
     {
       "w": "Jun 26",
@@ -1015,16 +1015,16 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 117 times"
+          "value": "drag · pf 0.59",
+          "rule": "81 event closes, 41% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "OWL carried 78.1% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SPCX was added to below carry. JPUSD, a name since banned from the book, traded 117 times. 88 closes booked, 45% won."
+      "note": "OWL carried 78.1% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SPCX was added to below carry. The event sleeve turned over 81 closes at 41% won for a 0.59 profit factor. 88 closes booked in all, 45% won."
     },
     {
       "w": "Jul 3",
       "weekLabel": "Week of Jun 29 – Jul 3, 2026",
-      "grade": "C",
+      "grade": "B−",
       "weekRet": 2.92,
       "recon": true,
       "dials": [
@@ -1042,12 +1042,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 59 times"
+          "state": "warn",
+          "value": "flat · pf 1.00",
+          "rule": "57 event closes, 47% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "SRPT carried 26.3% of NAV against a 20% cap. Stock was 38% of NAV, so the reserve held. JPUSD, a name since banned from the book, traded 59 times. 73 closes booked, 51% won."
+      "note": "SRPT carried 26.3% of NAV against a 20% cap. Stock was 38% of NAV, so the reserve held. The event sleeve turned over 57 closes at 47% won for a 1.00 profit factor. 73 closes booked in all, 51% won."
     },
     {
       "w": "Jul 10",
@@ -1071,17 +1071,17 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 175 times"
+          "value": "drag · pf 0.57",
+          "rule": "127 event closes, 44% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "SRPT carried 33.4% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. SPCX was added to below carry. JPUSD, a name since banned from the book, traded 175 times. 134 closes booked, 46% won."
+      "note": "SRPT carried 33.4% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. SPCX was added to below carry. The event sleeve turned over 127 closes at 44% won for a 0.57 profit factor. 134 closes booked in all, 46% won."
     },
     {
-      "w": "Jul 13",
-      "weekLabel": "Week of Jul 13 – 18, 2026",
+      "w": "Jul 17",
+      "weekLabel": "Week of Jul 13 – Jul 17, 2026",
       "grade": "C",
-      "weekRet": -4.7,
+      "weekRet": -3.17,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -1097,18 +1097,18 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "JPUSD active",
-          "rule": "Over cap 2 of 6 days early; a banned name traded"
+          "state": "fail",
+          "value": "drag · pf 0.74",
+          "rule": "98 event closes, 39% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
       "note": "The cash floor was restored to 17.6%, and that is the only credit on offer. The oversized names sat untouched — SRPT near 31%, SPCX at −29%, SERV through its stop — and new positions went on with no written thesis behind them. The engine is sound. The discipline around it is not."
     },
     {
-      "w": "Jul 25",
-      "weekLabel": "Week of Jul 19 – 25, 2026",
+      "w": "Jul 24",
+      "weekLabel": "Week of Jul 20 – Jul 24, 2026",
       "grade": "C−",
-      "weekRet": -4.03,
+      "weekRet": -3.98,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -1125,8 +1125,8 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "92% of trades",
-          "rule": "ForecastX churn · 18 JPUSD (banned) trades"
+          "value": "drag · pf 0.56",
+          "rule": "36 event closes, 64% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
       "note": "The market did most of the −4% — marks on names already held; realized activity was quiet. But the controllable leak, SRPT at 30% of the book, stayed wide open two weeks after it was flagged. Cash discipline was the only line held."
@@ -1153,44 +1153,17 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
-          "value": "JPUSD",
-          "rule": "JPUSD traded 8 times"
+          "value": "drag · pf 0.87",
+          "rule": "49 event closes, 55% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "SRPT carried 28.2% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. JPUSD, a name since banned from the book, traded 8 times. 54 closes booked, 57% won."
+      "note": "SRPT carried 28.2% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. The event sleeve turned over 49 closes at 55% won for a 0.87 profit factor. 54 closes booked in all, 57% won."
     },
     {
-      "w": "Aug 5",
-      "weekLabel": "Week of Jul 29 – Aug 5, 2026",
-      "grade": "C−",
-      "weekRet": 1.17,
-      "dials": [
-        {
-          "key": "Dial 1 · Position size",
-          "state": "fail",
-          "value": "SRPT 30.2%",
-          "rule": "Cap ≤ 20% per name · GRPN also 20.6%"
-        },
-        {
-          "key": "Dial 2 · Cash buffer",
-          "state": "fail",
-          "value": "1.7%",
-          "rule": "Floor ≥ 10% · buying power near zero, leverage 1.05×"
-        },
-        {
-          "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "JPUSD active",
-          "rule": "Within the dollar cap, but a banned name is back on"
-        }
-      ],
-      "note": "A +1.2% bounce handed over by the tape, and it was spent: the reserve went to 1.7% and a losing directional (SPCX −23%) got averaged up. Greener week, thinner margin for error. The controllable leaks widened while the marks recovered."
-    },
-    {
-      "w": "Aug 9",
-      "weekLabel": "Week of Jul 31 – Aug 9, 2026",
-      "grade": "A−",
-      "weekRet": 3.02,
+      "w": "Aug 7",
+      "weekLabel": "Week of Aug 3 – Aug 7, 2026",
+      "grade": "B−",
+      "weekRet": 3.11,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -1206,18 +1179,18 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "pass",
-          "value": "None open",
-          "rule": "No event contracts; JPUSD flat"
+          "state": "warn",
+          "value": "flat · pf 1.17",
+          "rule": "32 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
         }
       ],
-      "note": "The turn. SRPT — 30% of the book for three weeks — was fully offloaded via assignment, taking cash from 1.7% to 30.8% and sizing back under the cap. First clean sweep on all three dials. Standing watch: SERV is through its −15% stop, and SPCX bounced on luck rather than thesis. Neither becomes the next SRPT."
+      "note": "The week the concentration finally broke. SRPT — roughly 30% of the book for three weeks — was called away on the Aug 7 expiry, taking cash from 1.7% to 30.8% and putting every dial back inside its limit for the first time. That is the single most useful thing done all quarter. It does not earn an A: mid-week the reserve sat at 1.7% against a 10% floor, and SPCX was added to below carry while already deep in a loss — averaging down a broken thesis, which is prohibited outright. The week closed clean because an expiry landed, not because the book was run that way. +3.1% on the week."
     },
     {
       "w": "Aug 14",
-      "weekLabel": "Week of Aug 10 – 14, 2026",
+      "weekLabel": "Week of Aug 10 – Aug 14, 2026",
       "grade": "B+",
-      "weekRet": 3.17,
+      "weekRet": 3.22,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -1230,22 +1203,15 @@
           "state": "pass",
           "value": "16.7%",
           "rule": "Back above the 10% floor after the NU assignment · sat at 0.7% mid-week"
-        },
-        {
-          "key": "Dial 3 · Event sleeve",
-          "state": "pass",
-          "value": "None open",
-          "rule": "No event contract since Aug 6 · JPUSD flat since Aug 5"
         }
       ],
       "note": "All three dials closed clean. They did not stay clean. The 30.8% reserve taken off the SRPT exit was committed across three sessions into NU, NIQ, XNDU, PLTR, SPCX and BBAI, running cash to 0.7% and gross to 1.09× by midweek. Friday's expiry reversed it: the NU $15 calls were assigned, 300 shares called away at the strike, reserve rebuilt to 16.7%, book back under 1×. Credit where it is due — that exit was pre-arranged by the covered call, the strategy working as designed. But the floor was breached for two days first, and that was a decision, not an accident. +3.2% on the week, the cap held, the sleeve stayed shut."
     },
     {
       "w": "Aug 21",
-      "weekLabel": "Week of Aug 17 – 21, 2026",
+      "weekLabel": "Week of Aug 17 – Aug 21, 2026",
       "grade": "C+",
       "weekRet": -2.57,
-      "now": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -1258,15 +1224,10 @@
           "state": "pass",
           "value": "18.8%",
           "rule": "Back above the 10% floor on the NIQ assignment · sat at 2.4% into the weekend"
-        },
-        {
-          "key": "Dial 3 · Event sleeve",
-          "state": "pass",
-          "value": "None open",
-          "rule": "No event contract since Aug 6 · JPUSD flat since Aug 5"
         }
       ],
-      "note": "The NIQ $15 calls assigned overnight — 300 shares called away at the strike, $4,500 back in the account — and all three dials close clean: top name 16.4%, cash 18.8%, gross back to 0.90×. That is the wheel doing exactly what it is built to do, and it is the second week running that an assignment has repaired the reserve. It is also the second week running that the reserve was spent before the assignment arrived: cash ran to 2.4% and gross to 1.14× on Monday and Tuesday, into a new 500-share KEEL position and more PLTR, against money that had not settled. The grade is held down by SERV, where 200 shares were added at 4.87 to 4.90 into a name already 17% underwater. Averaging down a broken thesis is prohibited outright, no dial catches it, and it is the one thing here that was not rescued by an expiry. GRPN's calls were also rolled down from the $40 strike to $23 and $26, capping the recovery on a name 27% below cost. −2.6% on the week."
+      "note": "The NIQ $15 calls assigned overnight — 300 shares called away at the strike, $4,500 back in the account — and all three dials close clean: top name 16.4%, cash 18.8%, gross back to 0.90×. That is the wheel doing exactly what it is built to do, and it is the second week running that an assignment has repaired the reserve. It is also the second week running that the reserve was spent before the assignment arrived: cash ran to 2.4% and gross to 1.14× on Monday and Tuesday, into a new 500-share KEEL position and more PLTR, against money that had not settled. The grade is held down by SERV, where 200 shares were added at 4.87 to 4.90 into a name already 17% underwater. Averaging down a broken thesis is prohibited outright, no dial catches it, and it is the one thing here that was not rescued by an expiry. GRPN's calls were also rolled down from the $40 strike to $23 and $26, capping the recovery on a name 27% below cost. −2.6% on the week.",
+      "now": true
     }
   ],
   "career": {
@@ -1974,6 +1935,290 @@
       "20260820",
       "20260821",
       "20260822"
+    ]
+  },
+  "record": {
+    "accolades": [
+      {
+        "k": "Best week",
+        "v": "+10.16%",
+        "m": "Week ending Apr 17, 2026"
+      },
+      {
+        "k": "Best month",
+        "v": "+10.69%",
+        "m": "Oct 2025"
+      },
+      {
+        "k": "Peak of the record",
+        "v": "+10.69%",
+        "m": "Cumulative, Oct 31, 2025"
+      },
+      {
+        "k": "Longest green run",
+        "v": "4 weeks",
+        "m": "Consecutive positive weeks"
+      },
+      {
+        "k": "Largest single win",
+        "v": "+3.91%",
+        "m": "FITB · Feb 20, 2026 · share of NAV that day"
+      },
+      {
+        "k": "The engine",
+        "v": "3.75 pf",
+        "m": "Covered-call premium, 78% of 165 closes won"
+      }
+    ],
+    "failures": [
+      {
+        "k": "Worst week",
+        "v": "-10.48%",
+        "m": "Week ending Nov 21, 2025"
+      },
+      {
+        "k": "Worst month",
+        "v": "-17.84%",
+        "m": "Nov 2025"
+      },
+      {
+        "k": "Deepest drawdown",
+        "v": "-25.92%",
+        "m": "Oct 31, 2025 to Nov 20, 2025"
+      },
+      {
+        "k": "Longest red run",
+        "v": "5 weeks",
+        "m": "Consecutive negative weeks"
+      },
+      {
+        "k": "Largest single loss",
+        "v": "-24.31%",
+        "m": "OWL · Jul 2, 2026 · share of NAV that day"
+      },
+      {
+        "k": "Still below the peak",
+        "v": "-13.69%",
+        "m": "Distance from the high-water mark"
+      }
+    ],
+    "discipline": [
+      {
+        "k": "Weeks over the 20% cap",
+        "v": "41 / 44",
+        "m": "Single-name concentration"
+      },
+      {
+        "k": "Weeks carrying margin",
+        "v": "21 / 44",
+        "m": "Stock value above net asset value"
+      },
+      {
+        "k": "Weeks fully inside every limit",
+        "v": "3 / 44",
+        "m": "Cap held and reserve intact"
+      }
+    ],
+    "wins": [
+      {
+        "t": "FITB",
+        "d": "Feb 20, 2026",
+        "s": "STK",
+        "v": "+3.91%"
+      },
+      {
+        "t": "SRPT",
+        "d": "Jun 11, 2026",
+        "s": "OPT",
+        "v": "+2.72%"
+      },
+      {
+        "t": "OWL",
+        "d": "Mar 11, 2026",
+        "s": "OPT",
+        "v": "+2.29%"
+      },
+      {
+        "t": "SRPT",
+        "d": "Jun 11, 2026",
+        "s": "OPT",
+        "v": "+1.66%"
+      },
+      {
+        "t": "ASTS",
+        "d": "Nov 7, 2025",
+        "s": "OPT",
+        "v": "+1.48%"
+      }
+    ],
+    "losses": [
+      {
+        "t": "OWL",
+        "d": "Jul 2, 2026",
+        "s": "STK",
+        "v": "-24.31%"
+      },
+      {
+        "t": "ASTS",
+        "d": "Dec 12, 2025",
+        "s": "STK",
+        "v": "-8.51%"
+      },
+      {
+        "t": "SRPT",
+        "d": "Aug 7, 2026",
+        "s": "STK",
+        "v": "-3.05%"
+      },
+      {
+        "t": "SRPT",
+        "d": "Mar 25, 2026",
+        "s": "OPT",
+        "v": "-1.35%"
+      },
+      {
+        "t": "SRPT",
+        "d": "Mar 25, 2026",
+        "s": "OPT",
+        "v": "-1.32%"
+      }
+    ],
+    "names": [
+      {
+        "t": "NU",
+        "closes": 3,
+        "win": 100,
+        "pf": null,
+        "g": 2.3,
+        "l": 0.0
+      },
+      {
+        "t": "KRKNF",
+        "closes": 4,
+        "win": 100,
+        "pf": null,
+        "g": 1.4,
+        "l": 0.0
+      },
+      {
+        "t": "GRPN",
+        "closes": 6,
+        "win": 67,
+        "pf": 1.88,
+        "g": 2.3,
+        "l": 1.1
+      },
+      {
+        "t": "SERV",
+        "closes": 9,
+        "win": 89,
+        "pf": 2705.27,
+        "g": 1.0,
+        "l": 0.0
+      },
+      {
+        "t": "TOST",
+        "closes": 4,
+        "win": 100,
+        "pf": null,
+        "g": 0.8,
+        "l": 0.0
+      },
+      {
+        "t": "RDW",
+        "closes": 3,
+        "win": 67,
+        "pf": 5.59,
+        "g": 0.8,
+        "l": 0.1
+      },
+      {
+        "t": "SRPT",
+        "closes": 18,
+        "win": 50,
+        "pf": 0.97,
+        "g": 11.2,
+        "l": 10.5
+      },
+      {
+        "t": "ASTS",
+        "closes": 10,
+        "win": 90,
+        "pf": 1.03,
+        "g": 4.7,
+        "l": 4.1
+      },
+      {
+        "t": "BBAI",
+        "closes": 4,
+        "win": 100,
+        "pf": null,
+        "g": 0.4,
+        "l": 0.0
+      },
+      {
+        "t": "OWL",
+        "closes": 111,
+        "win": 77,
+        "pf": 0.58,
+        "g": 25.6,
+        "l": 40.4
+      }
+    ],
+    "events": [
+      {
+        "t": "CFBTC",
+        "closes": 227,
+        "win": 49,
+        "pf": 1.14,
+        "g": 8.6,
+        "l": 6.8
+      },
+      {
+        "t": "INNKI",
+        "closes": 28,
+        "win": 68,
+        "pf": 5.16,
+        "g": 0.8,
+        "l": 0.1
+      },
+      {
+        "t": "CBSOL",
+        "closes": 130,
+        "win": 80,
+        "pf": 1.61,
+        "g": 1.2,
+        "l": 0.7
+      },
+      {
+        "t": "USEUR",
+        "closes": 28,
+        "win": 46,
+        "pf": 0.27,
+        "g": 0.3,
+        "l": 1.1
+      },
+      {
+        "t": "METLG",
+        "closes": 41,
+        "win": 51,
+        "pf": 0.33,
+        "g": 0.5,
+        "l": 1.3
+      },
+      {
+        "t": "JPUSD",
+        "closes": 430,
+        "win": 51,
+        "pf": 0.86,
+        "g": 18.6,
+        "l": 19.7
+      }
+    ],
+    "notes": [
+      "Every figure here is a rate, a ratio or a share of net asset value. Dollar balances and dollar P&L stay off the page, so the biggest loss below reads as a fraction of the book on the day it was taken rather than as a number.",
+      "Single-trade figures are one closing execution, not a whole position. A name exited in pieces shows up as several rows.",
+      "Gains share and losses share say how much of the account's entire realized profit and entire realized loss each name accounts for. They are the cleanest way to see where the money was actually made and lost without printing the money."
     ]
   }
 }

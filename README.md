@@ -57,6 +57,18 @@ One related trap the script handles: fills that arrive showing `realized_pnl: 0`
 
 The dumps live outside this repo on purpose — they contain dollar figures.
 
+## Weekly cadence
+
+**One grade per week, Monday through Friday**, dated the week's last trading day (Thursday when the
+Friday is a holiday). The grid is derived from the trading days present in `curve.dates`, so it can
+never drift from the return series. Two consequences worth knowing:
+
+- The Aug 22 point in the curve is a **settlement artifact**, not a session. It is excluded from the
+  week grid, so the final graded week ends Friday Aug 21 even though the page is dated Aug 22.
+- The original Aug 5 and Aug 9 cards were both inside the week of Aug 3-7 and have been merged into
+  one card dated Aug 7. Jul 13 and Jul 25 were re-dated to Jul 17 and Jul 24. Every `weekRet` is now
+  recomputed Friday-to-Friday off the inception curve rather than over an ad-hoc window.
+
 ## Reconstructed after-actions (Oct 2025 - Jul 2026)
 
 39 weeks before the live record were rebuilt from the trade history and published alongside the six
@@ -82,11 +94,21 @@ from FITB at the conversion ratio - which reproduces both observed CMA trade pri
 Working files live in `trading-system/data/` (outside this repo - they contain dollar figures):
 `nav_series.json`, `prices_weekly.json`, `weekly_recon.json`, `weekly_cash.json`, `weekly_cards.json`.
 
+## Best & Worst tab
+
+`record` drives it. Everything is a rate, a ratio, or a share - no dollars, in line with the rest of
+the site. Single-trade extremes are expressed as a share of NAV **on the day the trade closed**,
+which is the honest way to size a loss without printing it. `names` and `events` give each symbol's
+share of the account's *entire* realized gains and *entire* realized losses, which is what shows
+where the money was actually made and lost. A profit factor above 50 renders as an em dash - it means
+the loss denominator was near zero, not that the name was flawless.
+
 ## data.json schema
 
 - `asOf` (str), `curveLabel` (str)
 - `returns`: `[{k,v,m}]` — v is a percentage number (e.g. -6.55)
 - `reports`: `[{w, weekLabel, grade, weekRet, dials:[{key,state,value,rule}], note, now?, recon?}]` — full weekly report cards, oldest→newest; state ∈ `pass|warn|fail`. Both the clickable grade-history strip and the card view render from this. Each refresh, **append** the new week's full card and move `now:true` to it; keep prior weeks. `recon:true` marks a week rebuilt after the fact rather than graded live — it renders dashed in the strip, carries a badge on the card, and appends the reconstruction caveat. **A card may omit the event-sleeve dial entirely**: the sleeve is only graded in weeks where forecast/event trades were actually made, so quiet weeks get no free pass for it. The card defaults to the `now` entry; clicking a chip shows that week.
 - `career`: cumulative closed-trade record shown on the Performance tab under the weekly card. **Dollar-free by design — rates, ratios, counts only.** `sinceLabel`/`asOfLabel` (strs); `headline`: `[{k,v,m}]` stat tiles (v is a preformatted string); `buckets`: `[{name,tag,tone,win,pf,closes,note}]` — tone ∈ `up|warn|down` colors the card; `insights`: `[str]` — the "Between the Report Cards" observations. Script-owned except `insights` and the bucket `note`s: regenerate with `python career_stats.py --write <trade dumps>` each refresh (see above).
+- `record`: the Best & Worst tab. `accolades`/`failures`/`discipline`: `[{k,v,m}]` stat tiles (v is preformatted; a leading `+`/`−` colours it). `wins`/`losses`: `[{t,d,s,v}]` single closing executions as a share of that day's NAV. `names`/`events`: `[{t,closes,win,pf,g,l}]` where `g`/`l` are shares of all realized gains/losses; `pf` null or >50 renders as an em dash. `notes`: `[str]`.
 - `positions`: `[{t,s,w,r}]` — s ∈ `wheel|dir|cash`; w,r are percentages; r=null hides it from the ledger
 - `curve`: `{cps:[fractions], dates:["YYYYMMDD"]}` — parallel arrays
