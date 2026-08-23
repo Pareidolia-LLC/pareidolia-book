@@ -57,11 +57,36 @@ One related trap the script handles: fills that arrive showing `realized_pnl: 0`
 
 The dumps live outside this repo on purpose — they contain dollar figures.
 
+## Reconstructed after-actions (Oct 2025 - Jul 2026)
+
+39 weeks before the live record were rebuilt from the trade history and published alongside the six
+graded live. They are marked `recon:true` and are visually distinct on purpose: inferring a grade
+after the fact is not the same act as calling it that Friday.
+
+What is **measured**: weekly TWR (compounded off the inception curve, so deposits are handled),
+position size (share counts rebuilt from executed trades, priced at weekly closes), realized closes
+and win rate, event-sleeve activity, and adds-below-carry.
+
+What is **inferred**: the cash line. Historical option and event-contract marks are not recoverable
+from the trade feed - it carries no strike or expiry - so cash is derived from how much of NAV the
+equity book occupied. That is a *lower* bound, which is why the dial shows a bound and not a figure.
+Where stock alone exceeded NAV the book was on margin and the breach is certain regardless; that
+covers 21 of the 39 weeks.
+
+Reconstruction was validated by rebuilding today's book from trades alone: all 9 held names matched
+the live pull exactly. Two caveats are recorded in the code: the Comerica/Fifth Third merger converted
+100 CMA into ~186.63 FITB on 2026-02-02 (injected as an explicit corporate action, since pure trade
+replay cannot see it), and CMA's own price history is unavailable post-delisting, so it is derived
+from FITB at the conversion ratio - which reproduces both observed CMA trade prices to within 1%.
+
+Working files live in `trading-system/data/` (outside this repo - they contain dollar figures):
+`nav_series.json`, `prices_weekly.json`, `weekly_recon.json`, `weekly_cash.json`, `weekly_cards.json`.
+
 ## data.json schema
 
 - `asOf` (str), `curveLabel` (str)
 - `returns`: `[{k,v,m}]` — v is a percentage number (e.g. -6.55)
-- `reports`: `[{w, weekLabel, grade, weekRet, dials:[{key,state,value,rule}], note, now?}]` — full weekly report cards, oldest→newest; state ∈ `pass|warn|fail`. Both the clickable grade-history strip and the card view render from this. Each refresh, **append** the new week's full card and move `now:true` to it; keep prior weeks. The card defaults to the `now` entry; clicking a chip shows that week.
+- `reports`: `[{w, weekLabel, grade, weekRet, dials:[{key,state,value,rule}], note, now?, recon?}]` — full weekly report cards, oldest→newest; state ∈ `pass|warn|fail`. Both the clickable grade-history strip and the card view render from this. Each refresh, **append** the new week's full card and move `now:true` to it; keep prior weeks. `recon:true` marks a week rebuilt after the fact rather than graded live — it renders dashed in the strip, carries a badge on the card, and appends the reconstruction caveat. **A card may omit the event-sleeve dial entirely**: the sleeve is only graded in weeks where forecast/event trades were actually made, so quiet weeks get no free pass for it. The card defaults to the `now` entry; clicking a chip shows that week.
 - `career`: cumulative closed-trade record shown on the Performance tab under the weekly card. **Dollar-free by design — rates, ratios, counts only.** `sinceLabel`/`asOfLabel` (strs); `headline`: `[{k,v,m}]` stat tiles (v is a preformatted string); `buckets`: `[{name,tag,tone,win,pf,closes,note}]` — tone ∈ `up|warn|down` colors the card; `insights`: `[str]` — the "Between the Report Cards" observations. Script-owned except `insights` and the bucket `note`s: regenerate with `python career_stats.py --write <trade dumps>` each refresh (see above).
 - `positions`: `[{t,s,w,r}]` — s ∈ `wheel|dir|cash`; w,r are percentages; r=null hides it from the ledger
 - `curve`: `{cps:[fractions], dates:["YYYYMMDD"]}` — parallel arrays

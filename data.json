@@ -20,6 +20,1064 @@
   ],
   "reports": [
     {
+      "w": "Oct 24",
+      "weekLabel": "Week of Oct 20 – Oct 24, 2025",
+      "grade": "D−",
+      "weekRet": 3.48,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "ASTS 71.2%",
+          "rule": "3.6× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "warn",
+          "value": "≥5.6%",
+          "rule": "Stock at 94% of NAV — too close to the floor to call"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "62 event contracts traded"
+        }
+      ],
+      "note": "ASTS carried 71.2% of NAV against a 20% cap. Stock was 94% of NAV — the reserve sat close enough to the floor that this reconstruction cannot call it either way. 12 closes booked, 67% won."
+    },
+    {
+      "w": "Oct 31",
+      "weekLabel": "Week of Oct 27 – Oct 31, 2025",
+      "grade": "D−",
+      "weekRet": 6.97,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "ASTS 72.5%",
+          "rule": "3.6× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "warn",
+          "value": "≥8.5%",
+          "rule": "Stock at 92% of NAV — too close to the floor to call"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "51 event contracts traded"
+        }
+      ],
+      "note": "ASTS carried 72.5% of NAV against a 20% cap. Stock was 92% of NAV — the reserve sat close enough to the floor that this reconstruction cannot call it either way. 21 closes booked, 62% won."
+    },
+    {
+      "w": "Nov 7",
+      "weekLabel": "Week of Nov 3 – Nov 7, 2025",
+      "grade": "F",
+      "weekRet": -10.2,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "ASTS 69.6%",
+          "rule": "3.5× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 102% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "59 event contracts traded"
+        }
+      ],
+      "note": "ASTS carried 69.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. 31 closes booked, 65% won."
+    },
+    {
+      "w": "Nov 14",
+      "weekLabel": "Week of Nov 10 – Nov 14, 2025",
+      "grade": "F",
+      "weekRet": -6.17,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "ASTS 65.8%",
+          "rule": "3.3× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤0.8%",
+          "rule": "Stock at 99% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "42 event contracts traded"
+        }
+      ],
+      "note": "ASTS carried 65.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. 21 closes booked, 62% won."
+    },
+    {
+      "w": "Nov 21",
+      "weekLabel": "Week of Nov 17 – Nov 21, 2025",
+      "grade": "F",
+      "weekRet": -10.48,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "ASTS 61.5%",
+          "rule": "3.1× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤2.4%",
+          "rule": "Stock at 98% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "61 event contracts traded"
+        }
+      ],
+      "note": "ASTS carried 61.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. 22 closes booked, 86% won."
+    },
+    {
+      "w": "Nov 28",
+      "weekLabel": "Week of Nov 24 – Nov 28, 2025",
+      "grade": "F",
+      "weekRet": 8.92,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "ASTS 61.8%",
+          "rule": "3.1× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤0.8%",
+          "rule": "Stock at 99% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "82 event contracts traded"
+        }
+      ],
+      "note": "ASTS carried 61.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. 45 closes booked, 69% won."
+    },
+    {
+      "w": "Dec 5",
+      "weekLabel": "Week of Dec 1 – Dec 5, 2025",
+      "grade": "F",
+      "weekRet": 8.77,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "ASTS 74.7%",
+          "rule": "3.7× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 114% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "111 event contracts traded"
+        }
+      ],
+      "note": "ASTS carried 74.7% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 43 closes booked, 63% won."
+    },
+    {
+      "w": "Dec 12",
+      "weekLabel": "Week of Dec 8 – Dec 12, 2025",
+      "grade": "C",
+      "weekRet": 1.62,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 31.1%",
+          "rule": "1.6× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "pass",
+          "value": "≥62.6%",
+          "rule": "Stock at 37% of NAV — clear of the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "114 event contracts traded"
+        }
+      ],
+      "note": "OWL carried 31.1% of NAV against a 20% cap. Stock was 37% of NAV, so the reserve held. 52 closes booked, 77% won."
+    },
+    {
+      "w": "Dec 19",
+      "weekLabel": "Week of Dec 15 – Dec 19, 2025",
+      "grade": "D",
+      "weekRet": 0.46,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 45.7%",
+          "rule": "2.3× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤4.8%",
+          "rule": "Stock at 95% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "87 event contracts traded"
+        }
+      ],
+      "note": "OWL carried 45.7% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. OWL was added to below carry. 42 closes booked, 62% won."
+    },
+    {
+      "w": "Dec 26",
+      "weekLabel": "Week of Dec 22 – Dec 26, 2025",
+      "grade": "D",
+      "weekRet": -0.38,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 44.8%",
+          "rule": "2.2× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤5.0%",
+          "rule": "Stock at 95% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "80 event contracts traded"
+        }
+      ],
+      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. 46 closes booked, 76% won."
+    },
+    {
+      "w": "Jan 2",
+      "weekLabel": "Week of Dec 29 – Jan 2, 2026",
+      "grade": "D−",
+      "weekRet": 1.87,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 44.8%",
+          "rule": "2.2× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤4.3%",
+          "rule": "Stock at 96% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 7 times"
+        }
+      ],
+      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. JPUSD, a name since banned from the book, traded 7 times. 71 closes booked, 77% won."
+    },
+    {
+      "w": "Jan 9",
+      "weekLabel": "Week of Jan 5 – Jan 9, 2026",
+      "grade": "D",
+      "weekRet": 3.89,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 44.3%",
+          "rule": "2.2× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤3.9%",
+          "rule": "Stock at 96% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "99 event contracts traded"
+        }
+      ],
+      "note": "OWL carried 44.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. 39 closes booked, 69% won."
+    },
+    {
+      "w": "Jan 16",
+      "weekLabel": "Week of Jan 12 – Jan 16, 2026",
+      "grade": "D−",
+      "weekRet": 1.94,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "CMA 47.3%",
+          "rule": "2.4× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤3.9%",
+          "rule": "Stock at 96% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 12 times"
+        }
+      ],
+      "note": "CMA carried 47.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. OWL and ZETA were added to below carry. JPUSD, a name since banned from the book, traded 12 times. 81 closes booked, 68% won."
+    },
+    {
+      "w": "Jan 23",
+      "weekLabel": "Week of Jan 19 – Jan 23, 2026",
+      "grade": "B−",
+      "weekRet": 0.47,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "CMA 28.6%",
+          "rule": "1.4× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "pass",
+          "value": "≥15.5%",
+          "rule": "Stock at 84% of NAV — clear of the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "198 event contracts traded"
+        }
+      ],
+      "note": "CMA carried 28.6% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. ZETA was added to below carry. 96 closes booked, 56% won."
+    },
+    {
+      "w": "Jan 30",
+      "weekLabel": "Week of Jan 26 – Jan 30, 2026",
+      "grade": "D",
+      "weekRet": -4.85,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "CMA 30.9%",
+          "rule": "1.5× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "warn",
+          "value": "≥9.1%",
+          "rule": "Stock at 91% of NAV — too close to the floor to call"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "173 event contracts traded"
+        }
+      ],
+      "note": "CMA carried 30.9% of NAV against a 20% cap. Stock was 91% of NAV — the reserve sat close enough to the floor that this reconstruction cannot call it either way. OWL was added to below carry. 98 closes booked, 69% won."
+    },
+    {
+      "w": "Feb 6",
+      "weekLabel": "Week of Feb 2 – Feb 6, 2026",
+      "grade": "D−",
+      "weekRet": 0.46,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "FITB 36.9%",
+          "rule": "1.8× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 101% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "178 event contracts traded"
+        }
+      ],
+      "note": "FITB carried 36.9% of NAV against a 20% cap. Stock alone came to 101% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. 87 closes booked, 51% won."
+    },
+    {
+      "w": "Feb 13",
+      "weekLabel": "Week of Feb 9 – Feb 13, 2026",
+      "grade": "D−",
+      "weekRet": -1.36,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "FITB 35.9%",
+          "rule": "1.8× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 102% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "24 event contracts traded"
+        }
+      ],
+      "note": "FITB carried 35.9% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 23 closes booked, 57% won."
+    },
+    {
+      "w": "Feb 20",
+      "weekLabel": "Week of Feb 16 – Feb 20, 2026",
+      "grade": "B−",
+      "weekRet": -0.54,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 29.8%",
+          "rule": "1.5× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "pass",
+          "value": "≥53.7%",
+          "rule": "Stock at 46% of NAV — clear of the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "active",
+          "rule": "17 event contracts traded"
+        }
+      ],
+      "note": "OWL carried 29.8% of NAV against a 20% cap. Stock was 46% of NAV, so the reserve held. 15 closes booked, 67% won."
+    },
+    {
+      "w": "Feb 27",
+      "weekLabel": "Week of Feb 23 – Feb 27, 2026",
+      "grade": "F",
+      "weekRet": -0.56,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 79.6%",
+          "rule": "4.0× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 102% of NAV — borrowed, so the 10% floor was breached"
+        }
+      ],
+      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 20 closes booked, 65% won."
+    },
+    {
+      "w": "Mar 6",
+      "weekLabel": "Week of Mar 2 – Mar 6, 2026",
+      "grade": "F",
+      "weekRet": -4.12,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 88.5%",
+          "rule": "4.4× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤1.8%",
+          "rule": "Stock at 98% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 14 times"
+        }
+      ],
+      "note": "OWL carried 88.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. OWL was added to below carry. JPUSD, a name since banned from the book, traded 14 times. 26 closes booked, 81% won."
+    },
+    {
+      "w": "Mar 13",
+      "weekLabel": "Week of Mar 9 – Mar 13, 2026",
+      "grade": "F",
+      "weekRet": -5.63,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 82.9%",
+          "rule": "4.1× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 106% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 51 times"
+        }
+      ],
+      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SRPT was added to below carry. JPUSD, a name since banned from the book, traded 51 times. 67 closes booked, 70% won."
+    },
+    {
+      "w": "Mar 20",
+      "weekLabel": "Week of Mar 16 – Mar 20, 2026",
+      "grade": "F",
+      "weekRet": 4.0,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 84.3%",
+          "rule": "4.2× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 109% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 25 times"
+        }
+      ],
+      "note": "OWL carried 84.3% of NAV against a 20% cap. Stock alone came to 109% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and SRPT were added to below carry. JPUSD, a name since banned from the book, traded 25 times. 22 closes booked, 45% won."
+    },
+    {
+      "w": "Mar 27",
+      "weekLabel": "Week of Mar 23 – Mar 27, 2026",
+      "grade": "F",
+      "weekRet": 1.39,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 82.6%",
+          "rule": "4.1× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 111% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 41 times"
+        }
+      ],
+      "note": "OWL carried 82.6% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. JPUSD, a name since banned from the book, traded 41 times. 32 closes booked, 50% won."
+    },
+    {
+      "w": "Apr 3",
+      "weekLabel": "Week of Mar 30 – Apr 3, 2026",
+      "grade": "F",
+      "weekRet": 0.61,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 79.6%",
+          "rule": "4.0× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 113% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 50 times"
+        }
+      ],
+      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 50 times. 106 closes booked, 58% won."
+    },
+    {
+      "w": "Apr 10",
+      "weekLabel": "Week of Apr 6 – Apr 10, 2026",
+      "grade": "F",
+      "weekRet": -3.88,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 79.5%",
+          "rule": "4.0× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 111% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 35 times"
+        }
+      ],
+      "note": "OWL carried 79.5% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 35 times. 49 closes booked, 82% won."
+    },
+    {
+      "w": "Apr 17",
+      "weekLabel": "Week of Apr 13 – Apr 17, 2026",
+      "grade": "F",
+      "weekRet": 10.16,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 86.4%",
+          "rule": "4.3× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 116% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 46 times"
+        }
+      ],
+      "note": "OWL carried 86.4% of NAV against a 20% cap. Stock alone came to 116% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 46 times. 51 closes booked, 51% won."
+    },
+    {
+      "w": "Apr 24",
+      "weekLabel": "Week of Apr 20 – Apr 24, 2026",
+      "grade": "F",
+      "weekRet": -2.79,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 82.9%",
+          "rule": "4.1× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 113% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 44 times"
+        }
+      ],
+      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 44 times. 39 closes booked, 64% won."
+    },
+    {
+      "w": "May 1",
+      "weekLabel": "Week of Apr 27 – May 1, 2026",
+      "grade": "F",
+      "weekRet": 5.62,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 85.3%",
+          "rule": "4.3× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 114% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 31 times"
+        }
+      ],
+      "note": "OWL carried 85.3% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 31 times. 34 closes booked, 79% won."
+    },
+    {
+      "w": "May 8",
+      "weekLabel": "Week of May 4 – May 8, 2026",
+      "grade": "F",
+      "weekRet": 1.34,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 89.0%",
+          "rule": "4.5× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 115% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 26 times"
+        }
+      ],
+      "note": "OWL carried 89.0% of NAV against a 20% cap. Stock alone came to 115% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 26 times. 30 closes booked, 50% won."
+    },
+    {
+      "w": "May 15",
+      "weekLabel": "Week of May 11 – May 15, 2026",
+      "grade": "F",
+      "weekRet": -4.63,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 83.6%",
+          "rule": "4.2× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 108% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 25 times"
+        }
+      ],
+      "note": "OWL carried 83.6% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 25 times. 21 closes booked, 29% won."
+    },
+    {
+      "w": "May 22",
+      "weekLabel": "Week of May 18 – May 22, 2026",
+      "grade": "F",
+      "weekRet": 3.46,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 86.0%",
+          "rule": "4.3× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 108% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 20 times"
+        }
+      ],
+      "note": "OWL carried 86.0% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 20 times. 11 closes booked, 73% won."
+    },
+    {
+      "w": "May 29",
+      "weekLabel": "Week of May 25 – May 29, 2026",
+      "grade": "F",
+      "weekRet": 1.5,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 76.8%",
+          "rule": "3.8× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 106% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 12 times"
+        }
+      ],
+      "note": "OWL carried 76.8% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 12 times. 8 closes booked, 88% won."
+    },
+    {
+      "w": "Jun 5",
+      "weekLabel": "Week of Jun 1 – Jun 5, 2026",
+      "grade": "F",
+      "weekRet": -3.55,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 85.6%",
+          "rule": "4.3× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 107% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 19 times"
+        }
+      ],
+      "note": "OWL carried 85.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. JPUSD, a name since banned from the book, traded 19 times. 10 closes booked, 80% won."
+    },
+    {
+      "w": "Jun 12",
+      "weekLabel": "Week of Jun 8 – Jun 12, 2026",
+      "grade": "F",
+      "weekRet": 0.63,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 84.0%",
+          "rule": "4.2× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 105% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 53 times"
+        }
+      ],
+      "note": "OWL carried 84.0% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 53 times. 73 closes booked, 51% won."
+    },
+    {
+      "w": "Jun 19",
+      "weekLabel": "Week of Jun 15 – Jun 19, 2026",
+      "grade": "F",
+      "weekRet": 1.29,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 81.6%",
+          "rule": "4.1× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 107% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 259 times"
+        }
+      ],
+      "note": "OWL carried 81.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. JPUSD, a name since banned from the book, traded 259 times. 50 closes booked, 68% won."
+    },
+    {
+      "w": "Jun 26",
+      "weekLabel": "Week of Jun 22 – Jun 26, 2026",
+      "grade": "F",
+      "weekRet": -5.98,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "OWL 78.1%",
+          "rule": "3.9× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "margin",
+          "rule": "Stock at 105% of NAV — borrowed, so the 10% floor was breached"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 117 times"
+        }
+      ],
+      "note": "OWL carried 78.1% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SPCX was added to below carry. JPUSD, a name since banned from the book, traded 117 times. 88 closes booked, 45% won."
+    },
+    {
+      "w": "Jul 3",
+      "weekLabel": "Week of Jun 29 – Jul 3, 2026",
+      "grade": "C",
+      "weekRet": 2.92,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "SRPT 26.3%",
+          "rule": "1.3× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "pass",
+          "value": "≥61.7%",
+          "rule": "Stock at 38% of NAV — clear of the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 59 times"
+        }
+      ],
+      "note": "SRPT carried 26.3% of NAV against a 20% cap. Stock was 38% of NAV, so the reserve held. JPUSD, a name since banned from the book, traded 59 times. 73 closes booked, 51% won."
+    },
+    {
+      "w": "Jul 10",
+      "weekLabel": "Week of Jul 6 – Jul 10, 2026",
+      "grade": "D−",
+      "weekRet": -3.49,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "SRPT 33.4%",
+          "rule": "1.7× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "≤5.0%",
+          "rule": "Stock at 95% of NAV — below the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 175 times"
+        }
+      ],
+      "note": "SRPT carried 33.4% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. SPCX was added to below carry. JPUSD, a name since banned from the book, traded 175 times. 134 closes booked, 46% won."
+    },
+    {
       "w": "Jul 13",
       "weekLabel": "Week of Jul 13 – 18, 2026",
       "grade": "C",
@@ -72,6 +1130,34 @@
         }
       ],
       "note": "The market did most of the −4% — marks on names already held; realized activity was quiet. But the controllable leak, SRPT at 30% of the book, stayed wide open two weeks after it was flagged. Cash discipline was the only line held."
+    },
+    {
+      "w": "Jul 31",
+      "weekLabel": "Week of Jul 27 – Jul 31, 2026",
+      "grade": "C",
+      "weekRet": 0.1,
+      "recon": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "fail",
+          "value": "SRPT 28.2%",
+          "rule": "1.4× the 20% cap"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "pass",
+          "value": "≥16.4%",
+          "rule": "Stock at 84% of NAV — clear of the 10% floor"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "JPUSD",
+          "rule": "JPUSD traded 8 times"
+        }
+      ],
+      "note": "SRPT carried 28.2% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. JPUSD, a name since banned from the book, traded 8 times. 54 closes booked, 57% won."
     },
     {
       "w": "Aug 5",

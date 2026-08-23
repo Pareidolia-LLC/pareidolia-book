@@ -74,7 +74,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .grade{font-family:var(--serif); font-weight:600; font-size:34px; line-height:1; padding:5px 16px; border-radius:10px; border:1.5px solid var(--down); color:var(--down)}
   .rc-head .wk{font-family:var(--mono); font-size:12px; color:var(--muted); line-height:1.7}
   .rc-head .wkret{font-weight:600}
-  .dials{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .dials{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px}
   .dial{background:var(--panel); border:1px solid var(--line); border-top:3px solid var(--line); border-radius:10px; padding:15px 16px 14px}
   .dial.pass{border-top-color:var(--up)} .dial.warn{border-top-color:var(--warn)} .dial.fail{border-top-color:var(--down)}
   .dial .dk{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted)}
@@ -92,6 +92,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .con .box.no{border-top:3px solid var(--down)}
   .con .box h4{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 10px}
   .con ul{margin:0; padding-left:18px} .con li{font-size:13px; margin:5px 0; color:var(--ink)}
+  .hnote{font-family:var(--serif); font-style:italic; font-size:12.5px; color:var(--muted); margin:0 0 10px; line-height:1.55}
   .hlabel{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:20px 0 8px}
   .hist{display:flex; gap:10px; overflow-x:auto; padding-bottom:4px}
   .gcard{flex:0 0 auto; min-width:82px; background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:10px 12px; text-align:center; cursor:pointer; font:inherit; color:inherit; transition:border-color .15s, box-shadow .15s}
@@ -102,6 +103,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .gw{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.04em}
   .gg{font-family:var(--serif); font-size:26px; font-weight:600; line-height:1.15; margin:3px 0}
   .gr{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
+  .gcard.recon{opacity:.72; border-style:dashed}
+  .gcard.recon:hover,.gcard.recon.active{opacity:1}
+  .grecon{font-family:var(--mono); font-size:8px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:3px}
+  .rbadge{display:inline-block; font-family:var(--mono); font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); padding:3px 8px; margin-top:6px}
+  .rbasis{font-family:var(--serif); font-style:italic; font-size:12.5px; color:var(--muted); margin-top:10px; line-height:1.55}
   .tabs{display:flex; flex-wrap:wrap; gap:2px 4px; margin-top:22px; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; background:var(--bg)}
   .tab{flex:0 0 auto; background:none; border:0; cursor:pointer; font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:13px 16px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .15s}
   .tab:hover{color:var(--ink)}
@@ -251,6 +257,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <div class="dials" id="dials"></div>
     <p class="rc-note" id="rcnote"></p>
     <p class="hlabel">Prior after-actions — select a week to read the full report</p>
+    <p class="hnote">Dashed cards were rebuilt from the trade record after the fact; solid cards were graded live that week.</p>
     <div class="hist" id="hist"></div>
   </section>
   </div>
@@ -346,7 +353,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       var c=gcol(rc.grade);
       head.innerHTML='<div class="grade" style="border-color:'+c+';color:'+c+'">'+rc.grade+'</div>'+
         '<div><div class="wk">'+rc.weekLabel+'</div>'+
-        '<div class="wk">Return this week <span class="wkret '+cls(rc.weekRet)+'">'+fmt(rc.weekRet)+'</span></div></div>';
+        '<div class="wk">Return this week <span class="wkret '+cls(rc.weekRet)+'">'+fmt(rc.weekRet)+'</span></div>'+
+        (rc.recon?'<div class="rbadge">Reconstructed · not graded live</div>':'')+'</div>';
       dl.innerHTML="";
       rc.dials.forEach(function(d){
         var lbl={pass:"Pass",warn:"Watch",fail:"Breach"}[d.state];
@@ -355,20 +363,28 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           '<div class="dv">'+d.value+'</div><div class="rule">'+d.rule+'</div>';
         dl.appendChild(el);
       });
-      note.innerHTML='<b>Assessment:</b> '+rc.note;
+      note.innerHTML='<b>Assessment:</b> '+rc.note+
+        (rc.recon?'<div class="rbasis">Rebuilt after the fact from the executed trade record and weekly closing prices, not written that Friday. '+
+        'Position size is measured; the cash line is inferred from how much of net asset value the equity book took up, '+
+        'so it is stated as a bound rather than a figure. Where stock alone exceeded net asset value, the book was on margin '+
+        'and the floor was breached beyond doubt.</div>':'');
     }
     function chips(active){
       strip.innerHTML="";
       reports.forEach(function(x,i){
         var b=document.createElement("button"); b.type="button"; b.className="gcard"+(i===active?" active":"");
         b.setAttribute("aria-label",x.weekLabel+", grade "+x.grade);
+        b.className+=(x.recon?" recon":"");
         b.innerHTML='<div class="gw">'+x.w+'</div><div class="gg" style="color:'+gcol(x.grade)+'">'+x.grade+'</div>'+
-          '<div class="gr '+cls(x.weekRet)+'">'+fmt(x.weekRet)+'</div>'+(x.now?'<div class="gnow">now</div>':'');
+          '<div class="gr '+cls(x.weekRet)+'">'+fmt(x.weekRet)+'</div>'+
+          (x.now?'<div class="gnow">now</div>':(x.recon?'<div class="grecon">rebuilt</div>':''));
         b.addEventListener("click",function(){ pick(i); });
         strip.appendChild(b);
       });
     }
-    function pick(i){ card(reports[i]); chips(i); }
+    function pick(i,scroll){ card(reports[i]); chips(i);
+      var el=strip.children[i];
+      if(el&&scroll!==false) el.scrollIntoView({block:"nearest",inline:"center"}); }
     var def=0; reports.forEach(function(x,i){ if(x.now) def=i; });
     pick(def);
   })();
