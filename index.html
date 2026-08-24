@@ -221,6 +221,10 @@
   .fs-tier{display:inline-block; font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; border:1px solid var(--line); padding:1px 5px; color:var(--muted); margin-left:7px}
   .fs-sw{display:inline-block; width:8px; height:8px; margin-right:6px; vertical-align:1px}
   #fsNames td:nth-child(4),#fsMovers td:nth-child(3),#fsFactors td:nth-child(1),#fsIndustries td:nth-child(3){white-space:nowrap}
+  /* Other panels lead with an element carrying its own top margin; this one
+     leads with a bare .eyebrow, so it needs the clearance added back or it
+     sits flush against the sticky tab band. */
+  #panel-futuresight > .eyebrow{margin-top:30px}
   .fs-kicker{color:var(--muted); font-size:13px; max-width:64ch; margin:8px auto 0; font-style:italic}
   .fs-search{font-family:var(--mono); font-size:11.5px; padding:7px 10px; border:1px solid var(--line); background:var(--panel); color:var(--ink); min-width:220px; margin:14px 0 4px}
   .fs-search:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
