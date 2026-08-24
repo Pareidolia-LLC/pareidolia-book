@@ -220,6 +220,32 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* performance page: returns + curve, report card below */
   .perfgrid{margin-top:26px}
   .perfgrid>div:first-child>section:first-child{margin-top:0}
+
+  /* Futuresight */
+  .fs-note{border-left:2px solid var(--accent); padding:2px 0 2px 14px; color:var(--muted); font-size:13px; max-width:66ch; margin:16px auto; text-align:left}
+  .fs-legend{display:flex; flex-wrap:wrap; gap:6px; margin:16px 0 6px; justify-content:center}
+  .fs-fc{display:inline-flex; align-items:center; gap:7px; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; padding:5px 10px; border:1px solid var(--line); background:none; color:var(--muted); cursor:pointer}
+  .fs-fc .sw{width:9px; height:9px; flex:none}
+  .fs-fc:hover{border-color:var(--accent); color:var(--ink)}
+  .fs-fc.active{background:var(--accent-soft); border-color:var(--accent); color:var(--ink)}
+  .fs-fc:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .fsview{display:none}
+  .fsview.active{display:block}
+  canvas#fscurve{display:block; width:100%; height:280px; margin-top:6px}
+  .fs-corrwrap{overflow-x:auto; margin-top:10px}
+  table.fs-corr{border-collapse:collapse; font-family:var(--mono); font-size:11px; min-width:520px}
+  table.fs-corr td,table.fs-corr th{padding:7px 8px; text-align:center; border:1px solid var(--line); font-variant-numeric:tabular-nums}
+  table.fs-corr th{font-weight:500; color:var(--muted); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; background:var(--panel-2)}
+  table.fs-corr th.rh{text-align:right}
+  .fs-ind{font-family:var(--mono); font-size:10px; color:var(--faint); letter-spacing:.06em; text-transform:uppercase}
+  .fs-tier{display:inline-block; font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; border:1px solid var(--line); padding:1px 5px; color:var(--muted); margin-left:7px}
+  .fs-sw{display:inline-block; width:8px; height:8px; margin-right:6px; vertical-align:1px}
+  #fsNames td:nth-child(4),#fsMovers td:nth-child(3),#fsFactors td:nth-child(1),#fsIndustries td:nth-child(3){white-space:nowrap}
+  .fs-kicker{color:var(--muted); font-size:13px; max-width:64ch; margin:8px auto 0; font-style:italic}
+  .fs-search{font-family:var(--mono); font-size:11.5px; padding:7px 10px; border:1px solid var(--line); background:var(--panel); color:var(--ink); min-width:220px; margin:14px 0 4px}
+  .fs-search:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
+  .fs-untracked{color:var(--faint); font-style:italic}
+  .fs-cover{font-family:var(--mono); font-size:10.5px; color:var(--faint); letter-spacing:.05em; margin-top:10px}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -237,6 +263,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <button class="tab" data-panel="approach" role="tab">Operations</button>
     <button class="tab" data-panel="concepts" role="tab">Doctrine</button>
     <button class="tab" data-panel="record" role="tab">Best &amp; Worst</button>
+    <button class="tab" data-panel="futuresight" role="tab">Ideation</button>
   </nav>
   <div class="panel active" id="panel-report">
   <div class="perfgrid">
@@ -360,6 +387,43 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <ul class="proselist" id="recnotes"></ul>
   </section>
   </div>
+  <div class="panel" id="panel-futuresight">
+    <div class="eyebrow">Concept 01 &middot; opened Aug 2026 &middot; forward-tracked</div>
+    <h2>Futuresight Index</h2>
+    <p class="fs-kicker">Ideation is where a thesis gets written down, weighted, and then held to a public record before any of it is traded. Futuresight is the first concept in the series.</p>
+    <p class="prose">A thematic basket built from the technology that science fiction got specific about &mdash; autonomous weapons, machine intelligence, cyberware, brain interfaces, seabed mining, the data brokers, and the petrochemical layer underneath all of it. Every company is listed once, in the industry it plays into most, and tagged with the risk factor that actually moves its price.</p>
+    <p class="fs-note">Calling it what it is: this is speculation, and a basket built on sentiment is closer to gambling than investing. The bet is that the story gets more expensive, not that the cash flows show up. Roughly one name in five has no earnings underneath it. Tracked forward from the open on <b id="fsIncept"></b> at fixed weights, with no trading and no hindsight. There is deliberately no backtest here: the roster was picked in August 2026 knowing what had already happened, so a historical curve would measure hindsight rather than skill.</p>
+    <div class="tlviews" id="fsviews" role="tablist" aria-label="Futuresight views"></div>
+
+    <div class="fsview active" id="fsv-concept">
+      <div class="fs-legend" id="fsLegend"></div>
+      <div class="tablewrap"><table><thead><tr><th>Industry</th><th>Names</th><th>Dominant factor</th><th class="r">Weight</th></tr></thead><tbody id="fsIndustries"></tbody></table></div>
+      <p class="fs-cover" id="fsCoverage"></p>
+    </div>
+
+    <div class="fsview" id="fsv-names">
+      <input type="search" class="fs-search" id="fsQ" placeholder="Search ticker, company, industry…" aria-label="Search the roster">
+      <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Company</th><th>Industry</th><th>Factor</th><th class="r">Weight</th><th class="r">Return</th></tr></thead><tbody id="fsNames"></tbody></table></div>
+      <p class="fs-cover" id="fsNamesCount"></p>
+    </div>
+
+    <div class="fsview" id="fsv-track">
+      <div class="stats" id="fsStats"></div>
+      <div class="chart-card" style="margin-top:14px">
+        <div class="chart-head"><h2>Index vs benchmarks</h2><span class="sub" id="fsCurveSub"></span></div>
+        <canvas id="fscurve" role="img" aria-label="Futuresight index against SPY and QQQ since inception."></canvas>
+      </div>
+      <h3 style="margin-top:22px">Movers since inception</h3>
+      <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Company</th><th>Factor</th><th class="r">Weight</th><th class="r">Return</th></tr></thead><tbody id="fsMovers"></tbody></table></div>
+    </div>
+
+    <div class="fsview" id="fsv-factors">
+      <p class="prose">Seventeen industries collapse into eight factors. The matrix below is the honest reason that matters: it is computed on trailing daily history, because correlation measures how these move together rather than how well they were picked.</p>
+      <div class="fs-corrwrap" id="fsCorr"></div>
+      <h3 style="margin-top:22px">Factor groups since inception</h3>
+      <div class="tablewrap"><table><thead><tr><th>Factor</th><th>Names</th><th class="r">Weight</th><th class="r">Return</th></tr></thead><tbody id="fsFactors"></tbody></table></div>
+    </div>
+  </div>
   <div class="panel" id="panel-story"></div>
   <footer>
     <p>Figures are time-weighted returns and portfolio weights. Absolute balances, share counts, and dollar P&amp;L are withheld by design — transparent on performance, silent on size.</p>
@@ -370,6 +434,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 (function(){
   "use strict";
   var DATA = __DATA_JSON__;
+  var FS = __FS_JSON__;
   var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var css=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();};
   var fmt=function(v){return (v>=0?"+":"−")+Math.abs(v).toFixed(2)+"%";};
@@ -682,13 +747,238 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   (function(){
     var tabs=Array.prototype.slice.call(document.querySelectorAll(".tab"));
-    var ids=["report","book","approach","concepts","story","record"];
+
+  /* ---------------- Futuresight ---------------- */
+  (function(){
+    if(!FS || !FS.navSeries) return;
+    var FC={AI:"#2a78d6",DEF:"#eb6834",IND:"#1baf7a",ENERGY:"#eda100",
+            DATA:"#e87ba4",MED:"#008300",SW:"#4a3aa7",RATES:"#e34948"};
+    var FL={AI:"AI capex",DEF:"Defense",IND:"Industrial",ENERGY:"Energy",
+            DATA:"Data",MED:"Medtech",SW:"Software",RATES:"Rates"};
+    var ORDER=["AI","DEF","IND","ENERGY","DATA","MED","SW","RATES"];
+    var N=FS.names||[], activeF=null;
+    var last=function(a){return a&&a.length?a[a.length-1].v:100;};
+    var sig=function(v){return (v>=0?"+":"\u2212")+Math.abs(v).toFixed(2)+"%";};
+    var kls=function(v){return v>=0?"pos":"neg";};
+
+    document.getElementById("fsIncept").textContent=FS.inceptionLabel||FS.inception;
+
+    /* sub-views */
+    var VIEWS=[["concept","Concept"],["names","All names"],["track","Track"],["factors","Factors"]];
+    var vh=document.getElementById("fsviews");
+    VIEWS.forEach(function(v,i){
+      var b=document.createElement("button");
+      b.type="button"; b.className="tlv"+(i===0?" active":"");
+      b.setAttribute("role","tab"); b.textContent=v[1];
+      b.addEventListener("click",function(){
+        [].forEach.call(vh.children,function(c){c.classList.remove("active");});
+        b.classList.add("active");
+        VIEWS.forEach(function(w){
+          document.getElementById("fsv-"+w[0]).classList.toggle("active",w[0]===v[0]);
+        });
+        if(v[0]==="track") drawFS();
+      });
+      vh.appendChild(b);
+    });
+
+    /* concept: factor legend doubles as a filter */
+    var lg=document.getElementById("fsLegend");
+    ORDER.forEach(function(f){
+      var n=N.filter(function(r){return r.factor===f;});
+      if(!n.length) return;
+      var b=document.createElement("button");
+      b.type="button"; b.className="fs-fc";
+      b.innerHTML='<span class="sw" style="background:'+FC[f]+'"></span>'+FL[f]+" \u00b7 "+n.length;
+      b.addEventListener("click",function(){
+        activeF=(activeF===f)?null:f;
+        [].forEach.call(lg.children,function(c){c.classList.remove("active");});
+        if(activeF) b.classList.add("active");
+        renderIndustries(); renderMovers(); renderNames();
+      });
+      lg.appendChild(b);
+    });
+
+    function pool(){return activeF?N.filter(function(r){return r.factor===activeF;}):N;}
+
+    function renderIndustries(){
+      var rows=pool(), by={};
+      rows.forEach(function(r){
+        var g=by[r.industry]||(by[r.industry]={n:0,w:0,f:{}});
+        g.n++; g.w+=r.weight; g.f[r.factor]=(g.f[r.factor]||0)+1;
+      });
+      var out=Object.keys(by).map(function(k){
+        var g=by[k];
+        var dom=Object.keys(g.f).sort(function(a,b){return g.f[b]-g.f[a];})[0];
+        return {k:k,n:g.n,w:g.w,dom:dom};
+      }).sort(function(a,b){return b.n-a.n;});
+      document.getElementById("fsIndustries").innerHTML=out.map(function(r){
+        return "<tr><td>"+r.k+"</td><td>"+r.n+"</td><td><span class='fs-sw' style='background:"+
+          FC[r.dom]+"'></span>"+FL[r.dom]+"</td><td class='r'>"+r.w.toFixed(2)+"%</td></tr>";
+      }).join("");
+      var c=FS.coverage||{};
+      document.getElementById("fsCoverage").textContent=
+        (c.priced||0)+" of "+(c.roster||0)+" names priced \u00b7 "+
+        (FS.untracked||[]).length+" carried in the concept but not tracked \u00b7 built "+(FS.builtAt||"");
+    }
+
+    function renderMovers(){
+      var rows=pool().filter(function(r){return r.ret!==null&&r.ret!==undefined;});
+      rows.sort(function(a,b){return b.ret-a.ret;});
+      var top=rows.slice(0,12), bot=rows.slice(-12).reverse();
+      var seen={}, show=[];
+      top.concat(bot).forEach(function(r){ if(!seen[r.ticker]){seen[r.ticker]=1; show.push(r);} });
+      document.getElementById("fsMovers").innerHTML=show.map(function(r){
+        return "<tr><td><b>"+r.ticker+"</b></td><td>"+r.name+
+          "<span class='fs-tier'>"+r.tier+"</span></td>"+
+          "<td><span class='fs-sw' style='background:"+FC[r.factor]+"'></span>"+FL[r.factor]+"</td>"+
+          "<td class='r'>"+r.weight.toFixed(2)+"%</td>"+
+          "<td class='r "+kls(r.ret)+"'>"+sig(r.ret)+"</td></tr>";
+      }).join("");
+    }
+
+    /* track: headline stats */
+    (function(){
+      var idx=last(FS.navSeries)-100;
+      var cards=[["Index \u00b7 since inception",idx,(FS.navSeries.length)+" session"+(FS.navSeries.length===1?"":"s")]];
+      ["SPY","QQQ"].forEach(function(b){
+        var s2=(FS.benchSeries||{})[b];
+        if(s2) cards.push(["vs "+b, idx-(last(s2)-100), "relative, percentage points"]);
+      });
+      var tw=FS.tierWeights||{}, tc=FS.tierCounts||{};
+      ["core","growth","spec"].forEach(function(t){
+        var s2=(FS.tierSeries||{})[t];
+        if(s2&&s2.length) cards.push([t.charAt(0).toUpperCase()+t.slice(1),last(s2)-100,
+          (tc[t]||0)+" names \u00b7 "+(tw[t]||0)+"% of book"]);
+      });
+      document.getElementById("fsStats").innerHTML=cards.map(function(c){
+        return "<div class='stat'><div class='k'>"+c[0]+"</div><div class='v "+kls(c[1])+"'>"+
+          sig(c[1])+"</div><div class='m'>"+c[2]+"</div></div>";
+      }).join("");
+      document.getElementById("fsCurveSub").textContent=
+        "Base 100 at the "+(FS.inceptionLabel||FS.inception)+" open \u00b7 as of "+FS.asOf;
+    })();
+
+    /* track: canvas curve */
+    function drawFS(){
+      var cv=document.getElementById("fscurve"); if(!cv) return;
+      var ctx=cv.getContext("2d"), dpr=window.devicePixelRatio||1;
+      var W=cv.clientWidth, H=cv.clientHeight;
+      cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.clearRect(0,0,W,H);
+      var css=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();};
+      var series=[{n:"Futuresight",c:css("--accent"),d:FS.navSeries,w:2.2}];
+      ["SPY","QQQ"].forEach(function(b,i){
+        var s2=(FS.benchSeries||{})[b];
+        if(s2) series.push({n:b,c:i?css("--slate"):css("--muted"),d:s2,w:1.3,dash:[4,3]});
+      });
+      var all=[]; series.forEach(function(s2){s2.d.forEach(function(p){all.push(p.v);});});
+      if(!all.length) return;
+      var lo=Math.min.apply(null,all), hi=Math.max.apply(null,all);
+      if(hi-lo<0.6){var m=(hi+lo)/2; lo=m-0.3; hi=m+0.3;}
+      var pad=(hi-lo)*0.18; lo-=pad; hi+=pad;
+      var L=44,R=12,T=14,B=26, pw=W-L-R, ph=H-T-B;
+      var nmax=Math.max.apply(null,series.map(function(s2){return s2.d.length;}));
+      var X=function(i){return L+(nmax<2?pw/2:pw*i/(nmax-1));};
+      var Y=function(v){return T+ph*(1-(v-lo)/(hi-lo));};
+      /* grid + baseline */
+      ctx.strokeStyle=css("--grid"); ctx.lineWidth=1;
+      for(var g=0;g<=4;g++){var y=T+ph*g/4; ctx.beginPath(); ctx.moveTo(L,y); ctx.lineTo(W-R,y); ctx.stroke();}
+      ctx.fillStyle=css("--faint"); ctx.font="10px "+css("--mono").split(",")[0]; ctx.textAlign="right";
+      for(var g2=0;g2<=4;g2++){
+        var v=hi-(hi-lo)*g2/4;
+        ctx.fillText((v-100>=0?"+":"\u2212")+Math.abs(v-100).toFixed(1)+"%",L-7,T+ph*g2/4+3);
+      }
+      ctx.setLineDash([2,3]); ctx.strokeStyle=css("--line");
+      ctx.beginPath(); ctx.moveTo(L,Y(100)); ctx.lineTo(W-R,Y(100)); ctx.stroke(); ctx.setLineDash([]);
+      series.forEach(function(s2){
+        ctx.strokeStyle=s2.c; ctx.lineWidth=s2.w; ctx.setLineDash(s2.dash||[]);
+        ctx.beginPath();
+        s2.d.forEach(function(p,i){ i?ctx.lineTo(X(i),Y(p.v)):ctx.moveTo(X(i),Y(p.v)); });
+        if(s2.d.length===1){ ctx.arc(X(0),Y(s2.d[0].v),2.6,0,Math.PI*2); ctx.fillStyle=s2.c; ctx.fill(); }
+        ctx.stroke(); ctx.setLineDash([]);
+      });
+      ctx.textAlign="left"; ctx.font="10px "+css("--mono").split(",")[0];
+      var lx=L+4;
+      series.forEach(function(s2){
+        ctx.fillStyle=s2.c; ctx.fillRect(lx,H-13,8,2.5);
+        ctx.fillStyle=css("--muted"); ctx.fillText(s2.n,lx+12,H-9);
+        lx+=ctx.measureText(s2.n).width+30;
+      });
+    }
+    window.__fsDraw=drawFS;
+    window.addEventListener("resize",function(){
+      if(document.getElementById("fsv-track").classList.contains("active")) drawFS();
+    });
+
+    /* factors: correlation matrix + group returns */
+    (function(){
+      var fc=FS.factorCorr;
+      if(fc&&fc.keys&&fc.keys.length){
+        var h="<table class='fs-corr'><thead><tr><th></th>"+fc.keys.map(function(k){
+          return "<th>"+(FL[k]||k)+"</th>";}).join("")+"</tr></thead><tbody>";
+        fc.keys.forEach(function(k,i){
+          h+="<tr><th class='rh'><span class='fs-sw' style='background:"+FC[k]+"'></span>"+(FL[k]||k)+"</th>";
+          fc.m[i].forEach(function(v,j){
+            var a=v===null?0:Math.max(0,Math.min(1,(v+0.2)/1.2));
+            var bg=i===j?"var(--panel-2)":"rgba(169,128,31,"+(a*0.42).toFixed(3)+")";
+            h+="<td style='background:"+bg+"'>"+(v===null?"\u2014":v.toFixed(2))+"</td>";
+          });
+          h+="</tr>";
+        });
+        h+="</tbody></table>";
+        document.getElementById("fsCorr").innerHTML=h+
+          "<p class='fs-cover'>Pearson correlation of daily log returns across "+
+          (fc.window||0)+" trailing sessions. Darker means they move together.</p>";
+      }
+      var rows=ORDER.filter(function(f){return (FS.factorSeries||{})[f];}).map(function(f){
+        var mem=N.filter(function(r){return r.factor===f;});
+        return {f:f,n:mem.length,w:mem.reduce(function(a,b){return a+b.weight;},0),
+                r:last(FS.factorSeries[f])-100};
+      }).sort(function(a,b){return b.r-a.r;});
+      document.getElementById("fsFactors").innerHTML=rows.map(function(r){
+        return "<tr><td><span class='fs-sw' style='background:"+FC[r.f]+"'></span>"+FL[r.f]+
+          "</td><td>"+r.n+"</td><td class='r'>"+r.w.toFixed(2)+"%</td>"+
+          "<td class='r "+kls(r.r)+"'>"+sig(r.r)+"</td></tr>";
+      }).join("");
+    })();
+
+    var qbox=document.getElementById("fsQ");
+    qbox.addEventListener("input", renderNames);
+
+    function renderNames(){
+      var q=(qbox.value||"").trim().toLowerCase();
+      var rows=pool().filter(function(r){
+        if(!q) return true;
+        return (r.ticker+" "+r.name+" "+r.industry+" "+FL[r.factor]).toLowerCase().indexOf(q)>-1;
+      });
+      document.getElementById("fsNames").innerHTML=rows.map(function(r){
+        var ret = r.tracked===false
+          ? "<span class='fs-untracked' title='"+(r.why||"")+"'>not tracked</span>"
+          : (r.ret===null||r.ret===undefined ? "\u2014"
+             : "<span class='"+kls(r.ret)+"'>"+sig(r.ret)+"</span>");
+        return "<tr><td><b>"+r.ticker+"</b></td>"+
+          "<td>"+r.name+"<span class='fs-tier'>"+r.tier+"</span></td>"+
+          "<td class='fs-ind'>"+r.industry+"</td>"+
+          "<td><span class='fs-sw' style='background:"+FC[r.factor]+"'></span>"+FL[r.factor]+"</td>"+
+          "<td class='r'>"+(r.weight?r.weight.toFixed(2)+"%":"\u2014")+"</td>"+
+          "<td class='r'>"+ret+"</td></tr>";
+      }).join("");
+      var tr=rows.filter(function(r){return r.tracked!==false;}).length;
+      document.getElementById("fsNamesCount").textContent=
+        rows.length+" of "+N.length+" names shown \u00b7 "+tr+" priced \u00b7 weights are fixed at inception and not rebalanced";
+    }
+
+    renderIndustries(); renderMovers(); renderNames();
+  })();
+
+    var ids=["report","book","approach","concepts","story","record","futuresight"];
     var panels={}; ids.forEach(function(id){panels[id]=document.getElementById("panel-"+id);});
     function activate(id){
       tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("data-panel")===id);});
       ids.forEach(function(k){panels[k].classList.toggle("active",k===id);});
       if(id==="report" && window.__drawCurve) window.__drawCurve();
       if(id==="book" && window.__animBars) window.__animBars();
+      if(id==="futuresight" && window.__fsDraw) window.__fsDraw();
       window.scrollTo(0,0);
     }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
@@ -696,7 +986,15 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 })();
 </script></body></html>"""
 
+fs_path = os.path.join(HERE, "futuresight_prices.json")
+fs = json.load(open(fs_path, encoding="utf-8")) if os.path.exists(fs_path) else None
+if fs is None:
+    print("warning: futuresight_prices.json missing - run futuresight_fetch.py; tab will render empty")
+
 html = TEMPLATE.replace("__DATA_JSON__", json.dumps(data, ensure_ascii=False))
+html = html.replace("__FS_JSON__", json.dumps(fs, ensure_ascii=False))
 with open(os.path.join(HERE, "index.html"), "w", encoding="utf-8") as f:
     f.write(html)
-print("built index.html (" + str(len(html)) + " bytes) from data.json")
+print("built index.html (" + str(len(html)) + " bytes) from data.json"
+      + (" + futuresight (" + str(fs["coverage"]["priced"]) + " priced, as of "
+         + fs["asOf"] + ")" if fs else " (no futuresight data)"))
