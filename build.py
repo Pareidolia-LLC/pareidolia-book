@@ -254,6 +254,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .gs-flags{display:inline-flex; gap:4px; align-items:center}
   .gs-flags .vs-flag{margin:0}
   .gs-flags .vs-flag.more{border-style:dashed; cursor:help}
+  .stalebar{position:fixed; left:50%; transform:translateX(-50%); bottom:18px; z-index:50;
+    background:var(--ink); color:var(--bg); font-family:var(--mono); font-size:11px;
+    letter-spacing:.05em; padding:9px 14px; display:flex; gap:10px; align-items:center}
+  .stalebar button{font:inherit; background:none; border:1px solid currentColor;
+    color:inherit; padding:2px 8px; cursor:pointer; letter-spacing:.06em}
   #gsPillars td{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
   #gsPillars td:first-child{font-family:var(--serif); font-size:13px}
   /* Other panels lead with an element carrying its own top margin; this one
@@ -1579,6 +1584,38 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
   })();
+
+  /* ---------------- stale-page check ----------------
+     Pages sends max-age=600 on index.html and cannot be told otherwise, so a
+     reader can sit on a ten-minute-old copy after a refresh. version.json is
+     fetched uncached and compared against the hash baked in at build time. */
+  (function(){
+    var BUILD="__BUILD_ID__";
+    if(!window.fetch||BUILD.charAt(0)==="_") return;
+    function notice(){
+      var d=document.createElement("div");
+      d.className="stalebar";
+      d.innerHTML="A newer edition is published. <button type='button'>Reload</button>";
+      d.querySelector("button").addEventListener("click",function(){
+        location.replace(location.pathname+"?v="+Date.now());
+      });
+      document.body.appendChild(d);
+    }
+    fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){
+      return r.ok?r.json():null;
+    }).then(function(j){
+      if(!j||!j.build||j.build===BUILD) return;
+      var k="pb-stale-"+j.build;
+      try{
+        if(!sessionStorage.getItem(k)){
+          sessionStorage.setItem(k,"1");
+          location.replace(location.pathname+"?v="+encodeURIComponent(j.build));
+          return;
+        }
+      }catch(e){}
+      notice();          /* one reload did not clear it - stop, do not loop */
+    }).catch(function(){});
+  })();
 })();
 </script></body></html>"""
 
@@ -1601,8 +1638,17 @@ gs = json.load(open(gs_path, encoding="utf-8")) if os.path.exists(gs_path) else 
 if gs is None:
     print("warning: growthscan.json missing - run growthscan_sync.py; Concept 03 will render empty")
 html = html.replace("__GS_JSON__", json.dumps(gs, ensure_ascii=False))
+# Hash the finished page (placeholder still in it) so an unchanged rebuild keeps
+# the same id and never triggers a pointless reload.
+import hashlib, datetime as _dt
+build_id = hashlib.sha1(html.encode("utf-8")).hexdigest()[:12]
+html = html.replace("__BUILD_ID__", build_id)
+
 with open(os.path.join(HERE, "index.html"), "w", encoding="utf-8") as f:
     f.write(html)
+with open(os.path.join(HERE, "version.json"), "w", encoding="utf-8") as f:
+    json.dump({"build": build_id,
+               "builtAt": _dt.datetime.now().strftime("%Y-%m-%d %H:%M")}, f)
 print("built index.html (" + str(len(html)) + " bytes) from data.json"
       + (" + futuresight (" + str(fs["coverage"]["priced"]) + " priced, as of "
          + fs["asOf"] + ")" if fs else " (no futuresight data)")
