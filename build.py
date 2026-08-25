@@ -241,13 +241,18 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .fs-tier{display:inline-block; font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; border:1px solid var(--line); padding:1px 5px; color:var(--muted); margin-left:7px}
   .fs-sw{display:inline-block; width:8px; height:8px; margin-right:6px; vertical-align:1px}
   #fsNames td:nth-child(4),#fsMovers td:nth-child(3),#fsFactors td:nth-child(1),#fsIndustries td:nth-child(3){white-space:nowrap}
-  #vsRows td:nth-child(1),#vsRows td:nth-child(9){white-space:nowrap}
+  #vsRows td:nth-child(1),#vsRows td:nth-child(10){white-space:nowrap}
   /* 11 columns against a ~740px column squeezes the company cell to three lines;
      pin its width and let .tablewrap scroll instead, as the other tables do. */
   #gsHead th,#gsRows td:not(:last-child){white-space:nowrap}
   #gsRows td:nth-child(3){min-width:184px; white-space:normal}
-  #gsRows td:last-child{min-width:148px}
-  .vs-flag.more{border-style:dashed; cursor:help}
+  /* Flags here come three or four to a row at widths from 22px to 62px, which
+     wrapped into a different ragged shape in every cell. A fixed two-column
+     grid gives every chip the same width and every cell the same rhythm. */
+  #gsRows td:last-child{min-width:214px; padding-right:12px}
+  .gs-flags{display:grid; grid-template-columns:repeat(2,1fr); gap:3px}
+  .gs-flags .vs-flag{margin:0; text-align:center; overflow:hidden; text-overflow:ellipsis}
+  .gs-flags .vs-flag.more{border-style:dashed; cursor:help}
   #gsPillars td{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
   #gsPillars td:first-child{font-family:var(--serif); font-size:13px}
   /* Other panels lead with an element carrying its own top margin; this one
@@ -488,6 +493,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           <th class="r"><button type="button" class="fs-sort" data-k="ps">P/S</button></th>
           <th class="r"><button type="button" class="fs-sort" data-k="fcfYield">FCF yld</button></th>
           <th class="r"><button type="button" class="fs-sort" data-k="roe">ROE</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="roic">ROIC</button></th>
           <th class="r"><button type="button" class="fs-sort" data-k="mcap">Mkt cap</button></th>
           <th><button type="button" class="fs-sort" data-k="insider">Insiders</button></th>
           <th>Flags</th>
@@ -499,7 +505,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
         <h3>What it does</h3>
         <p class="prose">One screener call filters the whole US market server-side on price-to-book, price-to-sales, market cap and volume, with a guard requiring positive book value per share &mdash; a company with negative equity also satisfies &quot;P/B under 1&quot;, and those are the first thing a naive screen fills up with. A second call re-runs the same filter with Altman Z above 1.8, and anything missing from that set gets flagged. Per-name fundamentals and Form 4 insider filings are then pulled for each survivor.</p>
         <h3 style="margin-top:20px">Score</h3>
-        <p class="prose">Fixed scales, so a 70 this month means the same as a 70 next month. For banks, insurers and REITs the Z-score, current-ratio and cash-flow components are dropped and the rest re-weighted, because they do not mean anything for a balance sheet built that way.</p>
+        <p class="prose">Fixed scales, so a 70 this month means the same as a 70 next month. The weights below sum to more than a hundred on purpose: each name is scored only on the components it actually has data for, and those are rescaled to a hundred between them. For banks and insurers the Z-score, current-ratio, cash-flow and return-on-invested-capital components all drop out, because none of them mean anything against a balance sheet built that way.</p>
         <div class="tablewrap"><table><thead><tr><th class="r">Weight</th><th>Component</th><th>0 points</th><th>100 points</th></tr></thead><tbody id="vsWeights"></tbody></table></div>
         <h3 style="margin-top:20px">Flags</h3>
         <div class="tablewrap"><table><thead><tr><th>Flag</th><th>Meaning</th></tr></thead><tbody id="vsFlagDoc"></tbody></table></div>
@@ -1199,10 +1205,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       ["NEAR-LOW","Within 10% of the 52-week low"]
     ];
     var WEIGHTS=[
-      ["30%","Price to book","1.0","0.2"],["20%","Price to sales","3.0","0.2"],
-      ["12%","Free cash flow yield","0%","15%"],["10%","Return on equity","0%","15%"],
-      ["10%","Debt to equity","200%","30%"],["10%","Revenue growth","\u221220%","+10%"],
-      ["10%","Altman Z above 1.8","no","yes"],["8%","Current ratio","1.0","2.0"]
+      ["30","Price to book","1.0","0.2"],["20","Price to sales","3.0","0.2"],
+      ["12","Free cash flow yield","0%","15%"],["10","Return on equity","0%","15%"],
+      ["10","Return on invested capital","0%","15%"],
+      ["10","Debt to equity","200%","30%"],["10","Revenue growth","\u221220%","+10%"],
+      ["10","Altman Z above 1.8","no","yes"],["8","Current ratio","1.0","2.0"]
     ];
     var INS={heavy:3,normal:2,absent:1};
 
@@ -1321,6 +1328,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           "<td class='r'>"+num(r.ps)+"</td>"+
           "<td class='r'>"+pctf(r.fcfYield)+"</td>"+
           "<td class='r'>"+pctf(r.roe)+"</td>"+
+          "<td class='r'>"+pctf(r.roic)+"</td>"+
           "<td class='r'>"+capf(r.mcap)+"</td>"+
           "<td><span class='vs-ins "+lv+"' title=\""+esc(tip)+"\">"+lv+"</span></td>"+
           "<td>"+(flags||"<span class='vs-flag'>clean</span>")+"</td></tr>";
@@ -1510,6 +1518,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
         var flags=shown.map(function(f){
           return "<span class='vs-flag"+(WARN[f]?" warn":"")+"'>"+f+"</span>";}).join("");
         if(rest>0) flags+="<span class='vs-flag more' title=\""+esc(all.join(" \u00b7 "))+"\">+"+rest+"</span>";
+        flags="<div class='gs-flags'>"+flags+"</div>";
         return "<tr>"+
           "<td class='r'><span class='vs-score'>"+num(r.score,0)+"</span></td>"+
           "<td><b>"+r.ticker+"</b></td>"+
@@ -1521,7 +1530,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           "<td class='r'>"+mult(r.netDebtEbitda)+"</td>"+
           "<td class='r'>"+mult(r.evEbitda)+"</td>"+
           "<td><span class='vs-ins "+lv+"' title=\""+esc(tip)+"\">"+lv+"</span></td>"+
-          "<td>"+(flags||"<span class='vs-flag'>clean</span>")+"</td></tr>";
+          "<td>"+(all.length?flags:"<div class='gs-flags'><span class='vs-flag'>clean</span></div>")+"</td></tr>";
       }).join("");
       document.getElementById("gsCount").textContent=
         rows.length+" of "+R.length+" shown \u00b7 screened from "+(GS.universeHits||"?")+

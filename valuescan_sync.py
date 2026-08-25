@@ -20,7 +20,7 @@ OUT = os.path.join(HERE, "valuescan.json")
 # per-name score arithmetic that the site does not show); the scanner's own
 # dashboard.html keeps it.
 KEEP = ["ticker", "name", "sector", "industry", "price", "mcap", "chg52w",
-        "ps", "pb", "evs", "pe", "de", "currentRatio", "roe", "profitMargin",
+        "ps", "pb", "evs", "pe", "de", "currentRatio", "roe", "roic", "profitMargin",
         "revGrowth", "fcfYield", "divYield", "pctOffLow", "zSafe", "flags",
         "score", "rank", "otc", "fx"]
 INSIDER_KEEP = ["level", "buyers", "buyValue", "lastBuy", "topBuyer", "pctOfCap"]
