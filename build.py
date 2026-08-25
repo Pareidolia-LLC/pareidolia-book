@@ -242,6 +242,14 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .fs-sw{display:inline-block; width:8px; height:8px; margin-right:6px; vertical-align:1px}
   #fsNames td:nth-child(4),#fsMovers td:nth-child(3),#fsFactors td:nth-child(1),#fsIndustries td:nth-child(3){white-space:nowrap}
   #vsRows td:nth-child(1),#vsRows td:nth-child(9){white-space:nowrap}
+  /* 11 columns against a ~740px column squeezes the company cell to three lines;
+     pin its width and let .tablewrap scroll instead, as the other tables do. */
+  #gsHead th,#gsRows td:not(:last-child){white-space:nowrap}
+  #gsRows td:nth-child(3){min-width:184px; white-space:normal}
+  #gsRows td:last-child{min-width:148px}
+  .vs-flag.more{border-style:dashed; cursor:help}
+  #gsPillars td{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
+  #gsPillars td:first-child{font-family:var(--serif); font-size:13px}
   /* Other panels lead with an element carrying its own top margin; this one
      leads with a bare .eyebrow, so it needs the clearance added back or it
      sits flush against the sticky tab band. */
@@ -419,6 +427,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <nav class="cnav" id="cnav" role="tablist" aria-label="Concepts">
       <button type="button" class="cbtn on" data-c="futuresight" role="tab">Concept 01<b>Futuresight Index</b></button>
       <button type="button" class="cbtn" data-c="value" role="tab">Concept 02<b>Value Scanner</b></button>
+      <button type="button" class="cbtn" data-c="growth" role="tab">Concept 03<b>Quality Growth</b></button>
     </nav>
 
     <div class="concept active" id="con-futuresight">
@@ -502,6 +511,58 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
         <p class="prose">Book value is a balance-sheet number, not a liquidation value: goodwill and intangibles inflate it, so check what the book is actually made of. Sub-1&times; book is the normal resting state for banks and insurers, not a signal. Ratios are trailing twelve months while book value is most recent quarter, so a company that just cratered looks better here than it is. And the data is Yahoo\u2019s &mdash; a stale share count after a merger produces a market cap, and therefore a P/S, that is badly wrong. Sanity-check any individual name before acting on it.</p>
       </div>
     </div><!-- /con-value -->
+
+    <div class="concept" id="con-growth">
+      <div class="eyebrow">Concept 03 &middot; quality growth screen &middot; run <span id="gsRun"></span></div>
+      <h2>Quality Growth</h2>
+      <p class="fs-kicker">The third concept sits between the first two. Futuresight buys a story and the Value Scanner buys a balance sheet nobody wants; this one looks for a business that is already working and asks whether the market has noticed yet.</p>
+      <p class="prose">A screen for companies expanding operations accretively &mdash; where capital newly put to work earns more than the capital already there &mdash; scored across seven pillars covering growth, margins and returns, cash generation, balance sheet and liquidity, capital allocation, valuation, and how thinly the name is held and covered. That last one is the tilt: a good business every fund already owns and twenty analysts already model is a worse idea than the same business nobody is writing about.</p>
+      <p class="fs-note">Same footing as the other two: this is research I run for myself, not advice, and I am not a licensed financial advisor. A screen ranks what is measurable in a filing, which is never the whole question &mdash; it cannot read a management team, a contract, or a competitor. Trailing fundamentals also cannot tell operating progress from a commodity cycle, which is why producers are flagged rather than quietly ranked. Anyone acting on this is taking their own risk, and the responsibility for that sits with them, not with me.</p>
+      <div class="tlviews" id="gsviews" role="tablist" aria-label="Quality growth views"></div>
+
+      <div class="fsview active" id="gsv-screen">
+        <div class="stats" id="gsStats"></div>
+        <input type="search" class="fs-search" id="gsQ" placeholder="Search ticker, company, sector\u2026" aria-label="Search the screen">
+        <div class="tablewrap"><table><thead><tr id="gsHead">
+          <th class="r"><button type="button" class="fs-sort" data-k="score">Score</button></th>
+          <th><button type="button" class="fs-sort" data-k="ticker">Ticker</button></th>
+          <th><button type="button" class="fs-sort" data-k="name">Company</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="revCagr3y">Rev 3y</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="roic">ROIC</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="incRoic">Inc ROIC</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="fcfMargin">FCF mgn</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="netDebtEbitda">ND/EBITDA</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="evEbitda">EV/EBITDA</button></th>
+          <th><button type="button" class="fs-sort" data-k="insider">Insiders</button></th>
+          <th>Flags</th>
+        </tr></thead><tbody id="gsRows"></tbody></table></div>
+        <p class="fs-cover" id="gsCount"></p>
+      </div>
+
+      <div class="fsview" id="gsv-pillars">
+        <p class="prose">Every name scored on each pillar out of 100, then weighted into the headline number. A component with no data is dropped and the remaining weights re-normalised, so a missing figure never quietly scores as a zero. Sort any column to see what the screen is actually rewarding.</p>
+        <div class="tablewrap"><table><thead><tr id="gsPilHead"></tr></thead><tbody id="gsPillars"></tbody></table></div>
+        <p class="fs-cover" id="gsPilNote"></p>
+      </div>
+
+      <div class="fsview" id="gsv-method">
+        <h3>The gate</h3>
+        <p class="prose">One screener call filters the whole US market server-side, so the gate costs a single request no matter how large the universe. The published profile wants a business already earning: revenue growing, return on equity above the threshold, free cash flow positive, interest covered several times over, debt under control, and a multiple that is not already heroic. A second profile inverts it for companies not yet profitable &mdash; fast growth at a high gross margin with a net-margin ceiling and a balance sheet that can fund the wait &mdash; because a screen that only ever finds finished companies never finds one early.</p>
+        <div class="tablewrap"><table><thead><tr><th>Gate</th><th>Threshold</th></tr></thead><tbody id="gsGate"></tbody></table></div>
+        <h3 style="margin-top:20px">Pillar weights</h3>
+        <div class="tablewrap"><table><thead><tr><th class="r">Weight</th><th>Pillar</th><th>What it measures</th></tr></thead><tbody id="gsWeights"></tbody></table></div>
+        <h3 style="margin-top:20px">Accretive expansion</h3>
+        <p class="prose">The question a growth screen usually dodges is whether the growth was worth buying. The measure here is incremental return on invested capital: the change in after-tax operating profit divided by the change in invested capital over three years. If new capital out-earns the existing base, the company is compounding rather than just getting larger, and the row is flagged. It is only computed when invested capital actually moved more than 5% &mdash; on a flat capital base the ratio is dividing noise by noise. Growth paid for by issuing stock shows up as dilution; growth paid for out of cash while the share count falls shows up as a buyback.</p>
+        <h3 style="margin-top:20px">Liquidity, and what a bank does to it</h3>
+        <p class="prose">The acid test alongside current and cash ratios, interest coverage and net debt to EBITDA. On the pre-profit profile, cash runway carries most of the balance-sheet weight, because for a company still burning it is the number that decides whether the thesis gets time to play out. The regulatory bank measures &mdash; LCR, NSFR, CET1 &mdash; are in no free data source, and corporate liquidity ratios mean nothing against a bank balance sheet anyway, so for banks and insurers those components are dropped and the rest re-weighted rather than reported wrong.</p>
+        <h3 style="margin-top:20px">Flags</h3>
+        <div class="tablewrap"><table><thead><tr><th>Flag</th><th>Meaning</th></tr></thead><tbody id="gsFlagDoc"></tbody></table></div>
+        <h3 style="margin-top:20px">The commodity problem</h3>
+        <p class="prose">Left alone, this screen fills with gold and silver miners. Their three-year growth, margin expansion and returns on capital are all genuinely excellent, and all of it is the metal price rather than operating progress. Trailing fundamentals cannot tell those apart, so producers carry a flag instead of being quietly ranked as compounders. Read a flagged name as a snapshot of where the cycle is, not as a trend.</p>
+        <h3 style="margin-top:20px">What this cannot tell you</h3>
+        <p class="prose">Return on invested capital here uses operating income after a flat statutory tax against reported invested capital &mdash; a proxy, not a modelled cost-of-capital comparison. Compound growth rates come from four annual filings, so the window is three years at most and shorter for anything recently listed. Institutional ownership above 100% is a real artifact of securities lending rather than a bug. And the underlying data is Yahoo\u2019s: it is occasionally wrong on individual names, so verify before acting on any of it.</p>
+      </div>
+    </div><!-- /con-growth -->
   </div>
   <div class="panel" id="panel-story"></div>
   <footer>
@@ -515,6 +576,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   var DATA = __DATA_JSON__;
   var FS = __FS_JSON__;
   var VS = __VS_JSON__;
+  var GS = __GS_JSON__;
   var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var css=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();};
   var fmt=function(v){return (v>=0?"+":"−")+Math.abs(v).toFixed(2)+"%";};
@@ -1107,7 +1169,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       b.addEventListener("click",function(){
         var c=b.getAttribute("data-c");
         btns.forEach(function(x){x.classList.toggle("on",x===b);});
-        ["futuresight","value"].forEach(function(k){
+        ["futuresight","value","growth"].forEach(function(k){
           var el=document.getElementById("con-"+k);
           if(el) el.classList.toggle("active",k===c);
         });
@@ -1271,6 +1333,230 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     head(); renderVS();
   })();
 
+  /* ---------------- Concept 03: Quality Growth ---------------- */
+  (function(){
+    if(!GS || !GS.rows || !GS.rows.length) return;
+    var R=GS.rows, PIL=GS.pillars||[], W=GS.weights||{}, c=GS.criteria||{};
+
+    var WARN={"DILUTING":1,"MARGIN-SQUEEZE":1,"DECEL":1,"LEVERED":1,"ACID-FAIL":1,
+              "SHORT-RUNWAY":1,"BURN":1,"UNPROFITABLE":1,"FX":1};
+    var GOOD={"ACCRETIVE":1,"BUYBACK":1,"NET-CASH":1,"RULE-40":1,"INSIDER-BUY":1};
+    var FLAGDOC=[
+      ["ACCRETIVE","New capital is out-earning the capital already in the business"],
+      ["BUYBACK","Share count down 1% a year or more over three years"],
+      ["NET-CASH","More cash than total debt \u2014 can fund expansion without asking anyone"],
+      ["RULE-40","Revenue growth plus free cash flow margin of 40 or better"],
+      ["INSIDER-BUY","Heavy open-market insider buying in the trailing 180 days"],
+      ["NEGLECTED","Lightly held, thinly covered, or small enough that most funds cannot buy it"],
+      ["DILUTING","Share count growing 4% a year or more \u2014 growth per share is worse than it looks"],
+      ["MARGIN-SQUEEZE","Operating margin down three points or more over three years"],
+      ["DECEL","Trailing growth running five points or more below the three-year rate"],
+      ["LEVERED","Net debt above three times EBITDA"],
+      ["ACID-FAIL","Quick ratio below 0.8 \u2014 current liabilities exceed liquid assets"],
+      ["SHORT-RUNWAY","Under eighteen months of cash at the current burn"],
+      ["BURN","Negative free cash flow over the trailing twelve months"],
+      ["UNPROFITABLE","Negative net income in the most recent fiscal year"],
+      ["CYCLICAL","Commodity producer \u2014 the growth is the underlying price, not operating progress"],
+      ["FIN","Bank or insurer \u2014 returns and liquidity components dropped, the rest re-weighted"]
+    ];
+    var PILDOC={
+      "Growth":"Three-year compound growth in revenue, earnings and free cash flow, plus the trailing and latest-quarter rates",
+      "Returns":"Return on equity and on invested capital, gross and operating margin, and the three-year margin trend",
+      "Cash":"Free cash flow margin, conversion of earnings into cash, cash flow yield, and consistency across four years",
+      "Balance":"The acid test with current and cash ratios, net debt to EBITDA, interest coverage and cash runway",
+      "Capital":"Incremental return on new capital, share count direction, reinvestment rate and capex growth",
+      "Value":"Enterprise value against EBITDA, free cash flow and sales, with forward earnings and PEG",
+      "Neglect":"Institutional ownership, analyst coverage, size, distance off the high, and insider buying"
+    };
+    var INS={heavy:3,normal:2,absent:1};
+    /* Names here carry five or six flags each, which stacks the column six deep.
+       Show three and hide the rest behind a count - warnings sort first, so what
+       gets hidden is never a risk. */
+    var FORDER={};
+    ["ACID-FAIL","SHORT-RUNWAY","LEVERED","DILUTING","MARGIN-SQUEEZE","DECEL",
+     "BURN","UNPROFITABLE","FX","ACCRETIVE","RULE-40","NET-CASH","BUYBACK",
+     "INSIDER-BUY","NEGLECTED","CYCLICAL","FIN"].forEach(function(f,i){FORDER[f]=i;});
+    var frank=function(f){var v=FORDER[f]; return v===undefined?99:v;};
+
+    var num=function(v,d){return (v===null||v===undefined||isNaN(v))?"\u2014":v.toFixed(d===undefined?2:d);};
+    var mult=function(v){return (v===null||v===undefined||isNaN(v))?"\u2014":v.toFixed(1)+"\u00d7";};
+    var pctf=function(v){return (v===null||v===undefined||isNaN(v))?"\u2014":(v*100).toFixed(1)+"%";};
+    var pctS=function(v){return (v===null||v===undefined||isNaN(v))?"\u2014":(v>=0?"+":"\u2212")+Math.abs(v*100).toFixed(1)+"%";};
+    var capf=function(v){
+      if(!v) return "\u2014";
+      if(v>=1e9) return "$"+(v/1e9).toFixed(1)+"B";
+      return "$"+Math.round(v/1e6)+"M";
+    };
+    var esc=function(t){return String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");};
+
+    document.getElementById("gsRun").textContent=(GS.generatedAt||"").slice(0,10);
+
+    /* sub-views */
+    var VW=[["screen","Screen"],["pillars","Pillars"],["method","Method"]];
+    var vh=document.getElementById("gsviews");
+    VW.forEach(function(v,i){
+      var b=document.createElement("button");
+      b.type="button"; b.className="tlv"+(i===0?" active":"");
+      b.setAttribute("role","tab"); b.textContent=v[1];
+      b.addEventListener("click",function(){
+        [].forEach.call(vh.children,function(x){x.classList.remove("active");});
+        b.classList.add("active");
+        VW.forEach(function(w){document.getElementById("gsv-"+w[0]).classList.toggle("active",w[0]===v[0]);});
+      });
+      vh.appendChild(b);
+    });
+
+    /* headline */
+    var acc=R.filter(function(r){return (r.flags||[]).indexOf("ACCRETIVE")>-1;}).length;
+    var neg=R.filter(function(r){return (r.flags||[]).indexOf("NEGLECTED")>-1;}).length;
+    var clean=R.filter(function(r){return !(r.flags||[]).some(function(f){return WARN[f];});}).length;
+    document.getElementById("gsStats").innerHTML=[
+      [R.length,"Names on the screen","Revenue over "+(c.min_growth||8)+"%, ROE over "+(c.min_roe||12)+"%"],
+      [acc,"Expanding accretively","New capital out-earning the old"],
+      [clean,"No red flag","Nothing in the warning set"],
+      [neg,"Lightly covered","Thin ownership or thin analyst coverage"]
+    ].map(function(x){
+      return "<div class='stat'><div class='k'>"+x[1]+"</div><div class='v'>"+x[0]+
+        "</div><div class='m'>"+x[2]+"</div></div>";
+    }).join("");
+
+    /* method tables */
+    document.getElementById("gsGate").innerHTML=[
+      ["Revenue growth","above "+(c.min_growth||8)+"%"],
+      ["Return on equity","above "+(c.min_roe||12)+"%"],
+      ["Free cash flow","positive"],
+      ["Interest coverage","above 3\u00d7"],
+      ["Net debt to EBITDA","below "+(c.max_net_debt||3.5)+"\u00d7"],
+      ["Enterprise value to EBITDA","below "+(c.max_ev_ebitda||20)+"\u00d7"],
+      ["Market cap","above $"+(c.min_cap||300)+"M"],
+      ["Listing","US-domiciled, major exchanges, no REITs"]
+    ].map(function(g){return "<tr><td>"+g[0]+"</td><td>"+g[1]+"</td></tr>";}).join("");
+
+    document.getElementById("gsWeights").innerHTML=PIL.map(function(k){
+      return "<tr><td class='r'>"+(W[k]||0)+"%</td><td>"+k+"</td><td>"+(PILDOC[k]||"")+"</td></tr>";
+    }).join("");
+
+    document.getElementById("gsFlagDoc").innerHTML=FLAGDOC.map(function(f){
+      var cls=WARN[f[0]]?" warn":"";
+      return "<tr><td><span class='vs-flag"+cls+"'>"+f[0]+"</span></td><td>"+f[1]+"</td></tr>";
+    }).join("");
+
+    /* pillar table header */
+    document.getElementById("gsPilHead").innerHTML=
+      "<th><button type='button' class='fs-sort' data-k='ticker'>Ticker</button></th>"+
+      PIL.map(function(k){
+        return "<th class='r'><button type='button' class='fs-sort' data-k='p_"+k+"'>"+k+"</button></th>";
+      }).join("")+
+      "<th class='r'><button type='button' class='fs-sort' data-k='score'>Score</button></th>";
+
+    /* sorting shared by both tables */
+    var TEXT={ticker:1,name:1};
+    function val(r,k){
+      if(k==="insider") return INS[(r.insider||{}).level||"absent"]||0;
+      if(k.indexOf("p_")===0) return (r.pillars||{})[k.slice(2)];
+      return r[k];
+    }
+    function sortRows(rows,sk,sd){
+      return rows.slice().sort(function(a,b){
+        if(TEXT[sk]){
+          var c2=(a[sk]||"").localeCompare(b[sk]||"","en",{numeric:true,sensitivity:"base"});
+          return (c2||a.ticker.localeCompare(b.ticker))*sd;
+        }
+        var av=val(a,sk), bv=val(b,sk);
+        var an=(av===null||av===undefined||isNaN(av)), bn=(bv===null||bv===undefined||isNaN(bv));
+        if(an&&bn) return a.ticker.localeCompare(b.ticker);
+        if(an) return 1;
+        if(bn) return -1;
+        if(av===bv) return a.ticker.localeCompare(b.ticker);
+        return (av-bv)*sd;
+      });
+    }
+    function markHead(sel,sk,sd){
+      [].forEach.call(document.querySelectorAll(sel+" .fs-sort"),function(b){
+        var on=b.getAttribute("data-k")===sk;
+        b.classList.toggle("on",on);
+        var ar=b.querySelector(".ar");
+        if(!ar){ar=document.createElement("span");ar.className="ar";b.appendChild(ar);}
+        ar.textContent=on?(sd===1?"\u25b2":"\u25bc"):"\u25bc";
+        b.setAttribute("aria-sort",on?(sd===1?"ascending":"descending"):"none");
+      });
+    }
+
+    /* screen table */
+    var sk="score", sd=-1;
+    var qbox=document.getElementById("gsQ");
+    [].forEach.call(document.querySelectorAll("#gsHead .fs-sort"),function(b){
+      b.addEventListener("click",function(){
+        var k=b.getAttribute("data-k");
+        if(k===sk){sd=-sd;} else {sk=k; sd=TEXT[k]?1:-1;}
+        markHead("#gsHead",sk,sd); renderGS();
+      });
+    });
+    function renderGS(){
+      var q=(qbox.value||"").trim().toLowerCase();
+      var rows=R.filter(function(r){
+        if(!q) return true;
+        return ((r.ticker||"")+" "+(r.name||"")+" "+(r.sector||"")+" "+(r.industry||"")).toLowerCase().indexOf(q)>-1;
+      });
+      rows=sortRows(rows,sk,sd);
+      document.getElementById("gsRows").innerHTML=rows.map(function(r){
+        var ins=r.insider||{}, lv=ins.level||"absent";
+        var tip=lv==="absent"?"No open-market purchases in the window"
+          :((ins.buyers||0)+" buyer"+(ins.buyers===1?"":"s")+
+            (ins.buyValue?", $"+Math.round(ins.buyValue/1000)+"k":"")+
+            (ins.lastBuy?", last "+ins.lastBuy:""));
+        var all=(r.flags||[]).slice().sort(function(a,b){return frank(a)-frank(b);});
+        var shown=all.slice(0,3), rest=all.length-shown.length;
+        var flags=shown.map(function(f){
+          return "<span class='vs-flag"+(WARN[f]?" warn":"")+"'>"+f+"</span>";}).join("");
+        if(rest>0) flags+="<span class='vs-flag more' title=\""+esc(all.join(" \u00b7 "))+"\">+"+rest+"</span>";
+        return "<tr>"+
+          "<td class='r'><span class='vs-score'>"+num(r.score,0)+"</span></td>"+
+          "<td><b>"+r.ticker+"</b></td>"+
+          "<td>"+esc(r.name)+"<span class='vs-sub'>"+esc(r.sector||"")+"</span></td>"+
+          "<td class='r'>"+pctS(r.revCagr3y)+"</td>"+
+          "<td class='r'>"+pctf(r.roic)+"</td>"+
+          "<td class='r'>"+pctf(r.incRoic)+"</td>"+
+          "<td class='r'>"+pctf(r.fcfMargin)+"</td>"+
+          "<td class='r'>"+mult(r.netDebtEbitda)+"</td>"+
+          "<td class='r'>"+mult(r.evEbitda)+"</td>"+
+          "<td><span class='vs-ins "+lv+"' title=\""+esc(tip)+"\">"+lv+"</span></td>"+
+          "<td>"+(flags||"<span class='vs-flag'>clean</span>")+"</td></tr>";
+      }).join("");
+      document.getElementById("gsCount").textContent=
+        rows.length+" of "+R.length+" shown \u00b7 screened from "+(GS.universeHits||"?")+
+        " names that cleared the gate \u00b7 "+(GS.profile||"")+" profile \u00b7 run "+(GS.generatedAt||"");
+    }
+
+    /* pillar table */
+    var pk="score", pd=-1;
+    [].forEach.call(document.querySelectorAll("#gsPilHead .fs-sort"),function(b){
+      b.addEventListener("click",function(){
+        var k=b.getAttribute("data-k");
+        if(k===pk){pd=-pd;} else {pk=k; pd=TEXT[k]?1:-1;}
+        markHead("#gsPilHead",pk,pd); renderPil();
+      });
+    });
+    function renderPil(){
+      var rows=sortRows(R,pk,pd);
+      document.getElementById("gsPillars").innerHTML=rows.map(function(r){
+        var p=r.pillars||{};
+        return "<tr><td><b>"+r.ticker+"</b></td>"+
+          PIL.map(function(k){
+            var v=p[k];
+            return "<td class='r'>"+(v===null||v===undefined?"\u2014":v)+"</td>";
+          }).join("")+
+          "<td class='r'><span class='vs-score'>"+num(r.score,0)+"</span></td></tr>";
+      }).join("");
+      document.getElementById("gsPilNote").textContent=
+        "Weighted "+PIL.map(function(k){return k+" "+(W[k]||0)+"%";}).join(" \u00b7 ")+".";
+    }
+
+    qbox.addEventListener("input", renderGS);
+    markHead("#gsHead",sk,sd); renderGS();
+    markHead("#gsPilHead",pk,pd); renderPil();
+  })();
+
     var ids=["report","book","approach","concepts","story","record","ideation"];
     var panels={}; ids.forEach(function(id){panels[id]=document.getElementById("panel-"+id);});
     function activate(id){
@@ -1299,10 +1585,18 @@ vs = json.load(open(vs_path, encoding="utf-8")) if os.path.exists(vs_path) else 
 if vs is None:
     print("warning: valuescan.json missing - run valuescan_sync.py; Concept 02 will render empty")
 html = html.replace("__VS_JSON__", json.dumps(vs, ensure_ascii=False))
+
+gs_path = os.path.join(HERE, "growthscan.json")
+gs = json.load(open(gs_path, encoding="utf-8")) if os.path.exists(gs_path) else None
+if gs is None:
+    print("warning: growthscan.json missing - run growthscan_sync.py; Concept 03 will render empty")
+html = html.replace("__GS_JSON__", json.dumps(gs, ensure_ascii=False))
 with open(os.path.join(HERE, "index.html"), "w", encoding="utf-8") as f:
     f.write(html)
 print("built index.html (" + str(len(html)) + " bytes) from data.json"
       + (" + futuresight (" + str(fs["coverage"]["priced"]) + " priced, as of "
          + fs["asOf"] + ")" if fs else " (no futuresight data)")
       + (" + valuescan (" + str(len(vs["rows"])) + " names, run "
-         + str(vs.get("generatedAt")) + ")" if vs else " (no valuescan data)"))
+         + str(vs.get("generatedAt")) + ")" if vs else " (no valuescan data)")
+      + (" + growthscan (" + str(len(gs["rows"])) + " names, " + str(gs.get("profile"))
+         + ", run " + str(gs.get("generatedAt")) + ")" if gs else " (no growthscan data)"))
