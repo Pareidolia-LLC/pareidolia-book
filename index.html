@@ -226,12 +226,13 @@
      pin its width and let .tablewrap scroll instead, as the other tables do. */
   #gsHead th,#gsRows td:not(:last-child){white-space:nowrap}
   #gsRows td:nth-child(3){min-width:184px; white-space:normal}
-  /* Flags here come three or four to a row at widths from 22px to 62px, which
-     wrapped into a different ragged shape in every cell. A fixed two-column
-     grid gives every chip the same width and every cell the same rhythm. */
-  #gsRows td:last-child{min-width:214px; padding-right:12px}
-  .gs-flags{display:grid; grid-template-columns:repeat(2,1fr); gap:3px}
-  .gs-flags .vs-flag{margin:0; text-align:center; overflow:hidden; text-overflow:ellipsis}
+  /* Names here carry five or six flags where concept 02 usually carries one, so
+     the column wrapped into a different ragged shape in every cell. Two chips
+     and a count on a single line keeps the rows even without stretching the
+     chips past their labels. */
+  #gsRows td:last-child{white-space:nowrap; padding-right:12px}
+  .gs-flags{display:inline-flex; gap:4px; align-items:center}
+  .gs-flags .vs-flag{margin:0}
   .gs-flags .vs-flag.more{border-style:dashed; cursor:help}
   #gsPillars td{font-family:var(--mono); font-size:11px; font-variant-numeric:tabular-nums}
   #gsPillars td:first-child{font-family:var(--serif); font-size:13px}
@@ -1494,7 +1495,7 @@
             (ins.buyValue?", $"+Math.round(ins.buyValue/1000)+"k":"")+
             (ins.lastBuy?", last "+ins.lastBuy:""));
         var all=(r.flags||[]).slice().sort(function(a,b){return frank(a)-frank(b);});
-        var shown=all.slice(0,3), rest=all.length-shown.length;
+        var shown=all.slice(0,2), rest=all.length-shown.length;
         var flags=shown.map(function(f){
           return "<span class='vs-flag"+(WARN[f]?" warn":"")+"'>"+f+"</span>";}).join("");
         if(rest>0) flags+="<span class='vs-flag more' title=\""+esc(all.join(" \u00b7 "))+"\">+"+rest+"</span>";
