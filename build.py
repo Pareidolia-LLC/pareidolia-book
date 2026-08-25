@@ -36,10 +36,19 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   }
   *{box-sizing:border-box} body{margin:0}
   .wrap{background:var(--bg); color:var(--ink); font-family:var(--sans); min-height:100vh; padding:var(--pagepad); -webkit-font-smoothing:antialiased; line-height:1.5}
-  /* No cap: every panel runs the full width of the page gutter. Anything that
-     needs to be narrower than this sets its own measure - the masthead tagline
-     and the italic deks still do. */
-  .sheet{max-width:none; margin:0 auto}
+  .sheet{max-width:1120px; margin:0 auto}
+  /* Data tables break out of the sheet to the full page gutter - a roster of
+     216 names across eleven columns cannot live in a measure sized for prose.
+     --sbw is the scrollbar width, measured in JS: 100vw counts it but the
+     element cannot use it, and without subtracting it the document itself
+     gains a sideways scrollbar. On a narrow screen the same expression
+     resolves to the sheet width at a zero offset, so no media query is needed.
+     Glossary tables in the Method views keep the column width on purpose, and
+     so do the holdings ledger and the winners/losers pair - those sit inside
+     multi-column grids, where the 50% above would refer to the grid column
+     rather than the sheet and throw the table off the side of the page. */
+  .tablewrap.bleed{width:calc(100vw - 2*var(--pagepad) - var(--sbw,0px)); max-width:none;
+    margin-left:calc(50% - 50vw + var(--pagepad) + var(--sbw,0px)/2)}
   .masthead{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; border-bottom:1.5px solid var(--ink); padding-bottom:18px}
   .mark{font-family:var(--serif); font-size:clamp(34px,6vw,58px); line-height:.95; letter-spacing:.01em; font-weight:600; text-wrap:balance}
   .mark .dot{color:var(--accent)}
@@ -427,11 +436,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   <section aria-label="Where money was made and lost">
     <p class="eyebrow">By name · shares of the whole record</p>
     <h2>Where the money was made and lost</h2>
-    <div class="tablewrap"><table><thead><tr><th>Name</th><th class="r">Closes</th><th class="r">Win</th><th class="r">Profit factor</th><th class="r">Share of gains</th><th class="r">Share of losses</th></tr></thead><tbody id="nmtbl"></tbody></table></div>
+    <div class="tablewrap bleed"><table><thead><tr><th>Name</th><th class="r">Closes</th><th class="r">Win</th><th class="r">Profit factor</th><th class="r">Share of gains</th><th class="r">Share of losses</th></tr></thead><tbody id="nmtbl"></tbody></table></div>
   </section>
   <section aria-label="Event contracts by name">
     <p class="eyebrow">Event sleeve · by contract</p>
-    <div class="tablewrap"><table><thead><tr><th>Contract</th><th class="r">Closes</th><th class="r">Win</th><th class="r">Profit factor</th><th class="r">Share of gains</th><th class="r">Share of losses</th></tr></thead><tbody id="evtbl"></tbody></table></div>
+    <div class="tablewrap bleed"><table><thead><tr><th>Contract</th><th class="r">Closes</th><th class="r">Win</th><th class="r">Profit factor</th><th class="r">Share of gains</th><th class="r">Share of losses</th></tr></thead><tbody id="evtbl"></tbody></table></div>
   </section>
   <section aria-label="How to read this">
     <p class="eyebrow">How to read this</p>
@@ -455,13 +464,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
     <div class="fsview active" id="fsv-concept">
       <div class="fs-legend" id="fsLegend"></div>
-      <div class="tablewrap"><table><thead><tr><th>Industry</th><th>Names</th><th>Dominant factor</th><th class="r">Weight</th></tr></thead><tbody id="fsIndustries"></tbody></table></div>
+      <div class="tablewrap bleed"><table><thead><tr><th>Industry</th><th>Names</th><th>Dominant factor</th><th class="r">Weight</th></tr></thead><tbody id="fsIndustries"></tbody></table></div>
       <p class="fs-cover" id="fsCoverage"></p>
     </div>
 
     <div class="fsview" id="fsv-names">
       <input type="search" class="fs-search" id="fsQ" placeholder="Search ticker, company, industry…" aria-label="Search the roster">
-      <div class="tablewrap"><table><thead><tr id="fsHead"><th><button type="button" class="fs-sort" data-k="ticker">Ticker</button></th><th><button type="button" class="fs-sort" data-k="name">Company</button></th><th><button type="button" class="fs-sort" data-k="industry">Industry</button></th><th><button type="button" class="fs-sort" data-k="factor">Factor</button></th><th class="r"><button type="button" class="fs-sort" data-k="weight">Weight</button></th><th class="r"><button type="button" class="fs-sort" data-k="ret">Return</button></th></tr></thead><tbody id="fsNames"></tbody></table></div>
+      <div class="tablewrap bleed"><table><thead><tr id="fsHead"><th><button type="button" class="fs-sort" data-k="ticker">Ticker</button></th><th><button type="button" class="fs-sort" data-k="name">Company</button></th><th><button type="button" class="fs-sort" data-k="industry">Industry</button></th><th><button type="button" class="fs-sort" data-k="factor">Factor</button></th><th class="r"><button type="button" class="fs-sort" data-k="weight">Weight</button></th><th class="r"><button type="button" class="fs-sort" data-k="ret">Return</button></th></tr></thead><tbody id="fsNames"></tbody></table></div>
       <p class="fs-cover" id="fsNamesCount"></p>
     </div>
 
@@ -472,14 +481,14 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
         <canvas id="fscurve" role="img" aria-label="Futuresight index against SPY and QQQ since inception."></canvas>
       </div>
       <h3 style="margin-top:22px">Movers since inception</h3>
-      <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Company</th><th>Factor</th><th class="r">Weight</th><th class="r">Return</th></tr></thead><tbody id="fsMovers"></tbody></table></div>
+      <div class="tablewrap bleed"><table><thead><tr><th>Ticker</th><th>Company</th><th>Factor</th><th class="r">Weight</th><th class="r">Return</th></tr></thead><tbody id="fsMovers"></tbody></table></div>
     </div>
 
     <div class="fsview" id="fsv-factors">
       <p class="prose">Seventeen industries collapse into eight factors. The matrix below is the honest reason that matters: it is computed on trailing daily history, because correlation measures how these move together rather than how well they were picked.</p>
       <div class="fs-corrwrap" id="fsCorr"></div>
       <h3 style="margin-top:22px">Factor groups since inception</h3>
-      <div class="tablewrap"><table><thead><tr><th>Factor</th><th>Names</th><th class="r">Weight</th><th class="r">Return</th></tr></thead><tbody id="fsFactors"></tbody></table></div>
+      <div class="tablewrap bleed"><table><thead><tr><th>Factor</th><th>Names</th><th class="r">Weight</th><th class="r">Return</th></tr></thead><tbody id="fsFactors"></tbody></table></div>
     </div>
 
     </div><!-- /con-futuresight -->
@@ -495,7 +504,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <div class="fsview active" id="vsv-screen">
         <div class="stats" id="vsStats"></div>
         <input type="search" class="fs-search" id="vsQ" placeholder="Search ticker, company, sector\u2026" aria-label="Search the screen">
-        <div class="tablewrap"><table><thead><tr id="vsHead">
+        <div class="tablewrap bleed"><table><thead><tr id="vsHead">
           <th class="r"><button type="button" class="fs-sort" data-k="score">Score</button></th>
           <th><button type="button" class="fs-sort" data-k="ticker">Ticker</button></th>
           <th><button type="button" class="fs-sort" data-k="name">Company</button></th>
@@ -539,7 +548,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <div class="fsview active" id="gsv-screen">
         <div class="stats" id="gsStats"></div>
         <input type="search" class="fs-search" id="gsQ" placeholder="Search ticker, company, sector\u2026" aria-label="Search the screen">
-        <div class="tablewrap"><table><thead><tr id="gsHead">
+        <div class="tablewrap bleed"><table><thead><tr id="gsHead">
           <th class="r"><button type="button" class="fs-sort" data-k="score">Score</button></th>
           <th><button type="button" class="fs-sort" data-k="ticker">Ticker</button></th>
           <th><button type="button" class="fs-sort" data-k="name">Company</button></th>
@@ -557,7 +566,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
       <div class="fsview" id="gsv-pillars">
         <p class="prose">Every name scored on each pillar out of 100, then weighted into the headline number. A component with no data is dropped and the remaining weights re-normalised, so a missing figure never quietly scores as a zero. Sort any column to see what the screen is actually rewarding.</p>
-        <div class="tablewrap"><table><thead><tr id="gsPilHead"></tr></thead><tbody id="gsPillars"></tbody></table></div>
+        <div class="tablewrap bleed"><table><thead><tr id="gsPilHead"></tr></thead><tbody id="gsPillars"></tbody></table></div>
         <p class="fs-cover" id="gsPilNote"></p>
       </div>
 
@@ -1587,6 +1596,16 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       window.scrollTo(0,0);
     }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
+  })();
+
+  /* ---------------- scrollbar width for .bleed ---------------- */
+  (function(){
+    var set=function(){
+      document.documentElement.style.setProperty(
+        "--sbw",(window.innerWidth-document.documentElement.clientWidth)+"px");
+    };
+    set();
+    window.addEventListener("resize",set);
   })();
 
   /* ---------------- stale-page check ----------------
