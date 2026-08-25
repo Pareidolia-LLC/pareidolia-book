@@ -297,7 +297,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .vs-ins{font-family:var(--mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase}
   .vs-ins.heavy{color:var(--accent); font-weight:600}
   .vs-ins.normal{color:var(--muted)}
-  .vs-ins.absent{color:var(--faint)}
+  .vs-ins.absent{color:var(--muted)}
   .vs-score{font-family:var(--mono); font-weight:600; font-variant-numeric:tabular-nums}
   .vs-sub{font-size:11px; color:var(--faint); display:block}
   .fs-kicker{color:var(--muted); font-size:13px; max-width:64ch; margin:8px auto 0; font-style:italic}
@@ -444,6 +444,41 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     outline:2px solid var(--accent); outline-offset:2px}
 
   @media (prefers-reduced-motion:reduce){ .wrap::before{display:none} }
+
+  /* ================= paper on night =================
+     Surfaces that carry content are eggshell stock; the page they sit on stays
+     ink. Each surface restores the original light palette for its subtree, so
+     descendants need no restyling of their own. */
+  .tablewrap,.stat,.dial,.chart-card,.gcard,.appr,.con .box{
+    --bg:#F2ECDD; --panel:#FAF6EC; --panel-2:#EBE3D1; --line:#E0D6C0;
+    --ink:#2B2517; --muted:#6E6349; --faint:#8A7E64;
+    /* the semantic pair darkened for cream: #5F8A3C measured 3.43:1 and
+       #B4552F 4.16:1 against this stock, and these are numbers people read */
+    --up:#4A6E2C; --down:#9E4826;
+    --grid:rgba(43,37,23,.10);
+    background:var(--paper); color:var(--ink); border:1px solid #D9CFB6;
+    box-shadow:0 1px 0 0 rgba(0,0,0,.28), inset 0 1px 0 0 rgba(255,255,255,.5)}
+  .stat:hover,.gcard:hover{border-color:var(--accent)}
+  .tablewrap thead th{background:var(--panel-2); color:var(--muted)}
+  .tablewrap tbody tr{border-bottom-color:var(--line)}
+  .tablewrap tbody tr:hover{background:rgba(169,128,31,.10)}
+  .tablewrap.scrolled{box-shadow:inset 14px 0 12px -12px rgba(43,37,23,.28)}
+  .vs-flag{color:var(--muted); border-color:var(--line)}
+  .vs-flag.warn{color:var(--down); border-color:rgba(158,72,38,.5)}
+  .vs-ins.normal{background:var(--panel-2); border-color:var(--line)}
+  .vs-ins.absent{color:var(--muted)}
+  .stat .v{color:var(--ink)}
+  .stat .k,.stat .m{color:var(--muted)}
+  .vs-sub{color:var(--muted)}
+
+  /* --- the band goes gold; the marker inverts to ink so it stays visible --- */
+  .tabs{background:var(--gold-lift); border-bottom:1px solid var(--gold-lift)}
+  .tab{color:rgba(43,37,23,.88)}
+  .tab:hover{color:#2B2517; background:rgba(43,37,23,.07)}
+  .tab.active{color:#2B2517; background:rgba(43,37,23,.12)}
+  .tabink{background:#2B2517; box-shadow:none}
+  .tabs.hasink .tab.active{border-bottom-color:transparent}
+  .scrollprog{background:#2B2517; opacity:.55}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -741,7 +776,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   var VS = __VS_JSON__;
   var GS = __GS_JSON__;
   var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  var css=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();};
+  /* Charts are drawn on paper surfaces, which re-declare the palette for their
+     own subtree; read the variables from there rather than from the night root
+     or every line comes out in the light-on-dark values. */
+  var css=function(n){
+    var ref=document.querySelector(".chart-card")||document.documentElement;
+    return getComputedStyle(ref).getPropertyValue(n).trim();};
   var fmt=function(v){return (v>=0?"+":"−")+Math.abs(v).toFixed(2)+"%";};
   var cls=function(v){return v>=0?"pos":"neg";};
 
@@ -1171,7 +1211,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       var W=cv.clientWidth, H=cv.clientHeight;
       cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
       ctx.clearRect(0,0,W,H);
-      var css=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();};
+      /* Charts are drawn on paper surfaces, which re-declare the palette for their
+     own subtree; read the variables from there rather than from the night root
+     or every line comes out in the light-on-dark values. */
+  var css=function(n){
+    var ref=document.querySelector(".chart-card")||document.documentElement;
+    return getComputedStyle(ref).getPropertyValue(n).trim();};
       var series=[{n:"Futuresight",c:css("--accent"),d:FS.navSeries,w:2.2}];
       ["SPY","QQQ"].forEach(function(b,i){
         var s2=(FS.benchSeries||{})[b];
