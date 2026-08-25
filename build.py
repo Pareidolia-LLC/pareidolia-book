@@ -306,6 +306,82 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .fs-sort.on .ar{opacity:1}
   .fs-untracked{color:var(--faint); font-style:italic}
   .fs-cover{font-family:var(--mono); font-size:10.5px; color:var(--faint); letter-spacing:.05em; margin-top:10px}
+
+  /* ================= motion & finish =================
+     The palette, type and layout are untouched; this layer is only about how
+     the page moves, responds and settles. Decorative motion is gated behind
+     prefers-reduced-motion. */
+  :root{
+    --ease:cubic-bezier(.22,.61,.36,1);
+    --ease-out:cubic-bezier(.16,1,.3,1);
+    --glow:rgba(169,128,31,.30);
+  }
+
+  /* --- sliding tab marker: one bar that travels, instead of a border that
+         blinks from tab to tab. Positioned by JS, including across wraps. --- */
+  .tabink{position:absolute; bottom:0; height:2px; background:var(--accent);
+    width:0; left:0; opacity:0; pointer-events:none;
+    transition:left .42s var(--ease-out), width .42s var(--ease-out),
+               top .42s var(--ease-out), opacity .2s linear;
+    box-shadow:0 0 10px var(--glow)}
+  .tabs{position:sticky}
+  .tabs.hasink .tab.active{border-bottom-color:transparent}
+
+  /* --- scroll position as a hairline across the top of the band --- */
+  .scrollprog{position:fixed; top:0; left:0; height:2px; width:100%; z-index:9;
+    background:var(--accent); transform:scaleX(0); transform-origin:0 50%;
+    opacity:.85; pointer-events:none}
+
+  /* --- interactive surfaces: settle rather than snap --- */
+  .tab{transition:color .28s var(--ease), background-color .28s var(--ease)}
+  .tab:hover{background:rgba(242,236,221,.06)}
+  .tlv,.cbtn,.fs-sort,.fs-search,.grade{transition:color .24s var(--ease),
+    background-color .24s var(--ease), border-color .24s var(--ease),
+    transform .24s var(--ease), box-shadow .24s var(--ease)}
+  .cbtn:hover{transform:translateY(-1px); box-shadow:0 2px 0 0 var(--accent-soft)}
+  .cbtn.on{box-shadow:inset 0 0 0 1px var(--accent-soft)}
+  .tlv:hover{transform:translateY(-1px)}
+  .fs-search:focus{box-shadow:0 0 0 3px var(--accent-soft)}
+  .vs-flag,.vs-ins,.chip{transition:border-color .24s var(--ease), color .24s var(--ease)}
+
+  /* --- tables: a gold edge that grows on the hovered row, no layout shift --- */
+  tbody tr{transition:background-color .18s var(--ease), box-shadow .18s var(--ease)}
+  tbody tr:hover{box-shadow:inset 2px 0 0 0 var(--accent)}
+  .fs-sort .ar{display:inline-block; transition:transform .3s var(--ease-out), opacity .2s}
+  .fs-sort:not(.on) .ar{opacity:.25}
+  .fs-sort.on.asc .ar{transform:rotate(180deg)}
+  .tablewrap{transition:box-shadow .3s var(--ease)}
+  .tablewrap.scrolled{box-shadow:inset 14px 0 12px -12px rgba(43,37,23,.22)}
+
+  @media (prefers-reduced-motion:no-preference){
+    /* panels and views arrive rather than appear */
+    .panel.active{animation:pgIn .34s var(--ease-out) both}
+    .panel.active>section{animation:pgRise .52s var(--ease-out) both}
+    .panel.active>section:nth-child(1){animation-delay:.02s}
+    .panel.active>section:nth-child(2){animation-delay:.07s}
+    .panel.active>section:nth-child(3){animation-delay:.12s}
+    .panel.active>section:nth-child(4){animation-delay:.17s}
+    .panel.active>section:nth-child(5){animation-delay:.22s}
+    .panel.active>section:nth-child(n+6){animation-delay:.26s}
+    .fsview.active,.concept.active{animation:pgRise .42s var(--ease-out) both}
+    .stat,.dial{animation:pgRise .5s var(--ease-out) both}
+    .stats .stat:nth-child(2){animation-delay:.05s}
+    .stats .stat:nth-child(3){animation-delay:.1s}
+    .stats .stat:nth-child(4){animation-delay:.15s}
+    .stats .stat:nth-child(5){animation-delay:.2s}
+    .stats .stat:nth-child(6){animation-delay:.25s}
+    /* sections below the fold settle in as they are reached */
+    .reveal{opacity:0; transform:translateY(14px)}
+    .reveal.seen{opacity:1; transform:none;
+      transition:opacity .6s var(--ease-out), transform .6s var(--ease-out)}
+  }
+  @keyframes pgIn{from{opacity:0}to{opacity:1}}
+  @keyframes pgRise{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+
+  @media (prefers-reduced-motion:reduce){
+    .tabink{transition:none}
+    .scrollprog{display:none}
+  }
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -1311,7 +1387,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
         b.classList.toggle("on",on);
         var ar=b.querySelector(".ar");
         if(!ar){ar=document.createElement("span");ar.className="ar";b.appendChild(ar);}
-        ar.textContent=on?(sd===1?"\u25b2":"\u25bc"):"\u25bc";
+        ar.textContent="\u25bc";
+        b.classList.toggle("asc", on && sd===1);
         b.setAttribute("aria-sort",on?(sd===1?"ascending":"descending"):"none");
       });
     }
@@ -1504,7 +1581,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
         b.classList.toggle("on",on);
         var ar=b.querySelector(".ar");
         if(!ar){ar=document.createElement("span");ar.className="ar";b.appendChild(ar);}
-        ar.textContent=on?(sd===1?"\u25b2":"\u25bc"):"\u25bc";
+        ar.textContent="\u25bc";
+        b.classList.toggle("asc", on && sd===1);
         b.setAttribute("aria-sort",on?(sd===1?"ascending":"descending"):"none");
       });
     }
@@ -1594,8 +1672,148 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       if(id==="book" && window.__animBars) window.__animBars();
       if(id==="ideation" && window.__fsDraw) window.__fsDraw();
       window.scrollTo(0,0);
+      if(window.__motion) window.__motion(panels[id]);
     }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
+  })();
+
+  /* ---------------- motion: tab marker, scroll line, reveals, counters ----- */
+  (function(){
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* --- the marker that travels under the active tab --- */
+    var bar=document.querySelector(".tabs");
+    if(bar){
+      var ink=document.createElement("span");
+      ink.className="tabink";
+      bar.appendChild(ink);
+      bar.classList.add("hasink");
+      var place=function(){
+        var on=bar.querySelector(".tab.active");
+        if(!on){ink.style.opacity=0;return;}
+        ink.style.opacity=1;
+        ink.style.left=on.offsetLeft+"px";
+        ink.style.width=on.offsetWidth+"px";
+        ink.style.top=(on.offsetTop+on.offsetHeight-2)+"px";
+        ink.style.bottom="auto";
+      };
+      window.__tabInk=place;
+      place();
+      window.addEventListener("resize",place);
+      /* fonts landing late can shift tab widths */
+      if(document.fonts&&document.fonts.ready) document.fonts.ready.then(place);
+    }
+
+    /* --- scroll position as a hairline --- */
+    if(!still){
+      var prog=document.createElement("div");
+      prog.className="scrollprog";
+      document.body.appendChild(prog);
+      var tick=false;
+      var upd=function(){
+        var h=document.documentElement.scrollHeight-window.innerHeight;
+        var p=h>0?Math.min(1,Math.max(0,window.scrollY/h)):0;
+        prog.style.transform="scaleX("+p+")";
+        if(window.__sweep) window.__sweep();
+        tick=false;
+      };
+      window.addEventListener("scroll",function(){
+        if(!tick){tick=true;requestAnimationFrame(upd);}
+      },{passive:true});
+      upd();
+    }
+
+    /* --- sections below the fold settle in as they are reached ---
+       Deliberately not an IntersectionObserver: elements added to a panel that
+       was display:none a moment ago can be missed, and a missed element stays
+       at opacity 0. This sweep runs on every scroll frame, so a section that
+       is on screen is always visible. */
+    var sweep=function(){
+      var vh=window.innerHeight;
+      [].forEach.call(document.querySelectorAll(".reveal:not(.seen)"),function(el){
+        var r=el.getBoundingClientRect();
+        if(r.top < vh*0.94 && r.bottom > 0) el.classList.add("seen");
+      });
+    };
+    window.__sweep=sweep;
+    window.__reveal=function(root){
+      if(still) return;
+      var host=root||document;
+      [].forEach.call(host.querySelectorAll("section, .chart-card"),function(el){
+        if(el.dataset.rv) return;
+        var r=el.getBoundingClientRect();
+        if(r.top < window.innerHeight*0.94) return;  /* already on screen: leave it */
+        el.dataset.rv="1";
+        el.classList.add("reveal");
+      });
+      sweep();
+    };
+    /* last resort: never leave anything hidden if the page is simply left alone */
+    setTimeout(function(){
+      [].forEach.call(document.querySelectorAll(".reveal:not(.seen)"),function(el){
+        var r=el.getBoundingClientRect();
+        if(r.top < window.innerHeight*1.6) el.classList.add("seen");
+      });
+    },4000);
+
+    /* --- count-up on the headline figures ---
+       Only numbers that parse cleanly are animated, and the original text is
+       written back verbatim at the end, so the figure on screen at rest is
+       always exactly what was rendered. */
+    var countable=function(txt){
+      var m=/^([^\d\-\u2212]*)(-|\u2212)?(\d[\d,]*)(\.(\d+))?(.*)$/.exec(txt.trim());
+      if(!m) return null;
+      var whole=m[3].replace(/,/g,"");
+      if(whole.length>9) return null;
+      var dec=m[5]?m[5].length:0;
+      var val=parseFloat(whole+(m[5]?"."+m[5]:""));
+      if(!isFinite(val)) return null;
+      return {pre:m[1]||"", neg:!!m[2], val:val, dec:dec, post:m[6]||"",
+              group:m[3].indexOf(",")>-1};
+    };
+    var fmt=function(c,v){
+      var t=v.toFixed(c.dec);
+      if(c.group){
+        var parts=t.split(".");
+        parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");
+        t=parts.join(".");
+      }
+      return c.pre+(c.neg?"\u2212":"")+t+c.post;
+    };
+    window.__countUp=function(root){
+      if(still) return;
+      var host=root||document;
+      [].forEach.call(host.querySelectorAll(".stat .v"),function(el){
+        if(el.dataset.ct) return;
+        var final=el.textContent;
+        var c=countable(final);
+        if(!c){el.dataset.ct="skip";return;}
+        el.dataset.ct="1";
+        var t0=null, dur=760;
+        var step=function(ts){
+          if(t0===null) t0=ts;
+          var k=Math.min(1,(ts-t0)/dur);
+          var e=1-Math.pow(1-k,3);
+          el.textContent=fmt(c,c.val*e);
+          if(k<1) requestAnimationFrame(step);
+          else el.textContent=final;      /* restore the rendered string exactly */
+        };
+        requestAnimationFrame(step);
+      });
+    };
+
+    /* --- a shadow on a table that is scrolled sideways --- */
+    [].forEach.call(document.querySelectorAll(".tablewrap"),function(w){
+      var f=function(){w.classList.toggle("scrolled",w.scrollLeft>2);};
+      w.addEventListener("scroll",f,{passive:true});
+    });
+
+    window.__motion=function(root){
+      if(window.__tabInk) window.__tabInk();
+      if(window.__reveal) window.__reveal(root);
+      if(window.__countUp) window.__countUp(root);
+    };
+    window.__motion();
   })();
 
   /* ---------------- scrollbar width for .bleed ---------------- */
