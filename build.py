@@ -241,10 +241,28 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .fs-tier{display:inline-block; font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; border:1px solid var(--line); padding:1px 5px; color:var(--muted); margin-left:7px}
   .fs-sw{display:inline-block; width:8px; height:8px; margin-right:6px; vertical-align:1px}
   #fsNames td:nth-child(4),#fsMovers td:nth-child(3),#fsFactors td:nth-child(1),#fsIndustries td:nth-child(3){white-space:nowrap}
+  #vsRows td:nth-child(1),#vsRows td:nth-child(9){white-space:nowrap}
   /* Other panels lead with an element carrying its own top margin; this one
      leads with a bare .eyebrow, so it needs the clearance added back or it
      sits flush against the sticky tab band. */
-  #panel-futuresight > .eyebrow{margin-top:30px}
+  #panel-ideation .concept > .eyebrow{margin-top:22px}
+  .concept{display:none}
+  .concept.active{display:block}
+  .cnav{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:30px}
+  .cbtn{font-family:var(--mono); font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; padding:9px 15px; border:1px solid var(--line); background:none; color:var(--muted); cursor:pointer; text-align:left; line-height:1.5}
+  .cbtn b{display:block; font-family:var(--serif); font-size:14px; letter-spacing:0; text-transform:none; color:var(--ink); font-weight:600}
+  .cbtn:hover{border-color:var(--accent)}
+  .cbtn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .cbtn.on{background:var(--accent-soft); border-color:var(--accent)}
+  .cbtn.on b{color:var(--accent)}
+  .vs-flag{display:inline-block; font-family:var(--mono); font-size:9px; letter-spacing:.06em; border:1px solid var(--line); padding:1px 4px; margin:0 3px 2px 0; color:var(--muted)}
+  .vs-flag.warn{border-color:var(--down); color:var(--down)}
+  .vs-ins{font-family:var(--mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase}
+  .vs-ins.heavy{color:var(--accent); font-weight:600}
+  .vs-ins.normal{color:var(--muted)}
+  .vs-ins.absent{color:var(--faint)}
+  .vs-score{font-family:var(--mono); font-weight:600; font-variant-numeric:tabular-nums}
+  .vs-sub{font-size:11px; color:var(--faint); display:block}
   .fs-kicker{color:var(--muted); font-size:13px; max-width:64ch; margin:8px auto 0; font-style:italic}
   .fs-search{font-family:var(--mono); font-size:11.5px; padding:7px 10px; border:1px solid var(--line); background:var(--panel); color:var(--ink); min-width:220px; margin:14px 0 4px}
   .fs-search:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
@@ -273,7 +291,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <button class="tab" data-panel="approach" role="tab">Operations</button>
     <button class="tab" data-panel="concepts" role="tab">Doctrine</button>
     <button class="tab" data-panel="record" role="tab">Best &amp; Worst</button>
-    <button class="tab" data-panel="futuresight" role="tab">Ideation</button>
+    <button class="tab" data-panel="ideation" role="tab">Ideation</button>
   </nav>
   <div class="panel active" id="panel-report">
   <div class="perfgrid">
@@ -397,7 +415,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <ul class="proselist" id="recnotes"></ul>
   </section>
   </div>
-  <div class="panel" id="panel-futuresight">
+  <div class="panel" id="panel-ideation">
+    <nav class="cnav" id="cnav" role="tablist" aria-label="Concepts">
+      <button type="button" class="cbtn on" data-c="futuresight" role="tab">Concept 01<b>Futuresight Index</b></button>
+      <button type="button" class="cbtn" data-c="value" role="tab">Concept 02<b>Value Scanner</b></button>
+    </nav>
+
+    <div class="concept active" id="con-futuresight">
     <div class="eyebrow">Concept 01 &middot; opened Aug 2026 &middot; forward-tracked</div>
     <h2>Futuresight Index</h2>
     <p class="fs-kicker">Ideation is where a thesis gets written down, weighted, and then held to a public record before any of it is traded. Futuresight is the first concept in the series.</p>
@@ -433,6 +457,51 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <h3 style="margin-top:22px">Factor groups since inception</h3>
       <div class="tablewrap"><table><thead><tr><th>Factor</th><th>Names</th><th class="r">Weight</th><th class="r">Return</th></tr></thead><tbody id="fsFactors"></tbody></table></div>
     </div>
+
+    </div><!-- /con-futuresight -->
+
+    <div class="concept" id="con-value">
+      <div class="eyebrow">Concept 02 &middot; deep value screen &middot; run <span id="vsRun"></span></div>
+      <h2>Value Scanner</h2>
+      <p class="fs-kicker">The second concept, and the opposite instinct to the first. Futuresight buys a story; this buys a balance sheet nobody wants.</p>
+      <p class="prose">A screen of the entire US market for companies trading under 3&times; sales and under 1&times; book, ranked by cheapness against quality, with the value traps that fill a raw price-to-book list flagged rather than hidden. Everything comes from free data with no API key.</p>
+      <p class="fs-note">Same footing as the first concept: this is research I run for myself, not advice, and I am not a licensed financial advisor. A screen is a starting list, not a conclusion &mdash; it says a company is statistically cheap, never that it is a good business or that the cheapness is wrong. Cheap usually means the market knows something. Anyone acting on this is taking their own risk, and the responsibility for that sits with them, not with me.</p>
+      <div class="tlviews" id="vsviews" role="tablist" aria-label="Value scanner views"></div>
+
+      <div class="fsview active" id="vsv-screen">
+        <div class="stats" id="vsStats"></div>
+        <input type="search" class="fs-search" id="vsQ" placeholder="Search ticker, company, sector\u2026" aria-label="Search the screen">
+        <div class="tablewrap"><table><thead><tr id="vsHead">
+          <th class="r"><button type="button" class="fs-sort" data-k="score">Score</button></th>
+          <th><button type="button" class="fs-sort" data-k="ticker">Ticker</button></th>
+          <th><button type="button" class="fs-sort" data-k="name">Company</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="pb">P/B</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="ps">P/S</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="fcfYield">FCF yld</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="roe">ROE</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="mcap">Mkt cap</button></th>
+          <th><button type="button" class="fs-sort" data-k="insider">Insiders</button></th>
+          <th>Flags</th>
+        </tr></thead><tbody id="vsRows"></tbody></table></div>
+        <p class="fs-cover" id="vsCount"></p>
+      </div>
+
+      <div class="fsview" id="vsv-method">
+        <h3>What it does</h3>
+        <p class="prose">One screener call filters the whole US market server-side on price-to-book, price-to-sales, market cap and volume, with a guard requiring positive book value per share &mdash; a company with negative equity also satisfies &quot;P/B under 1&quot;, and those are the first thing a naive screen fills up with. A second call re-runs the same filter with Altman Z above 1.8, and anything missing from that set gets flagged. Per-name fundamentals and Form 4 insider filings are then pulled for each survivor.</p>
+        <h3 style="margin-top:20px">Score</h3>
+        <p class="prose">Fixed scales, so a 70 this month means the same as a 70 next month. For banks, insurers and REITs the Z-score, current-ratio and cash-flow components are dropped and the rest re-weighted, because they do not mean anything for a balance sheet built that way.</p>
+        <div class="tablewrap"><table><thead><tr><th class="r">Weight</th><th>Component</th><th>0 points</th><th>100 points</th></tr></thead><tbody id="vsWeights"></tbody></table></div>
+        <h3 style="margin-top:20px">Flags</h3>
+        <div class="tablewrap"><table><thead><tr><th>Flag</th><th>Meaning</th></tr></thead><tbody id="vsFlagDoc"></tbody></table></div>
+        <h3 style="margin-top:20px">Insider column</h3>
+        <p class="prose">Form 4 filings over the trailing 180 days. Roughly 60% of a raw transaction list is stock awards, gifts and option exercises &mdash; compensation, not conviction &mdash; so only rows labelled Purchase count, and only rows labelled Sale count against them. <b>Heavy</b> means three or more insiders bought at least $50k between them, or purchases worth over 0.1% of market cap, and buying exceeded selling. This sits beside the score rather than inside it, so the score keeps meaning the same thing run to run.</p>
+        <h3 style="margin-top:20px">The currency trap</h3>
+        <p class="prose">Yahoo divides a USD market cap by local-currency revenue and book value for foreign issuers, so a Korean utility reporting in won screens at 0.2&times; book and a Chinese lender at 0.07&times; sales. Those names dominate a naive screen and every one is an exchange-rate artifact. They are detected and excluded by default.</p>
+        <h3 style="margin-top:20px">What this cannot tell you</h3>
+        <p class="prose">Book value is a balance-sheet number, not a liquidation value: goodwill and intangibles inflate it, so check what the book is actually made of. Sub-1&times; book is the normal resting state for banks and insurers, not a signal. Ratios are trailing twelve months while book value is most recent quarter, so a company that just cratered looks better here than it is. And the data is Yahoo\u2019s &mdash; a stale share count after a merger produces a market cap, and therefore a P/S, that is badly wrong. Sanity-check any individual name before acting on it.</p>
+      </div>
+    </div><!-- /con-value -->
   </div>
   <div class="panel" id="panel-story"></div>
   <footer>
@@ -445,6 +514,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   "use strict";
   var DATA = __DATA_JSON__;
   var FS = __FS_JSON__;
+  var VS = __VS_JSON__;
   var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var css=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();};
   var fmt=function(v){return (v>=0?"+":"−")+Math.abs(v).toFixed(2)+"%";};
@@ -1028,14 +1098,187 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     renderIndustries(); renderMovers(); renderNames();
   })();
 
-    var ids=["report","book","approach","concepts","story","record","futuresight"];
+
+  /* ---------------- Ideation: concept switcher ---------------- */
+  (function(){
+    var nav=document.getElementById("cnav"); if(!nav) return;
+    var btns=[].slice.call(nav.querySelectorAll(".cbtn"));
+    btns.forEach(function(b){
+      b.addEventListener("click",function(){
+        var c=b.getAttribute("data-c");
+        btns.forEach(function(x){x.classList.toggle("on",x===b);});
+        ["futuresight","value"].forEach(function(k){
+          var el=document.getElementById("con-"+k);
+          if(el) el.classList.toggle("active",k===c);
+        });
+        if(c==="futuresight" && window.__fsDraw &&
+           document.getElementById("fsv-track").classList.contains("active")) window.__fsDraw();
+      });
+    });
+  })();
+
+  /* ---------------- Concept 02: Value Scanner ---------------- */
+  (function(){
+    if(!VS || !VS.rows || !VS.rows.length) return;
+    var R=VS.rows;
+
+    var WARN={"Z-RISK":1,"NEG-FCF":1,"LOSS":1,"DEBT":1,"TIGHT":1,"SHRINK":1,"NEG-REV":1};
+    var FLAGDOC=[
+      ["Z-RISK","Altman Z below 1.8 \u2014 the distress zone"],
+      ["NEG-FCF","Burning cash over the trailing twelve months"],
+      ["LOSS","Negative net margin"],
+      ["DEBT","Debt to equity above 200% \u2014 the book value is mostly the creditors'"],
+      ["TIGHT","Current ratio below 1"],
+      ["SHRINK","Revenue down more than 10% year over year"],
+      ["NEG-REV","Negative trailing revenue, typically a mortgage REIT \u2014 no meaningful P/S"],
+      ["FX","Foreign issuer reporting in a non-USD currency"],
+      ["OTC","Trades off the major exchanges"],
+      ["FIN","Bank, insurer or REIT \u2014 P/B is the right yardstick, the solvency ratios are not"],
+      ["NEAR-LOW","Within 10% of the 52-week low"]
+    ];
+    var WEIGHTS=[
+      ["30%","Price to book","1.0","0.2"],["20%","Price to sales","3.0","0.2"],
+      ["12%","Free cash flow yield","0%","15%"],["10%","Return on equity","0%","15%"],
+      ["10%","Debt to equity","200%","30%"],["10%","Revenue growth","\u221220%","+10%"],
+      ["10%","Altman Z above 1.8","no","yes"],["8%","Current ratio","1.0","2.0"]
+    ];
+    var INS={heavy:3,normal:2,absent:1};
+
+    var num=function(v,d){return (v===null||v===undefined||isNaN(v))?"\u2014":v.toFixed(d===undefined?2:d);};
+    var pctf=function(v){return (v===null||v===undefined||isNaN(v))?"\u2014":(v*100).toFixed(1)+"%";};
+    var capf=function(v){
+      if(!v) return "\u2014";
+      if(v>=1e9) return "$"+(v/1e9).toFixed(1)+"B";
+      return "$"+Math.round(v/1e6)+"M";
+    };
+    var esc=function(t){return String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");};
+
+    document.getElementById("vsRun").textContent=(VS.generatedAt||"").slice(0,10);
+
+    /* sub-views */
+    var VW=[["screen","Screen"],["method","Method"]];
+    var vh=document.getElementById("vsviews");
+    VW.forEach(function(v,i){
+      var b=document.createElement("button");
+      b.type="button"; b.className="tlv"+(i===0?" active":"");
+      b.setAttribute("role","tab"); b.textContent=v[1];
+      b.addEventListener("click",function(){
+        [].forEach.call(vh.children,function(c){c.classList.remove("active");});
+        b.classList.add("active");
+        VW.forEach(function(w){document.getElementById("vsv-"+w[0]).classList.toggle("active",w[0]===v[0]);});
+      });
+      vh.appendChild(b);
+    });
+
+    /* headline */
+    var heavy=R.filter(function(r){return (r.insider||{}).level==="heavy";}).length;
+    var zsafe=R.filter(function(r){return r.zSafe;}).length;
+    var clean=R.filter(function(r){return !(r.flags||[]).some(function(f){return WARN[f];});}).length;
+    var c=VS.criteria||{};
+    document.getElementById("vsStats").innerHTML=[
+      [R.length,"Names on the screen","P/S under "+(c.ps||3)+", P/B under "+(c.pb||1)],
+      [clean,"No red flag","Nothing in the distress set"],
+      [zsafe,"Altman Z above 1.8","Out of the distress zone"],
+      [heavy,"Heavy insider buying","Three or more real buyers"]
+    ].map(function(x){
+      return "<div class='stat'><div class='k'>"+x[1]+"</div><div class='v'>"+x[0]+
+        "</div><div class='m'>"+x[2]+"</div></div>";
+    }).join("");
+
+    /* method tables */
+    document.getElementById("vsWeights").innerHTML=WEIGHTS.map(function(w){
+      return "<tr><td class='r'>"+w[0]+"</td><td>"+w[1]+"</td><td>"+w[2]+"</td><td>"+w[3]+"</td></tr>";
+    }).join("");
+    document.getElementById("vsFlagDoc").innerHTML=FLAGDOC.map(function(f){
+      return "<tr><td><span class='vs-flag"+(WARN[f[0]]?" warn":"")+"'>"+f[0]+"</span></td><td>"+f[1]+"</td></tr>";
+    }).join("");
+
+    /* sortable table */
+    var TEXT={ticker:1,name:1};
+    var sk="score", sd=-1;
+    var qbox=document.getElementById("vsQ");
+
+    function val(r,k){
+      if(k==="insider") return INS[(r.insider||{}).level||"absent"]||0;
+      return r[k];
+    }
+    function sorted(rows){
+      return rows.slice().sort(function(a,b){
+        if(TEXT[sk]){
+          var c2=(a[sk]||"").localeCompare(b[sk]||"","en",{numeric:true,sensitivity:"base"});
+          return (c2||a.ticker.localeCompare(b.ticker))*sd;
+        }
+        var av=val(a,sk), bv=val(b,sk);
+        var an=(av===null||av===undefined||isNaN(av)), bn=(bv===null||bv===undefined||isNaN(bv));
+        if(an&&bn) return a.ticker.localeCompare(b.ticker);
+        if(an) return 1;
+        if(bn) return -1;
+        if(av===bv) return a.ticker.localeCompare(b.ticker);
+        return (av-bv)*sd;
+      });
+    }
+    function head(){
+      [].forEach.call(document.querySelectorAll("#vsHead .fs-sort"),function(b){
+        var on=b.getAttribute("data-k")===sk;
+        b.classList.toggle("on",on);
+        var ar=b.querySelector(".ar");
+        if(!ar){ar=document.createElement("span");ar.className="ar";b.appendChild(ar);}
+        ar.textContent=on?(sd===1?"\u25b2":"\u25bc"):"\u25bc";
+        b.setAttribute("aria-sort",on?(sd===1?"ascending":"descending"):"none");
+      });
+    }
+    [].forEach.call(document.querySelectorAll("#vsHead .fs-sort"),function(b){
+      b.addEventListener("click",function(){
+        var k=b.getAttribute("data-k");
+        if(k===sk){sd=-sd;} else {sk=k; sd=TEXT[k]?1:-1;}
+        head(); renderVS();
+      });
+    });
+
+    function renderVS(){
+      var q=(qbox.value||"").trim().toLowerCase();
+      var rows=R.filter(function(r){
+        if(!q) return true;
+        return ((r.ticker||"")+" "+(r.name||"")+" "+(r.sector||"")+" "+(r.industry||"")).toLowerCase().indexOf(q)>-1;
+      });
+      rows=sorted(rows);
+      document.getElementById("vsRows").innerHTML=rows.map(function(r){
+        var ins=r.insider||{}, lv=ins.level||"absent";
+        var tip=lv==="absent"?"No open-market purchases in the window"
+          :((ins.buyers||0)+" buyer"+(ins.buyers===1?"":"s")+
+            (ins.buyValue?", $"+Math.round(ins.buyValue/1000)+"k":"")+
+            (ins.lastBuy?", last "+ins.lastBuy:"")+
+            (ins.topBuyer?" \u2014 "+ins.topBuyer:""));
+        var flags=(r.flags||[]).map(function(f){
+          return "<span class='vs-flag"+(WARN[f]?" warn":"")+"'>"+f+"</span>";}).join("");
+        return "<tr>"+
+          "<td class='r'><span class='vs-score'>"+num(r.score,0)+"</span></td>"+
+          "<td><b>"+r.ticker+"</b></td>"+
+          "<td>"+esc(r.name)+"<span class='vs-sub'>"+esc(r.sector||"")+"</span></td>"+
+          "<td class='r'>"+num(r.pb)+"</td>"+
+          "<td class='r'>"+num(r.ps)+"</td>"+
+          "<td class='r'>"+pctf(r.fcfYield)+"</td>"+
+          "<td class='r'>"+pctf(r.roe)+"</td>"+
+          "<td class='r'>"+capf(r.mcap)+"</td>"+
+          "<td><span class='vs-ins "+lv+"' title=\""+esc(tip)+"\">"+lv+"</span></td>"+
+          "<td>"+(flags||"<span class='vs-flag'>clean</span>")+"</td></tr>";
+      }).join("");
+      document.getElementById("vsCount").textContent=
+        rows.length+" of "+R.length+" shown \u00b7 screened from "+(VS.universeHits||"?")+
+        " names that cleared the valuation filter \u00b7 run "+(VS.generatedAt||"");
+    }
+    qbox.addEventListener("input", renderVS);
+    head(); renderVS();
+  })();
+
+    var ids=["report","book","approach","concepts","story","record","ideation"];
     var panels={}; ids.forEach(function(id){panels[id]=document.getElementById("panel-"+id);});
     function activate(id){
       tabs.forEach(function(t){t.classList.toggle("active",t.getAttribute("data-panel")===id);});
       ids.forEach(function(k){panels[k].classList.toggle("active",k===id);});
       if(id==="report" && window.__drawCurve) window.__drawCurve();
       if(id==="book" && window.__animBars) window.__animBars();
-      if(id==="futuresight" && window.__fsDraw) window.__fsDraw();
+      if(id==="ideation" && window.__fsDraw) window.__fsDraw();
       window.scrollTo(0,0);
     }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
@@ -1050,8 +1293,16 @@ if fs is None:
 
 html = TEMPLATE.replace("__DATA_JSON__", json.dumps(data, ensure_ascii=False))
 html = html.replace("__FS_JSON__", json.dumps(fs, ensure_ascii=False))
+
+vs_path = os.path.join(HERE, "valuescan.json")
+vs = json.load(open(vs_path, encoding="utf-8")) if os.path.exists(vs_path) else None
+if vs is None:
+    print("warning: valuescan.json missing - run valuescan_sync.py; Concept 02 will render empty")
+html = html.replace("__VS_JSON__", json.dumps(vs, ensure_ascii=False))
 with open(os.path.join(HERE, "index.html"), "w", encoding="utf-8") as f:
     f.write(html)
 print("built index.html (" + str(len(html)) + " bytes) from data.json"
       + (" + futuresight (" + str(fs["coverage"]["priced"]) + " priced, as of "
-         + fs["asOf"] + ")" if fs else " (no futuresight data)"))
+         + fs["asOf"] + ")" if fs else " (no futuresight data)")
+      + (" + valuescan (" + str(len(vs["rows"])) + " names, run "
+         + str(vs.get("generatedAt")) + ")" if vs else " (no valuescan data)"))
