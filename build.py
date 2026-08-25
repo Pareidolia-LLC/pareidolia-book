@@ -36,12 +36,10 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   }
   *{box-sizing:border-box} body{margin:0}
   .wrap{background:var(--bg); color:var(--ink); font-family:var(--sans); min-height:100vh; padding:var(--pagepad); -webkit-font-smoothing:antialiased; line-height:1.5}
-  .sheet{max-width:1120px; margin:0 auto}
-  /* Break a table out of the 1120px sheet to the full page gutter. --sbw is the
-     scrollbar width, measured in JS: 100vw includes it but the element cannot
-     use it, and without subtracting it the page itself gains a scrollbar. */
-  .tablewrap.bleed{width:calc(100vw - 2*var(--pagepad) - var(--sbw,0px)); max-width:none;
-    margin-left:calc(50% - 50vw + var(--pagepad) + var(--sbw,0px)/2)}
+  /* No cap: every panel runs the full width of the page gutter. Anything that
+     needs to be narrower than this sets its own measure - the masthead tagline
+     and the italic deks still do. */
+  .sheet{max-width:none; margin:0 auto}
   .masthead{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; border-bottom:1.5px solid var(--ink); padding-bottom:18px}
   .mark{font-family:var(--serif); font-size:clamp(34px,6vw,58px); line-height:.95; letter-spacing:.01em; font-weight:600; text-wrap:balance}
   .mark .dot{color:var(--accent)}
@@ -541,7 +539,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <div class="fsview active" id="gsv-screen">
         <div class="stats" id="gsStats"></div>
         <input type="search" class="fs-search" id="gsQ" placeholder="Search ticker, company, sector\u2026" aria-label="Search the screen">
-        <div class="tablewrap bleed"><table><thead><tr id="gsHead">
+        <div class="tablewrap"><table><thead><tr id="gsHead">
           <th class="r"><button type="button" class="fs-sort" data-k="score">Score</button></th>
           <th><button type="button" class="fs-sort" data-k="ticker">Ticker</button></th>
           <th><button type="button" class="fs-sort" data-k="name">Company</button></th>
@@ -1589,16 +1587,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       window.scrollTo(0,0);
     }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
-  })();
-
-  /* ---------------- scrollbar width for .bleed ---------------- */
-  (function(){
-    var set=function(){
-      document.documentElement.style.setProperty(
-        "--sbw",(window.innerWidth-document.documentElement.clientWidth)+"px");
-    };
-    set();
-    window.addEventListener("resize",set);
   })();
 
   /* ---------------- stale-page check ----------------
