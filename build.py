@@ -24,11 +24,16 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 <title>Pareidolia — The Book</title>
 <style>
   :root{
-    --bg:#F2ECDD; --panel:#FAF6EC; --panel-2:#EBE3D1; --line:#E0D6C0;
-    --ink:#2B2517; --muted:#7D7159; --faint:#AAA089;
-    --accent:#A9801F; --accent-soft:rgba(169,128,31,.16);
+    /* Night edition: the same palette with the roles swapped round. The
+       eggshell did not leave - it became the ink. Surfaces are the ink hue
+       lightened, so the browns stay brown instead of drifting grey. */
+    --bg:#2B2517; --panel:#332C1C; --panel-2:#3D3524; --line:#4C4331;
+    --ink:#F2ECDD; --muted:#AAA089; --faint:#7D7159;
+    --accent:#A9801F; --accent-soft:rgba(169,128,31,.20);
     --slate:#8A7E64; --up:#5F8A3C; --down:#B4552F;
-    --grid:rgba(43,37,23,.10); --warn:#C46A1C; color-scheme:light;
+    --grid:rgba(242,236,221,.10); --warn:#C46A1C; color-scheme:dark;
+    --paper:#F2ECDD;            /* the old ground, now used as a surface */
+    --gold-lift:#C79A2E;        /* gold at reading weight on the dark ground */
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --pagepad:clamp(20px,4vw,56px);
@@ -382,6 +387,63 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     .tabink{transition:none}
     .scrollprog{display:none}
   }
+
+  /* ================= night edition =================
+     Appended last, so it settles the handful of places that were written
+     assuming ink sat on paper rather than the other way round. */
+
+  /* The band was ink on paper. Inverted, it is paper on ink - the same
+     relationship read the other way, and it anchors the page. */
+  .tabs{background:var(--paper); border-bottom:1px solid var(--paper)}
+  .tab{color:rgba(43,37,23,.62)}
+  .tab:hover{color:#2B2517; background:rgba(43,37,23,.05)}
+  /* Gold on the paper band measures 3.07:1 - it had the contrast when the band
+     was ink and does not now. The active tab carries full ink and the gold
+     marker beneath it does the identifying, which is stronger signal anyway. */
+  .tab.active{color:#2B2517; background:rgba(169,128,31,.14)}
+  .tabink{box-shadow:none}
+
+  /* Gold at small sizes needs a little more light on this ground; the rules
+     and marks keep the original value. */
+  .eyebrow,.fs-kicker b,.prose a,.tlv.active{color:var(--gold-lift)}
+  .stat .v,.mark{color:var(--ink)}
+
+  /* Surfaces read as instruments: square, hairline, lit faintly from within. */
+  .stat,.dial,.chart-card,.appr,.con .box,.gcard,.tablewrap{
+    background:var(--panel); border-color:var(--line);
+    box-shadow:inset 0 1px 0 0 rgba(242,236,221,.04)}
+  .stat{transition:border-color .3s var(--ease)}
+  .stat:hover,.gcard:hover{border-color:rgba(169,128,31,.45)}
+  thead th{background:var(--panel-2)}
+  tbody tr{border-bottom-color:var(--line)}
+  tbody tr:hover{background:rgba(169,128,31,.09)}
+  .tablewrap.scrolled{box-shadow:inset 14px 0 12px -12px rgba(0,0,0,.5)}
+  .masthead{border-bottom-color:var(--ink)}
+  .mark{text-shadow:0 0 36px rgba(169,128,31,.16)}
+
+  /* Chips outline rather than fill, so a row of them stays quiet. */
+  .vs-flag{background:transparent; border-color:var(--line); color:var(--muted)}
+  .vs-flag.warn{color:var(--down); border-color:rgba(180,85,47,.5)}
+  .vs-ins.heavy{color:#2B2517; background:var(--accent)}
+  .vs-ins.normal{background:var(--panel-2); border-color:var(--line)}
+  .cbtn.on{background:rgba(169,128,31,.16)}
+  .cbtn b{color:var(--ink)}
+  .cbtn.on b{color:var(--gold-lift)}
+
+  .stalebar{background:var(--paper); color:#2B2517}
+  .stalebar button{border-color:rgba(43,37,23,.45)}
+
+  /* A scan texture at two percent - grain on a screen, never a pattern. */
+  .wrap::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:repeating-linear-gradient(180deg,
+      rgba(242,236,221,.022) 0px, rgba(242,236,221,.022) 1px,
+      transparent 1px, transparent 3px)}
+  .sheet{position:relative; z-index:1}
+
+  .tab:focus-visible,.tlv:focus-visible,.cbtn:focus-visible,.fs-sort:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px}
+
+  @media (prefers-reduced-motion:reduce){ .wrap::before{display:none} }
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -994,8 +1056,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* ---------------- Futuresight ---------------- */
   (function(){
     if(!FS || !FS.navSeries) return;
-    var FC={AI:"#2a78d6",DEF:"#eb6834",IND:"#1baf7a",ENERGY:"#eda100",
-            DATA:"#e87ba4",MED:"#008300",SW:"#4a3aa7",RATES:"#e34948"};
+    var FC={AI:"#5AA0F0",DEF:"#F2854A",IND:"#3FD6A0",ENERGY:"#F0BC3C",
+            DATA:"#F095B8",MED:"#4FC26A",SW:"#9D8CF0",RATES:"#F06B6B"};
     var FL={AI:"AI capex",DEF:"Defense",IND:"Industrial",ENERGY:"Energy",
             DATA:"Data",MED:"Medtech",SW:"Software",RATES:"Rates"};
     var ORDER=["AI","DEF","IND","ENERGY","DATA","MED","SW","RATES"];
