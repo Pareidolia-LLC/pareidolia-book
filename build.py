@@ -479,6 +479,40 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .tabink{background:#2B2517; box-shadow:none}
   .tabs.hasink .tab.active{border-bottom-color:transparent}
   .scrollprog{background:#2B2517; opacity:.55}
+
+  /* ============ Ideation: one measure for the whole panel ============
+     Composes with .bleed on the data tables - same expression, same parent
+     width, so applying both is idempotent. */
+  #panel-ideation .concept>.eyebrow,
+  #panel-ideation .concept>h2,
+  #panel-ideation .concept>.fs-kicker,
+  #panel-ideation .concept>.prose,
+  #panel-ideation .concept>.fs-note,
+  #panel-ideation .concept>.tlviews,
+  #panel-ideation .fsview>.stats,
+  #panel-ideation .fsview>.fs-search,
+  #panel-ideation .fsview>.prose,
+  #panel-ideation .fsview>h3,
+  #panel-ideation .fsview>.fs-cover,
+  #panel-ideation .fsview>.fs-legend,
+  #panel-ideation .fsview>.chart-card,
+  #panel-ideation .fsview>.fs-corrwrap,
+  #panel-ideation .fsview>.tablewrap{
+    width:calc(100vw - 2*var(--pagepad) - var(--sbw,0px));
+    max-width:none;
+    margin-left:calc(50% - 50vw + var(--pagepad) + var(--sbw,0px)/2);
+    margin-right:0}
+
+  /* the caps that were holding the intro text to a paragraph measure */
+  #panel-ideation .fs-kicker,
+  #panel-ideation .fs-note,
+  #panel-ideation .prose{max-width:none}
+  /* the note keeps its rule on the left rather than centring itself */
+  #panel-ideation .fs-note{margin-top:16px; margin-bottom:16px}
+  #panel-ideation .fs-search{width:min(340px,100%)}
+  /* .stats is fixed at three columns, which orphans the fourth tile the
+     concept panels carry; let them fit the row they now have. */
+  #panel-ideation .stats{grid-template-columns:repeat(auto-fit,minmax(198px,1fr))}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
