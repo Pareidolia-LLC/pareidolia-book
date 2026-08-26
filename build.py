@@ -60,6 +60,25 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
     --pagepad:clamp(20px,4vw,56px);
     --mono:"SFMono-Regular","SF Mono",ui-monospace,"Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
   }
+  /* ---- colourway: terminal ---------------------------------------------
+     Amber phosphor on black. Green up, red down, cyan for comparison. */
+  :root[data-cw="terminal"]{
+    --bg:#07090A; --panel:#0D1113; --panel-2:#131A1D; --line:#242E33;
+    --ink:#E8E4D9; --muted:#8B9AA1; --faint:#5E6C72;
+    --accent:#FFB000; --accent-soft:rgba(255,176,0,.14);
+    --slate:#7E8C93; --up:#3DF07A; --down:#FF4B3E;
+    --grid:rgba(232,228,217,.09); --warn:#FFB000; color-scheme:dark;
+    --paper:#0D1113;
+    --gold:#FFB000; --gold-lift:#FFC94D;
+    --silver:#9AA7AE; --silver-lift:#C3CDD3;
+    --engrave:#FFB000; --label:#FFB000;
+    --compare:#3AD4E8;                      /* the third line on a chart */
+    --plate:linear-gradient(180deg,#0B0F11 0%,#070909 100%);
+    --plate-edge:#242E33; --plate-rule:#FFB000; --plate-ink:#8B9AA1;
+    --pinstripe:rgba(232,228,217,.030);     /* scanline, not pinstripe */
+    --pinstripe-gold:rgba(255,176,0,.06);
+  }
+
   /* ---- colourway: night ------------------------------------------------
      The brown-black ground with cream stock and a gold band. */
   :root[data-cw="night"]{
@@ -620,6 +639,13 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
   .omring2{fill:none; stroke:var(--engrave); stroke-width:.5; opacity:.55}
   @media (max-width:560px){ .rosette{width:88px; height:88px} }
 
+  /* The colourway has to beat the plate switch: both are single-attribute
+     selectors on :root, so source order was deciding it and silver won. Two
+     attributes outranks one whatever the order. */
+  :root[data-cw="terminal"][data-plate]{
+    --plate:linear-gradient(180deg,#0B0F11 0%,#070909 100%);
+    --plate-edge:#242E33; --plate-rule:#FFB000; --plate-ink:#8B9AA1;}
+
   /* silver plate: PLATE = "silver" in build.py */
   :root[data-plate="silver"]{
     --plate:linear-gradient(177deg,#EDEEF0 0%,#DCDEE2 46%,#CFD2D7 62%,#ECEDEF 100%);
@@ -634,6 +660,114 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
      comes out gold against two greys. */
   .chart-card{--accent:var(--gold)}
   .chart-card .tlv.active{color:var(--gold)}
+
+  /* ================= terminal =================
+     Everything monospaced, everything squared off, phosphor where it earns it. */
+  :root[data-cw="terminal"] body,
+  :root[data-cw="terminal"] .wrap{font-family:var(--mono)}
+  :root[data-cw="terminal"] .prose,
+  :root[data-cw="terminal"] .proselist,
+  :root[data-cw="terminal"] .rc-note,
+  :root[data-cw="terminal"] .fs-note,
+  :root[data-cw="terminal"] .fs-kicker,
+  :root[data-cw="terminal"] .tag,
+  :root[data-cw="terminal"] h2,
+  :root[data-cw="terminal"] h3{font-family:var(--mono); font-style:normal;
+    letter-spacing:.005em; text-align:left; hyphens:none}
+  :root[data-cw="terminal"] .prose{font-size:13px; line-height:1.62; text-align:left}
+  :root[data-cw="terminal"] h2{font-size:19px; letter-spacing:.10em;
+    text-transform:uppercase; font-weight:600; color:var(--accent)}
+  :root[data-cw="terminal"] h3{font-size:12px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--muted)}
+  /* the drop cap belongs to a newspaper */
+  :root[data-cw="terminal"] .prose::first-letter,
+  :root[data-cw="terminal"] h2 + .prose::first-letter{font-size:inherit; float:none;
+    line-height:inherit; margin:0; color:inherit; font-family:inherit}
+
+  /* nameplate: wide-tracked mono, phosphor lit */
+  :root[data-cw="terminal"] .plate{border:1px solid var(--line); background:var(--plate)}
+  :root[data-cw="terminal"] .mark{font-family:var(--mono);
+    font-size:clamp(26px,5.2vw,52px); font-weight:600; letter-spacing:.30em;
+    text-transform:uppercase; color:var(--accent);
+    text-shadow:0 0 18px rgba(255,176,0,.35), 0 0 46px rgba(255,176,0,.14)}
+  :root[data-cw="terminal"] .mark .dot{color:var(--up)}
+  :root[data-cw="terminal"] .tag{font-size:11px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--muted); text-align:center}
+  :root[data-cw="terminal"] .rosette{display:none}
+  :root[data-cw="terminal"] .dateline{border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line); color:var(--muted)}
+
+  /* surfaces: hairline boxes, no lift, no rounding */
+  :root[data-cw="terminal"] .tablewrap,:root[data-cw="terminal"] .stat,
+  :root[data-cw="terminal"] .dial,:root[data-cw="terminal"] .chart-card,
+  :root[data-cw="terminal"] .gcard,:root[data-cw="terminal"] .appr,
+  :root[data-cw="terminal"] .con .box{
+    background:var(--panel); border:1px solid var(--line); box-shadow:none}
+  :root[data-cw="terminal"] .stat .v{color:var(--accent); font-weight:600;
+    text-shadow:0 0 14px rgba(255,176,0,.22)}
+  :root[data-cw="terminal"] .stat .k,
+  :root[data-cw="terminal"] .eyebrow{color:var(--muted)}
+  :root[data-cw="terminal"] .tablewrap thead th{background:var(--panel-2);
+    color:var(--accent); border-bottom:1px solid var(--accent)}
+  :root[data-cw="terminal"] .tablewrap tbody tr:hover{background:rgba(255,176,0,.07)}
+  :root[data-cw="terminal"] .vs-flag{border-color:var(--line); color:var(--muted)}
+  :root[data-cw="terminal"] .vs-flag.warn{color:var(--down); border-color:rgba(255,75,62,.5)}
+  :root[data-cw="terminal"] .vs-ins.heavy{background:var(--accent); color:#07090A}
+  :root[data-cw="terminal"] .cbtn.on{background:rgba(255,176,0,.12)}
+
+  /* comparison series get the cyan, so a benchmark is never mistaken for the book */
+  :root[data-cw="terminal"] .chart-card{--accent:var(--gold); --slate:var(--compare)}
+
+  /* scanline, and a vignette so the phosphor looks like it is behind glass */
+  :root[data-cw="terminal"] .wrap::before{
+    background:repeating-linear-gradient(180deg,
+      var(--pinstripe) 0px, var(--pinstripe) 1px, transparent 1px, transparent 3px)}
+  :root[data-cw="terminal"] .wrap::after{content:""; position:fixed; inset:0; z-index:0;
+    pointer-events:none;
+    background:radial-gradient(ellipse at 50% 42%, transparent 52%, rgba(0,0,0,.55) 100%)}
+
+  /* ---- the tape ----------------------------------------------------------
+     The book, crawling. Fed from positions and the headline returns, so it is
+     the same figures the page shows further down, not decoration. */
+  .tape{display:none}
+  :root[data-cw="terminal"] .tape{display:block; overflow:hidden; position:relative;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:#050708; height:30px; margin-top:14px}
+  .tapetrack{display:inline-flex; gap:34px; white-space:nowrap; padding:0 20px;
+    line-height:30px; font-family:var(--mono); font-size:11.5px; letter-spacing:.10em;
+    will-change:transform}
+  @media (prefers-reduced-motion:no-preference){
+    .tapetrack{animation:crawl 64s linear infinite}
+  }
+  @keyframes crawl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .tapetrack b{color:var(--ink); font-weight:600}
+  .tapetrack .u{color:var(--up)}
+  .tapetrack .d{color:var(--down)}
+  .tapetrack .sep{color:var(--faint)}
+
+  /* ---- the function rail -------------------------------------------------
+     The band, numbered and bound to those keys. A terminal did not expect you
+     to reach for a mouse. */
+  :root[data-cw="terminal"] .tabs{background:var(--panel-2);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--accent)}
+  :root[data-cw="terminal"] .tab{color:var(--muted); letter-spacing:.13em;
+    padding:12px 15px; position:relative}
+  :root[data-cw="terminal"] .tab .fk{color:var(--accent); margin-right:8px; opacity:.85}
+  :root[data-cw="terminal"] .tab:hover{color:var(--ink); background:rgba(255,176,0,.06)}
+  :root[data-cw="terminal"] .tab.active{color:#07090A; background:var(--accent)}
+  :root[data-cw="terminal"] .tab.active .fk{color:#07090A; opacity:.7}
+  :root[data-cw="terminal"] .tabink{background:var(--accent); box-shadow:0 0 12px rgba(255,176,0,.5)}
+
+  /* ---- status line -------------------------------------------------------- */
+  .statusbar{display:none}
+  :root[data-cw="terminal"] .statusbar{display:flex; position:fixed; left:0; right:0; bottom:0;
+    z-index:40; gap:0 26px; flex-wrap:wrap; justify-content:center;
+    background:#050708; border-top:1px solid var(--accent);
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--muted); padding:7px 16px}
+  .statusbar b{color:var(--accent); font-weight:600}
+  .statusbar .live{color:var(--up)}
+  :root[data-cw="terminal"] .wrap{padding-bottom:64px}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -647,14 +781,15 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
   </header>
   <div class="dateline"><span>Pareidolia LLC</span><span><b id="dlDate"></b></span><span>Est. October 2025</span></div>
   </div>
+  <div class="tape" id="tape" aria-hidden="true"><div class="tapetrack" id="tapetrack"></div></div>
   <nav class="tabs" role="tablist" aria-label="Sections">
-    <button class="tab active" data-panel="report" role="tab">Performance</button>
-    <button class="tab" data-panel="story" role="tab">Origin</button>
+    <button class="tab active" data-panel="report" role="tab">P&amp;L</button>
+    <button class="tab" data-panel="story" role="tab">The Story</button>
     <button class="tab" data-panel="book" role="tab">The Book</button>
-    <button class="tab" data-panel="approach" role="tab">Operations</button>
-    <button class="tab" data-panel="concepts" role="tab">Doctrine</button>
-    <button class="tab" data-panel="record" role="tab">Best &amp; Worst</button>
-    <button class="tab" data-panel="ideation" role="tab">Ideation</button>
+    <button class="tab" data-panel="approach" role="tab">The Desk</button>
+    <button class="tab" data-panel="concepts" role="tab">The Mandate</button>
+    <button class="tab" data-panel="record" role="tab">Heroes &amp; Dogs</button>
+    <button class="tab" data-panel="ideation" role="tab">The Pipe</button>
   </nav>
   <div class="panel active" id="panel-report">
   <div class="perfgrid">
@@ -928,6 +1063,7 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
     <p class="meth">PAREIDOLIA LLC · PRIVATE BOOK · FOR REVIEW ONLY · NOT AN OFFERING OR SOLICITATION · PAST PERFORMANCE IS NOT INDICATIVE OF FUTURE RESULTS</p>
   </footer>
 </div></div>
+<div class="statusbar" id="statusbar" aria-hidden="true"></div>
 <script>
 (function(){
   "use strict";
@@ -2161,6 +2297,69 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
     window.__motion();
   })();
 
+
+  /* ---------------- desk chrome: tape, function keys, status line ---------- */
+  (function(){
+    if(document.documentElement.getAttribute("data-cw")!=="terminal") return;
+    var sign=function(v){return (v>=0?"+":"\u2212")+Math.abs(v).toFixed(2)+"%";};
+    var cls=function(v){return v>=0?"u":"d";};
+
+    /* --- the tape: the book itself, then the headline numbers --- */
+    var track=document.getElementById("tapetrack");
+    if(track){
+      var bits=[];
+      /* positions are {t,s,w,r}: ticker, strategy, weight %, return % */
+      (DATA.positions||[]).forEach(function(p){
+        if(p.r===null||p.r===undefined) return;
+        bits.push("<span><b>"+p.t+"</b> <span class='"+cls(p.r)+"'>"+
+          sign(p.r)+"</span> <span class='sep'>"+(p.w!=null?p.w.toFixed(1)+"%":"")+
+          "</span></span>");
+      });
+      (DATA.returns||[]).forEach(function(r){
+        bits.push("<span><b>"+String(r.k).toUpperCase().replace(/RETURN \u00b7 /,"")+
+          "</b> <span class='"+cls(r.v)+"'>"+sign(r.v)+"</span></span>");
+      });
+      if(!bits.length){                       /* nothing to say - say nothing */
+        document.getElementById("tape").style.display="none";
+      } else {
+        /* doubled so the -50% keyframe wraps seamlessly */
+        track.innerHTML=bits.join("")+bits.join("");
+      }
+    }
+
+    /* --- function rail: number the tabs and bind the digits --- */
+    var tabs=[].slice.call(document.querySelectorAll(".tab"));
+    tabs.forEach(function(t,i){
+      if(i>8) return;
+      t.insertAdjacentHTML("afterbegin","<span class='fk'>"+(i+1)+"</span>");
+    });
+    document.addEventListener("keydown",function(e){
+      if(e.metaKey||e.ctrlKey||e.altKey) return;
+      var tag=(e.target.tagName||"").toLowerCase();
+      if(tag==="input"||tag==="textarea"||tag==="select") return;
+      var k=parseInt(e.key,10);
+      if(k>=1&&k<=tabs.length){ tabs[k-1].click(); }
+    });
+
+    /* --- status line --- */
+    var sb=document.getElementById("statusbar");
+    if(sb){
+      var ytd=(DATA.returns&&DATA.returns[0])?DATA.returns[0].v:null;
+      var names=(DATA.positions||[]).length;
+      var cash=null, dials=(DATA.reports&&DATA.reports.length)?
+        DATA.reports[DATA.reports.length-1].dials:null;
+      /* dials are {key,state,value,rule} */
+      if(dials) dials.forEach(function(d){
+        var m=/([\d.]+)%/.exec(d.value||""); if(/cash/i.test(d.key||"")&&m) cash=m[1]+"%";});
+      var row=[["session","<span class='live'>live</span>"],
+               ["as of","<b>"+(DATA.asOf||"\u2014")+"</b>"],
+               ["ytd","<b class='"+(ytd>=0?"live":"")+"'>"+(ytd==null?"\u2014":sign(ytd))+"</b>"],
+               ["book","<b>"+names+" names</b>"]];
+      if(cash) row.push(["cash","<b>"+cash+"</b>"]);
+      row.push(["keys","<b>1\u20137</b>"]);
+      sb.innerHTML=row.map(function(r){return "<span>"+r[0]+" "+r[1]+"</span>";}).join("");
+    }
+  })();
   /* ---------------- stale-page check ----------------
      Pages sends max-age=600 on index.html and cannot be told otherwise, so a
      reader can sit on a ten-minute-old copy after a refresh. version.json is
@@ -2207,7 +2406,7 @@ ORNAMENTS = {
     'shippo': '<svg class="rosette" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><clipPath id="omclip"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#omclip)" class="om om-shippo"><circle cx="4.8" cy="4.8" r="13.0"/><circle cx="4.8" cy="23.2" r="13.0"/><circle cx="4.8" cy="41.6" r="13.0"/><circle cx="4.8" cy="60.0" r="13.0"/><circle cx="4.8" cy="78.4" r="13.0"/><circle cx="4.8" cy="96.8" r="13.0"/><circle cx="4.8" cy="115.2" r="13.0"/><circle cx="23.2" cy="4.8" r="13.0"/><circle cx="23.2" cy="23.2" r="13.0"/><circle cx="23.2" cy="41.6" r="13.0"/><circle cx="23.2" cy="60.0" r="13.0"/><circle cx="23.2" cy="78.4" r="13.0"/><circle cx="23.2" cy="96.8" r="13.0"/><circle cx="23.2" cy="115.2" r="13.0"/><circle cx="41.6" cy="4.8" r="13.0"/><circle cx="41.6" cy="23.2" r="13.0"/><circle cx="41.6" cy="41.6" r="13.0"/><circle cx="41.6" cy="60.0" r="13.0"/><circle cx="41.6" cy="78.4" r="13.0"/><circle cx="41.6" cy="96.8" r="13.0"/><circle cx="41.6" cy="115.2" r="13.0"/><circle cx="60.0" cy="4.8" r="13.0"/><circle cx="60.0" cy="23.2" r="13.0"/><circle cx="60.0" cy="41.6" r="13.0"/><circle cx="60.0" cy="60.0" r="13.0"/><circle cx="60.0" cy="78.4" r="13.0"/><circle cx="60.0" cy="96.8" r="13.0"/><circle cx="60.0" cy="115.2" r="13.0"/><circle cx="78.4" cy="4.8" r="13.0"/><circle cx="78.4" cy="23.2" r="13.0"/><circle cx="78.4" cy="41.6" r="13.0"/><circle cx="78.4" cy="60.0" r="13.0"/><circle cx="78.4" cy="78.4" r="13.0"/><circle cx="78.4" cy="96.8" r="13.0"/><circle cx="78.4" cy="115.2" r="13.0"/><circle cx="96.8" cy="4.8" r="13.0"/><circle cx="96.8" cy="23.2" r="13.0"/><circle cx="96.8" cy="41.6" r="13.0"/><circle cx="96.8" cy="60.0" r="13.0"/><circle cx="96.8" cy="78.4" r="13.0"/><circle cx="96.8" cy="96.8" r="13.0"/><circle cx="96.8" cy="115.2" r="13.0"/><circle cx="115.2" cy="4.8" r="13.0"/><circle cx="115.2" cy="23.2" r="13.0"/><circle cx="115.2" cy="41.6" r="13.0"/><circle cx="115.2" cy="60.0" r="13.0"/><circle cx="115.2" cy="78.4" r="13.0"/><circle cx="115.2" cy="96.8" r="13.0"/><circle cx="115.2" cy="115.2" r="13.0"/></g><circle class="omring" cx="60" cy="60" r="52"/><circle class="omring2" cx="60" cy="60" r="47"/></svg>',
 }
 
-COLOURWAY = "note"
+COLOURWAY = "terminal"
 # Plate above the tab band: "gold" or "silver".
 PLATE = "silver"
 # Masthead ornament: "asanoha" (hemp leaf) or "shippo" (interlocking circles).
