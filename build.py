@@ -437,11 +437,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .stalebar{background:var(--paper); color:#2B2517}
   .stalebar button{border-color:rgba(43,37,23,.45)}
 
-  /* Pinstripe on the page ground. It sits behind .sheet, so it shows in the
-     gutters and between cards but never under one - the stock stays clean and
-     the suiting is what it is laid on. */
+  /* Horizontal ruling on the page ground - ledger lines rather than suiting,
+     same weight and spacing as the vertical version it replaces. It sits
+     behind .sheet, so it shows in the gutters and between cards but never
+     under one; the stock stays clean and the ruling is what it is laid on. */
   .wrap::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:repeating-linear-gradient(90deg,
+    background:repeating-linear-gradient(180deg,
       var(--pinstripe) 0px, var(--pinstripe) 1px,
       transparent 1px, transparent 13px)}
   .sheet{position:relative; z-index:1}
