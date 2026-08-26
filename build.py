@@ -513,6 +513,30 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* .stats is fixed at three columns, which orphans the fourth tile the
      concept panels carry; let them fit the row they now have. */
   #panel-ideation .stats{grid-template-columns:repeat(auto-fit,minmax(198px,1fr))}
+
+  /* ================= table conventions =================
+     Overrides the centred-editorial rule for data tables only: prose stays
+     centred, figures do not. */
+  .tablewrap table{font-variant-numeric:tabular-nums lining-nums;
+    font-feature-settings:"tnum" 1,"lnum" 1}
+  .tablewrap thead th,.tablewrap tbody td{text-align:left}
+  .tablewrap thead th.r,.tablewrap tbody td.r{text-align:right}
+  .tablewrap thead th{
+    border-bottom:1.5px solid var(--ink);
+    font-family:var(--mono); font-size:10px; letter-spacing:.09em;
+    text-transform:uppercase; font-weight:500; color:var(--muted);
+    padding-top:11px; padding-bottom:9px; vertical-align:bottom}
+  .tablewrap thead th .fs-sort{font:inherit; letter-spacing:inherit;
+    text-transform:inherit; color:inherit}
+  .tablewrap tbody td{padding-top:9px; padding-bottom:9px}
+  .tablewrap tbody tr{border-bottom:1px solid var(--line)}
+  .tablewrap tbody tr:last-child{border-bottom:0}
+  /* the unit belongs in the header, once, not in every row */
+  .tablewrap thead th .u{color:var(--faint); font-weight:400}
+  /* figures carry the weight of the identifier, nothing else does */
+  .tablewrap tbody td b{font-weight:600}
+  /* a right-aligned column of scores reads as a column, not a scatter */
+  #gsPillars td,#gsPilHead th{text-align:right}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -717,9 +741,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           <th><button type="button" class="fs-sort" data-k="name">Company</button></th>
           <th class="r"><button type="button" class="fs-sort" data-k="pb">P/B</button></th>
           <th class="r"><button type="button" class="fs-sort" data-k="ps">P/S</button></th>
-          <th class="r"><button type="button" class="fs-sort" data-k="fcfYield">FCF yld</button></th>
-          <th class="r"><button type="button" class="fs-sort" data-k="roe">ROE</button></th>
-          <th class="r"><button type="button" class="fs-sort" data-k="roic">ROIC</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="fcfYield">FCF yld <span class="u">%</span></button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="roe">ROE <span class="u">%</span></button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="roic">ROIC <span class="u">%</span></button></th>
           <th class="r"><button type="button" class="fs-sort" data-k="mcap">Mkt cap</button></th>
           <th><button type="button" class="fs-sort" data-k="insider">Insiders</button></th>
           <th>Flags</th>
@@ -759,12 +783,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           <th class="r"><button type="button" class="fs-sort" data-k="score">Score</button></th>
           <th><button type="button" class="fs-sort" data-k="ticker">Ticker</button></th>
           <th><button type="button" class="fs-sort" data-k="name">Company</button></th>
-          <th class="r"><button type="button" class="fs-sort" data-k="revCagr3y">Rev 3y</button></th>
-          <th class="r"><button type="button" class="fs-sort" data-k="roic">ROIC</button></th>
-          <th class="r"><button type="button" class="fs-sort" data-k="incRoic">Inc ROIC</button></th>
-          <th class="r"><button type="button" class="fs-sort" data-k="fcfMargin">FCF mgn</button></th>
-          <th class="r"><button type="button" class="fs-sort" data-k="netDebtEbitda">ND/EBITDA</button></th>
-          <th class="r"><button type="button" class="fs-sort" data-k="evEbitda">EV/EBITDA</button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="revCagr3y">Rev 3y <span class="u">%</span></button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="roic">ROIC <span class="u">%</span></button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="incRoic">Inc ROIC <span class="u">%</span></button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="fcfMargin">FCF mgn <span class="u">%</span></button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="netDebtEbitda">ND/EBITDA <span class="u">×</span></button></th>
+          <th class="r"><button type="button" class="fs-sort" data-k="evEbitda">EV/EBITDA <span class="u">×</span></button></th>
           <th><button type="button" class="fs-sort" data-k="insider">Insiders</button></th>
           <th>Flags</th>
         </tr></thead><tbody id="gsRows"></tbody></table></div>
@@ -1456,6 +1480,17 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       if(v>=1e9) return "$"+(v/1e9).toFixed(1)+"B";
       return "$"+Math.round(v/1e6)+"M";
     };
+    /* Banker formatting: unit lives in the header, negatives take brackets,
+       positives carry no sign, nothing available is an em dash. */
+    var na="\u2014";
+    var ibp=function(v){                       /* a rate, as a percentage */
+      if(v===null||v===undefined||isNaN(v)) return na;
+      var x=v*100;
+      return x<0 ? "("+Math.abs(x).toFixed(1)+")" : x.toFixed(1);};
+    var ibn=function(v,d){                     /* a multiple or a ratio */
+      if(v===null||v===undefined||isNaN(v)) return na;
+      d=(d===undefined)?1:d;
+      return v<0 ? "("+Math.abs(v).toFixed(d)+")" : v.toFixed(d);};
     var esc=function(t){return String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");};
 
     document.getElementById("vsRun").textContent=(VS.generatedAt||"").slice(0,10);
@@ -1561,11 +1596,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           "<td class='r'><span class='vs-score'>"+num(r.score,0)+"</span></td>"+
           "<td><b>"+r.ticker+"</b></td>"+
           "<td>"+esc(r.name)+"<span class='vs-sub'>"+esc(r.sector||"")+"</span></td>"+
-          "<td class='r'>"+num(r.pb)+"</td>"+
-          "<td class='r'>"+num(r.ps)+"</td>"+
-          "<td class='r'>"+pctf(r.fcfYield)+"</td>"+
-          "<td class='r'>"+pctf(r.roe)+"</td>"+
-          "<td class='r'>"+pctf(r.roic)+"</td>"+
+          "<td class='r'>"+ibn(r.pb,2)+"</td>"+
+          "<td class='r'>"+ibn(r.ps,2)+"</td>"+
+          "<td class='r'>"+ibp(r.fcfYield)+"</td>"+
+          "<td class='r'>"+ibp(r.roe)+"</td>"+
+          "<td class='r'>"+ibp(r.roic)+"</td>"+
           "<td class='r'>"+capf(r.mcap)+"</td>"+
           "<td><span class='vs-ins "+lv+"' title=\""+esc(tip)+"\">"+lv+"</span></td>"+
           "<td>"+(flags||"<span class='vs-flag'>clean</span>")+"</td></tr>";
@@ -1632,6 +1667,17 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       if(v>=1e9) return "$"+(v/1e9).toFixed(1)+"B";
       return "$"+Math.round(v/1e6)+"M";
     };
+    /* Banker formatting: unit lives in the header, negatives take brackets,
+       positives carry no sign, nothing available is an em dash. */
+    var na="\u2014";
+    var ibp=function(v){                       /* a rate, as a percentage */
+      if(v===null||v===undefined||isNaN(v)) return na;
+      var x=v*100;
+      return x<0 ? "("+Math.abs(x).toFixed(1)+")" : x.toFixed(1);};
+    var ibn=function(v,d){                     /* a multiple or a ratio */
+      if(v===null||v===undefined||isNaN(v)) return na;
+      d=(d===undefined)?1:d;
+      return v<0 ? "("+Math.abs(v).toFixed(d)+")" : v.toFixed(d);};
     var esc=function(t){return String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");};
 
     document.getElementById("gsRun").textContent=(GS.generatedAt||"").slice(0,10);
@@ -1761,12 +1807,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           "<td class='r'><span class='vs-score'>"+num(r.score,0)+"</span></td>"+
           "<td><b>"+r.ticker+"</b></td>"+
           "<td>"+esc(r.name)+"<span class='vs-sub'>"+esc(r.sector||"")+"</span></td>"+
-          "<td class='r'>"+pctS(r.revCagr3y)+"</td>"+
-          "<td class='r'>"+pctf(r.roic)+"</td>"+
-          "<td class='r'>"+pctf(r.incRoic)+"</td>"+
-          "<td class='r'>"+pctf(r.fcfMargin)+"</td>"+
-          "<td class='r'>"+mult(r.netDebtEbitda)+"</td>"+
-          "<td class='r'>"+mult(r.evEbitda)+"</td>"+
+          "<td class='r'>"+ibp(r.revCagr3y)+"</td>"+
+          "<td class='r'>"+ibp(r.roic)+"</td>"+
+          "<td class='r'>"+ibp(r.incRoic)+"</td>"+
+          "<td class='r'>"+ibp(r.fcfMargin)+"</td>"+
+          "<td class='r'>"+ibn(r.netDebtEbitda)+"</td>"+
+          "<td class='r'>"+ibn(r.evEbitda)+"</td>"+
           "<td><span class='vs-ins "+lv+"' title=\""+esc(tip)+"\">"+lv+"</span></td>"+
           "<td>"+(all.length?flags:"<div class='gs-flags'><span class='vs-flag'>clean</span></div>")+"</td></tr>";
       }).join("");
