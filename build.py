@@ -18,30 +18,50 @@ if _career_as_of != data.get("asOf"):
         "    python career_stats.py --write ../data/trades_ytd_2026.json ../data/trades_q4_2025.json"
         % (_career_as_of, data.get("asOf")))
 
-TEMPLATE = r"""<!doctype html><html lang="en"><head>
+TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Pareidolia — The Book</title>
 <style>
   :root{
-    /* Night edition: the same palette with the roles swapped round. The
-       eggshell did not leave - it became the ink. Surfaces are the ink hue
-       lightened, so the browns stay brown instead of drifting grey. */
+    /* ---- colourway: note (default) -------------------------------------
+       The dollar bill. Banknote cream as the ground, engraving green as the
+       accent, engraving black as the ink, gold and silver as the metallics.
+       Cards are a lighter sheet laid on the stock rather than an inversion. */
+    --bg:#E6DFC8; --panel:#F5F1E3; --panel-2:#DED6BC; --line:#C9C0A4;
+    --ink:#14171A; --muted:#4F544C; --faint:#767B71;
+    --accent:#1E5B3C; --accent-soft:rgba(30,91,60,.13);
+    --slate:#7B8378; --up:#1E5B3C; --down:#A33B24;
+    --grid:rgba(20,23,26,.11); --warn:#9C6B12; color-scheme:light;
+    --paper:#F5F1E3;
+    --gold:#9C7B22; --gold-lift:#B8912C;
+    --silver:#8E949C; --silver-lift:#AEB4BC;
+    --engrave:#1E5B3C;          /* the green the guilloche is drawn in */
+    /* small-caps label ink. Gold on cream measured 2.21:1, so on this
+       colourway the labels take the engraving green instead. */
+    --label:#1E5B3C;
+    --pinstripe:rgba(30,91,60,.075);
+    --pinstripe-gold:rgba(156,123,34,.12);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --pagepad:clamp(20px,4vw,56px);
+    --mono:"SFMono-Regular","SF Mono",ui-monospace,"Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
+  }
+  /* ---- colourway: night ------------------------------------------------
+     The brown-black ground with cream stock and a gold band. */
+  :root[data-cw="night"]{
     --bg:#2B2517; --panel:#332C1C; --panel-2:#3D3524; --line:#4C4331;
     --ink:#F2ECDD; --muted:#AAA089; --faint:#7D7159;
     --accent:#A9801F; --accent-soft:rgba(169,128,31,.20);
     --slate:#8A7E64; --up:#5F8A3C; --down:#B4552F;
     --grid:rgba(242,236,221,.10); --warn:#C46A1C; color-scheme:dark;
-    --paper:#F2ECDD;            /* the old ground, now used as a surface */
-    --gold-lift:#C79A2E;        /* gold at reading weight on the dark ground */
-    /* pinstripe on the page ground. Cream reads crisp and cool; the gold
-       alternative is commented beside it - one value swaps the whole page. */
-    --pinstripe:rgba(242,236,221,.055);   /* cream  */
+    --paper:#F2ECDD;
+    --gold:#A9801F; --gold-lift:#C79A2E;
+    --silver:#9AA0A8; --silver-lift:#C2C7CE;
+    --engrave:#C79A2E;
+    --label:#C79A2E;
+    --pinstripe:rgba(242,236,221,.055);
     --pinstripe-gold:rgba(169,128,31,.14);
-    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
-    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --pagepad:clamp(20px,4vw,56px);
-    --mono:"SFMono-Regular","SF Mono",ui-monospace,"Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box} body{margin:0}
   .wrap{background:var(--bg); color:var(--ink); font-family:var(--sans); min-height:100vh; padding:var(--pagepad); -webkit-font-smoothing:antialiased; line-height:1.5}
@@ -402,7 +422,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   /* Gold at small sizes needs a little more light on this ground; the rules
      and marks keep the original value. */
-  .eyebrow,.fs-kicker b,.prose a,.tlv.active{color:var(--gold-lift)}
+  .eyebrow,.fs-kicker b,.prose a,.tlv.active{color:var(--label)}
   .stat .v,.mark{color:var(--ink)}
 
   /* Surfaces read as instruments: square, hairline, lit faintly from within. */
@@ -416,18 +436,18 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   tbody tr:hover{background:rgba(169,128,31,.09)}
   .tablewrap.scrolled{box-shadow:inset 14px 0 12px -12px rgba(0,0,0,.5)}
   .masthead{border-bottom-color:var(--ink)}
-  .mark{text-shadow:0 0 36px rgba(169,128,31,.16)}
+  .mark{text-shadow:none}
 
   /* Chips outline rather than fill, so a row of them stays quiet. */
   .vs-flag{background:transparent; border-color:var(--line); color:var(--muted)}
   .vs-flag.warn{color:var(--down); border-color:rgba(180,85,47,.5)}
-  .vs-ins.heavy{color:#2B2517; background:var(--accent)}
+  .vs-ins.heavy{color:var(--paper); background:var(--accent)}
   .vs-ins.normal{background:var(--panel-2); border-color:var(--line)}
   .cbtn.on{background:rgba(169,128,31,.16)}
   .cbtn b{color:var(--ink)}
-  .cbtn.on b{color:var(--gold-lift)}
+  .cbtn.on b{color:var(--label)}
 
-  .stalebar{background:var(--paper); color:#2B2517}
+  .stalebar{background:var(--ink); color:var(--paper)}
   .stalebar button{border-color:rgba(43,37,23,.45)}
 
   /* Horizontal ruling on the page ground - ledger lines rather than suiting,
@@ -449,14 +469,24 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
      Surfaces that carry content are eggshell stock; the page they sit on stays
      ink. Each surface restores the original light palette for its subtree, so
      descendants need no restyling of their own. */
+  /* On note the ground is already stock, so a card is a lighter sheet laid on
+     it - no inversion, just a lift and a hairline. */
   .tablewrap,.stat,.dial,.chart-card,.gcard,.appr,.con .box{
+    background:var(--paper); color:var(--ink); border:1px solid var(--line);
+    box-shadow:0 1px 0 0 rgba(20,23,26,.05)}
+  /* On night the ground is dark and the stock is light, so a card restores the
+     light palette for its whole subtree and descendants need no restyling. */
+  :root[data-cw="night"] .tablewrap,:root[data-cw="night"] .stat,
+  :root[data-cw="night"] .dial,:root[data-cw="night"] .chart-card,
+  :root[data-cw="night"] .gcard,:root[data-cw="night"] .appr,
+  :root[data-cw="night"] .con .box{
     --bg:#F2ECDD; --panel:#FAF6EC; --panel-2:#EBE3D1; --line:#E0D6C0;
     --ink:#2B2517; --muted:#6E6349; --faint:#8A7E64;
     /* the semantic pair darkened for cream: #5F8A3C measured 3.43:1 and
        #B4552F 4.16:1 against this stock, and these are numbers people read */
     --up:#4A6E2C; --down:#9E4826;
     --grid:rgba(43,37,23,.10);
-    background:var(--paper); color:var(--ink); border:1px solid #D9CFB6;
+    border:1px solid #D9CFB6;
     box-shadow:0 1px 0 0 rgba(0,0,0,.28), inset 0 1px 0 0 rgba(255,255,255,.5)}
   .stat:hover,.gcard:hover{border-color:var(--accent)}
   .tablewrap thead th{background:var(--panel-2); color:var(--muted)}
@@ -472,13 +502,21 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .vs-sub{color:var(--muted)}
 
   /* --- the band goes gold; the marker inverts to ink so it stays visible --- */
-  .tabs{background:var(--gold-lift); border-bottom:1px solid var(--gold-lift)}
-  .tab{color:rgba(43,37,23,.88)}
-  .tab:hover{color:#2B2517; background:rgba(43,37,23,.07)}
-  .tab.active{color:#2B2517; background:rgba(43,37,23,.12)}
-  .tabink{background:#2B2517; box-shadow:none}
+  /* note: the band is the engraved green with cream lettering, the way the
+     seal and serials sit on a bill. night keeps the gold band. */
+  .tabs{background:var(--accent); border-bottom:1px solid var(--accent)}
+  .tab{color:rgba(245,241,227,.72)}
+  .tab:hover{color:#F5F1E3; background:rgba(245,241,227,.10)}
+  .tab.active{color:#F5F1E3; background:rgba(245,241,227,.16)}
+  .tabink{background:var(--gold-lift); box-shadow:none}
   .tabs.hasink .tab.active{border-bottom-color:transparent}
-  .scrollprog{background:#2B2517; opacity:.55}
+  .scrollprog{background:var(--gold-lift); opacity:.8}
+  :root[data-cw="night"] .tabs{background:var(--gold-lift); border-bottom-color:var(--gold-lift)}
+  :root[data-cw="night"] .tab{color:rgba(43,37,23,.88)}
+  :root[data-cw="night"] .tab:hover{color:#2B2517; background:rgba(43,37,23,.07)}
+  :root[data-cw="night"] .tab.active{color:#2B2517; background:rgba(43,37,23,.12)}
+  :root[data-cw="night"] .tabink{background:#2B2517}
+  :root[data-cw="night"] .scrollprog{background:#2B2517; opacity:.55}
 
   /* Kicker and disclaimer read at page width like everything else. */
   .fs-kicker,.fs-note{max-width:none}
@@ -512,6 +550,31 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .tablewrap tbody td b{font-weight:600}
   /* a right-aligned column of scores reads as a column, not a scatter */
   #gsPillars td,#gsPilHead th{text-align:right}
+
+  /* ---- guilloche ----------------------------------------------------------
+     Traced from a hypotrochoid at build time rather than shipped as an image:
+     ~10KB of inline path, sharp at any size, and the same construction a bill
+     uses. Ornament, but the correct ornament. */
+  .rosette{display:block; width:112px; height:112px; margin:12px auto 2px;
+    opacity:.55; overflow:visible}
+  .rosette polyline{fill:none; stroke:var(--engrave); stroke-width:.35;
+    vector-effect:non-scaling-stroke}
+  .rosette polyline:nth-child(2){stroke:var(--gold-lift); opacity:.8}
+  @media (max-width:560px){ .rosette{width:84px; height:84px} }
+
+  /* ---- score distribution -------------------------------------------------
+     Not ornament: the shape of the screen's output. A table of 216 rows says
+     what passed; this says whether the head of the list is a peak or a
+     plateau, which decides how much the ranking is worth. */
+  .dist{margin:18px 0 4px}
+  .dist .dhead{display:flex; justify-content:space-between; align-items:baseline;
+    gap:14px; font-family:var(--mono); font-size:10px; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:7px}
+  .dist .bars{display:flex; align-items:flex-end; gap:2px; height:56px}
+  .dist .bars i{flex:1 1 0; background:var(--accent); opacity:.30; min-height:1px}
+  .dist .bars i.hot{opacity:.95; background:var(--gold-lift)}
+  .dist .axis{display:flex; justify-content:space-between;
+    font-family:var(--mono); font-size:9.5px; color:var(--muted); margin-top:5px}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -519,6 +582,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     <div>
       <div class="mark">Pareidolia<span class="dot">.</span></div>
       <div class="tag">A private book run under doctrine — pattern recognition in a hostile tape.</div>
+      <svg class="rosette" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><polyline points="127.0,60.0 122.7,48.6 111.0,41.2 94.9,40.9 78.6,48.7 66.1,63.4 60.6,81.8 62.9,99.7 71.8,113.1 84.3,119.0 96.3,116.3 103.5,106.5 103.4,92.7 94.9,79.0 79.4,69.5 60.4,67.0 41.9,72.3 28.1,83.9 21.7,98.7 23.6,112.4 32.3,121.0 44.4,121.8 56.0,114.1 62.9,99.5 62.5,81.4 54.3,64.0 39.8,51.4 22.5,46.1 6.7,48.7 -3.8,57.7 -6.3,69.7 -0.3,80.3 12.4,85.9 28.4,83.8 43.4,73.6 53.5,57.3 56.3,38.3 51.4,20.9 40.6,9.0 27.4,5.1 16.0,9.5 10.3,20.3 12.5,34.0 23.0,46.3 39.6,53.4 58.9,53.1 76.4,45.1 88.3,31.6 92.4,16.0 88.5,2.8 78.6,-4.4 66.5,-3.3 56.2,6.0 51.5,21.5 54.6,39.4 65.3,55.4 81.4,65.7 99.3,68.4 114.5,63.5 123.5,53.0 124.2,40.8 116.7,31.2 103.3,27.6 87.7,32.1 74.4,44.3 66.7,62.0 66.8,81.2 74.2,97.7 86.6,107.8 100.3,109.7 110.9,103.6 114.9,92.1 110.6,78.9 98.4,68.2 80.9,63.6 61.9,66.8 45.8,77.2 36.0,92.4 34.2,108.3 40.0,120.8 50.9,126.4 62.7,123.5 71.5,112.7 73.9,96.7 68.2,79.5 55.3,65.2 37.8,57.3 19.7,57.3 5.4,64.5 -1.9,76.1 -0.8,88.2 8.1,96.7 21.9,98.2 36.7,91.5 48.1,77.4 53.1,58.8 50.2,39.8 40.5,24.6 26.7,16.5 12.9,16.6 3.4,24.2 1.1,36.2 7.3,48.7 21.0,57.4 39.1,59.4 57.4,53.5 71.8,40.8 79.2,24.4 78.6,8.4 71.0,-3.1 59.5,-7.0 48.1,-2.3 41.0,9.6 41.1,25.9 49.3,42.1 64.2,54.3 82.6,59.5 100.4,56.9 113.5,47.7 119.0,35.1 116.0,23.3 106.0,16.3 92.1,16.8 78.5,25.7 69.2,41.4 67.1,60.5 72.7,78.8 84.6,92.4 99.4,98.4 112.9,96.2 121.2,87.2 121.6,75.0 113.6,63.6 98.8,57.0 80.6,57.7 63.4,66.2 51.0,80.9 46.0,98.2 49.0,113.9 58.2,124.1 70.2,126.2 80.7,119.9 85.9,107.0 83.5,90.9 73.0,76.0 56.5,66.2 37.4,63.7 20.2,69.0 8.7,80.0 5.1,93.2 9.9,104.4 20.9,109.8 34.6,107.2 46.7,96.4 53.6,79.5 52.9,60.3 44.6,43.0 30.9,31.4 15.4,27.6 2.4,31.8 -4.5,41.9 -3.0,54.1 6.6,64.2 22.3,68.5 40.1,65.1 56.0,54.1 66.0,37.8 68.4,20.0 63.1,4.9 52.5,-3.7 40.3,-4.0 30.9,3.8 27.6,17.4 32.5,32.9 45.0,46.1 62.8,53.4 82.0,53.1 98.3,45.3 108.0,32.8 109.5,19.2 103.2,8.8 91.5,5.1 78.3,9.8 67.9,22.3 63.6,40.0 67.1,58.9 77.8,74.8 93.1,84.3 108.9,85.7 121.2,79.6 126.4,68.6 123.2,56.8 112.1,48.2 95.9,46.2 78.7,52.2 64.7,65.4 57.1,83.1 57.5,101.0 64.9,115.1 76.7,122.1 88.7,120.5 96.9,111.3 98.1,97.4 91.0,82.7 76.6,71.5 57.9,66.9 39.0,70.1 24.1,80.1 16.3,94.0 16.8,107.6 24.7,116.9 36.8,118.8 49.2,112.2 57.6,98.3 59.3,80.1 53.0,61.9 40.1,47.7 23.6,40.6 7.7,41.6 -3.4,49.5 -7.0,61.1 -2.0,72.3 10.3,79.1 26.6,78.7 42.7,70.2 54.7,55.1 59.6,36.5 56.6,18.8 47.2,6.1 34.5,0.9 22.9,4.3 16.1,14.6 17.1,28.6 26.3,42.1 42.2,51.0 61.3,52.9 79.6,46.9 92.8,34.8 98.4,20.0 95.9,6.6 86.7,-1.4 74.4,-1.4 63.2,6.9 56.8,22.0 57.9,40.2 66.8,57.3 81.7,69.4 99.0,74.0 114.5,70.7 124.4,61.3 126.1,49.3 119.4,38.9 106.3,34.0 90.2,36.8 75.5,47.6 65.9,64.3 63.8,83.4 69.3,100.4 80.5,111.7 93.8,114.8 104.8,109.8 109.9,98.6 106.9,84.8 95.8,72.8 78.7,66.3 59.5,67.3 42.3,75.9 31.0,89.8 27.7,105.3 32.2,118.1 42.4,124.6 54.6,122.8 64.5,112.8 68.5,97.0 64.8,79.1 53.5,63.5 37.0,53.7 19.2,51.7 4.4,57.3 -3.9,68.1 -3.8,80.2 4.3,89.4 18.1,92.3 33.6,87.1 46.6,74.3 53.6,56.3 52.9,37.2 44.9,21.2 32.1,11.7 18.6,10.6 8.5,17.2 5.1,29.1 10.2,42.3 23.0,52.5 40.8,56.4 59.7,52.6 75.4,41.6 84.5,26.2 85.5,10.4 79.2,-1.6 68.1,-6.5 56.3,-2.8 48.0,8.5 46.3,24.8 52.7,42.0 66.2,55.8 83.9,63.0 101.8,62.3 115.6,54.6 122.2,42.8 120.3,30.8 110.8,22.9 96.7,22.1 82.1,29.5 71.2,44.2 66.9,63.0 70.4,81.8 80.7,96.4 94.6,103.9 108.1,103.0 117.1,94.9 118.7,82.6 111.7,70.3 97.5,62.1 79.3,60.8 61.1,67.4 47.3,80.6 40.5,97.1 41.8,112.9 49.9,123.8 61.6,126.9 72.7,121.5 79.3,109.0 78.5,92.6 69.7,76.6 54.3,64.9 35.7,60.4 18.2,63.7 5.6,73.4 0.9,86.1 4.6,97.6 15.2,104.0 29.2,102.7 42.6,93.2 51.3,77.0 52.7,57.8 46.5,39.7 34.2,26.8 19.3,21.5 6.1,24.4 -1.6,33.8 -1.2,46.1 7.5,57.2 22.8,63.3 41.0,61.8 58.0,52.7 69.8,37.6 74.0,20.3 70.4,4.9 60.8,-4.6 48.7,-6.0 38.5,1.0 33.9,14.4 37.1,30.5 48.2,45.1 65.2,54.4 84.2,56.1 101.1,50.3 112.0,38.9 114.8,25.6 109.4,14.8 98.0,10.1 84.2,13.5 72.4,24.9 66.2,42.1 67.6,61.4 76.4,78.3 90.5,89.3 105.9,92.3 118.5,87.5 124.7,77.1 122.5,64.9 112.2,55.2 96.2,51.5 78.3,55.6 62.9,67.2 53.4,83.8 51.8,101.5 57.7,116.2 68.6,124.1 80.7,123.6 89.7,115.2 92.3,101.2 86.7,85.8 73.6,73.0 55.5,66.3 36.4,67.4 20.6,75.6 11.5,88.5 10.7,101.9 17.7,111.8 29.7,114.8 42.8,109.4 52.8,96.3 56.4,78.3 52.2,59.5 41.0,44.0 25.5,35.3 9.8,34.6 -2.0,41.3 -6.5,52.5 -2.5,64.2 9.2,72.3 25.6,73.6 42.7,66.9 56.3,53.1 63.2,35.3 62.1,17.5 54.2,4.0 42.2,-2.3 30.4,0.0 22.7,9.8 22.2,23.9 30.0,38.5 44.9,49.2 63.8,53.1 82.6,49.3 96.9,38.8 104.0,24.7 102.7,11.3 94.4,2.6 82.0,1.5 69.9,8.8 61.9,23.2 61.0,41.6 67.9,59.6 81.3,73.2 97.9,79.6 113.5,77.9 124.1,69.6"/><polyline points="121.0,60.0 118.9,53.6 112.8,48.7 103.7,46.4 92.6,47.6 81.2,52.6 70.9,61.0 63.0,72.0 58.4,84.3 57.4,96.5 59.8,107.1 64.9,114.8 71.5,118.6 78.1,118.2 83.3,113.8 85.9,106.2 84.9,96.6 80.1,86.3 71.6,77.0 60.3,69.9 47.4,65.9 34.3,65.5 22.6,68.4 13.6,74.1 8.3,81.3 7.1,88.6 9.9,94.5 16.0,97.8 24.3,97.6 33.3,93.3 41.5,85.3 47.7,74.2 50.9,61.1 50.5,47.6 46.8,35.2 40.3,25.2 32.2,18.8 23.8,16.3 16.8,17.7 12.3,22.5 11.4,29.6 14.6,37.5 21.8,44.7 32.2,50.0 44.9,52.3 58.3,51.2 71.0,46.5 81.4,39.1 88.6,29.9 92.0,20.3 91.5,11.9 87.6,5.9 81.5,3.6 74.5,5.3 68.0,11.2 63.4,20.6 61.7,32.4 63.6,45.3 69.0,57.6 77.4,68.1 87.7,75.5 98.6,79.3 108.5,79.3 116.0,76.0 120.0,70.4 119.9,63.8 115.6,57.7 107.7,53.4 97.1,52.2 85.2,54.5 73.5,60.4 63.5,69.5 56.3,80.7 52.6,92.7 52.6,104.0 55.8,113.1 61.4,118.8 67.9,120.5 74.1,117.9 78.4,111.6 79.7,102.4 77.4,91.8 71.3,81.1 61.8,71.8 50.0,65.2 37.1,62.0 24.8,62.4 14.3,66.0 7.1,71.9 3.7,78.9 4.6,85.6 9.3,90.4 17.0,92.2 26.3,90.3 35.8,84.5 44.0,75.2 49.8,63.2 52.3,49.9 51.3,36.8 47.0,25.3 40.3,16.8 32.5,12.1 25.0,11.5 19.2,14.8 16.4,21.0 17.4,29.0 22.4,37.4 31.1,44.6 42.8,49.5 56.1,51.2 69.5,49.3 81.5,44.1 90.8,36.5 96.5,27.6 98.2,18.9 96.1,11.8 91.0,7.7 84.0,7.4 76.6,11.2 70.3,18.9 66.2,29.7 65.3,42.5 68.0,55.7 74.0,67.7 82.7,77.4 92.8,83.6 102.8,86.0 111.3,84.6 117.0,80.3 118.9,74.0 116.7,67.3 110.4,61.5 100.7,57.9 89.0,57.6 76.5,60.9 64.8,67.7 55.3,77.2 49.0,88.4 46.4,99.7 47.5,109.7 51.6,117.1 57.6,120.7 64.1,120.2 69.7,115.5 73.1,107.4 73.2,96.9 69.7,85.4 62.5,74.5 52.4,65.6 40.3,59.7 27.9,57.4 16.5,58.6 7.7,62.8 2.3,69.0 1.2,75.7 4.1,81.6 10.6,85.3 19.7,85.7 29.9,82.3 39.7,75.2 47.8,64.8 53.0,52.3 54.8,39.1 53.0,26.7 48.3,16.6 41.5,9.8 34.1,7.1 27.4,8.4 23.0,13.4 21.9,21.0 24.6,29.9 31.3,38.6 41.4,45.7 53.9,50.1 67.4,51.1 80.4,48.5 91.4,42.9 99.3,35.3 103.3,26.9 103.2,19.2 99.6,13.6 93.2,11.3 85.5,12.9 77.8,18.7 71.7,28.0 68.1,40.0 68.0,53.3 71.4,66.5 77.9,77.9 86.6,86.4 96.2,91.2 105.2,92.1 112.2,89.4 116.0,84.0 115.8,77.1 111.4,70.2 103.3,64.8 92.2,62.0 79.5,62.5 66.8,66.6 55.5,74.0 46.8,83.7 41.7,94.6 40.3,105.0 42.5,113.5 47.4,119.0 53.8,120.4 60.2,117.7 65.3,111.0 67.8,101.3 66.8,89.7 62.2,77.7 54.2,66.9 43.6,58.6 31.7,53.5 20.0,52.2 10.0,54.3 2.9,59.1 -0.3,65.5 0.7,71.9 5.7,77.1 13.9,79.6 24.2,78.7 35.0,74.0 45.0,65.7 52.7,54.6 57.2,41.9 58.2,29.2 55.7,17.9 50.5,9.3 43.7,4.5 36.8,3.8 31.1,7.2 28.1,13.8 28.5,22.7 32.9,32.3 41.0,41.2 52.1,48.0 65.1,51.8 78.5,52.1 90.7,48.9 100.4,43.0 106.6,35.4 108.7,27.6 106.9,21.0 101.6,17.0 94.1,16.5 85.7,20.0 77.8,27.5 72.0,38.2 69.1,51.0 69.6,64.6 73.6,77.3 80.5,87.7 89.0,94.8 98.0,98.0 105.8,97.3 111.2,93.2 113.0,86.8 110.7,79.4 104.4,72.4 94.6,67.4 82.4,65.2 69.2,66.6 56.5,71.4 45.9,79.2 38.3,88.9 34.5,99.2 34.5,108.4 37.8,115.3 43.5,118.7 50.3,118.0 56.6,113.1 61.1,104.6 62.7,93.5 60.8,81.1 55.2,69.0 46.6,58.5 35.9,51.0 24.4,47.0 13.8,46.7 5.3,49.8 0.2,55.2 -0.9,61.7 2.3,67.8 9.3,72.2 19.0,73.6 30.3,71.5 41.6,65.6 51.4,56.4 58.5,44.9 62.2,32.5 62.3,20.5 59.1,10.6 53.5,3.9 46.8,1.1 40.4,2.6 35.7,7.9 34.0,16.1 35.9,26.1 41.7,36.2 51.0,45.1 62.9,51.5 76.0,54.6 88.9,54.1 100.0,50.3 108.1,44.2 112.4,36.8 112.5,29.7 108.8,24.3 102.0,21.9 93.4,23.1 84.5,28.4 76.6,37.3 71.2,49.1 68.9,62.4 70.1,75.7 74.7,87.6 81.7,96.8 90.0,102.3 98.2,103.7 104.7,101.3 108.3,95.8 108.2,88.4 103.9,80.6 95.8,73.7 84.7,69.1 71.7,67.6 58.3,69.7 46.1,75.2 36.4,83.2 30.1,92.6 27.8,102.0 29.2,109.9 33.8,115.0 40.3,116.4 47.3,113.5 53.4,106.7 57.4,96.6 58.1,84.3 55.3,71.4 49.1,59.4 40.1,49.7 29.5,43.1 18.7,40.4 9.3,41.3 2.6,45.3 -0.4,51.3 0.8,57.9 6.1,63.6 14.8,67.2 25.9,67.6 37.9,64.3 49.3,57.5 58.7,47.8 65.0,36.2 67.8,24.2 66.9,13.4 62.9,5.1 57.0,0.4 50.4,-0.2 44.6,3.4 41.0,10.5 40.5,20.2 43.8,31.0 50.9,41.5 61.0,50.1 73.3,55.9 86.1,58.2 98.2,57.0 107.9,52.7 114.2,46.3 116.4,39.3 114.5,33.0 109.0,28.8 100.8,27.9 91.2,30.8 81.9,37.6 74.2,47.7 69.2,60.2 67.6,73.6 69.6,86.4 74.6,97.2 81.7,104.8 89.5,108.4 96.7,108.0 101.9,103.9 103.8,97.1 101.7,88.8 95.7,80.6 86.1,73.9 73.9,69.7 60.4,69.0 47.3,71.8 35.8,77.6 27.4,85.7 22.7,94.7 22.0,103.1 24.9,109.6 30.7,112.8 37.9,112.1 45.1,107.2 51.0,98.6 54.3,87.1 54.3,74.1 50.7,61.1 44.0,49.5 34.8,40.7 24.6,35.4 14.8,34.0 6.9,36.2 2.1,41.2 1.2,47.7 4.6,54.4 11.8,59.7 22.1,62.5 34.2,61.9 46.7,57.7 57.9,50.1 66.6,40.0 72.0,28.7 73.6,17.5 71.7,8.1 67.0,1.6 60.8,-1.0 54.3,0.7 49.2,6.3 46.5,15.2 47.3,26.1 51.8,37.5 59.8,48.0 70.6,56.2 82.9,61.3 95.2,62.7 106.0,60.6 114.1,55.8 118.4,49.3 118.5,42.6 114.5,37.2 107.2,34.2 97.7,34.8 87.5,39.1 78.0,47.2 70.6,58.2 66.2,71.1 65.3,84.2 67.9,96.1 73.3,105.5 80.4,111.3 87.8,113.0 93.9,110.6 97.6,104.8 97.8,96.8 94.0,87.8 86.4,79.3 75.6,72.9 62.7,69.3 49.1,69.3 36.5,72.6 26.2,78.9 19.3,86.9 16.4,95.2 17.4,102.5 21.8,107.3 28.7,108.7 36.5,106.0 44.0,99.2 49.5,89.1 52.2,76.6 51.5,63.2 47.2,50.4 40.0,39.6 31.0,32.0 21.4,28.2 12.7,28.3 6.5,31.8 3.7,37.7 4.9,44.7 10.3,51.4 19.4,56.2 31.0,58.2 43.8,56.8 56.3,51.8 67.0,43.7 74.9,33.5 79.1,22.7 79.5,12.6 76.5,4.7 71.1,0.3 64.5,-0.1 58.3,3.7 53.8,11.2 52.1,21.6 54.0,33.4 59.6,45.2 68.3,55.5 79.4,63.1 91.4,67.2 102.8,67.6 112.2,64.7 118.3,59.3 120.5,52.8 118.4,46.6 112.5,42.0 103.6,40.3 93.0,42.2 82.3,47.8 72.8,56.9 65.8,68.6 62.2,81.4 62.2,93.9 65.4,104.6 71.2,112.3 78.1,116.1 84.9,115.7 90.0,111.4 92.2,104.0 90.8,94.8 85.4,85.3 76.4,76.8 64.7,70.7 51.4,67.8 38.2,68.4 26.5,72.4 17.6,78.8 12.5,86.6 11.4,94.2 14.2,100.3 20.2,103.5 28.1,103.0 36.5,98.4 43.9,90.0 49.1,78.7 51.1,65.5 49.7,52.0 44.9,39.8 37.5,30.1 28.6,24.0 19.8,21.8 12.5,23.5 8.0,28.3 7.2,35.1 10.5,42.5 17.8,49.1 28.4,53.5 41.0,54.8 54.2,52.5 66.4,46.8 76.4,38.4 83.1,28.4 85.9,18.3 85.0,9.5 80.9,3.5 74.8,1.1 68.0,2.9 62.0,8.7 58.2,18.0 57.5,29.6 60.3,42.1 66.7,53.9 76.0,63.7 87.0,70.4 98.4,73.4 108.7,72.8 116.4,69.0 120.5,63.2"/></svg>
     </div>
   </header>
   <div class="dateline"><span>Pareidolia LLC</span><span><b id="dlDate"></b></span><span>Est. October 2025</span></div>
@@ -709,6 +773,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
       <div class="fsview active" id="vsv-screen">
         <div class="stats" id="vsStats"></div>
+        <div class="dist" id="vsDist"></div>
         <input type="search" class="fs-search" id="vsQ" placeholder="Search ticker, company, sector\u2026" aria-label="Search the screen">
         <div class="tablewrap"><table><thead><tr id="vsHead">
           <th class="r"><button type="button" class="fs-sort" data-k="score">Score</button></th>
@@ -753,6 +818,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
       <div class="fsview active" id="gsv-screen">
         <div class="stats" id="gsStats"></div>
+        <div class="dist" id="gsDist"></div>
         <input type="search" class="fs-search" id="gsQ" placeholder="Search ticker, company, sector\u2026" aria-label="Search the screen">
         <div class="tablewrap"><table><thead><tr id="gsHead">
           <th class="r"><button type="button" class="fs-sort" data-k="score">Score</button></th>
@@ -1485,6 +1551,32 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       vh.appendChild(b);
     });
 
+
+    /* Twenty buckets across the observed score range, with everything at or
+       above the eightieth percentile lit, so the head of the list reads as a
+       shape rather than being inferred from the first few rows. */
+    function drawDist(host, rows, label){
+      var el=document.getElementById(host); if(!el) return;
+      var v=rows.map(function(r){return r.score;}).filter(function(x){
+        return x!==null&&x!==undefined&&!isNaN(x);});
+      if(v.length<8){el.style.display="none"; return;}
+      var lo=Math.min.apply(null,v), hi=Math.max.apply(null,v);
+      var N=20, span=(hi-lo)||1, b=[], i;
+      for(i=0;i<N;i++) b.push(0);
+      v.forEach(function(x){b[Math.min(N-1,Math.floor((x-lo)/span*N))]++;});
+      var peak=Math.max.apply(null,b);
+      var sorted=v.slice().sort(function(a,c){return a-c;});
+      var p80=sorted[Math.floor(sorted.length*0.8)];
+      var bars=b.map(function(c,j){
+        var from=lo+span*j/N, to=lo+span*(j+1)/N;
+        return "<i class='"+(from>=p80?"hot":"")+"' style='height:"+
+          (peak?Math.round(c/peak*100):0)+"%' title='"+c+" name"+(c===1?"":"s")+
+          " scoring "+Math.round(from)+"\u2013"+Math.round(to)+"'></i>";}).join("");
+      el.innerHTML="<div class='dhead'><span>"+label+"</span><span>top fifth lit \u00b7 "+
+        v.length+" names</span></div><div class='bars'>"+bars+
+        "</div><div class='axis'><span>"+Math.round(lo)+"</span><span>"+
+        Math.round((lo+hi)/2)+"</span><span>"+Math.round(hi)+"</span></div>";
+    }
     /* headline */
     var heavy=R.filter(function(r){return (r.insider||{}).level==="heavy";}).length;
     var zsafe=R.filter(function(r){return r.zSafe;}).length;
@@ -1499,6 +1591,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       return "<div class='stat'><div class='k'>"+x[1]+"</div><div class='v'>"+x[0]+
         "</div><div class='m'>"+x[2]+"</div></div>";
     }).join("");
+
+    drawDist("vsDist", R, "Score distribution");
 
     /* method tables */
     document.getElementById("vsWeights").innerHTML=WEIGHTS.map(function(w){
@@ -1672,6 +1766,32 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       vh.appendChild(b);
     });
 
+
+    /* Twenty buckets across the observed score range, with everything at or
+       above the eightieth percentile lit, so the head of the list reads as a
+       shape rather than being inferred from the first few rows. */
+    function drawDist(host, rows, label){
+      var el=document.getElementById(host); if(!el) return;
+      var v=rows.map(function(r){return r.score;}).filter(function(x){
+        return x!==null&&x!==undefined&&!isNaN(x);});
+      if(v.length<8){el.style.display="none"; return;}
+      var lo=Math.min.apply(null,v), hi=Math.max.apply(null,v);
+      var N=20, span=(hi-lo)||1, b=[], i;
+      for(i=0;i<N;i++) b.push(0);
+      v.forEach(function(x){b[Math.min(N-1,Math.floor((x-lo)/span*N))]++;});
+      var peak=Math.max.apply(null,b);
+      var sorted=v.slice().sort(function(a,c){return a-c;});
+      var p80=sorted[Math.floor(sorted.length*0.8)];
+      var bars=b.map(function(c,j){
+        var from=lo+span*j/N, to=lo+span*(j+1)/N;
+        return "<i class='"+(from>=p80?"hot":"")+"' style='height:"+
+          (peak?Math.round(c/peak*100):0)+"%' title='"+c+" name"+(c===1?"":"s")+
+          " scoring "+Math.round(from)+"\u2013"+Math.round(to)+"'></i>";}).join("");
+      el.innerHTML="<div class='dhead'><span>"+label+"</span><span>top fifth lit \u00b7 "+
+        v.length+" names</span></div><div class='bars'>"+bars+
+        "</div><div class='axis'><span>"+Math.round(lo)+"</span><span>"+
+        Math.round((lo+hi)/2)+"</span><span>"+Math.round(hi)+"</span></div>";
+    }
     /* headline */
     var acc=R.filter(function(r){return (r.flags||[]).indexOf("ACCRETIVE")>-1;}).length;
     var neg=R.filter(function(r){return (r.flags||[]).indexOf("NEGLECTED")>-1;}).length;
@@ -1685,6 +1805,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       return "<div class='stat'><div class='k'>"+x[1]+"</div><div class='v'>"+x[0]+
         "</div><div class='m'>"+x[2]+"</div></div>";
     }).join("");
+
+    drawDist("gsDist", R, "Score distribution");
 
     /* method tables */
     document.getElementById("gsGate").innerHTML=[
@@ -2017,7 +2139,12 @@ fs = json.load(open(fs_path, encoding="utf-8")) if os.path.exists(fs_path) else 
 if fs is None:
     print("warning: futuresight_prices.json missing - run futuresight_fetch.py; tab will render empty")
 
-html = TEMPLATE.replace("__DATA_JSON__", json.dumps(data, ensure_ascii=False))
+# Colourway: "note" is the banknote - cream stock, engraving green, gold and
+# silver metallics. "night" is the brown-black ground with the gold band.
+COLOURWAY = "note"
+
+html = TEMPLATE.replace("__CW__", COLOURWAY)
+html = html.replace("__DATA_JSON__", json.dumps(data, ensure_ascii=False))
 html = html.replace("__FS_JSON__", json.dumps(fs, ensure_ascii=False))
 
 vs_path = os.path.join(HERE, "valuescan.json")
