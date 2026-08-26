@@ -1,19 +1,29 @@
-<!doctype html><html lang="en" data-cw="note" data-plate="gold"><head>
+<!doctype html><html lang="en" data-cw="note" data-plate="silver"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Pareidolia — The Book</title>
+<title>Pareidolia</title>
+<meta property="og:title" content="Pareidolia">
+<meta property="og:site_name" content="Pareidolia">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pareidoliatrading.com/">
+<meta property="og:description" content="A private book run under doctrine — pattern recognition in a hostile tape.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pareidolia">
+<meta name="twitter:description" content="A private book run under doctrine — pattern recognition in a hostile tape.">
+<meta name="description" content="A private book run under doctrine — pattern recognition in a hostile tape.">
 <style>
   :root{
     /* ---- colourway: note (default) -------------------------------------
        The dollar bill. Banknote cream as the ground, engraving green as the
        accent, engraving black as the ink, gold and silver as the metallics.
        Cards are a lighter sheet laid on the stock rather than an inversion. */
-    --bg:#E6DFC8; --panel:#F5F1E3; --panel-2:#DED6BC; --line:#C9C0A4;
+    /* ground stays banknote cream; the stock laid on it is silver */
+    --bg:#E6DFC8; --panel:#EDEFF2; --panel-2:#DCDFE5; --line:#BFC4CB;
     --ink:#14171A; --muted:#4F544C; --faint:#767B71;
     --accent:#1E5B3C; --accent-soft:rgba(30,91,60,.13);
     --slate:#7B8378; --up:#1E5B3C; --down:#A33B24;
     --grid:rgba(20,23,26,.11); --warn:#9C6B12; color-scheme:light;
-    --paper:#F5F1E3;
+    --paper:#EDEFF2;          /* silver stock */
     --gold:#9C7B22; --gold-lift:#B8912C;
     --silver:#8E949C; --silver-lift:#AEB4BC;
     --engrave:#1E5B3C;          /* the green the guilloche is drawn in */
@@ -458,7 +468,7 @@
      it - no inversion, just a lift and a hairline. */
   .tablewrap,.stat,.dial,.chart-card,.gcard,.appr,.con .box{
     background:var(--paper); color:var(--ink); border:1px solid var(--line);
-    box-shadow:0 1px 0 0 rgba(20,23,26,.05)}
+    box-shadow:0 1px 0 0 rgba(20,23,26,.07)}
   /* On night the ground is dark and the stock is light, so a card restores the
      light palette for its whole subtree and descendants need no restyling. */
   :root[data-cw="night"] .tablewrap,:root[data-cw="night"] .stat,
@@ -490,9 +500,9 @@
   /* note: the band is the engraved green with cream lettering, the way the
      seal and serials sit on a bill. night keeps the gold band. */
   .tabs{background:var(--accent); border-bottom:1px solid var(--accent)}
-  .tab{color:rgba(245,241,227,.72)}
-  .tab:hover{color:#F5F1E3; background:rgba(245,241,227,.10)}
-  .tab.active{color:#F5F1E3; background:rgba(245,241,227,.16)}
+  .tab{color:rgba(237,239,242,.74)}
+  .tab:hover{color:#EDEFF2; background:rgba(237,239,242,.12)}
+  .tab.active{color:#EDEFF2; background:rgba(237,239,242,.18)}
   .tabink{background:var(--gold-lift); box-shadow:none}
   .tabs.hasink .tab.active{border-bottom-color:transparent}
   .scrollprog{background:var(--gold-lift); opacity:.8}
@@ -614,6 +624,15 @@
     .ear-l{justify-self:start}
     .ear-r{justify-self:end}
   }
+
+  /* ---- graphs ------------------------------------------------------------
+     Gold, by redefining the accent inside a chart card: the drawing helper
+     already reads its colours from the card it is drawn on, so nothing in the
+     chart code changes. Comparison series are deliberately left alone - the
+     benchmark lines pull --slate and --muted, so an index against SPY and QQQ
+     comes out gold against two greys. */
+  .chart-card{--accent:var(--gold)}
+  .chart-card .tlv.active{color:var(--gold)}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -2155,7 +2174,7 @@
      reader can sit on a ten-minute-old copy after a refresh. version.json is
      fetched uncached and compared against the hash baked in at build time. */
   (function(){
-    var BUILD="3c98bc75daf2";
+    var BUILD="c3d0904506c0";
     if(!window.fetch||BUILD.charAt(0)==="_") return;
     function notice(){
       var d=document.createElement("div");
