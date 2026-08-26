@@ -6,11 +6,11 @@
 <meta property="og:site_name" content="Pareidolia">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pareidoliatrading.com/">
-<meta property="og:description" content="A private book run under doctrine — pattern recognition in a hostile tape.">
+<meta property="og:description" content="A private book run under pattern recognition.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pareidolia">
-<meta name="twitter:description" content="A private book run under doctrine — pattern recognition in a hostile tape.">
-<meta name="description" content="A private book run under doctrine — pattern recognition in a hostile tape.">
+<meta name="twitter:description" content="A private book run under pattern recognition.">
+<meta name="description" content="A private book run under pattern recognition.">
 <style>
   :root{
     /* ---- colourway: note (default) -------------------------------------
@@ -587,16 +587,6 @@
   /* broadsheet scale: the name is the loudest thing on the page */
   .plate .mark{font-size:clamp(46px,8.4vw,92px); letter-spacing:-.005em; line-height:.92}
 
-  /* ears - the boxes a paper runs either side of its name, carrying real data */
-  .masthead{align-items:center}
-  .ear{font-family:var(--mono); font-size:9.5px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--plate-ink); text-align:center;
-    border:1px solid var(--plate-rule); padding:7px 12px; min-width:112px;
-    align-self:center; background:rgba(255,255,255,.22)}
-  .ear span{display:block; margin-bottom:4px}
-  .ear b{font-family:var(--serif); font-size:19px; letter-spacing:0;
-    text-transform:none; color:var(--ink); font-weight:700}
-  @media (max-width:760px){ .ear{display:none} }
 
   /* ---- ornament ----------------------------------------------------------
      Generated at build time, not an image. asanoha is a triangular lattice
@@ -615,15 +605,6 @@
     --plate:linear-gradient(177deg,#EDEEF0 0%,#DCDEE2 46%,#CFD2D7 62%,#ECEDEF 100%);
     --plate-edge:#B4B8BF; --plate-rule:#7E848C; --plate-ink:#464B52;}
 
-  /* The centred editorial layer stacks the masthead in a column, which queued
-     the ears above and below the name. Wide enough, it is three tracks. */
-  @media (min-width:880px){
-    .plate .masthead{display:grid; grid-template-columns:1fr auto 1fr;
-      align-items:center; gap:18px; flex-direction:row}
-    .plate .masthead>div:nth-child(2){grid-column:2}
-    .ear-l{justify-self:start}
-    .ear-r{justify-self:end}
-  }
 
   /* ---- graphs ------------------------------------------------------------
      Gold, by redefining the accent inside a chart card: the drawing helper
@@ -638,13 +619,11 @@
 <div class="wrap"><div class="sheet">
   <div class="plate">
   <header class="masthead">
-    <div class="ear ear-l"><span>Figures as of</span><b id="earDate"></b></div>
     <div>
       <div class="mark">Pareidolia<span class="dot">.</span></div>
-      <div class="tag">A private book run under doctrine — pattern recognition in a hostile tape.</div>
+      <div class="tag">A private book run under pattern recognition.</div>
       <svg class="rosette" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><clipPath id="omclip"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#omclip)" class="om om-asanoha"><path d="M1.0 1.0L31.0 1.0M1.0 1.0L23.5 14.0M31.0 1.0L8.5 14.0M16.0 27.0L16.0 1.0M1.0 1.0L23.5 -12.0M31.0 1.0L8.5 -12.0M16.0 -25.0L16.0 1.0M31.0 1.0L61.0 1.0M31.0 1.0L53.5 14.0M61.0 1.0L38.5 14.0M46.0 27.0L46.0 1.0M31.0 1.0L53.5 -12.0M61.0 1.0L38.5 -12.0M46.0 -25.0L46.0 1.0M61.0 1.0L91.0 1.0M61.0 1.0L83.5 14.0M91.0 1.0L68.5 14.0M76.0 27.0L76.0 1.0M61.0 1.0L83.5 -12.0M91.0 1.0L68.5 -12.0M76.0 -25.0L76.0 1.0M91.0 1.0L121.0 1.0M91.0 1.0L113.5 14.0M121.0 1.0L98.5 14.0M106.0 27.0L106.0 1.0M91.0 1.0L113.5 -12.0M121.0 1.0L98.5 -12.0M106.0 -25.0L106.0 1.0M121.0 1.0L151.0 1.0M121.0 1.0L143.5 14.0M151.0 1.0L128.5 14.0M136.0 27.0L136.0 1.0M121.0 1.0L143.5 -12.0M151.0 1.0L128.5 -12.0M136.0 -25.0L136.0 1.0M151.0 1.0L181.0 1.0M151.0 1.0L173.5 14.0M181.0 1.0L158.5 14.0M166.0 27.0L166.0 1.0M151.0 1.0L173.5 -12.0M181.0 1.0L158.5 -12.0M166.0 -25.0L166.0 1.0M16.0 27.0L46.0 27.0M16.0 27.0L38.5 40.0M46.0 27.0L23.5 40.0M31.0 53.0L31.0 27.0M16.0 27.0L38.5 14.0M46.0 27.0L23.5 14.0M31.0 1.0L31.0 27.0M46.0 27.0L76.0 27.0M46.0 27.0L68.5 40.0M76.0 27.0L53.5 40.0M61.0 53.0L61.0 27.0M46.0 27.0L68.5 14.0M76.0 27.0L53.5 14.0M61.0 1.0L61.0 27.0M76.0 27.0L106.0 27.0M76.0 27.0L98.5 40.0M106.0 27.0L83.5 40.0M91.0 53.0L91.0 27.0M76.0 27.0L98.5 14.0M106.0 27.0L83.5 14.0M91.0 1.0L91.0 27.0M106.0 27.0L136.0 27.0M106.0 27.0L128.5 40.0M136.0 27.0L113.5 40.0M121.0 53.0L121.0 27.0M106.0 27.0L128.5 14.0M136.0 27.0L113.5 14.0M121.0 1.0L121.0 27.0M136.0 27.0L166.0 27.0M136.0 27.0L158.5 40.0M166.0 27.0L143.5 40.0M151.0 53.0L151.0 27.0M136.0 27.0L158.5 14.0M166.0 27.0L143.5 14.0M151.0 1.0L151.0 27.0M166.0 27.0L196.0 27.0M166.0 27.0L188.5 40.0M196.0 27.0L173.5 40.0M181.0 53.0L181.0 27.0M166.0 27.0L188.5 14.0M196.0 27.0L173.5 14.0M181.0 1.0L181.0 27.0M1.0 53.0L31.0 53.0M1.0 53.0L23.5 66.0M31.0 53.0L8.5 66.0M16.0 78.9L16.0 53.0M1.0 53.0L23.5 40.0M31.0 53.0L8.5 40.0M16.0 27.0L16.0 53.0M31.0 53.0L61.0 53.0M31.0 53.0L53.5 66.0M61.0 53.0L38.5 66.0M46.0 78.9L46.0 53.0M31.0 53.0L53.5 40.0M61.0 53.0L38.5 40.0M46.0 27.0L46.0 53.0M61.0 53.0L91.0 53.0M61.0 53.0L83.5 66.0M91.0 53.0L68.5 66.0M76.0 78.9L76.0 53.0M61.0 53.0L83.5 40.0M91.0 53.0L68.5 40.0M76.0 27.0L76.0 53.0M91.0 53.0L121.0 53.0M91.0 53.0L113.5 66.0M121.0 53.0L98.5 66.0M106.0 78.9L106.0 53.0M91.0 53.0L113.5 40.0M121.0 53.0L98.5 40.0M106.0 27.0L106.0 53.0M121.0 53.0L151.0 53.0M121.0 53.0L143.5 66.0M151.0 53.0L128.5 66.0M136.0 78.9L136.0 53.0M121.0 53.0L143.5 40.0M151.0 53.0L128.5 40.0M136.0 27.0L136.0 53.0M151.0 53.0L181.0 53.0M151.0 53.0L173.5 66.0M181.0 53.0L158.5 66.0M166.0 78.9L166.0 53.0M151.0 53.0L173.5 40.0M181.0 53.0L158.5 40.0M166.0 27.0L166.0 53.0M16.0 78.9L46.0 78.9M16.0 78.9L38.5 91.9M46.0 78.9L23.5 91.9M31.0 104.9L31.0 78.9M16.0 78.9L38.5 66.0M46.0 78.9L23.5 66.0M31.0 53.0L31.0 78.9M46.0 78.9L76.0 78.9M46.0 78.9L68.5 91.9M76.0 78.9L53.5 91.9M61.0 104.9L61.0 78.9M46.0 78.9L68.5 66.0M76.0 78.9L53.5 66.0M61.0 53.0L61.0 78.9M76.0 78.9L106.0 78.9M76.0 78.9L98.5 91.9M106.0 78.9L83.5 91.9M91.0 104.9L91.0 78.9M76.0 78.9L98.5 66.0M106.0 78.9L83.5 66.0M91.0 53.0L91.0 78.9M106.0 78.9L136.0 78.9M106.0 78.9L128.5 91.9M136.0 78.9L113.5 91.9M121.0 104.9L121.0 78.9M106.0 78.9L128.5 66.0M136.0 78.9L113.5 66.0M121.0 53.0L121.0 78.9M136.0 78.9L166.0 78.9M136.0 78.9L158.5 91.9M166.0 78.9L143.5 91.9M151.0 104.9L151.0 78.9M136.0 78.9L158.5 66.0M166.0 78.9L143.5 66.0M151.0 53.0L151.0 78.9M166.0 78.9L196.0 78.9M166.0 78.9L188.5 91.9M196.0 78.9L173.5 91.9M181.0 104.9L181.0 78.9M166.0 78.9L188.5 66.0M196.0 78.9L173.5 66.0M181.0 53.0L181.0 78.9M1.0 104.9L31.0 104.9M1.0 104.9L23.5 117.9M31.0 104.9L8.5 117.9M16.0 130.9L16.0 104.9M1.0 104.9L23.5 91.9M31.0 104.9L8.5 91.9M16.0 78.9L16.0 104.9M31.0 104.9L61.0 104.9M31.0 104.9L53.5 117.9M61.0 104.9L38.5 117.9M46.0 130.9L46.0 104.9M31.0 104.9L53.5 91.9M61.0 104.9L38.5 91.9M46.0 78.9L46.0 104.9M61.0 104.9L91.0 104.9M61.0 104.9L83.5 117.9M91.0 104.9L68.5 117.9M76.0 130.9L76.0 104.9M61.0 104.9L83.5 91.9M91.0 104.9L68.5 91.9M76.0 78.9L76.0 104.9M91.0 104.9L121.0 104.9M91.0 104.9L113.5 117.9M121.0 104.9L98.5 117.9M106.0 130.9L106.0 104.9M91.0 104.9L113.5 91.9M121.0 104.9L98.5 91.9M106.0 78.9L106.0 104.9M121.0 104.9L151.0 104.9M121.0 104.9L143.5 117.9M151.0 104.9L128.5 117.9M136.0 130.9L136.0 104.9M121.0 104.9L143.5 91.9M151.0 104.9L128.5 91.9M136.0 78.9L136.0 104.9M151.0 104.9L181.0 104.9M151.0 104.9L173.5 117.9M181.0 104.9L158.5 117.9M166.0 130.9L166.0 104.9M151.0 104.9L173.5 91.9M181.0 104.9L158.5 91.9M166.0 78.9L166.0 104.9M16.0 130.9L46.0 130.9M16.0 130.9L38.5 143.9M46.0 130.9L23.5 143.9M31.0 156.9L31.0 130.9M16.0 130.9L38.5 117.9M46.0 130.9L23.5 117.9M31.0 104.9L31.0 130.9M46.0 130.9L76.0 130.9M46.0 130.9L68.5 143.9M76.0 130.9L53.5 143.9M61.0 156.9L61.0 130.9M46.0 130.9L68.5 117.9M76.0 130.9L53.5 117.9M61.0 104.9L61.0 130.9M76.0 130.9L106.0 130.9M76.0 130.9L98.5 143.9M106.0 130.9L83.5 143.9M91.0 156.9L91.0 130.9M76.0 130.9L98.5 117.9M106.0 130.9L83.5 117.9M91.0 104.9L91.0 130.9M106.0 130.9L136.0 130.9M106.0 130.9L128.5 143.9M136.0 130.9L113.5 143.9M121.0 156.9L121.0 130.9M106.0 130.9L128.5 117.9M136.0 130.9L113.5 117.9M121.0 104.9L121.0 130.9M136.0 130.9L166.0 130.9M136.0 130.9L158.5 143.9M166.0 130.9L143.5 143.9M151.0 156.9L151.0 130.9M136.0 130.9L158.5 117.9M166.0 130.9L143.5 117.9M151.0 104.9L151.0 130.9M166.0 130.9L196.0 130.9M166.0 130.9L188.5 143.9M196.0 130.9L173.5 143.9M181.0 156.9L181.0 130.9M166.0 130.9L188.5 117.9M196.0 130.9L173.5 117.9M181.0 104.9L181.0 130.9M1.0 156.9L31.0 156.9M1.0 156.9L23.5 169.9M31.0 156.9L8.5 169.9M16.0 182.9L16.0 156.9M1.0 156.9L23.5 143.9M31.0 156.9L8.5 143.9M16.0 130.9L16.0 156.9M31.0 156.9L61.0 156.9M31.0 156.9L53.5 169.9M61.0 156.9L38.5 169.9M46.0 182.9L46.0 156.9M31.0 156.9L53.5 143.9M61.0 156.9L38.5 143.9M46.0 130.9L46.0 156.9M61.0 156.9L91.0 156.9M61.0 156.9L83.5 169.9M91.0 156.9L68.5 169.9M76.0 182.9L76.0 156.9M61.0 156.9L83.5 143.9M91.0 156.9L68.5 143.9M76.0 130.9L76.0 156.9M91.0 156.9L121.0 156.9M91.0 156.9L113.5 169.9M121.0 156.9L98.5 169.9M106.0 182.9L106.0 156.9M91.0 156.9L113.5 143.9M121.0 156.9L98.5 143.9M106.0 130.9L106.0 156.9M121.0 156.9L151.0 156.9M121.0 156.9L143.5 169.9M151.0 156.9L128.5 169.9M136.0 182.9L136.0 156.9M121.0 156.9L143.5 143.9M151.0 156.9L128.5 143.9M136.0 130.9L136.0 156.9M151.0 156.9L181.0 156.9M151.0 156.9L173.5 169.9M181.0 156.9L158.5 169.9M166.0 182.9L166.0 156.9M151.0 156.9L173.5 143.9M181.0 156.9L158.5 143.9M166.0 130.9L166.0 156.9"/></g><circle class="omring" cx="60" cy="60" r="52"/><circle class="omring2" cx="60" cy="60" r="47"/></svg>
     </div>
-    <div class="ear ear-r"><span>Latest grade</span><b id="earGrade"></b></div>
   </header>
   <div class="dateline"><span>Pareidolia LLC</span><span><b id="dlDate"></b></span><span>Est. October 2025</span></div>
   </div>
@@ -948,13 +927,6 @@
 
   document.getElementById("asof").textContent=DATA.asOf;
   var dl=document.getElementById("dlDate"); if(dl) dl.textContent=DATA.asOf;
-  var ed=document.getElementById("earDate"); if(ed) ed.textContent=DATA.asOf;
-  var eg=document.getElementById("earGrade");
-  if(eg && DATA.reports && DATA.reports.length){
-    var last=DATA.reports[DATA.reports.length-1];
-    eg.textContent=last.grade||"\u2014";
-    eg.title=last.weekLabel||"";
-  }
   document.getElementById("curvesub").textContent=DATA.curveLabel;
 
   (function(){
@@ -2174,7 +2146,7 @@
      reader can sit on a ten-minute-old copy after a refresh. version.json is
      fetched uncached and compared against the hash baked in at build time. */
   (function(){
-    var BUILD="c3d0904506c0";
+    var BUILD="f390a17312fc";
     if(!window.fetch||BUILD.charAt(0)==="_") return;
     function notice(){
       var d=document.createElement("div");

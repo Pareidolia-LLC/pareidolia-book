@@ -26,11 +26,11 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
 <meta property="og:site_name" content="Pareidolia">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pareidoliatrading.com/">
-<meta property="og:description" content="A private book run under doctrine — pattern recognition in a hostile tape.">
+<meta property="og:description" content="A private book run under pattern recognition.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pareidolia">
-<meta name="twitter:description" content="A private book run under doctrine — pattern recognition in a hostile tape.">
-<meta name="description" content="A private book run under doctrine — pattern recognition in a hostile tape.">
+<meta name="twitter:description" content="A private book run under pattern recognition.">
+<meta name="description" content="A private book run under pattern recognition.">
 <style>
   :root{
     /* ---- colourway: note (default) -------------------------------------
@@ -607,16 +607,6 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
   /* broadsheet scale: the name is the loudest thing on the page */
   .plate .mark{font-size:clamp(46px,8.4vw,92px); letter-spacing:-.005em; line-height:.92}
 
-  /* ears - the boxes a paper runs either side of its name, carrying real data */
-  .masthead{align-items:center}
-  .ear{font-family:var(--mono); font-size:9.5px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--plate-ink); text-align:center;
-    border:1px solid var(--plate-rule); padding:7px 12px; min-width:112px;
-    align-self:center; background:rgba(255,255,255,.22)}
-  .ear span{display:block; margin-bottom:4px}
-  .ear b{font-family:var(--serif); font-size:19px; letter-spacing:0;
-    text-transform:none; color:var(--ink); font-weight:700}
-  @media (max-width:760px){ .ear{display:none} }
 
   /* ---- ornament ----------------------------------------------------------
      Generated at build time, not an image. asanoha is a triangular lattice
@@ -635,15 +625,6 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
     --plate:linear-gradient(177deg,#EDEEF0 0%,#DCDEE2 46%,#CFD2D7 62%,#ECEDEF 100%);
     --plate-edge:#B4B8BF; --plate-rule:#7E848C; --plate-ink:#464B52;}
 
-  /* The centred editorial layer stacks the masthead in a column, which queued
-     the ears above and below the name. Wide enough, it is three tracks. */
-  @media (min-width:880px){
-    .plate .masthead{display:grid; grid-template-columns:1fr auto 1fr;
-      align-items:center; gap:18px; flex-direction:row}
-    .plate .masthead>div:nth-child(2){grid-column:2}
-    .ear-l{justify-self:start}
-    .ear-r{justify-self:end}
-  }
 
   /* ---- graphs ------------------------------------------------------------
      Gold, by redefining the accent inside a chart card: the drawing helper
@@ -658,13 +639,11 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
 <div class="wrap"><div class="sheet">
   <div class="plate">
   <header class="masthead">
-    <div class="ear ear-l"><span>Figures as of</span><b id="earDate"></b></div>
     <div>
       <div class="mark">Pareidolia<span class="dot">.</span></div>
-      <div class="tag">A private book run under doctrine — pattern recognition in a hostile tape.</div>
+      <div class="tag">A private book run under pattern recognition.</div>
       __ORNAMENT__
     </div>
-    <div class="ear ear-r"><span>Latest grade</span><b id="earGrade"></b></div>
   </header>
   <div class="dateline"><span>Pareidolia LLC</span><span><b id="dlDate"></b></span><span>Est. October 2025</span></div>
   </div>
@@ -968,13 +947,6 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
 
   document.getElementById("asof").textContent=DATA.asOf;
   var dl=document.getElementById("dlDate"); if(dl) dl.textContent=DATA.asOf;
-  var ed=document.getElementById("earDate"); if(ed) ed.textContent=DATA.asOf;
-  var eg=document.getElementById("earGrade");
-  if(eg && DATA.reports && DATA.reports.length){
-    var last=DATA.reports[DATA.reports.length-1];
-    eg.textContent=last.grade||"\u2014";
-    eg.title=last.weekLabel||"";
-  }
   document.getElementById("curvesub").textContent=DATA.curveLabel;
 
   (function(){
