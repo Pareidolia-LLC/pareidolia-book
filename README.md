@@ -17,6 +17,44 @@ python build.py     # after editing data.json
 git add -A && git commit -m "book: refresh $(date +%F)" && git push
 ```
 
+## Layout
+
+**One width for the page.** The gutter is the measure: masthead, tab band,
+every panel, every table and every paragraph fill it, because that is simply
+what a block element does inside a full-width container. There is no opt-in
+class and no opt-out.
+
+This replaced an earlier arrangement where the sheet was capped at 1120px and
+anything wider had to escape it. That escape hatch accumulated into nine
+`.bleed` classes in the markup, a fifteen-selector list for the Ideation panel,
+a scrollbar-width measurement in JS to make the `vw` arithmetic land, and a set
+of exclusions for tables inside grids that broke when widened. Every ragged
+edge the site has had came from that arrangement, not from nine separate bugs.
+
+If you add a panel, a section or a table, it lands at the right width with no
+extra work. The things that should *not* be page width — the masthead tagline,
+grids like the holdings ledger and the winners/losers pair — are narrower
+because their container is, which is the correct reason.
+
+`build.py` refuses to write `index.html` if the old machinery reappears:
+
+- a `.bleed` opt-in back in the markup
+- the `--sbw` scrollbar measurement back in the JS
+- the sheet capped again
+- table cells being centred again
+
+That last one caught a live trap the first time the guard ran: the rule
+`thead th,tbody td,th.r,td.r{text-align:center}` was still in the stylesheet,
+overridden by specificity rather than removed, which is how centred figures
+survived as long as they did. It is deleted at source now.
+
+### Table conventions
+
+Figures right, labels left, nothing centred. Tabular lining numerals so digits
+stack. Units in the header once (`ROIC %`, `EV/EBITDA ×`) rather than repeated
+down every row. Negatives in brackets, positives with no sign. Em dash for not
+available. Header rule heavier than the body hairlines, no vertical rules.
+
 ## Ideation concepts
 
 The Ideation tab is a container, not a concept. Each concept is its own roster or
