@@ -34,6 +34,10 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     --grid:rgba(242,236,221,.10); --warn:#C46A1C; color-scheme:dark;
     --paper:#F2ECDD;            /* the old ground, now used as a surface */
     --gold-lift:#C79A2E;        /* gold at reading weight on the dark ground */
+    /* pinstripe on the page ground. Cream reads crisp and cool; the gold
+       alternative is commented beside it - one value swaps the whole page. */
+    --pinstripe:rgba(242,236,221,.055);   /* cream  */
+    --pinstripe-gold:rgba(169,128,31,.14);
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --pagepad:clamp(20px,4vw,56px);
@@ -433,11 +437,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .stalebar{background:var(--paper); color:#2B2517}
   .stalebar button{border-color:rgba(43,37,23,.45)}
 
-  /* A scan texture at two percent - grain on a screen, never a pattern. */
+  /* Pinstripe on the page ground. It sits behind .sheet, so it shows in the
+     gutters and between cards but never under one - the stock stays clean and
+     the suiting is what it is laid on. */
   .wrap::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:repeating-linear-gradient(180deg,
-      rgba(242,236,221,.022) 0px, rgba(242,236,221,.022) 1px,
-      transparent 1px, transparent 3px)}
+    background:repeating-linear-gradient(90deg,
+      var(--pinstripe) 0px, var(--pinstripe) 1px,
+      transparent 1px, transparent 13px)}
   .sheet{position:relative; z-index:1}
 
   .tab:focus-visible,.tlv:focus-visible,.cbtn:focus-visible,.fs-sort:focus-visible{
