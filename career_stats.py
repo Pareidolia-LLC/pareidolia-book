@@ -40,8 +40,16 @@ def long_date(iso):
 # Fallback if no args: adjust to wherever the weekly full-history pulls land.
 TRADES_GLOB = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "trades_*.json")
 
-# Forecast/event contracts trade as FOP (futures options) on FORECASTX.
+# Forecast/event contracts. Historically these booked as FOP (futures options), but
+# from 2026-08-24 they arrive as plain OPT carrying a FORECASTX or KALSHI exchange.
+# Classifying on sec_type alone would file them under covered-call premium — the one
+# bucket that must stay clean, since it is the engine line. Always check both.
 EVENT_SEC = {"FOP"}
+EVENT_EXCH = {"FORECASTX", "KALSHI"}
+
+
+def is_event(t):
+    return t.get("sec_type") in EVENT_SEC or t.get("exchange") in EVENT_EXCH
 
 def load(paths):
     seen = {}
@@ -130,9 +138,9 @@ def main():
         else:
             break
 
-    opt = bucket(closers, lambda t: t["sec_type"] == "OPT")   # covered-call premium
+    opt = bucket(closers, lambda t: t["sec_type"] == "OPT" and not is_event(t))  # covered-call premium
     stk = bucket(closers, lambda t: t["sec_type"] == "STK")   # share legs
-    fop = bucket(closers, lambda t: t["sec_type"] in EVENT_SEC)  # event contracts
+    fop = bucket(closers, lambda t: is_event(t))  # event contracts, any venue
 
     # The career record is a *closed-trade* record, so it is dated by the last
     # realized close — not the last execution. Zero-P&L fills (assignments,
