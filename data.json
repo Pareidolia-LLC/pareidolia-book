@@ -1,21 +1,21 @@
 {
-  "asOf": "Aug 29, 2026",
+  "asOf": "Sep 5, 2026",
   "curveLabel": "Time-weighted · Since inception, Oct 2025",
   "returns": [
     {
       "k": "Return · YTD 2026",
-      "v": -3.19,
+      "v": -3.89,
       "m": "Time-weighted, net"
     },
     {
       "k": "Return · Trailing 12M",
-      "v": -3.51,
+      "v": -4.21,
       "m": "Since inception, Oct 2025"
     },
     {
       "k": "Return · Last 7 Days",
-      "v": 1.09,
-      "m": "Four names opened; cash at 0.2%"
+      "v": -1.18,
+      "m": "No equity trades; four names uncovered"
     }
   ],
   "reports": [
@@ -1233,7 +1233,6 @@
       "weekLabel": "Week of Aug 24 – Aug 28, 2026",
       "grade": "D+",
       "weekRet": 1.56,
-      "now": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -1255,35 +1254,63 @@
         }
       ],
       "note": "The cap held and nothing else did. Cash finished the week at $60 — 0.2% of NAV — with stock at 101.5% of net asset value, meaning the book is carrying borrowed money against a 10% floor. Into that, four new names were opened: PR, VSXY, HUN and OLN. Opening positions is a choice; opening four of them on margin with no reserve is the pattern this report card exists to catch. SPCX was also added to below carry for the third time in six weeks — averaging down a broken thesis, prohibited outright, and by now a habit rather than a lapse. The forecast sleeve came back on hard, 79 trades across ForecastX and Kalshi, and is deliberately not scored: it is sanctioned as data collection ahead of building the forecast algorithm. +1.6% on the week, and PLTR at 19.1% is the closest the top name has come to the cap without breaching it."
+    },
+    {
+      "w": "Sep 4",
+      "weekLabel": "Week of Aug 31 – Sep 4, 2026",
+      "grade": "C",
+      "weekRet": -1.08,
+      "now": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "pass",
+          "value": "PLTR 18.1%",
+          "rule": "Inside the 20% cap · SPCX close behind at 17.9%"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "0.6%",
+          "rule": "Third week under the 10% floor · off margin, but stock is 99.8% of NAV"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "pass",
+          "value": "data run",
+          "rule": "15 forecast trades on ForecastX — sanctioned for data collection, not scored"
+        }
+      ],
+      "note": "A quiet week that fixed nothing. Not one equity trade was placed in five sessions — no new names, no averaging down, none of last week's escalation repeated, and the book came off margin. That is the improvement, and it is real. What did not change is the reserve: cash closed at $160, 0.6% of NAV, a third consecutive week under the 10% floor, with stock at 99.8% of net asset value. Being fully invested is not the same as being on margin, but it leaves nothing to deploy and nothing to absorb a shock. The quieter problem is the engine. Short calls on BBAI, KEEL, SERV and XNDU all came off at zero in Friday's expiry processing and none were rewritten, so ten of twelve names now sit as uncovered stock. Covered-call premium is the one line in this book with a real edge, and for most of the collateral it is currently switched off. −1.1% on the week; the forecast sleeve ran 15 trades for data and is not scored."
     }
   ],
   "career": {
     "sinceLabel": "Oct 2025",
-    "asOfLabel": "Aug 29, 2026",
+    "asOfLabel": "Sep 5, 2026",
     "headline": [
       {
         "k": "Closed trades",
-        "v": "2,055",
+        "v": "2,102",
         "m": "Engagements opened, closed & booked"
       },
       {
         "k": "Win rate",
-        "v": "60.0%",
-        "m": "1,234 won · 821 lost"
+        "v": "59.6%",
+        "m": "1,253 won · 849 lost"
       },
       {
         "k": "Profit factor",
-        "v": "0.93",
+        "v": "0.94",
         "m": "Gross wins ÷ gross losses"
       },
       {
         "k": "Payoff ratio",
-        "v": "0.62",
+        "v": "0.63",
         "m": "Avg win ÷ avg loss"
       },
       {
         "k": "Names traded",
-        "v": "103",
+        "v": "104",
         "m": "Distinct symbols"
       },
       {
@@ -1314,9 +1341,9 @@
       {
         "name": "Event contracts",
         "tag": "forecast",
-        "win": 58.4,
-        "pf": 0.88,
-        "closes": 1849,
+        "win": 57.9,
+        "pf": 0.89,
+        "closes": 1896,
         "tone": "warn",
         "note": "High-volume churn at break-even, negative once costs are counted. Decommissioned — activity mistaken for work."
       }
@@ -1333,79 +1360,79 @@
     {
       "t": "PLTR",
       "s": "dir",
-      "w": 19.09,
-      "r": 9.25
+      "w": 18.08,
+      "r": 2.63
     },
     {
       "t": "SPCX",
       "s": "dir",
-      "w": 16.92,
-      "r": 1.96
-    },
-    {
-      "t": "KVYO",
-      "s": "wheel",
-      "w": 13.53,
-      "r": 8.0
+      "w": 17.88,
+      "r": 6.76
     },
     {
       "t": "GRPN",
       "s": "wheel",
-      "w": 13.45,
-      "r": -27.29
+      "w": 13.02,
+      "r": -30.17
+    },
+    {
+      "t": "KVYO",
+      "s": "wheel",
+      "w": 12.86,
+      "r": 1.78
     },
     {
       "t": "SERV",
-      "s": "wheel",
-      "w": 12.03,
-      "r": -16.68
+      "s": "dir",
+      "w": 11.97,
+      "r": -17.76
     },
     {
       "t": "XNDU",
-      "s": "wheel",
-      "w": 7.22,
-      "r": 0.48
+      "s": "dir",
+      "w": 6.76,
+      "r": -6.58
     },
     {
       "t": "KEEL",
-      "s": "wheel",
-      "w": 5.55,
-      "r": -14.39
+      "s": "dir",
+      "w": 5.99,
+      "r": -8.42
     },
     {
       "t": "BBAI",
-      "s": "wheel",
-      "w": 5.25,
-      "r": -10.0
+      "s": "dir",
+      "w": 5.04,
+      "r": -14.27
     },
     {
       "t": "HUN",
       "s": "dir",
-      "w": 3.39,
-      "r": 1.62
+      "w": 3.32,
+      "r": -1.21
     },
     {
       "t": "PR",
       "s": "dir",
-      "w": 2.0,
-      "r": -0.66
-    },
-    {
-      "t": "VSXY",
-      "s": "dir",
-      "w": 1.54,
-      "r": 0.44
+      "w": 2.02,
+      "r": -0.96
     },
     {
       "t": "OLN",
       "s": "dir",
       "w": 1.5,
-      "r": 0.64
+      "r": -0.67
+    },
+    {
+      "t": "VSXY",
+      "s": "dir",
+      "w": 1.31,
+      "r": -16.01
     },
     {
       "t": "Cash",
       "s": "cash",
-      "w": 0.21,
+      "w": 0.55,
       "r": null
     }
   ],
@@ -1426,14 +1453,14 @@
       "eyebrow": "Book Summary",
       "h": "Current posture",
       "p": [
-        "The book is a concentrated set of retail-momentum securities held as collateral and worked for premium with covered calls, alongside a forecast-contract sleeve now running for data. The week opened four new names — PR, VSXY, HUN and OLN — taking the book to twelve, and funded them on margin: cash finished at 0.2% of NAV with stock at 101.5%. No single name breaches the 20% cap, though PLTR at 19.1% is close to it. The forecast sleeve is active again by design, ahead of a systematic forecast strategy in build."
+        "The book is a concentrated set of retail-momentum securities, twelve names, alongside a forecast-contract sleeve running for data. The week placed no equity trades at all: the book came off margin and gross exposure is back to 1.00×, but cash sits at 0.6% of NAV with stock at 99.8%, so it is fully invested rather than reserved. Short calls came off BBAI, KEEL, SERV and XNDU at the September expiry and were not rewritten, leaving only GRPN and KVYO worked for premium. No name breaches the 20% cap; PLTR leads at 18.1%."
       ]
     },
     {
       "eyebrow": "Concept of operations",
       "ul": [
-        "Covered-call premium on liquid small-cap momentum names — the engine, and the only line that reliably pays.",
-        "Cash is materiel, not an idle balance — currently spent, with the book on margin.",
+        "Covered-call premium on liquid small-cap momentum names — the engine, currently written on only two of twelve.",
+        "Cash is materiel, not an idle balance — currently spent, though the book is no longer levered.",
         "Outright holds taken selectively, sized small, each carrying a thesis and a stop set before entry.",
         "A forecast-contract sleeve, reopened for data collection ahead of a systematic strategy in build."
       ]
@@ -1441,9 +1468,9 @@
     {
       "eyebrow": "Risk posture",
       "ul": [
-        "Single-name cap of 20% of NAV — held this week, top name PLTR at 19.1%.",
-        "Gross exposure about 1.03× NAV — margin in use, against a 10% cash floor now at 0.2%.",
-        "Broker mandate restricts options activity to selling covered calls (see Operations).",
+        "Single-name cap of 20% of NAV — held this week, top name PLTR at 18.1%.",
+        "Gross exposure 1.00× NAV — off margin, but cash at 0.6% against a 10% floor.",
+        "Broker mandate restricts options activity to selling covered calls (see The Desk).",
         "Sizing, reserve, and event exposure inspected every week — findings published whether or not they flatter."
       ]
     }
@@ -1766,7 +1793,12 @@
       -0.06294344,
       -0.03213173,
       -0.03063684,
-      -0.03510282
+      -0.02773707,
+      -0.05059173,
+      -0.05820222,
+      -0.03093111,
+      -0.04108161,
+      -0.04209177
     ],
     "dates": [
       "20251016",
@@ -1997,7 +2029,12 @@
       "20260826",
       "20260827",
       "20260828",
-      "20260829"
+      "20260831",
+      "20260901",
+      "20260902",
+      "20260903",
+      "20260904",
+      "20260905"
     ]
   },
   "record": {
