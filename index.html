@@ -109,20 +109,9 @@
   .wipe.run .bot{animation:crtBot .56s var(--cut) both}
   .wipe.run .ln{animation:crtLine .56s var(--cut) both}
 
-  /* the panel is already in place when the halves part; a short settle only */
-  @keyframes push{from{opacity:0; transform:translateY(4px)}to{opacity:1; transform:none}}
   .panel{display:none}
   .panel.active{display:block}
-  .panel.active>section,.panel.active>div>section,.panel.active>div{
-    animation:push .34s var(--ease-out) both}
-  .panel.active>section:nth-child(2){animation-delay:.04s}
-  .panel.active>section:nth-child(3){animation-delay:.08s}
-  .panel.active>section:nth-child(4){animation-delay:.12s}
-  .panel.active>section:nth-child(n+5){animation-delay:.15s}
-  @media (prefers-reduced-motion:reduce){
-    .wipe{display:none}
-    .panel.active>section,.panel.active>div>section,.panel.active>div{animation:none}
-  }
+  @media (prefers-reduced-motion:reduce){ .wipe{display:none} }
 
   /* ---------- masthead: phosphor nameplate ---------- */
   .plate{background:none; border:0; padding:0}
@@ -445,10 +434,230 @@
     color:#07090A; font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; padding:9px 14px; text-align:center}
   .stalebar button{font:inherit; margin-left:10px; background:none; cursor:pointer; border:1px solid rgba(7,9,10,.5); color:inherit; padding:3px 10px}
 
-  /* ---------- reveal ---------- */
+  /* =====================================================================
+     MOTION. Three rules, from the three references.
+     TARTAKOVSKY  nothing fades. Shapes are cut in with clip-path on
+                  steps(), so everything moves on twos like a cel.
+     NAGEL        the hot colour is a slab. It slides (the tab), stamps
+                  (the grade), and snaps (the states) - never blends.
+     FRAZETTA     one light. It breathes, a beam sweeps the glass, and a
+                  figure that has just landed flares before it settles.
+     ===================================================================== */
+  @keyframes cutIn{from{clip-path:inset(-60px 100% -60px -60px)}to{clip-path:inset(-60px)}}
+  @keyframes snapOn{from{opacity:0}to{opacity:1}}
+  @keyframes chOn{
+    0%  {opacity:0; text-shadow:none}
+    40% {opacity:1; text-shadow:0 0 28px rgba(255,201,77,.95), 0 0 80px rgba(255,176,0,.55)}
+    100%{opacity:1; text-shadow:var(--glow)}}
+  @keyframes stamp{
+    0%  {transform:scale(1.7); opacity:0}
+    35% {transform:scale(1.7); opacity:1}
+    100%{transform:scale(1);   opacity:1}}
+  @keyframes flare{
+    0%  {text-shadow:0 0 34px rgba(255,201,77,.95), 0 0 90px rgba(255,176,0,.55)}
+    100%{text-shadow:0 0 14px rgba(255,176,0,.22)}}
+  @keyframes breathe{0%,100%{opacity:.82}50%{opacity:1}}
+  @keyframes beam{0%{transform:translateY(-4px)}100%{transform:translateY(100vh)}}
+  @keyframes flick{0%,93%,100%{opacity:1}94%{opacity:.78}95%{opacity:1}97%{opacity:.9}98%{opacity:1}}
+
+  /* the tab slab: one amber plane that slides between the keys */
+  .tabs.hasink{position:sticky}
+  .tabs.hasink .tab{position:relative; z-index:1}
+  .tabs.hasink .tab.active{background:transparent; transition:color .1s steps(2) .28s}
+  .tabs.hasink .tab.active .fk{transition:color .1s steps(2) .28s}
+  .tabs.hasink .tabink{display:block; position:absolute; left:0; top:0; height:100%; width:0;
+    background:var(--accent); z-index:0; pointer-events:none;
+    transition:left .4s var(--cut), width .4s var(--cut), top .4s var(--cut)}
+
+  /* hovers snap on twos */
+  .tab,.tlv,.cbtn,.fs-fc,.gcard,.fs-sort{transition-timing-function:steps(2)}
+  tbody tr td{transition:background .12s steps(2), color .12s steps(2), box-shadow .12s steps(2)}
+  tbody tr:hover td:first-child{box-shadow:inset 3px 0 0 0 var(--accent)}
+  .heat i{transition:transform .08s steps(2)}
+
   @media (prefers-reduced-motion:no-preference){
-    .reveal{opacity:0; transform:translateY(12px)}
-    .reveal.seen{opacity:1; transform:none; transition:opacity .5s var(--ease-out), transform .5s var(--ease-out)}
+    :root{--boot:.5s}
+    .booted{--boot:0s}
+
+    /* --- boot: the desk powers up, key by key --- */
+    .mark .ch{display:inline-block; animation:chOn .3s steps(3) both;
+      animation-delay:calc(.12s + var(--i,0)*.045s)}
+    .mark{animation:flick 13s steps(1) 4s infinite}
+    .tag{animation:snapOn .01s steps(1) both .68s}
+    .dateline span{animation:snapOn .01s steps(1) both}
+  .dateline span:nth-child(1){animation-delay:0.760s}
+  .dateline span:nth-child(2){animation-delay:0.840s}
+  .dateline span:nth-child(3){animation-delay:0.920s}
+    .tab{animation:snapOn .01s steps(1) both}
+    .tabs.hasink .tabink{animation:snapOn .01s steps(1) both .92s}
+  .tab:nth-child(1){animation-delay:0.920s}
+  .tab:nth-child(2){animation-delay:0.990s}
+  .tab:nth-child(3){animation-delay:1.060s}
+  .tab:nth-child(4){animation-delay:1.130s}
+    .statusbar span{animation:snapOn .01s steps(1) both}
+  .statusbar span:nth-child(1){animation-delay:1.150s}
+  .statusbar span:nth-child(2){animation-delay:1.210s}
+  .statusbar span:nth-child(3){animation-delay:1.270s}
+  .statusbar span:nth-child(4){animation-delay:1.330s}
+  .statusbar span:nth-child(5){animation-delay:1.390s}
+  .statusbar span:nth-child(6){animation-delay:1.450s}
+
+    /* --- the light --- */
+    .wrap::after{animation:breathe 7s ease-in-out infinite}
+    .beam{position:fixed; left:0; right:0; top:0; height:2px; z-index:1; pointer-events:none;
+      background:rgba(255,176,0,.22); box-shadow:0 0 12px 2px rgba(255,176,0,.18);
+      animation:beam 9s linear infinite}
+
+    /* --- headline figures: cut in, count, then flare and settle --- */
+    .stat{animation:cutIn .34s steps(6) backwards}
+    .stat:nth-child(1){animation-delay:calc(var(--boot) + 0.55s)}
+    .stat:nth-child(2){animation-delay:calc(var(--boot) + 0.62s)}
+    .stat:nth-child(3){animation-delay:calc(var(--boot) + 0.69s)}
+    .stat:nth-child(4){animation-delay:calc(var(--boot) + 0.76s)}
+    .stat:nth-child(5){animation-delay:calc(var(--boot) + 0.83s)}
+    .stat:nth-child(6){animation-delay:calc(var(--boot) + 0.90s)}
+    .stat:nth-child(7){animation-delay:calc(var(--boot) + 0.97s)}
+    .stat:nth-child(8){animation-delay:calc(var(--boot) + 1.04s)}
+    .stat .v.lit{animation:flare .55s steps(4) both}
+
+    /* --- sections arriving with a tab: cut in left to right on twos --- */
+    @keyframes push{from{clip-path:inset(-60px 100% -60px -60px)}to{clip-path:inset(-60px)}}
+    .panel.active>section,.panel.active>div>section,.panel.active>div{animation:push .42s steps(10) backwards}
+    .panel.active>section:nth-child(2){animation-delay:.06s}
+    .panel.active>section:nth-child(3){animation-delay:.12s}
+    .panel.active>section:nth-child(4){animation-delay:.18s}
+    .panel.active>section:nth-child(n+5){animation-delay:.22s}
+
+    /* --- sections below the fold: the rule draws, then the block is cut --- */
+    .reveal{clip-path:inset(-60px 100% -60px -60px)}
+    .reveal.seen{clip-path:inset(-60px); transition:clip-path .5s steps(12)}
+    .reveal.seen.done{clip-path:none}
+    .reveal .eyebrow::before,.reveal .eyebrow::after{transform:scaleX(0); transform-origin:left}
+    .reveal.seen .eyebrow::before{transform:scaleX(1); transition:transform .22s steps(4) .32s}
+    .reveal.seen .eyebrow::after{transform:scaleX(1); transition:transform .45s steps(10) .4s}
+    .reveal h2{clip-path:inset(0 100% 0 0)}
+    .reveal.seen h2{clip-path:inset(0); transition:clip-path .3s steps(6) .5s}
+
+    /* --- allocation bars fill on twos, one after another --- */
+    .bar .fill{transition:transform .6s steps(9)}
+      .bar:nth-child(1) .fill{transition-delay:0.100s}
+      .bar:nth-child(2) .fill{transition-delay:0.150s}
+      .bar:nth-child(3) .fill{transition-delay:0.200s}
+      .bar:nth-child(4) .fill{transition-delay:0.250s}
+      .bar:nth-child(5) .fill{transition-delay:0.300s}
+      .bar:nth-child(6) .fill{transition-delay:0.350s}
+      .bar:nth-child(7) .fill{transition-delay:0.400s}
+      .bar:nth-child(8) .fill{transition-delay:0.450s}
+      .bar:nth-child(9) .fill{transition-delay:0.500s}
+      .bar:nth-child(10) .fill{transition-delay:0.550s}
+      .bar:nth-child(11) .fill{transition-delay:0.600s}
+      .bar:nth-child(12) .fill{transition-delay:0.650s}
+      .bar:nth-child(13) .fill{transition-delay:0.700s}
+      .bar:nth-child(14) .fill{transition-delay:0.750s}
+      .bar:nth-child(15) .fill{transition-delay:0.800s}
+      .bar:nth-child(16) .fill{transition-delay:0.850s}
+
+    /* --- the heat rasters in --- */
+    .reveal .heat i{opacity:0}
+    .reveal.seen .heat i{animation:snapOn .01s steps(1) both}
+      .reveal.seen .heat i:nth-child(1){animation-delay:0.250s}
+      .reveal.seen .heat i:nth-child(2){animation-delay:0.264s}
+      .reveal.seen .heat i:nth-child(3){animation-delay:0.278s}
+      .reveal.seen .heat i:nth-child(4){animation-delay:0.292s}
+      .reveal.seen .heat i:nth-child(5){animation-delay:0.306s}
+      .reveal.seen .heat i:nth-child(6){animation-delay:0.320s}
+      .reveal.seen .heat i:nth-child(7){animation-delay:0.334s}
+      .reveal.seen .heat i:nth-child(8){animation-delay:0.348s}
+      .reveal.seen .heat i:nth-child(9){animation-delay:0.362s}
+      .reveal.seen .heat i:nth-child(10){animation-delay:0.376s}
+      .reveal.seen .heat i:nth-child(11){animation-delay:0.390s}
+      .reveal.seen .heat i:nth-child(12){animation-delay:0.404s}
+      .reveal.seen .heat i:nth-child(13){animation-delay:0.418s}
+      .reveal.seen .heat i:nth-child(14){animation-delay:0.432s}
+      .reveal.seen .heat i:nth-child(15){animation-delay:0.446s}
+      .reveal.seen .heat i:nth-child(16){animation-delay:0.460s}
+      .reveal.seen .heat i:nth-child(17){animation-delay:0.474s}
+      .reveal.seen .heat i:nth-child(18){animation-delay:0.488s}
+      .reveal.seen .heat i:nth-child(19){animation-delay:0.502s}
+      .reveal.seen .heat i:nth-child(20){animation-delay:0.516s}
+      .reveal.seen .heat i:nth-child(21){animation-delay:0.530s}
+      .reveal.seen .heat i:nth-child(22){animation-delay:0.544s}
+      .reveal.seen .heat i:nth-child(23){animation-delay:0.558s}
+      .reveal.seen .heat i:nth-child(24){animation-delay:0.572s}
+      .reveal.seen .heat i:nth-child(25){animation-delay:0.586s}
+      .reveal.seen .heat i:nth-child(26){animation-delay:0.600s}
+      .reveal.seen .heat i:nth-child(27){animation-delay:0.614s}
+      .reveal.seen .heat i:nth-child(28){animation-delay:0.628s}
+      .reveal.seen .heat i:nth-child(29){animation-delay:0.642s}
+      .reveal.seen .heat i:nth-child(30){animation-delay:0.656s}
+      .reveal.seen .heat i:nth-child(31){animation-delay:0.670s}
+      .reveal.seen .heat i:nth-child(32){animation-delay:0.684s}
+      .reveal.seen .heat i:nth-child(33){animation-delay:0.698s}
+      .reveal.seen .heat i:nth-child(34){animation-delay:0.712s}
+      .reveal.seen .heat i:nth-child(35){animation-delay:0.726s}
+      .reveal.seen .heat i:nth-child(36){animation-delay:0.740s}
+      .reveal.seen .heat i:nth-child(37){animation-delay:0.754s}
+      .reveal.seen .heat i:nth-child(38){animation-delay:0.768s}
+      .reveal.seen .heat i:nth-child(39){animation-delay:0.782s}
+      .reveal.seen .heat i:nth-child(40){animation-delay:0.796s}
+      .reveal.seen .heat i:nth-child(41){animation-delay:0.810s}
+      .reveal.seen .heat i:nth-child(42){animation-delay:0.824s}
+      .reveal.seen .heat i:nth-child(43){animation-delay:0.838s}
+      .reveal.seen .heat i:nth-child(44){animation-delay:0.852s}
+      .reveal.seen .heat i:nth-child(45){animation-delay:0.866s}
+      .reveal.seen .heat i:nth-child(46){animation-delay:0.880s}
+      .reveal.seen .heat i:nth-child(47){animation-delay:0.894s}
+      .reveal.seen .heat i:nth-child(48){animation-delay:0.908s}
+      .reveal.seen .heat i:nth-child(49){animation-delay:0.922s}
+      .reveal.seen .heat i:nth-child(50){animation-delay:0.936s}
+      .reveal.seen .heat i:nth-child(51){animation-delay:0.950s}
+      .reveal.seen .heat i:nth-child(52){animation-delay:0.964s}
+      .reveal.seen .heat i:nth-child(53){animation-delay:0.978s}
+      .reveal.seen .heat i:nth-child(54){animation-delay:0.992s}
+      .reveal.seen .heat i:nth-child(55){animation-delay:1.006s}
+      .reveal.seen .heat i:nth-child(56){animation-delay:1.020s}
+      .reveal.seen .heat i:nth-child(57){animation-delay:1.034s}
+      .reveal.seen .heat i:nth-child(58){animation-delay:1.048s}
+      .reveal.seen .heat i:nth-child(59){animation-delay:1.062s}
+      .reveal.seen .heat i:nth-child(60){animation-delay:1.076s}
+
+    /* --- the grade is stamped, the dials cut in, the states snap --- */
+    .grade{animation:stamp .28s steps(3) both; transform-origin:50% 50%}
+    .rc-head .wk{animation:snapOn .01s steps(1) both .2s}
+    .dial{animation:cutIn .3s steps(5) backwards}
+      .dial:nth-child(1){animation-delay:0.050s}
+      .dial:nth-child(2){animation-delay:0.130s}
+      .dial:nth-child(3){animation-delay:0.210s}
+      .dial:nth-child(4){animation-delay:0.290s}
+      .dial:nth-child(5){animation-delay:0.370s}
+      .dial:nth-child(6){animation-delay:0.450s}
+    .dial .state{animation:stamp .22s steps(3) both}
+      .dial:nth-child(1) .state{animation-delay:0.300s}
+      .dial:nth-child(2) .state{animation-delay:0.380s}
+      .dial:nth-child(3) .state{animation-delay:0.460s}
+      .dial:nth-child(4) .state{animation-delay:0.540s}
+      .dial:nth-child(5) .state{animation-delay:0.620s}
+      .dial:nth-child(6) .state{animation-delay:0.700s}
+    .rc-note{animation:snapOn .01s steps(1) both .5s}
+
+    /* --- table rows snap in, top to bottom, on the book and the record --- */
+    #panel-book .reveal.seen tbody tr,#panel-record .reveal.seen tbody tr{animation:snapOn .01s steps(1) both}
+    #panel-book .reveal.seen tbody tr:nth-child(1),#panel-record .reveal.seen tbody tr:nth-child(1){animation-delay:0.200s}
+    #panel-book .reveal.seen tbody tr:nth-child(2),#panel-record .reveal.seen tbody tr:nth-child(2){animation-delay:0.235s}
+    #panel-book .reveal.seen tbody tr:nth-child(3),#panel-record .reveal.seen tbody tr:nth-child(3){animation-delay:0.270s}
+    #panel-book .reveal.seen tbody tr:nth-child(4),#panel-record .reveal.seen tbody tr:nth-child(4){animation-delay:0.305s}
+    #panel-book .reveal.seen tbody tr:nth-child(5),#panel-record .reveal.seen tbody tr:nth-child(5){animation-delay:0.340s}
+    #panel-book .reveal.seen tbody tr:nth-child(6),#panel-record .reveal.seen tbody tr:nth-child(6){animation-delay:0.375s}
+    #panel-book .reveal.seen tbody tr:nth-child(7),#panel-record .reveal.seen tbody tr:nth-child(7){animation-delay:0.410s}
+    #panel-book .reveal.seen tbody tr:nth-child(8),#panel-record .reveal.seen tbody tr:nth-child(8){animation-delay:0.445s}
+    #panel-book .reveal.seen tbody tr:nth-child(9),#panel-record .reveal.seen tbody tr:nth-child(9){animation-delay:0.480s}
+    #panel-book .reveal.seen tbody tr:nth-child(10),#panel-record .reveal.seen tbody tr:nth-child(10){animation-delay:0.515s}
+    #panel-book .reveal.seen tbody tr:nth-child(11),#panel-record .reveal.seen tbody tr:nth-child(11){animation-delay:0.550s}
+    #panel-book .reveal.seen tbody tr:nth-child(12),#panel-record .reveal.seen tbody tr:nth-child(12){animation-delay:0.585s}
+    #panel-book .reveal.seen tbody tr:nth-child(13),#panel-record .reveal.seen tbody tr:nth-child(13){animation-delay:0.620s}
+    #panel-book .reveal.seen tbody tr:nth-child(14),#panel-record .reveal.seen tbody tr:nth-child(14){animation-delay:0.655s}
+    #panel-book .reveal.seen tbody tr:nth-child(15),#panel-record .reveal.seen tbody tr:nth-child(15){animation-delay:0.690s}
+    #panel-book .reveal.seen tbody tr:nth-child(16),#panel-record .reveal.seen tbody tr:nth-child(16){animation-delay:0.725s}
   }
 
   /* ---------- responsive ---------- */
@@ -1018,7 +1227,7 @@
   var start=null,DUR=850;
   function anim(ts){if(start===null)start=ts;var p=Math.min(1,(ts-start)/DUR);draw(p);if(p<1)requestAnimationFrame(anim);}
   function render(){ start=null; if(reduce){draw(1);}else{requestAnimationFrame(anim);} }
-  window.__drawCurve=function(){draw(1);};
+  window.__drawCurve=function(){render();};
   function setView(v){
     hoverIdx=-1; if(tip){tip.style.display="none";}
     curGran=v.gran||"month";
@@ -1863,8 +2072,10 @@
       if(running) return;
       running=true;
       wipe.classList.remove("run"); void wipe.offsetWidth; wipe.classList.add("run");
+      window.__inkHold=true;
       setTimeout(function(){ swap(id); }, 230);   /* the frame is dark 170-270ms */
-      setTimeout(function(){ wipe.classList.remove("run"); running=false; }, 590);
+      setTimeout(function(){ wipe.classList.remove("run"); running=false;
+        window.__inkHold=false; if(window.__tabInk) window.__tabInk(); }, 590);
     }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
   })();
@@ -1911,7 +2122,28 @@
   (function(){
     var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    /* --- the marker that travels under the active tab --- */
+    /* --- boot: the nameplate is struck a key at a time, a beam sweeps the glass --- */
+    if(!still){
+      var mk=document.querySelector(".mark"), tx=mk&&mk.firstChild;
+      if(tx&&tx.nodeType===3){
+        var frag=document.createDocumentFragment(), t=tx.nodeValue;
+        for(var ci=0;ci<t.length;ci++){
+          var sp=document.createElement("span"); sp.className="ch"; sp.style.setProperty("--i",ci);
+          sp.textContent=t.charAt(ci); frag.appendChild(sp);
+        }
+        mk.replaceChild(frag,tx);
+        var dot=mk.querySelector(".dot"); if(dot){ dot.classList.add("ch"); dot.style.setProperty("--i",t.length); }
+      }
+      var bm=document.createElement("i"); bm.className="beam"; bm.setAttribute("aria-hidden","true");
+      document.body.appendChild(bm);
+      setTimeout(function(){ document.documentElement.classList.add("booted"); }, 1900);
+      /* a revealed section gives its clip back so nothing inside is ever trapped */
+      document.addEventListener("transitionend",function(e){
+        var el=e.target; if(el&&el.classList&&el.classList.contains("reveal")&&e.propertyName==="clip-path") el.classList.add("done");
+      });
+    }
+
+    /* --- the slab that sits under the active tab --- */
     var bar=document.querySelector(".tabs");
     if(bar){
       var ink=document.createElement("span");
@@ -1919,13 +2151,14 @@
       bar.appendChild(ink);
       bar.classList.add("hasink");
       var place=function(){
+        if(window.__inkHold) return;   /* the slab moves after the cut, in view */
         var on=bar.querySelector(".tab.active");
         if(!on){ink.style.opacity=0;return;}
         ink.style.opacity=1;
         ink.style.left=on.offsetLeft+"px";
         ink.style.width=on.offsetWidth+"px";
-        ink.style.top=(on.offsetTop+on.offsetHeight-2)+"px";
-        ink.style.bottom="auto";
+        ink.style.top=on.offsetTop+"px";
+        ink.style.height=on.offsetHeight+"px";
       };
       window.__tabInk=place;
       place();
@@ -2026,7 +2259,7 @@
           var e=1-Math.pow(1-k,3);
           el.textContent=fmt(c,c.val*e);
           if(k<1) requestAnimationFrame(step);
-          else el.textContent=final;      /* restore the rendered string exactly */
+          else{ el.textContent=final; el.classList.add("lit"); }  /* restore the rendered string exactly, then flare */
         };
         requestAnimationFrame(step);
       });
@@ -2113,7 +2346,7 @@
      reader can sit on a ten-minute-old copy after a refresh. version.json is
      fetched uncached and compared against the hash baked in at build time. */
   (function(){
-    var BUILD="22e116deec9f";
+    var BUILD="60967f2b4f99";
     if(!window.fetch||BUILD.charAt(0)==="_") return;
     function notice(){
       var d=document.createElement("div");
