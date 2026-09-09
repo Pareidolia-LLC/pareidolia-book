@@ -35,8 +35,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* =====================================================================
      PAREIDOLIA - the desk, restruck.
 
-     The terminal colourway that shipped before 9 September - amber phosphor
-     on near-black, green up, red down, cyan for a comparison line - on the
+     The banker's colourway - brass on deep navy, green up, red down,
+     steel blue for a comparison line - on the
      one-sheet architecture. The three references stay, translated into what
      a CRT can actually do:
 
@@ -54,17 +54,17 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
      ===================================================================== */
 
   :root{
-    --bg:#07090A; --panel:#0D1113; --panel-2:#131A1D; --line:#242E33;
-    --ink:#E8E4D9; --muted:#8B9AA1; --faint:#5E6C72;
-    --accent:#FFB000; --accent-soft:rgba(255,176,0,.14);
-    --up:#3DF07A; --down:#FF4B3E; --warn:#FFB000; --compare:#3AD4E8;
-    --slate:#7E8C93; --grid:rgba(232,228,217,.09);
-    --gold:#FFB000; --gold-lift:#FFC94D; --paper:#0D1113;
-    --silver:#9AA7AE; --silver-lift:#C3CDD3;
-    --engrave:#FFB000; --label:#FFB000;
-    --plate:#07090A; --plate-edge:#242E33; --plate-rule:#FFB000; --plate-ink:#8B9AA1;
-    --pinstripe:rgba(232,228,217,.030); --pinstripe-gold:rgba(255,176,0,.06);
-    --glow:5px 5px 0 #0E4B54, 0 0 18px rgba(255,176,0,.35), 0 0 46px rgba(255,176,0,.14);
+    --bg:#0A101C; --panel:#101A2B; --panel-2:#16223A; --line:#26344F;
+    --ink:#E8ECF3; --muted:#9AA7BC; --faint:#697690;
+    --accent:#C9A227; --accent-soft:rgba(201,162,39,.14);
+    --up:#3CC77E; --down:#E0484E; --warn:#C9A227; --compare:#5B9BD5;
+    --slate:#7E8CA6; --grid:rgba(232,236,243,.09);
+    --gold:#C9A227; --gold-lift:#E5C55A; --paper:#101A2B;
+    --silver:#9AA7BC; --silver-lift:#C3CCDB;
+    --engrave:#C9A227; --label:#C9A227;
+    --plate:#0A101C; --plate-edge:#26344F; --plate-rule:#C9A227; --plate-ink:#9AA7BC;
+    --pinstripe:rgba(232,236,243,.030); --pinstripe-gold:rgba(201,162,39,.06);
+    --glow:5px 5px 0 #24407A, 0 0 14px rgba(201,162,39,.22);
     color-scheme:dark;
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -76,7 +76,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   *{box-sizing:border-box}
   html,body{margin:0; background:var(--bg)}
-  ::selection{background:var(--accent); color:#07090A}
+  ::selection{background:var(--accent); color:#0A101C}
 
   .wrap{background:var(--bg); color:var(--ink); font-family:var(--mono);
     min-height:100vh; padding:var(--pagepad) var(--pagepad) 70px;
@@ -84,7 +84,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* one light source, and glass: amber pools top-left, the edges fall away */
   .wrap::after{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
     background:
-      radial-gradient(110% 80% at 8% -8%, rgba(255,176,0,.10), transparent 55%),
+      radial-gradient(110% 80% at 8% -8%, rgba(201,162,39,.10), transparent 55%),
       radial-gradient(ellipse at 50% 42%, transparent 52%, rgba(0,0,0,.58) 100%)}
   .sheet{max-width:none; margin:0; position:relative; z-index:1}
   .stage{position:relative}
@@ -92,15 +92,15 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* ---------- the cut: tube off, swap in the dark, halves part ---------- */
   .wipe{position:fixed; left:0; top:0; width:100%; height:100%; z-index:60; pointer-events:none; visibility:hidden}
   .wipe.run{visibility:visible}
-  .wipe .top,.wipe .bot{position:absolute; left:0; right:0; height:50%; background:#000;
+  .wipe .top,.wipe .bot{position:absolute; left:0; right:0; height:50%; background:#05080F;
     will-change:transform; transform:scaleY(0)}
   .wipe .top{top:0; transform-origin:50% 0;
-    box-shadow:0 1px 0 0 var(--gold-lift), 0 0 16px 1px rgba(255,176,0,.55)}
+    box-shadow:0 1px 0 0 var(--gold-lift), 0 0 16px 1px rgba(201,162,39,.55)}
   .wipe .bot{bottom:0; transform-origin:50% 100%;
-    box-shadow:0 -1px 0 0 var(--gold-lift), 0 0 16px 1px rgba(255,176,0,.55)}
+    box-shadow:0 -1px 0 0 var(--gold-lift), 0 0 16px 1px rgba(201,162,39,.55)}
   .wipe .ln{position:absolute; left:0; right:0; top:50%; height:2px; margin-top:-1px;
     background:#fff; opacity:0; will-change:transform,opacity;
-    box-shadow:0 0 8px 2px rgba(255,200,77,.9), 0 0 36px 10px rgba(255,176,0,.45)}
+    box-shadow:0 0 8px 2px rgba(229,197,90,.9), 0 0 36px 10px rgba(201,162,39,.45)}
   @keyframes crtTop{
     0%  {transform:translateY(0) scaleY(0)}
     30% {transform:translateY(0) scaleY(1)}
@@ -169,9 +169,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .tab{border-right:1px solid var(--line)}
   .tab .fk{color:var(--accent); margin-right:9px; opacity:1; font-weight:600; font-size:9px;
     border:1px solid var(--line); padding:1px 5px; background:var(--bg)}
-  .tab.active .fk{background:#07090A; color:var(--accent); border-color:#07090A; opacity:1}
-  .tab:hover{color:var(--ink); background:rgba(255,176,0,.06)}
-  .tab.active{color:#07090A; background:var(--accent)}
+  .tab.active .fk{background:#0A101C; color:var(--accent); border-color:#0A101C; opacity:1}
+  .tab:hover{color:var(--ink); background:rgba(201,162,39,.06)}
+  .tab.active{color:#0A101C; background:var(--accent)}
   .tabink{display:none}
   .tab:focus-visible,.tlv:focus-visible,.cbtn:focus-visible,
   .fs-sort:focus-visible,.gcard:focus-visible{outline:2px solid var(--accent); outline-offset:-3px}
@@ -186,7 +186,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .panel.active>section:first-child,.panel.active>div:first-child section:first-child{margin-top:0}
   .bookgrid>section{margin-top:0}
   .eyebrow{position:absolute; top:-1px; left:-1px; margin:0; display:inline-flex; align-items:center;
-    padding:5px 11px 4px; background:var(--accent); color:#07090A;
+    padding:5px 11px 4px; background:var(--accent); color:#0A101C;
     font-family:var(--mono); font-size:9px; font-weight:600; letter-spacing:.24em; text-transform:uppercase;
     white-space:nowrap; max-width:calc(100% + 2px); overflow:hidden; text-overflow:ellipsis}
   .eyebrow b,.eyebrow span{color:inherit}
@@ -203,11 +203,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     text-transform:uppercase; color:var(--muted)}
   .stat .v{font-family:var(--mono); font-variant-numeric:tabular-nums;
     font-size:clamp(34px,4.8vw,52px); font-weight:600; letter-spacing:-.02em;
-    line-height:1; margin:14px 0 0; color:var(--accent); text-shadow:0 0 14px rgba(255,176,0,.22)}
+    line-height:1; margin:14px 0 0; color:var(--accent); text-shadow:0 0 14px rgba(201,162,39,.22)}
   .stat .m{font-family:var(--serif); font-size:12.5px; color:var(--faint); margin-top:10px; line-height:1.5}
   .pos{color:var(--up)} .neg{color:var(--down)}
-  .stat .v.pos{color:var(--up); text-shadow:0 0 14px rgba(61,240,122,.25)}
-  .stat .v.neg{color:var(--down); text-shadow:0 0 14px rgba(255,75,62,.25)}
+  .stat .v.pos{color:var(--up); text-shadow:0 0 14px rgba(60,199,126,.25)}
+  .stat .v.neg{color:var(--down); text-shadow:0 0 14px rgba(224,72,78,.25)}
   .asofline{font-family:var(--mono); font-size:9.5px; letter-spacing:.18em;
     text-transform:uppercase; color:var(--faint); margin:12px 0 0}
   .asofline b{color:var(--muted); font-weight:600}
@@ -227,7 +227,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     text-transform:uppercase; color:var(--faint); padding:7px 13px; transition:.14s}
   .tlv:last-child{border-right:0}
   .tlv:hover{color:var(--ink); background:var(--panel-2)}
-  .tlv.active{background:var(--accent); color:#07090A; font-weight:600}
+  .tlv.active{background:var(--accent); color:#0A101C; font-weight:600}
   .marks{display:flex; gap:24px; flex-wrap:wrap; margin-top:12px; padding-top:12px;
     border-top:1px solid var(--line); font-family:var(--mono); font-size:10px;
     letter-spacing:.1em; text-transform:uppercase; color:var(--faint)}
@@ -243,7 +243,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* ---------- after-action: the grade is an amber slab ---------- */
   .rc-head{display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin:14px 0 16px}
   .grade{font-family:var(--mono); font-weight:600; font-size:48px; line-height:.9;
-    letter-spacing:-.02em; padding:12px 20px; background:var(--accent); color:#07090A}
+    letter-spacing:-.02em; padding:12px 20px; background:var(--accent); color:#0A101C}
   .rc-head .wk{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em;
     text-transform:uppercase; color:var(--muted); line-height:1.9}
   .rc-head .wkret{font-weight:600; font-variant-numeric:tabular-nums}
@@ -259,7 +259,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .dial .dk{font-family:var(--mono); font-size:9px; letter-spacing:.19em;
     text-transform:uppercase; color:var(--muted)}
   .state{display:inline-block; font-family:var(--mono); font-size:8.5px; font-weight:600;
-    letter-spacing:.18em; text-transform:uppercase; padding:3px 8px; margin-top:9px; color:#07090A}
+    letter-spacing:.18em; text-transform:uppercase; padding:3px 8px; margin-top:9px; color:#0A101C}
   .state.pass{background:var(--up)}
   .state.warn{background:var(--warn)}
   .state.fail{background:var(--down)}
@@ -321,13 +321,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     padding:7px 10px; border-bottom:1px solid var(--accent); white-space:nowrap}
   td{padding:6px 10px; border-bottom:1px solid var(--line); color:var(--muted); font-variant-numeric:tabular-nums}
   tbody tr:last-child td{border-bottom:0}
-  tbody tr:hover td{background:rgba(255,176,0,.07); color:var(--ink)}
+  tbody tr:hover td{background:rgba(201,162,39,.07); color:var(--ink)}
   th.r,td.r,.num.r{text-align:right}
   .tk{color:var(--ink); font-weight:600; letter-spacing:.06em}
   .chip{display:inline-block; font-family:var(--mono); font-size:8.5px;
     letter-spacing:.15em; text-transform:uppercase; padding:2px 7px; border:1px solid var(--line); color:var(--faint)}
-  .chip.wheel{color:var(--accent); border-color:rgba(255,176,0,.45)}
-  .chip.dir{color:var(--compare); border-color:rgba(58,212,232,.4)}
+  .chip.wheel{color:var(--accent); border-color:rgba(201,162,39,.45)}
+  .chip.dir{color:var(--compare); border-color:rgba(91,155,213,.4)}
 
   /* ---------- strategy cards ---------- */
   .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
@@ -374,7 +374,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     display:flex; flex-direction:column; gap:5px; transition:.14s}
   .cbtn b{font-size:12px; letter-spacing:.05em; color:var(--muted); text-transform:none}
   .cbtn:hover{background:var(--panel-2)}
-  .cbtn.on{background:rgba(255,176,0,.12)}
+  .cbtn.on{background:rgba(201,162,39,.12)}
   .cbtn.on b{color:var(--accent)}
   .concept{display:none}
   .concept.active{display:block; animation:push .34s var(--ease-out) both}
@@ -411,14 +411,14 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .fs-untracked{font-family:var(--mono); font-size:9px; letter-spacing:.13em; text-transform:uppercase; color:var(--faint)}
   .vs-flag,.gs-flags span{display:inline-block; font-family:var(--mono); font-size:8px;
     letter-spacing:.11em; text-transform:uppercase; border:1px solid var(--line); color:var(--faint); padding:1px 5px; margin:1px 2px 1px 0}
-  .vs-flag.warn{color:var(--down); border-color:rgba(255,75,62,.5)}
+  .vs-flag.warn{color:var(--down); border-color:rgba(224,72,78,.5)}
   .vs-flag.more{border-style:dashed; cursor:help}
   .gs-flags{display:inline-flex; gap:4px; align-items:center}
   .gs-flags .vs-flag{margin:0}
   .vs-score{font-family:var(--mono); font-weight:600; color:var(--accent)}
   .vs-sub{font-family:var(--mono); font-size:9px; color:var(--faint); letter-spacing:.06em}
   .vs-ins{display:inline-block; font-family:var(--mono); font-size:8.5px; letter-spacing:.1em; padding:1px 6px; border:1px solid var(--line); color:var(--faint)}
-  .vs-ins.heavy{background:var(--accent); color:#07090A; border-color:var(--accent); font-weight:600}
+  .vs-ins.heavy{background:var(--accent); color:#0A101C; border-color:var(--accent); font-weight:600}
   .vs-ins.absent{opacity:.55}
   .dist{margin:20px 0 6px}
   .dist .dhead{display:flex; justify-content:space-between; align-items:baseline; gap:14px;
@@ -451,8 +451,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   /* ---------- stale bar ---------- */
   .stalebar{position:fixed; left:0; right:0; bottom:30px; z-index:40; background:var(--accent);
-    color:#07090A; font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; padding:9px 14px; text-align:center}
-  .stalebar button{font:inherit; margin-left:10px; background:none; cursor:pointer; border:1px solid rgba(7,9,10,.5); color:inherit; padding:3px 10px}
+    color:#0A101C; font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; padding:9px 14px; text-align:center}
+  .stalebar button{font:inherit; margin-left:10px; background:none; cursor:pointer; border:1px solid rgba(10,16,28,.5); color:inherit; padding:3px 10px}
 
   /* =====================================================================
      MOTION. Three rules, from the three references.
@@ -467,15 +467,15 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   @keyframes snapOn{from{opacity:0}to{opacity:1}}
   @keyframes chOn{
     0%  {opacity:0; text-shadow:none}
-    40% {opacity:1; text-shadow:0 0 28px rgba(255,201,77,.95), 0 0 80px rgba(255,176,0,.55)}
+    40% {opacity:1; text-shadow:0 0 28px rgba(229,197,90,.95), 0 0 80px rgba(201,162,39,.55)}
     100%{opacity:1; text-shadow:var(--glow)}}
   @keyframes stamp{
     0%  {transform:scale(1.7); opacity:0}
     35% {transform:scale(1.7); opacity:1}
     100%{transform:scale(1);   opacity:1}}
   @keyframes flare{
-    0%  {text-shadow:0 0 34px rgba(255,201,77,.95), 0 0 90px rgba(255,176,0,.55)}
-    100%{text-shadow:0 0 14px rgba(255,176,0,.22)}}
+    0%  {text-shadow:0 0 34px rgba(229,197,90,.95), 0 0 90px rgba(201,162,39,.55)}
+    100%{text-shadow:0 0 14px rgba(201,162,39,.22)}}
   @keyframes breathe{0%,100%{opacity:.82}50%{opacity:1}}
   @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 
@@ -1490,7 +1490,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           h+="<tr><th class='rh'><span class='fs-sw' style='background:"+FC[k]+"'></span>"+(FL[k]||k)+"</th>";
           fc.m[i].forEach(function(v,j){
             var a=v===null?0:Math.max(0,Math.min(1,(v+0.2)/1.2));
-            var bg=i===j?"var(--panel-2)":"rgba(255,176,0,"+(a*0.72).toFixed(3)+")";
+            var bg=i===j?"var(--panel-2)":"rgba(201,162,39,"+(a*0.72).toFixed(3)+")";
             h+="<td style='background:"+bg+"'>"+(v===null?"\u2014":v.toFixed(2))+"</td>";
           });
           h+="</tr>";
@@ -2123,7 +2123,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     if(!max) max=1;
     function paint(v){
       var a=Math.min(1,Math.abs(v)/max)*0.82+0.10;
-      return v>=0 ? "rgba(61,232,122,"+a.toFixed(3)+")" : "rgba(255,90,69,"+a.toFixed(3)+")";
+      return v>=0 ? "rgba(60,199,126,"+a.toFixed(3)+")" : "rgba(224,72,78,"+a.toFixed(3)+")";
     }
     var chips=document.querySelectorAll("#hist .gcard");
     R.forEach(function(r,i){
