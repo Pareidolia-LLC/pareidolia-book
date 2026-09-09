@@ -1,8 +1,8 @@
 # PAREIDOLIA — Handoff
 
-*A private book run under doctrine — pattern recognition in a hostile tape.*
+*A private book run under pattern recognition.*
 **Site:** https://pareidoliatrading.com · **Repo:** Pareidolia-LLC/pareidolia-book · **Owner:** Pareidolia LLC, est. Oct 2025
-**Status of this file:** corrected September 2026 from a second-model draft. The voice sections (§3, §5, §8–10) are that draft's, with its two self-contradictions fixed. §1–2, §4, §6–7 were rewritten against `build.py` and `data.json` and describe what is actually built.
+**Status of this file:** corrected September 2026 from a second-model draft. The voice sections (§3, §5, §8–10) are that draft's, with its two self-contradictions fixed. §1–2, §4, §6–7 were rewritten against `build.py` and `data.json` and describe what is actually built. Updated the same month for the **paper edition**: the redesign prototype's surfaces on the live build, four tabs, and a runtime colourway toggle.
 
 ---
 
@@ -14,30 +14,27 @@ A public-facing private trading book. One operator. The site is the ledger, the 
 
 ## 2. Design system — what is actually there
 
-### 2.1 Colourway is a build-time choice, not a user toggle
+### 2.1 Two colourways: paper by default, terminal on a toggle
 
-`build.py` sets two constants and stamps them on `<html>`:
+The reader lands on **paper** and can switch to **terminal** with the button in the masthead. The choice is remembered.
 
-```
-COLOURWAY = "terminal"    -> <html data-cw="terminal">
-PLATE     = "silver"      -> <html data-plate="silver">
-```
-
-There is **no runtime switch** in the page. To change the look you change the constant and rebuild. Three colourways are defined in the CSS:
-
-| `data-cw` | Metaphor | Notes |
+| `data-cw` | Look | Notes |
 |---|---|---|
-| *(default / unset)* | The banknote — cream ground, silver stock, engraving green, brushed-gold plates | |
-| `terminal` | Amber phosphor on black — green up, red down | **This is what is live.** A block of JS gated on `data-cw === "terminal"` adds the terminal-only behaviour. |
-| `night` | Dark variant with its own panel/border overrides | Defined, not currently shipped. |
+| *(unset — the base `:root`)* | **Paper.** Warm off-white ground `#F5F1E8`, lighter cards `#FAF8F2`, engraving green `#1E5B3C` as the one accent, gold `#9C7B22` for plates and badges, rounded 11px surfaces, sans body with mono labels. | The default. This is the redesign prototype's palette applied as tokens to the live build. |
+| `terminal` | Amber phosphor on black — green up, red down, tape, function keys, status line. | Unchanged from the "desk, 1987–2004" edition. Every paper override is scoped `:root:not([data-cw="terminal"])` so it does not touch this look. |
+| `night` | Dark variant with its own panel/border overrides. | Defined, not shipped, not reachable from the toggle. |
 
-`data-plate` is a separate axis (`silver` or `gold`) controlling the metallic plate used for section headers, independent of colourway.
+**How the toggle works.** A one-line script in `<head>` reads `localStorage["pb-cw"]` and sets `data-cw` before first paint, so there is no flash. The masthead button (`#cwbtn`) is labelled with where it takes you — *Terminal* on paper, *Paper* on terminal. Clicking stores the choice and reloads, because the terminal chrome (tape, function keys) initialises on load. Build constants set the first-visit default: `COLOURWAY = ""` (paper), `PLATE = "gold"`, `ORNAMENT = "none"`.
+
+**What was removed.** The banknote decoration — the asanoha/shippo rosette in the masthead, the guilloche pinstripes, the cream-and-silver stock — is gone from the paper look (ornament set to `none`, pinstripe tokens transparent, `.rosette` hidden). The generating code is still in `build.py` if it is ever wanted back.
+
+`data-plate` (`gold` or `silver`) is a separate axis controlling the metallic header plate. Paper ships gold; terminal overrides the plate to its own dark gradient regardless.
 
 ### 2.2 Layout
 
-- One HTML file, one request. ~560 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
-- Seven tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links.
-- Page padding `clamp(20px,4vw,56px)`. Cards are lighter sheets laid on the ground (`--panel` on `--bg`), never inversions.
+- One HTML file, one request. ~550 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
+- Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. Content column is 960px on paper.
+- Page padding `clamp(20px,4vw,56px)`. Cards are lighter sheets laid on the ground (`--panel` on `--bg`), never inversions. Section eyebrows sit centred between two hairlines; everything else is left-aligned.
 - Every dark-theme override is guarded on `data-cw`; a new visual element must render correctly in the default and in `terminal` at minimum.
 
 ### 2.3 Banker formatting — non-negotiable
@@ -64,19 +61,18 @@ Terse, objective, unsentimental. An after-action report written by someone who w
 
 **Already applied (Sept 2026):** the three Desk cards, the control-framework echo, all "in build" copy, and the concept disclaimers. Do not re-litigate them.
 
-## 4. Information architecture — the seven tabs
+## 4. Information architecture — the four tabs
 
-Tab labels are numbered in the terminal colourway. Internal panel ids in the second column.
+The redesign prototype's skeleton. Tabs are numbered 01–04 on paper; the numbers are hidden on terminal, which draws its own function keys. Internal panel ids in the second column. The landing tab is The Book.
 
-| # | Tab | Panel | What it holds |
+| # | Tab | Panel | What it holds, in order |
 |---|---|---|---|
-| 1 | **P&L** | `report` | Three return tiles · return curve with timeline selector · **Weekly After-Action** (card + history strip of every week since inception) · Service Record (career ledger) · Between the After-Actions (insights) |
-| 2 | **The Story** | `story` | Origin, intent, contact. Rendered from `pages.story`. |
-| 3 | **The Book** | `book` | Book summary + concept of operations + risk posture (from `book`) · allocation bars · positions ledger |
-| 4 | **The Desk** | `approach` | The three strategy cards — **The Wheel / Forecast contracts / Outright** — with control lines · control framework · discipline blocks (from `pages.discipline`) · Mandate & Constraints (from `constraints`) |
-| 5 | **The Mandate** | `concepts` | Doctrine: what we hold to be true · mental models · target set. Rendered from `pages.concepts`. |
-| 6 | **Heroes & Dogs** | `record` | Accolades · Failures · Discipline tally · Best closes · Worst closes · By name · Event sleeve by contract · How to read this. From `record`. |
-| 7 | **The Pipe** | `ideation` | The three research concepts, each a sub-tab: **01 Futuresight Index**, **02 Value Scanner**, **03 Quality Growth**. Not pipeline documentation. |
+| 01 | **The Book** | `book` | Three return tiles · return curve with timeline selector · book summary, concept of operations, risk posture (from `book`) · allocation bars · positions ledger · the three strategy cards **The Wheel / Forecast contracts / Outright** with control lines and the control framework |
+| 02 | **The Record** | `record` | **Weekly After-Action** (card + history strip of every week since inception) · Service Record (career ledger) · Between the After-Actions · Accolades · Failures · Discipline tally · Best closes · Worst closes · By name · Event sleeve by contract · How to read this |
+| 03 | **The Lab** | `ideation` | The three research concepts, each a sub-tab: **01 Futuresight Index**, **02 Value Scanner**, **03 Quality Growth** |
+| 04 | **The Story** | `story` | Origin, intent, contact (from `pages.story`, into `#story-blocks`) · doctrine — what we hold to be true, mental models, target set (from `pages.concepts`, into `#panel-concepts`, which is now a plain container, not a panel) · discipline blocks (from `pages.discipline`) · Mandate & Constraints (from `constraints`) |
+
+The former P&L, The Desk and The Mandate panels no longer exist; their sections moved as listed. `blocks()` in the JS still targets `booksummary`, `panel-concepts`, `page-discipline-inline` and now `story-blocks`. The curve redraws on activating `book`; the allocation bars animate on `book`; the Futuresight chart draws on `ideation`.
 
 **Weekly after-action conventions.** One card per Monday–Friday week, dated the week's last trading day. Solid chip = graded live that Friday. Dashed chip marked *rebuilt* = reconstructed after the fact from the trade record (`recon: true`), badged on the card and carrying a basis note. Three dials — position size (20% cap), cash buffer (10% floor), event sleeve. **The event dial is omitted entirely in weeks with no forecast trades.** In reconstructed weeks it is graded on what the sleeve returned (closes, win rate, profit factor), not on today's rules. Since Aug 24 2026 the sleeve is sanctioned for data collection and the dial reports it without scoring it.
 
@@ -155,7 +151,7 @@ These are **not** in `DATA`. `build.py` reads them and embeds them for The Pipe.
 
 ## 8. Do
 
-Preserve the voice. Fix cadence where it is off. Banker formatting everywhere. Every concept carries its limitation and its disclaimer. Anything visual works in the default and in `terminal`. New content goes in one of the seven tabs using the existing block/table patterns. Flag value traps, currency artefacts, and cyclical distortions — never quietly exclude them.
+Preserve the voice. Fix cadence where it is off. Banker formatting everywhere. Every concept carries its limitation and its disclaimer. Anything visual works in paper and in `terminal` — scope paper-only rules with `:root:not([data-cw="terminal"])`. New content goes in one of the four tabs using the existing block/table patterns. Flag value traps, currency artefacts, and cyclical distortions — never quietly exclude them.
 
 ## 9. Do not
 
