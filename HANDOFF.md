@@ -14,25 +14,29 @@ A public-facing private trading book. One operator. The site is the ledger, the 
 
 ## 2. Design system — what is actually there
 
-### 2.1 The painted edition
+### 2.1 Pulp deco
 
-Two references, held together on purpose.
+Three references, blended rather than alternated. The point is that none of them wins outright.
 
-**FRAZETTA - the ground.** Warm earth pulled out of deep shadow. Umber near-black `#14110E`, panels `#1D1813`, bone `#F0E6D2` for type, ochre `#E0902F` as the torchlight, oxblood `#A63A22` as the second voice, olive `#93A857` up and `#C4442C` down. Nothing is neutral grey. Light pools from one source: a warm radial at the top-left and a cooler oxblood bloom bottom-right, with a fine diagonal tooth over the whole ground so it reads as canvas rather than screen.
+**FRAZETTA - the ground.** Warm earth out of deep shadow. Umber near-black `#15110E`, panels `#1F1915`, oxblood and ochre in the light. Nothing is neutral grey. One warm source pools at the top-left, a cooler vermilion bloom answers bottom-right.
 
-**TARTAKOVSKY - the blocking.** Flat graphic slabs over that ground. Colour is laid down in blocks, not gradients: section eyebrows are knocked out of solid oxblood, the active tab is a solid ochre slab, table heads are oxblood, dial states are knocked out of their own colour. Cards carry a 5px painted edge on one side instead of a border on four. Display type is a heavy uppercase serif - the nameplate runs to 104px.
+**NAGEL - the discipline.** This is what stops it being a fantasy paperback. Flat cream planes `#EFE7D8` laid straight onto the dark, one hot vermilion `#E24A38` used at full strength or not at all, thin deco rules doubled, hard negative space. The cream is a *surface*, not a text colour - the active tab, the grade block, every table head, and the status line are all cream planes with the ground colour knocked out of them. Where Frazetta paints the shadow, Nagel cuts a clean shape out of it.
 
-**The cut.** Changing tab plays a wipe, and it is meant to be seen. Three slabs - ochre, oxblood, bone - cross the frame on a 50ms stagger, each scaling from the left edge and then off the right. The panel is exchanged at 300ms, while the second slab covers the frame, so the swap is never visible; the cut does the work. Sections then push in from the left on their own stagger. Total 800ms, guarded by a `running` flag so fast clicking cannot desync it, and skipped entirely under `prefers-reduced-motion`, which falls back to an instant swap.
+**TARTAKOVSKY - the motion.** Colour in slabs and a transition that cuts rather than fades. Three slabs - vermilion, ochre, cream - rake across the frame on a 55ms stagger, each skewed `-11deg` so the leading edge is a diagonal rather than a wall. The panel is exchanged at 300ms behind the second slab; sections then push in from the left. 800ms total, guarded against fast clicking, and skipped under `prefers-reduced-motion`.
 
-**Kept from before:** the tape. It still crawls the book and the headline figures under the masthead.
+**Pulp holds it together.** A halftone dot grid at 5px sits over the whole ground with the canvas tooth beneath it, so flat colour reads as printed rather than rendered. Display type is a heavy uppercase serif set large - the nameplate to 110px.
+
+**Deco details worth keeping.** The masthead rule is stepped, heavy/hair/heavy, built from a border plus an inset shadow rather than three elements. Section eyebrows carry a two-tone stepped block. Tabs are cut with a `clip-path` notch on the leading edge so they read as overlapping cards.
+
+**Kept from before:** the tape, still crawling the book and the headline figures.
 
 **Two traps for the next editor.** `.tag` is overloaded - masthead strapline, section subtitles, and a badge inside a strategy card - so scope carefully. And `.fsview{display:none}` is what keeps each concept's sub-views apart; drop it and every view in all three concepts renders at once.
 
 ### 2.2 Layout
 
-- One HTML file, one request. ~537 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
+- One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
 - Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS - do not add number spans to the markup or they will double up.
-- Page padding `clamp(16px,3.4vw,46px)`, content column 1180px. Card grids use 2px gaps over the ground rather than per-card borders.
+- Page padding `clamp(16px,3.4vw,48px)`, content column 1180px. Card grids use 2px gaps over the ground rather than per-card borders.
 - Prose stays serif at a real measure (16.5px/1.8, 68ch) wherever something is read rather than scanned - the weekly assessment, The Lab's theses, all of The Story.
 - Verified at 1265px and 375px: no horizontal overflow on any of the four tabs.
 
