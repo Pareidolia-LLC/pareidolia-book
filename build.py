@@ -18,8 +18,7 @@ if _career_as_of != data.get("asOf"):
         "    python career_stats.py --write ../data/trades_ytd_2026.json ../data/trades_q4_2025.json"
         % (_career_as_of, data.get("asOf")))
 
-TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLATE__"><head>
-<script>(function(){try{var c=localStorage.getItem("pb-cw");if(c==="terminal"){document.documentElement.setAttribute("data-cw","terminal");}else if(c==="paper"){document.documentElement.setAttribute("data-cw","");}}catch(e){}})();</script>
+TEMPLATE = r"""<!doctype html><html lang="en" data-cw="terminal" data-plate="silver"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Pareidolia</title>
@@ -39,12 +38,12 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
        accent, engraving black as the ink, gold and silver as the metallics.
        Cards are a lighter sheet laid on the stock rather than an inversion. */
     /* ground stays banknote cream; the stock laid on it is silver */
-    --bg:#F5F1E8; --panel:#FAF8F2; --panel-2:#EDE9DE; --line:#CFC9BC;
-    --ink:#14171A; --muted:#5A5F56; --faint:#8B9086;
-    --accent:#1E5B3C; --accent-soft:rgba(30,91,60,.10);
+    --bg:#E6DFC8; --panel:#EDEFF2; --panel-2:#DCDFE5; --line:#BFC4CB;
+    --ink:#14171A; --muted:#4F544C; --faint:#767B71;
+    --accent:#1E5B3C; --accent-soft:rgba(30,91,60,.13);
     --slate:#7B8378; --up:#1E5B3C; --down:#A33B24;
-    --grid:rgba(20,23,26,.08); --warn:#9C6B12; color-scheme:light;
-    --paper:#FAF8F2;          /* off-white card on paper ground */
+    --grid:rgba(20,23,26,.11); --warn:#9C6B12; color-scheme:light;
+    --paper:#EDEFF2;          /* silver stock */
     --gold:#9C7B22; --gold-lift:#B8912C;
     --silver:#8E949C; --silver-lift:#AEB4BC;
     --engrave:#1E5B3C;          /* the green the guilloche is drawn in */
@@ -54,8 +53,8 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
     /* the plate: brushed gold by default, silver is one switch */
     --plate:linear-gradient(177deg,#F0E4BC 0%,#E3D19A 46%,#D9C489 62%,#EFE3BB 100%);
     --plate-edge:#C2A85E; --plate-rule:#9C7B22; --plate-ink:#4A4326;
-    --pinstripe:rgba(0,0,0,0);
-    --pinstripe-gold:rgba(0,0,0,0);
+    --pinstripe:rgba(30,91,60,.13);
+    --pinstripe-gold:rgba(156,123,34,.12);
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --pagepad:clamp(20px,4vw,56px);
@@ -82,22 +81,6 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
 
   /* ---- colourway: night ------------------------------------------------
      The brown-black ground with cream stock and a gold band. */
-  :root[data-cw="night"]{
-    --bg:#2B2517; --panel:#332C1C; --panel-2:#3D3524; --line:#4C4331;
-    --ink:#F2ECDD; --muted:#AAA089; --faint:#7D7159;
-    --accent:#A9801F; --accent-soft:rgba(169,128,31,.20);
-    --slate:#8A7E64; --up:#5F8A3C; --down:#B4552F;
-    --grid:rgba(242,236,221,.10); --warn:#C46A1C; color-scheme:dark;
-    --paper:#F2ECDD;
-    --gold:#A9801F; --gold-lift:#C79A2E;
-    --silver:#9AA0A8; --silver-lift:#C2C7CE;
-    --engrave:#C79A2E;
-    --label:#C79A2E;
-    --plate:linear-gradient(177deg,#3A3221 0%,#2F2819 60%,#3A3221 100%);
-    --plate-edge:#4C4331; --plate-rule:#A9801F; --plate-ink:#AAA089;
-    --pinstripe:rgba(242,236,221,.055);
-    --pinstripe-gold:rgba(169,128,31,.14);
-  }
   *{box-sizing:border-box} body{margin:0}
   .wrap{background:var(--bg); color:var(--ink); font-family:var(--sans); min-height:100vh; padding:var(--pagepad); -webkit-font-smoothing:antialiased; line-height:1.5}
   /* One width for everything. The page gutter is the measure: the masthead,
@@ -511,18 +494,6 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
     box-shadow:0 1px 0 0 rgba(20,23,26,.07)}
   /* On night the ground is dark and the stock is light, so a card restores the
      light palette for its whole subtree and descendants need no restyling. */
-  :root[data-cw="night"] .tablewrap,:root[data-cw="night"] .stat,
-  :root[data-cw="night"] .dial,:root[data-cw="night"] .chart-card,
-  :root[data-cw="night"] .gcard,:root[data-cw="night"] .appr,
-  :root[data-cw="night"] .con .box{
-    --bg:#F2ECDD; --panel:#FAF6EC; --panel-2:#EBE3D1; --line:#E0D6C0;
-    --ink:#2B2517; --muted:#6E6349; --faint:#8A7E64;
-    /* the semantic pair darkened for cream: #5F8A3C measured 3.43:1 and
-       #B4552F 4.16:1 against this stock, and these are numbers people read */
-    --up:#4A6E2C; --down:#9E4826;
-    --grid:rgba(43,37,23,.10);
-    border:1px solid #D9CFB6;
-    box-shadow:0 1px 0 0 rgba(0,0,0,.28), inset 0 1px 0 0 rgba(255,255,255,.5)}
   .stat:hover,.gcard:hover{border-color:var(--accent)}
   .tablewrap thead th{background:var(--panel-2); color:var(--muted)}
   .tablewrap tbody tr{border-bottom-color:var(--line)}
@@ -546,12 +517,6 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
   .tabink{background:var(--gold-lift); box-shadow:none}
   .tabs.hasink .tab.active{border-bottom-color:transparent}
   .scrollprog{background:var(--gold-lift); opacity:.8}
-  :root[data-cw="night"] .tabs{background:var(--gold-lift); border-bottom-color:var(--gold-lift)}
-  :root[data-cw="night"] .tab{color:rgba(43,37,23,.88)}
-  :root[data-cw="night"] .tab:hover{color:#2B2517; background:rgba(43,37,23,.07)}
-  :root[data-cw="night"] .tab.active{color:#2B2517; background:rgba(43,37,23,.12)}
-  :root[data-cw="night"] .tabink{background:#2B2517}
-  :root[data-cw="night"] .scrollprog{background:#2B2517; opacity:.55}
 
   /* Kicker and disclaimer read at page width like everything else. */
   .fs-kicker,.fs-note{max-width:none}
@@ -769,55 +734,6 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
   .statusbar b{color:var(--accent); font-weight:600}
   .statusbar .live{color:var(--up)}
   :root[data-cw="terminal"] .wrap{padding-bottom:64px}
-  /* ---- paper edition: the redesign prototype's surfaces on the live build ---- */
-  :root:not([data-cw="terminal"]) .rosette,:root:not([data-cw="terminal"]) .om{display:none}
-  :root:not([data-cw="terminal"]) .sheet{max-width:960px; text-align:left}
-  :root:not([data-cw="terminal"]) .stat,:root:not([data-cw="terminal"]) .dial,:root:not([data-cw="terminal"]) .chart-card,:root:not([data-cw="terminal"]) .appr,:root:not([data-cw="terminal"]) .con .box,:root:not([data-cw="terminal"]) .tablewrap,:root:not([data-cw="terminal"]) .gcard,:root:not([data-cw="terminal"]) .grade,:root:not([data-cw="terminal"]) .ctip{border-radius:11px}
-  :root:not([data-cw="terminal"]) .tlv,:root:not([data-cw="terminal"]) .chip,:root:not([data-cw="terminal"]) .state,:root:not([data-cw="terminal"]) .bar .track,:root:not([data-cw="terminal"]) .bar .fill{border-radius:6px}
-  :root:not([data-cw="terminal"]) .plate{border-radius:14px; padding:22px 26px; overflow:hidden; position:relative; border:1px solid var(--plate-edge)}
-  :root:not([data-cw="terminal"]) .plate::before{content:""; position:absolute; inset:4px; border:1px solid rgba(156,123,34,.28); border-radius:10px; pointer-events:none}
-  :root:not([data-cw="terminal"]) .plate::after{content:""; position:absolute; inset:0; pointer-events:none; opacity:.55; background:repeating-linear-gradient(115deg,transparent 0 6px,rgba(74,67,38,.045) 6px 7px),radial-gradient(120% 180% at 88% 8%,rgba(255,255,255,.38),transparent 55%)}
-  :root:not([data-cw="terminal"]) .plate>*{position:relative; z-index:2}
-  :root:not([data-cw="terminal"]) .plate .mark{font-size:clamp(27px,4vw,36px); font-weight:500; letter-spacing:.05em; line-height:1.05; text-shadow:none}
-  :root:not([data-cw="terminal"]) .plate .tag{font-size:12.5px; opacity:.8; margin-top:6px; letter-spacing:.02em; max-width:none}
-  :root:not([data-cw="terminal"]) .plate .dateline{font-family:var(--mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; opacity:.7; border:0; padding:10px 0 0; justify-content:flex-start; gap:14px}
-  :root:not([data-cw="terminal"]) .plate .masthead{padding-bottom:0}
-  :root:not([data-cw="terminal"]) .plate .masthead{flex-direction:row; justify-content:space-between; align-items:flex-start; text-align:left; gap:20px; flex-wrap:wrap; border-bottom:0}
-  :root:not([data-cw="terminal"]) .plate .masthead>div{text-align:left; align-items:flex-start}
-  :root:not([data-cw="terminal"]) .plate .mark,:root:not([data-cw="terminal"]) .plate .tag{margin-left:0; margin-right:0; text-align:left}
-  :root:not([data-cw="terminal"]) .plate .cwbtn{align-self:flex-start; margin-top:4px}
-  :root:not([data-cw="terminal"]) .cwbtn{font:inherit; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--plate-ink); background:rgba(255,255,255,.32); border:1px solid var(--plate-edge); border-radius:9px; padding:7px 13px; cursor:pointer; white-space:nowrap}
-  :root:not([data-cw="terminal"]) .cwbtn:hover{background:rgba(255,255,255,.5)}
-  :root:not([data-cw="terminal"]) .tabs{background:var(--bg); border-bottom:1px solid var(--line); gap:2px; justify-content:flex-start; margin:18px 0 22px; overflow-x:auto; flex-wrap:nowrap; scrollbar-width:none}
-  :root:not([data-cw="terminal"]) .tabs::-webkit-scrollbar{display:none}
-  :root:not([data-cw="terminal"]) .tab{color:var(--muted); font-family:var(--sans); font-size:14px; font-weight:500; letter-spacing:0; text-transform:none; padding:12px 15px; border-bottom:2px solid transparent; margin-bottom:-1px}
-  :root:not([data-cw="terminal"]) .tab:hover{color:var(--ink)}
-  :root:not([data-cw="terminal"]) .tab.active{color:var(--accent); border-bottom-color:var(--accent)}
-  :root:not([data-cw="terminal"]) .tab .n{font-family:var(--mono); font-size:10px; opacity:.5; margin-right:6px}
-  :root:not([data-cw="terminal"]) .tabink{display:none}
-  :root:not([data-cw="terminal"]) .eyebrow{font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.16em; color:var(--accent); justify-content:center}
-  :root:not([data-cw="terminal"]) .eyebrow::before,:root:not([data-cw="terminal"]) .eyebrow::after{content:""; flex:1; height:1px; background:rgba(30,91,60,.10)}
-  :root:not([data-cw="terminal"]) h2{font-size:21px; font-weight:500; letter-spacing:.01em}
-  :root:not([data-cw="terminal"]) .prose,:root:not([data-cw="terminal"]) .proselist li,:root:not([data-cw="terminal"]) .rc-note,:root:not([data-cw="terminal"]) .con li,:root:not([data-cw="terminal"]) .appr p,:root:not([data-cw="terminal"]) .dial .rule,:root:not([data-cw="terminal"]) .stat .m{font-family:var(--sans); text-align:left; hyphens:manual}
-  :root:not([data-cw="terminal"]) .prose{font-size:15px; line-height:1.72; color:var(--muted); max-width:66ch; margin-left:0}
-  :root:not([data-cw="terminal"]) .prose b,:root:not([data-cw="terminal"]) .prose strong{color:var(--ink); font-weight:600}
-  :root:not([data-cw="terminal"]) .proselist li{font-size:14.5px; line-height:1.6; color:var(--muted)}
-  :root:not([data-cw="terminal"]) .prose::first-letter{float:none !important; font-size:inherit !important; font-weight:inherit !important; padding:0 !important; color:inherit !important; line-height:inherit !important}
-  :root:not([data-cw="terminal"]) .stat{text-align:left}
-  :root:not([data-cw="terminal"]) .stat .k{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; color:var(--faint)}
-  :root:not([data-cw="terminal"]) .stat .v{font-family:var(--serif); font-weight:500}
-  :root:not([data-cw="terminal"]) .dial{text-align:left}
-  :root:not([data-cw="terminal"]) .dial .dk{font-size:9.5px; letter-spacing:.1em; color:var(--faint)}
-  :root:not([data-cw="terminal"]) .appr{text-align:left; border-left:3px solid var(--accent)}
-  :root:not([data-cw="terminal"]) .appr:nth-child(2){border-left-color:var(--warn)}
-  :root:not([data-cw="terminal"]) .appr:nth-child(3){border-left-color:var(--gold)}
-  :root:not([data-cw="terminal"]) .rc-head{justify-content:flex-start}
-  :root:not([data-cw="terminal"]) .chart-head,:root:not([data-cw="terminal"]) .tlviews,:root:not([data-cw="terminal"]) .marks,:root:not([data-cw="terminal"]) .legend-strat{justify-content:flex-start}
-  :root:not([data-cw="terminal"]) .hist{justify-content:flex-start}
-  :root:not([data-cw="terminal"]) footer p{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); line-height:1.9; text-align:left}
-  :root[data-cw="terminal"] .cwbtn{font:inherit; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); background:rgba(255,176,0,.07); border:1px solid var(--line); border-radius:0; padding:7px 13px; cursor:pointer}
-  :root[data-cw="terminal"] .cwbtn:hover{background:rgba(255,176,0,.15)}
-  :root[data-cw="terminal"] .tab .n{display:none}
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -828,16 +744,15 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
       <div class="tag">A private book run under pattern recognition.</div>
       __ORNAMENT__
     </div>
-    <button class="cwbtn" id="cwbtn" type="button" title="Switch colourway"><span id="cwlbl">Terminal</span></button>
   </header>
   <div class="dateline"><span>Pareidolia LLC</span><span><b id="dlDate"></b></span><span>Est. October 2025</span></div>
   </div>
   <div class="tape" id="tape" aria-hidden="true"><div class="tapetrack" id="tapetrack"></div></div>
   <nav class="tabs" role="tablist" aria-label="Sections">
-    <button class="tab active" data-panel="book" role="tab"><span class="n">01</span>The Book</button>
-    <button class="tab" data-panel="record" role="tab"><span class="n">02</span>The Record</button>
-    <button class="tab" data-panel="ideation" role="tab"><span class="n">03</span>The Lab</button>
-    <button class="tab" data-panel="story" role="tab"><span class="n">04</span>The Story</button>
+    <button class="tab active" data-panel="book" role="tab">The Book</button>
+    <button class="tab" data-panel="record" role="tab">The Record</button>
+    <button class="tab" data-panel="ideation" role="tab">The Lab</button>
+    <button class="tab" data-panel="story" role="tab">The Story</button>
   </nav>
   <div class="panel active" id="panel-book">
   <section aria-label="Headline returns"><div class="stats" id="stats"></div></section>
@@ -2199,17 +2114,6 @@ TEMPLATE = r"""<!doctype html><html lang="en" data-cw="__CW__" data-plate="__PLA
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
   })();
 
-  /* ---------------- colourway toggle: paper <-> terminal, remembered ------- */
-  (function(){
-    var b=document.getElementById("cwbtn"), l=document.getElementById("cwlbl"); if(!b) return;
-    var term=document.documentElement.getAttribute("data-cw")==="terminal";
-    l.textContent = term ? "Paper" : "Terminal";          /* the button names where it takes you */
-    b.addEventListener("click",function(){
-      try{ localStorage.setItem("pb-cw", term ? "paper" : "terminal"); }catch(e){}
-      location.reload();                                  /* the desk chrome initialises on load */
-    });
-  })();
-
   /* ---------------- motion: tab marker, scroll line, reveals, counters ----- */
   (function(){
     var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -2459,14 +2363,11 @@ ORNAMENTS = {
     'shippo': '<svg class="rosette" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><clipPath id="omclip"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#omclip)" class="om om-shippo"><circle cx="4.8" cy="4.8" r="13.0"/><circle cx="4.8" cy="23.2" r="13.0"/><circle cx="4.8" cy="41.6" r="13.0"/><circle cx="4.8" cy="60.0" r="13.0"/><circle cx="4.8" cy="78.4" r="13.0"/><circle cx="4.8" cy="96.8" r="13.0"/><circle cx="4.8" cy="115.2" r="13.0"/><circle cx="23.2" cy="4.8" r="13.0"/><circle cx="23.2" cy="23.2" r="13.0"/><circle cx="23.2" cy="41.6" r="13.0"/><circle cx="23.2" cy="60.0" r="13.0"/><circle cx="23.2" cy="78.4" r="13.0"/><circle cx="23.2" cy="96.8" r="13.0"/><circle cx="23.2" cy="115.2" r="13.0"/><circle cx="41.6" cy="4.8" r="13.0"/><circle cx="41.6" cy="23.2" r="13.0"/><circle cx="41.6" cy="41.6" r="13.0"/><circle cx="41.6" cy="60.0" r="13.0"/><circle cx="41.6" cy="78.4" r="13.0"/><circle cx="41.6" cy="96.8" r="13.0"/><circle cx="41.6" cy="115.2" r="13.0"/><circle cx="60.0" cy="4.8" r="13.0"/><circle cx="60.0" cy="23.2" r="13.0"/><circle cx="60.0" cy="41.6" r="13.0"/><circle cx="60.0" cy="60.0" r="13.0"/><circle cx="60.0" cy="78.4" r="13.0"/><circle cx="60.0" cy="96.8" r="13.0"/><circle cx="60.0" cy="115.2" r="13.0"/><circle cx="78.4" cy="4.8" r="13.0"/><circle cx="78.4" cy="23.2" r="13.0"/><circle cx="78.4" cy="41.6" r="13.0"/><circle cx="78.4" cy="60.0" r="13.0"/><circle cx="78.4" cy="78.4" r="13.0"/><circle cx="78.4" cy="96.8" r="13.0"/><circle cx="78.4" cy="115.2" r="13.0"/><circle cx="96.8" cy="4.8" r="13.0"/><circle cx="96.8" cy="23.2" r="13.0"/><circle cx="96.8" cy="41.6" r="13.0"/><circle cx="96.8" cy="60.0" r="13.0"/><circle cx="96.8" cy="78.4" r="13.0"/><circle cx="96.8" cy="96.8" r="13.0"/><circle cx="96.8" cy="115.2" r="13.0"/><circle cx="115.2" cy="4.8" r="13.0"/><circle cx="115.2" cy="23.2" r="13.0"/><circle cx="115.2" cy="41.6" r="13.0"/><circle cx="115.2" cy="60.0" r="13.0"/><circle cx="115.2" cy="78.4" r="13.0"/><circle cx="115.2" cy="96.8" r="13.0"/><circle cx="115.2" cy="115.2" r="13.0"/></g><circle class="omring" cx="60" cy="60" r="52"/><circle class="omring2" cx="60" cy="60" r="47"/></svg>',
 }
 
-COLOURWAY = ""
 # Plate above the tab band: "gold" or "silver".
-PLATE = "gold"
 # Masthead ornament: "asanoha" (hemp leaf) or "shippo" (interlocking circles).
-ORNAMENT = "none"
+ORNAMENT = "asanoha"
 
-html = TEMPLATE.replace("__CW__", COLOURWAY)
-html = html.replace("__PLATE__", PLATE)
+html = TEMPLATE
 html = html.replace("__ORNAMENT__", ORNAMENTS[ORNAMENT])
 html = html.replace("__DATA_JSON__", json.dumps(data, ensure_ascii=False))
 html = html.replace("__FS_JSON__", json.dumps(fs, ensure_ascii=False))

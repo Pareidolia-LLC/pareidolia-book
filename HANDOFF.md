@@ -2,7 +2,7 @@
 
 *A private book run under pattern recognition.*
 **Site:** https://pareidoliatrading.com · **Repo:** Pareidolia-LLC/pareidolia-book · **Owner:** Pareidolia LLC, est. Oct 2025
-**Status of this file:** corrected September 2026 from a second-model draft. The voice sections (§3, §5, §8–10) are that draft's, with its two self-contradictions fixed. §1–2, §4, §6–7 were rewritten against `build.py` and `data.json` and describe what is actually built. Updated the same month for the **paper edition**: the redesign prototype's surfaces on the live build, four tabs, and a runtime colourway toggle.
+**Status of this file:** corrected September 2026 from a second-model draft. The voice sections (§3, §5, §8–10) are that draft's, with its two self-contradictions fixed. §1–2, §4, §6–7 were rewritten against `build.py` and `data.json` and describe what is actually built. Updated the same month: the site is now **one look** — the terminal edition — carrying the redesign prototype's four-tab structure.
 
 ---
 
@@ -14,27 +14,25 @@ A public-facing private trading book. One operator. The site is the ledger, the 
 
 ## 2. Design system — what is actually there
 
-### 2.1 Two colourways: paper by default, terminal on a toggle
+### 2.1 One look: the terminal edition
 
-The reader lands on **paper** and can switch to **terminal** with the button in the masthead. The choice is remembered.
+There is no colourway switch, no stored preference, and no second palette. The template hardcodes it:
 
-| `data-cw` | Look | Notes |
-|---|---|---|
-| *(unset — the base `:root`)* | **Paper.** Warm off-white ground `#F5F1E8`, lighter cards `#FAF8F2`, engraving green `#1E5B3C` as the one accent, gold `#9C7B22` for plates and badges, rounded 11px surfaces, sans body with mono labels. | The default. This is the redesign prototype's palette applied as tokens to the live build. |
-| `terminal` | Amber phosphor on black — green up, red down, tape, function keys, status line. | Unchanged from the "desk, 1987–2004" edition. Every paper override is scoped `:root:not([data-cw="terminal"])` so it does not touch this look. |
-| `night` | Dark variant with its own panel/border overrides. | Defined, not shipped, not reachable from the toggle. |
+```html
+<html lang="en" data-cw="terminal" data-plate="silver">
+```
 
-**How the toggle works.** A one-line script in `<head>` reads `localStorage["pb-cw"]` and sets `data-cw` before first paint, so there is no flash. The masthead button (`#cwbtn`) is labelled with where it takes you — *Terminal* on paper, *Paper* on terminal. Clicking stores the choice and reloads, because the terminal chrome (tape, function keys) initialises on load. Build constants set the first-visit default: `COLOURWAY = ""` (paper), `PLATE = "gold"`, `ORNAMENT = "none"`.
+**Amber phosphor on black.** Ground `#07090A`, panels `#0D1113`, amber `#FFB000` as the single accent, terminal green `#3DF07A` up and red `#FF4B3E` down, cyan `#3AD4E8` for a third series on a chart. Square corners everywhere — `border-radius: 0`. Serif masthead and prose, mono for every number, label and control. The desk chrome is part of the look: the scrolling tape under the masthead, the numbered function rail on the tabs (digits 1–7 are bound as shortcuts), and the status line pinned to the bottom.
 
-**What was removed.** The banknote decoration — the asanoha/shippo rosette in the masthead, the guilloche pinstripes, the cream-and-silver stock — is gone from the paper look (ornament set to `none`, pinstripe tokens transparent, `.rosette` hidden). The generating code is still in `build.py` if it is ever wanted back.
+**How it is built.** The palette lives in `:root[data-cw="terminal"]` — 52 rules layered over a base `:root` that supplies the fonts, page padding and the tokens terminal does not restate. Keeping the attribute selector means the whole terminal layer stays intact and self-documenting; it simply has nothing to switch away from. The masthead ornament is the asanoha rosette (`ORNAMENT = "asanoha"`), drawn as inline SVG at build time.
 
-`data-plate` (`gold` or `silver`) is a separate axis controlling the metallic header plate. Paper ships gold; terminal overrides the plate to its own dark gradient regardless.
+**Deliberately gone.** The banknote/paper skin and the `night` colourway were both removed, along with the toggle button and its `localStorage` key. The four-tab structure that arrived with the paper experiment was kept — that is the part worth having. The prototype file itself still sits unchanged at `trading-system/mockups/pareidolia-redesign.html` if the paper palette is ever wanted back.
 
 ### 2.2 Layout
 
-- One HTML file, one request. ~550 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
-- Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. Content column is 960px on paper.
-- Page padding `clamp(20px,4vw,56px)`. Cards are lighter sheets laid on the ground (`--panel` on `--bg`), never inversions. Section eyebrows sit centred between two hairlines; everything else is left-aligned.
+- One HTML file, one request. ~546 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
+- Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS — do not add number spans to the markup or they will double up.
+- Page padding `clamp(20px,4vw,56px)`, centred editorial layout, square corners. Cards are panels laid on the ground (`--panel` on `--bg`), never inversions.
 - Every dark-theme override is guarded on `data-cw`; a new visual element must render correctly in the default and in `terminal` at minimum.
 
 ### 2.3 Banker formatting — non-negotiable
@@ -63,7 +61,7 @@ Terse, objective, unsentimental. An after-action report written by someone who w
 
 ## 4. Information architecture — the four tabs
 
-The redesign prototype's skeleton. Tabs are numbered 01–04 on paper; the numbers are hidden on terminal, which draws its own function keys. Internal panel ids in the second column. The landing tab is The Book.
+The redesign prototype's skeleton, kept when the paper skin was dropped. The function rail numbers the tabs 1–4 and binds those digits as keyboard shortcuts. Internal panel ids in the second column. The landing tab is The Book.
 
 | # | Tab | Panel | What it holds, in order |
 |---|---|---|---|
@@ -151,7 +149,7 @@ These are **not** in `DATA`. `build.py` reads them and embeds them for The Pipe.
 
 ## 8. Do
 
-Preserve the voice. Fix cadence where it is off. Banker formatting everywhere. Every concept carries its limitation and its disclaimer. Anything visual works in paper and in `terminal` — scope paper-only rules with `:root:not([data-cw="terminal"])`. New content goes in one of the four tabs using the existing block/table patterns. Flag value traps, currency artefacts, and cyclical distortions — never quietly exclude them.
+Preserve the voice. Fix cadence where it is off. Banker formatting everywhere. Every concept carries its limitation and its disclaimer. Anything visual is built for the terminal edition — amber on black, square corners, mono for numbers and labels. There is no second colourway to check against, and adding one back means restoring a toggle, not just a palette. New content goes in one of the four tabs using the existing block/table patterns. Flag value traps, currency artefacts, and cyclical distortions — never quietly exclude them.
 
 ## 9. Do not
 
