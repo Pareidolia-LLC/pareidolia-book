@@ -14,25 +14,26 @@ A public-facing private trading book. One operator. The site is the ledger, the 
 
 ## 2. Design system — what is actually there
 
-### 2.1 One stylesheet, two registers
+### 2.1 The painted edition
 
-**Why it was rebuilt.** The old sheet had accumulated eight layers arguing with each other - banknote base, centred editorial, broadsheet, blended, blacked tabs, terminal, night, paper - each new idea bolted on as an override of an override. Small changes stopped registering because they were buried in a specificity war. In September 2026 it was replaced by a single ~440-line sheet written once. **There is no colourway attribute, no `data-cw`, no second palette, and nothing beneath any rule.** If something needs to change, change it in place.
+Two references, held together on purpose.
 
-**DESK - the default register.** Near-black ground `#0A0A0B`, panels `#101012`, hairlines `#26262B`, amber `#FFB000` as the only accent, green `#3DE87A` up and red `#FF5A45` down, cyan `#38CFE8` for a comparison series. Square corners throughout. Mono everywhere - nameplate, labels, numbers, controls. Numbers are the loudest thing on the page: the masthead runs to 84px and the headline returns to 62px, both tightly tracked. Structure is carried by heavy rules (3px under the masthead and above the footer) and by 1px grid gaps that show the ground through card grids, rather than by boxes and shadows.
+**FRAZETTA - the ground.** Warm earth pulled out of deep shadow. Umber near-black `#14110E`, panels `#1D1813`, bone `#F0E6D2` for type, ochre `#E0902F` as the torchlight, oxblood `#A63A22` as the second voice, olive `#93A857` up and `#C4442C` down. Nothing is neutral grey. Light pools from one source: a warm radial at the top-left and a cooler oxblood bloom bottom-right, with a fine diagonal tooth over the whole ground so it reads as canvas rather than screen.
 
-**EDITORIAL - the second register.** Long-form prose gets a serif at a real measure: `.prose` is 16px/1.78 at 68ch, with `.rc-note` and the strategy-card bodies to match. It is used where things are read rather than scanned - the weekly assessment, The Lab's concept theses and honesty notes, and all of The Story. Dense tables sitting directly beneath stay mono and institutional. The two registers are meant to be adjacent.
+**TARTAKOVSKY - the blocking.** Flat graphic slabs over that ground. Colour is laid down in blocks, not gradients: section eyebrows are knocked out of solid oxblood, the active tab is a solid ochre slab, table heads are oxblood, dial states are knocked out of their own colour. Cards carry a 5px painted edge on one side instead of a border on four. Display type is a heavy uppercase serif - the nameplate runs to 104px.
 
-**Desk chrome is unconditional now:** the scrolling tape under the masthead, the function rail that numbers the tabs and binds the digits as shortcuts, and the status line pinned to the bottom. No ornament - the rosette and guilloche are gone and `ORNAMENT = "none"`.
+**The cut.** Changing tab plays a wipe, and it is meant to be seen. Three slabs - ochre, oxblood, bone - cross the frame on a 50ms stagger, each scaling from the left edge and then off the right. The panel is exchanged at 300ms, while the second slab covers the frame, so the swap is never visible; the cut does the work. Sections then push in from the left on their own stagger. Total 800ms, guarded by a `running` flag so fast clicking cannot desync it, and skipped entirely under `prefers-reduced-motion`, which falls back to an instant swap.
 
-**Heatmaps.** Two. *The record as heat* on The Record is one cell per week since inception, coloured by that week's return scaled against the largest absolute week in the record, outlined when a dial was breached, and clickable through to that week's after-action. The factor correlation matrix in The Lab is a true heatmap, painted in the accent.
+**Kept from before:** the tape. It still crawls the book and the headline figures under the masthead.
 
-**Two traps for the next editor.** `.tag` is overloaded - masthead strapline, section subtitles, and a badge inside a strategy card - so only `.masthead .tag` carries the wide-tracked caps. And `.fsview{display:none}` is what keeps each concept's sub-views apart; drop it and every view in all three concepts renders at once.
+**Two traps for the next editor.** `.tag` is overloaded - masthead strapline, section subtitles, and a badge inside a strategy card - so scope carefully. And `.fsview{display:none}` is what keeps each concept's sub-views apart; drop it and every view in all three concepts renders at once.
 
 ### 2.2 Layout
 
-- One HTML file, one request. ~534 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
+- One HTML file, one request. ~537 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
 - Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS - do not add number spans to the markup or they will double up.
-- Page padding `clamp(16px,3.4vw,44px)`, content column 1180px, left-aligned. Card grids are 1px gaps over `--line`, so the ground shows through as hairlines instead of each card carrying its own border.
+- Page padding `clamp(16px,3.4vw,46px)`, content column 1180px. Card grids use 2px gaps over the ground rather than per-card borders.
+- Prose stays serif at a real measure (16.5px/1.8, 68ch) wherever something is read rather than scanned - the weekly assessment, The Lab's theses, all of The Story.
 - Verified at 1265px and 375px: no horizontal overflow on any of the four tabs.
 
 ### 2.3 Banker formatting — non-negotiable
