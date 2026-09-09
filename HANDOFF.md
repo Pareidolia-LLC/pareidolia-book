@@ -14,30 +14,36 @@ A public-facing private trading book. One operator. The site is the ledger, the 
 
 ## 2. Design system — what is actually there
 
-### 2.1 Pulp deco
+### 2.1 The desk, restruck
 
-Three references, blended rather than alternated. The point is that none of them wins outright.
+The terminal colourway - amber phosphor on near-black - carrying three references. Each one is translated into something a CRT can actually do, which is the constraint that keeps it from becoming a paperback cover.
 
-**FRAZETTA - the ground.** Warm earth out of deep shadow. Umber near-black `#15110E`, panels `#1F1915`, oxblood and ochre in the light. Nothing is neutral grey. One warm source pools at the top-left, a cooler vermilion bloom answers bottom-right.
+**The palette is the one that shipped before 9 September.** Ground `#07090A`, panels `#0D1113` / `#131A1D`, rule `#242E33`. Ink `#E8E4D9`, muted `#8B9AA1`, faint `#5E6C72`. One hot colour, amber `#FFB000`, with a lift `#FFC94D` for the glow. Up `#3DF07A`, down `#FF4B3E`, cyan `#3AD4E8` only for a comparison line. Nothing else. If a new colour seems necessary it is a sign the hierarchy is wrong.
 
-**NAGEL - the discipline.** This is what stops it being a fantasy paperback. Flat cream planes `#EFE7D8` laid straight onto the dark, one hot vermilion `#E24A38` used at full strength or not at all, thin deco rules doubled, hard negative space. The cream is a *surface*, not a text colour - the active tab, the grade block, every table head, and the status line are all cream planes with the ground colour knocked out of them. Where Frazetta paints the shadow, Nagel cuts a clean shape out of it.
+**NAGEL - flat planes, one hot colour.** The active tab, the week's grade, the timeline-view pill, the heavy insider badge and every table head are solid amber with the ground colour knocked out of them. Amber is a *surface* at full strength or a glow; it is never a tint. The grade slab takes the grade's own colour (green, amber, red) as its background - the JS sets `background`, not `color`, so do not reintroduce a text colour there or it becomes amber on amber.
 
-**TARTAKOVSKY - the motion.** Colour in slabs and a transition that cuts rather than fades. Ten vertical bars slam shut left to right on an 18ms stagger, alternate ones dropping from the top and rising from the bottom, then lift away the opposite way. The alternation is the point: one direction reads as a curtain, two read as shutters. Colour cycles vermilion, ochre, cream so the covered frame is banded, and each bar carries a hairline on its leading edge. The panel is exchanged at 400ms, just after the last bar shuts; sections then drop in on the same axis. 760ms total, guarded against fast clicking, and skipped under `prefers-reduced-motion`.
+**FRAZETTA - one light source.** Amber pools from the top-left corner (`.wrap::after`, first gradient) and the frame falls away into shadow at the edges (second gradient, the vignette). The scanline sits under both. Together they make phosphor look like it is behind glass rather than painted on a flat div. Type carries the same light: the nameplate and the headline figures have a phosphor bloom, `--glow`, and nothing else does.
 
-**Pulp holds it together.** A halftone dot grid at 5px sits over the whole ground with the canvas tooth beneath it, so flat colour reads as printed rather than rendered. Display type is a heavy uppercase serif set large - the nameplate to 110px.
+**TARTAKOVSKY - the cut.** Changing tab is a CRT power-cycle, not a fade. Three elements in `#wipe`: a black plane `.blk`, a centre line `.ln`, a raster bar `.scan`. Sequence over 700ms:
 
-**Deco details worth keeping.** The masthead rule is stepped, heavy/hair/heavy, built from a border plus an inset shadow rather than three elements. Section eyebrows carry a two-tone stepped block. Tabs are cut with a `clip-path` notch on the leading edge so they read as overlapping cards.
+- 0-110ms: the black plane comes up and the amber line draws across the middle of the screen. The picture collapses to a phosphor line.
+- 110-265ms: hold on the line. The panel is exchanged at 200ms, in the dark.
+- 265-700ms: the plane clips away top to bottom (`clip-path: inset`), led by the raster bar with its glow. The new panel is revealed the way a tube redraws.
 
-**Kept from before:** the tape, still crawling the book and the headline figures.
+Sections then drop in from the top on a 40ms stagger, along the same axis the raster left on. The overlay clears at 740ms. Guarded against fast clicking (`running`), and skipped entirely under `prefers-reduced-motion` in favour of an instant swap.
 
-**Two traps for the next editor.** `.tag` is overloaded - masthead strapline, section subtitles, and a badge inside a strategy card - so scope carefully. And `.fsview{display:none}` is what keeps each concept's sub-views apart; drop it and every view in all three concepts renders at once.
+**Type.** Mono everywhere the page is scanned: nameplate at `.30em` tracking, section heads, tabs, tables, dials, status line. Serif only where something is read - the weekly assessment, the strategy cards, The Lab's theses, all of The Story. Square corners throughout, 1px rules, no radius anywhere.
+
+**Kept from before:** the tape crawling the book and the headline figures; the function-rail digits on the tabs; the status line pinned to the bottom.
+
+**Two traps for the next editor.** `.tag` is overloaded - masthead strapline and a badge inside a strategy card - so scope carefully. And `.fsview{display:none}` is what keeps each concept's sub-views apart; drop it and every view in all three concepts renders at once.
 
 ### 2.2 Layout
 
 - One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
 - Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS - do not add number spans to the markup or they will double up.
-- Page padding `clamp(16px,3.4vw,48px)`, content column 1180px. Card grids use 2px gaps over the ground rather than per-card borders.
-- Prose stays serif at a real measure (16.5px/1.8, 68ch) wherever something is read rather than scanned - the weekly assessment, The Lab's theses, all of The Story.
+- Page padding `clamp(16px,3.4vw,44px)`, content column 1180px. Card grids use 1px gaps over the rule colour rather than per-card borders, so a grid reads as one ruled panel.
+- Prose stays serif at a real measure (16px/1.78, 68ch) wherever something is read rather than scanned - the weekly assessment, The Lab's theses, all of The Story.
 - Verified at 1265px and 375px: no horizontal overflow on any of the four tabs.
 
 ### 2.3 Banker formatting — non-negotiable
