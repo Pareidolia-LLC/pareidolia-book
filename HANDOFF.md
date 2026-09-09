@@ -34,6 +34,10 @@ Sections settle by 4px on a 40ms stagger, nothing more - the reveal is the halve
 
 **Motion, everywhere, by the same three rules.** Nothing on the page fades. Every entrance is a `clip-path` cut on `steps()`, so it moves on twos like a cel - sections wipe in left to right in twelve frames, the eyebrow rule draws itself, the heading is cut after it. The hot colour is a slab: the active tab is one amber plane (`.tabink`) that slides between the keys after the cut, the grade is stamped down from 1.7x in three frames every time a week is picked, the dial states stamp in behind it. The light is one source: the top-left pool breathes on a seven-second cycle, a faint beam sweeps the glass every nine seconds, the nameplate flickers once every thirteen, and a headline figure flares white-hot the instant its count lands, then settles to its resting glow. On boot the nameplate is struck a letter at a time, then the strapline, the dateline, the keys, the figures and the status line snap on in that order. The curve is traced as a scope trace every time The Book comes up; the allocation bars fill on twos one after another; the heat rasters in cell by cell; table rows on The Book and The Record snap in top to bottom. All of it lives in one `@media (prefers-reduced-motion:no-preference)` block and is absent otherwise.
 
+**The desk, 1989.** Full bleed: the sheet has no maximum width and the page padding is a thin bezel, so a wide monitor gets a wide desk. Every `section` and every `.concept` is a window - a 1px frame on the panel colour with its title (`.eyebrow`) set as an amber tab on the top edge of the frame, the way a terminal page carries its name. The keys on the rail are keycaps: the digit sits in a small bordered box. The nameplate carries a flat teal offset shadow under its glow - Nagel's one trick, a hard drop in a second colour. The status line ends in a blinking cursor. Tables are dense: 11px, 6px rows.
+
+**The cut is confined.** `#wipe` is sized by JS (`fit()`) to the part of `#stage` that is on screen below the key rail, so the masthead and the keys stay lit while the tube goes off. The halves collapse to the centre of that box, not the viewport.
+
 **Type.** Mono everywhere the page is scanned: nameplate at `.30em` tracking, section heads, tabs, tables, dials, status line. Serif only where something is read - the weekly assessment, the strategy cards, The Lab's theses, all of The Story. Square corners throughout, 1px rules, no radius anywhere.
 
 **Kept from before:** the tape crawling the book and the headline figures; the function-rail digits on the tabs; the status line pinned to the bottom.
@@ -44,7 +48,7 @@ Sections settle by 4px on a 40ms stagger, nothing more - the reveal is the halve
 
 - One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
 - Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS - do not add number spans to the markup or they will double up.
-- Page padding `clamp(16px,3.4vw,44px)`, content column 1180px. Card grids use 1px gaps over the rule colour rather than per-card borders, so a grid reads as one ruled panel.
+- Page padding `clamp(10px,1.2vw,18px)`, no content-column cap. Card grids use 1px gaps over the rule colour rather than per-card borders, so a grid reads as one ruled panel inside its window.
 - Prose stays serif at a real measure (16px/1.78, 68ch) wherever something is read rather than scanned - the weekly assessment, The Lab's theses, all of The Story.
 - Verified at 1265px and 375px: no horizontal overflow on any of the four tabs.
 
