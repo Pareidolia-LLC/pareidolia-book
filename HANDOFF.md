@@ -2,7 +2,7 @@
 
 *A private book run under pattern recognition.*
 **Site:** https://pareidoliatrading.com · **Repo:** Pareidolia-LLC/pareidolia-book · **Owner:** Pareidolia LLC, est. Oct 2025
-**Status of this file:** corrected September 2026 from a second-model draft. The voice sections (§3, §5, §8–10) are that draft's, with its two self-contradictions fixed. §1–2, §4, §6–7 were rewritten against `build.py` and `data.json` and describe what is actually built. Updated the same month: the site is now **one look** — the terminal edition — carrying the redesign prototype's four-tab structure.
+**Status of this file:** corrected September 2026 from a second-model draft. The voice sections (§3, §5, §8–10) are that draft's, with its two self-contradictions fixed. §1–2, §4, §6–7 were rewritten against `build.py` and `data.json` and describe what is actually built. **The stylesheet was rebuilt from scratch in September 2026** — §2 describes that rebuild.
 
 ---
 
@@ -14,28 +14,26 @@ A public-facing private trading book. One operator. The site is the ledger, the 
 
 ## 2. Design system — what is actually there
 
-### 2.1 One look: the terminal edition
+### 2.1 One stylesheet, two registers
 
-There is no colourway switch, no stored preference, and no second palette. The template hardcodes it:
+**Why it was rebuilt.** The old sheet had accumulated eight layers arguing with each other - banknote base, centred editorial, broadsheet, blended, blacked tabs, terminal, night, paper - each new idea bolted on as an override of an override. Small changes stopped registering because they were buried in a specificity war. In September 2026 it was replaced by a single ~440-line sheet written once. **There is no colourway attribute, no `data-cw`, no second palette, and nothing beneath any rule.** If something needs to change, change it in place.
 
-```html
-<html lang="en" data-cw="terminal" data-plate="silver">
-```
+**DESK - the default register.** Near-black ground `#0A0A0B`, panels `#101012`, hairlines `#26262B`, amber `#FFB000` as the only accent, green `#3DE87A` up and red `#FF5A45` down, cyan `#38CFE8` for a comparison series. Square corners throughout. Mono everywhere - nameplate, labels, numbers, controls. Numbers are the loudest thing on the page: the masthead runs to 84px and the headline returns to 62px, both tightly tracked. Structure is carried by heavy rules (3px under the masthead and above the footer) and by 1px grid gaps that show the ground through card grids, rather than by boxes and shadows.
 
-**Amber phosphor on black.** Ground `#07090A`, panels `#0D1113`, amber `#FFB000` as the single accent, terminal green `#3DF07A` up and red `#FF4B3E` down, cyan `#3AD4E8` for a third series on a chart. Square corners everywhere — `border-radius: 0`. Wide-tracked mono nameplate, serif prose, mono for every number, label and control. The desk chrome is part of the look: the scrolling tape under the masthead, the numbered function rail on the tabs (digits 1–7 are bound as shortcuts), and the status line pinned to the bottom.
+**EDITORIAL - the second register.** Long-form prose gets a serif at a real measure: `.prose` is 16px/1.78 at 68ch, with `.rc-note` and the strategy-card bodies to match. It is used where things are read rather than scanned - the weekly assessment, The Lab's concept theses and honesty notes, and all of The Story. Dense tables sitting directly beneath stay mono and institutional. The two registers are meant to be adjacent.
 
-**The banknote engraving, struck in phosphor.** The security printing is on, drawn in amber rather than engraving green. The asanoha rosette sits under the nameplate with a phosphor glow, the dateline carries a 2.5px double rule instead of a hairline, the plate has an engine-turned diagonal sheen and an inset engraved frame, and the page ground crosshatches two shallow guilloche angles behind the scanline. This is line-work over the terminal palette, not a second colourway — the palette, fonts and chrome are untouched.
+**Desk chrome is unconditional now:** the scrolling tape under the masthead, the function rail that numbers the tabs and binds the digits as shortcuts, and the status line pinned to the bottom. No ornament - the rosette and guilloche are gone and `ORNAMENT = "none"`.
 
-**How it is built.** The palette lives in `:root[data-cw="terminal"]` — 52 rules layered over a base `:root` that supplies the fonts, page padding and the tokens terminal does not restate. Keeping the attribute selector means the whole terminal layer stays intact and self-documenting; it simply has nothing to switch away from. The masthead ornament is the asanoha rosette (`ORNAMENT = "asanoha"`), drawn as inline SVG at build time. The engraving layer is appended last so it beats the terminal block's own `.rosette{display:none}` — that hide rule is still in the file above it, so do not be surprised by it.
+**Heatmaps.** Two. *The record as heat* on The Record is one cell per week since inception, coloured by that week's return scaled against the largest absolute week in the record, outlined when a dial was breached, and clickable through to that week's after-action. The factor correlation matrix in The Lab is a true heatmap, painted in the accent.
 
-**Deliberately gone.** The banknote/paper skin and the `night` colourway were both removed, along with the toggle button and its `localStorage` key. The four-tab structure that arrived with the paper experiment was kept — that is the part worth having. The prototype file itself still sits unchanged at `trading-system/mockups/pareidolia-redesign.html` if the paper palette is ever wanted back.
+**Two traps for the next editor.** `.tag` is overloaded - masthead strapline, section subtitles, and a badge inside a strategy card - so only `.masthead .tag` carries the wide-tracked caps. And `.fsview{display:none}` is what keeps each concept's sub-views apart; drop it and every view in all three concepts renders at once.
 
 ### 2.2 Layout
 
-- One HTML file, one request. ~546 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
-- Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS — do not add number spans to the markup or they will double up.
-- Page padding `clamp(20px,4vw,56px)`, centred editorial layout, square corners. Cards are panels laid on the ground (`--panel` on `--bg`), never inversions.
-- Every dark-theme override is guarded on `data-cw`; a new visual element must render correctly in the default and in `terminal` at minimum.
+- One HTML file, one request. ~534 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
+- Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS - do not add number spans to the markup or they will double up.
+- Page padding `clamp(16px,3.4vw,44px)`, content column 1180px, left-aligned. Card grids are 1px gaps over `--line`, so the ground shows through as hairlines instead of each card carrying its own border.
+- Verified at 1265px and 375px: no horizontal overflow on any of the four tabs.
 
 ### 2.3 Banker formatting — non-negotiable
 
@@ -151,7 +149,7 @@ These are **not** in `DATA`. `build.py` reads them and embeds them for The Pipe.
 
 ## 8. Do
 
-Preserve the voice. Fix cadence where it is off. Banker formatting everywhere. Every concept carries its limitation and its disclaimer. Anything visual is built for the terminal edition — amber on black, square corners, mono for numbers and labels. There is no second colourway to check against, and adding one back means restoring a toggle, not just a palette. New content goes in one of the four tabs using the existing block/table patterns. Flag value traps, currency artefacts, and cyclical distortions — never quietly exclude them.
+Preserve the voice. Fix cadence where it is off. Banker formatting everywhere. Every concept carries its limitation and its disclaimer. Anything visual is built in the DESK register — near-black, amber accent, square corners, mono for numbers and labels — and drops into EDITORIAL only where the thing is read rather than scanned. There is no second colourway to check against. Add rules in place in the one stylesheet; do not start an override layer, which is what made the last sheet unworkable. New content goes in one of the four tabs using the existing block/table patterns. Flag value traps, currency artefacts, and cyclical distortions — never quietly exclude them.
 
 ## 9. Do not
 
