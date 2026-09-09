@@ -99,25 +99,45 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     background-size:5px 5px, auto}
   .sheet{max-width:1180px; margin:0 auto; position:relative; z-index:1}
 
-  /* ---------- the wipe: raked slabs ---------- */
-  .wipe{position:fixed; inset:-6% -12%; z-index:60; pointer-events:none;
-    display:grid; grid-template-rows:repeat(3,1fr)}
-  .wipe i{display:block; transform:skewX(-11deg) scaleX(0);
-    transform-origin:left center; will-change:transform}
-  .wipe i:nth-child(1){background:var(--accent)}
-  .wipe i:nth-child(2){background:var(--accent-2)}
-  .wipe i:nth-child(3){background:var(--bone)}
-  @keyframes slab{
-    0%  {transform:skewX(-11deg) scaleX(0); transform-origin:left center}
-    46% {transform:skewX(-11deg) scaleX(1); transform-origin:left center}
-    47% {transform:skewX(-11deg) scaleX(1); transform-origin:right center}
-    100%{transform:skewX(-11deg) scaleX(0); transform-origin:right center}
+  /* ---------- the wipe: a louvre ----------
+     Ten vertical bars slam shut left to right, alternate ones dropping from
+     the top and rising from the bottom, then lift away the opposite way. The
+     alternation is the whole trick: a single direction reads as a curtain,
+     two reads as shutters, which is the deco note. Colour cycles vermilion,
+     ochre, cream so the closed frame is banded rather than flat. */
+  .wipe{position:fixed; inset:0; z-index:60; pointer-events:none; display:flex}
+  .wipe i{display:block; flex:1 1 0; transform:scaleY(0);
+    transform-origin:top center; will-change:transform;
+    box-shadow:1px 0 0 0 rgba(21,17,14,.35)}
+  .wipe i:nth-child(3n+1){background:var(--accent)}
+  .wipe i:nth-child(3n+2){background:var(--accent-2)}
+  .wipe i:nth-child(3n+3){background:var(--bone)}
+  @keyframes louvre{
+    0%  {transform:scaleY(0); transform-origin:top center}
+    44% {transform:scaleY(1); transform-origin:top center}
+    45% {transform:scaleY(1); transform-origin:bottom center}
+    100%{transform:scaleY(0); transform-origin:bottom center}
   }
-  .wipe.run i{animation:slab .68s var(--cut) both}
-  .wipe.run i:nth-child(2){animation-delay:.055s}
-  .wipe.run i:nth-child(3){animation-delay:.11s}
+  @keyframes louvreAlt{
+    0%  {transform:scaleY(0); transform-origin:bottom center}
+    44% {transform:scaleY(1); transform-origin:bottom center}
+    45% {transform:scaleY(1); transform-origin:top center}
+    100%{transform:scaleY(0); transform-origin:top center}
+  }
+  .wipe.run i{animation:louvre .52s var(--cut) both}
+  .wipe.run i:nth-child(even){animation-name:louvreAlt}
+  .wipe.run i:nth-child(1){animation-delay:0s}
+  .wipe.run i:nth-child(2){animation-delay:.018s}
+  .wipe.run i:nth-child(3){animation-delay:.036s}
+  .wipe.run i:nth-child(4){animation-delay:.054s}
+  .wipe.run i:nth-child(5){animation-delay:.072s}
+  .wipe.run i:nth-child(6){animation-delay:.090s}
+  .wipe.run i:nth-child(7){animation-delay:.108s}
+  .wipe.run i:nth-child(8){animation-delay:.126s}
+  .wipe.run i:nth-child(9){animation-delay:.144s}
+  .wipe.run i:nth-child(10){animation-delay:.162s}
 
-  @keyframes push{from{opacity:0; transform:translateX(-28px)}to{opacity:1; transform:none}}
+  @keyframes push{from{opacity:0; transform:translateY(-22px)}to{opacity:1; transform:none}}
   .panel{display:none}
   .panel.active{display:block}
   .panel.active>section,.panel.active>div>section,.panel.active>div{
@@ -529,7 +549,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   }
 </style></head>
 <body>
-<div class="wipe" id="wipe" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="wipe" id="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 <div class="wrap"><div class="sheet">
   <div class="plate">
   <header class="masthead">
@@ -1925,8 +1945,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       if(running) return;
       running=true;
       wipe.classList.remove("run"); void wipe.offsetWidth; wipe.classList.add("run");
-      setTimeout(function(){ swap(id); }, 300);
-      setTimeout(function(){ wipe.classList.remove("run"); running=false; }, 800);
+      setTimeout(function(){ swap(id); }, 400);   /* last bar shuts at ~391ms */
+      setTimeout(function(){ wipe.classList.remove("run"); running=false; }, 760);
     }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
   })();
