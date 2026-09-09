@@ -1351,7 +1351,7 @@
     "insights": [
       "Loss asymmetry is the leak. The average loser runs 1.7× the average winner, so a 60% hit rate still finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
       "The engine is real: covered-call premium takes 78% of its closes at a 3.8 profit factor across 165 closes. That is the business. Everything else is management around it.",
-      "The forecast sleeve is running again, on purpose. It was shut in August after accounting for 90% of all closes and effectively none of the contribution; it reopened on Aug 24 across ForecastX and Kalshi to gather clean data for a systematic strategy in build. Judge it on what it returns once that record exists, not on the churn that came before.",
+      "The forecast sleeve is running again, on purpose. It was shut in August after accounting for 90% of all closes and effectively none of the contribution; it reopened on Aug 24 across ForecastX and Kalshi to gather clean data for a systematic strategy under construction. Judge it on what it returns once that record exists, not on the churn that came before.",
       "Share legs run a 0.27 profit factor across 34 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it was breached again this week.",
       "The ledger moves on the back office's schedule, not the market's. NU's August assignment only reached the trade feed a week after the fact, lifting profit factor from 0.88 to 0.91 and the share-leg line from 0.23 to 0.27. NIQ's assignment followed the same path. Expect the forecast sleeve's current run to land in these figures late as well — and do not read any of those revisions as something the market did."
     ]
@@ -1462,7 +1462,7 @@
         "Covered-call premium on liquid small-cap momentum names — the engine, currently written on only two of twelve.",
         "Cash is materiel, not an idle balance — currently spent, though the book is no longer levered.",
         "Outright holds taken selectively, sized small, each carrying a thesis and a stop set before entry.",
-        "A forecast-contract sleeve, reopened for data collection ahead of a systematic strategy in build."
+        "A forecast-contract sleeve, reopened for data collection ahead of a systematic strategy under construction."
       ]
     },
     {
