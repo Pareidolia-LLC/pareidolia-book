@@ -14,27 +14,25 @@ A public-facing private trading book. One operator. The site is the ledger, the 
 
 ## 2. Design system — what is actually there
 
-### 2.1 One look: the paper edition
+### 2.1 One look: the terminal edition
 
-There is no colourway switch, no stored preference, and no second palette in play. The template hardcodes it:
+There is no colourway switch, no stored preference, and no second palette. The template hardcodes it:
 
 ```html
-<html lang="en" data-cw="" data-plate="gold">
+<html lang="en" data-cw="terminal" data-plate="silver">
 ```
 
-**Paper.** Warm off-white ground `#F5F1E8`, lighter cards `#FAF8F2`, engraving green `#1E5B3C` as the single accent, gold `#9C7B22` for the masthead plate and badges, rust `#A33B24` down against green up. Rounded 11px surfaces, sans body with mono labels and tabular figures, serif for the nameplate, headings and stat values. Content sits left-aligned in a 960px column; section eyebrows are centred between two hairlines. No banknote decoration — the rosette ornament is off (`ORNAMENT = "none"`) and the guilloche pinstripe tokens are transparent.
+**Amber phosphor on black.** Ground `#07090A`, panels `#0D1113`, amber `#FFB000` as the single accent, terminal green `#3DF07A` up and red `#FF4B3E` down, cyan `#3AD4E8` for a third series on a chart. Square corners everywhere — `border-radius: 0`. Serif masthead and prose, mono for every number, label and control. The desk chrome is part of the look: the scrolling tape under the masthead, the numbered function rail on the tabs (digits 1–7 are bound as shortcuts), and the status line pinned to the bottom.
 
-**How it is built.** The base `:root` carries the paper palette. A layer at the end of the stylesheet — 67 rules scoped `:root:not([data-cw="terminal"])` — supplies the prototype's surfaces: radii, the plate treatment, tab styling, left alignment, and the overrides that switch off the older broadsheet layer (justified text, gold drop caps, centred editorial).
+**How it is built.** The palette lives in `:root[data-cw="terminal"]` — 52 rules layered over a base `:root` that supplies the fonts, page padding and the tokens terminal does not restate. Keeping the attribute selector means the whole terminal layer stays intact and self-documenting; it simply has nothing to switch away from. The masthead ornament is the asanoha rosette (`ORNAMENT = "asanoha"`), drawn as inline SVG at build time.
 
-**The terminal layer is still in the file and inert.** 53 rules scoped `:root[data-cw="terminal"]`, plus the desk chrome in JS (tape, function rail, status line) which returns early when the attribute is not `terminal`. `.tape` and `.statusbar` are `display:none` outside terminal, so they cost nothing. Flipping back is two edits: set `data-cw="terminal" data-plate="silver"` on the `<html>` tag and `ORNAMENT = "asanoha"`. Note the tabs carry their own `01`–`04` spans for paper; the terminal function rail numbers tabs itself, so those spans must be removed if terminal is ever restored, or the numbers double up.
-
-The `night` colourway and the runtime toggle were removed outright and are not coming back without new work.
+**Deliberately gone.** The banknote/paper skin and the `night` colourway were both removed, along with the toggle button and its `localStorage` key. The four-tab structure that arrived with the paper experiment was kept — that is the part worth having. The prototype file itself still sits unchanged at `trading-system/mockups/pareidolia-redesign.html` if the paper palette is ever wanted back.
 
 ### 2.2 Layout
 
 - One HTML file, one request. ~546 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
-- Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. Tabs are numbered `01`–`04` by spans in the markup.
-- Page padding `clamp(20px,4vw,56px)`, 960px content column, left-aligned, 11px radii. Cards are lighter sheets laid on the ground (`--paper` on `--bg`), never inversions.
+- Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS — do not add number spans to the markup or they will double up.
+- Page padding `clamp(20px,4vw,56px)`, centred editorial layout, square corners. Cards are panels laid on the ground (`--panel` on `--bg`), never inversions.
 - Every dark-theme override is guarded on `data-cw`; a new visual element must render correctly in the default and in `terminal` at minimum.
 
 ### 2.3 Banker formatting — non-negotiable
@@ -63,7 +61,7 @@ Terse, objective, unsentimental. An after-action report written by someone who w
 
 ## 4. Information architecture — the four tabs
 
-The redesign prototype's skeleton, numbered 01–04. Internal panel ids in the second column. The landing tab is The Book.
+The redesign prototype's skeleton, kept when the paper skin was dropped. The function rail numbers the tabs 1–4 and binds those digits as keyboard shortcuts. Internal panel ids in the second column. The landing tab is The Book.
 
 | # | Tab | Panel | What it holds, in order |
 |---|---|---|---|
@@ -151,7 +149,7 @@ These are **not** in `DATA`. `build.py` reads them and embeds them for The Pipe.
 
 ## 8. Do
 
-Preserve the voice. Fix cadence where it is off. Banker formatting everywhere. Every concept carries its limitation and its disclaimer. Anything visual is built for the paper edition — off-white ground, engraving green, 11px radii, mono for numbers and labels. There is no second colourway to check against. New content goes in one of the four tabs using the existing block/table patterns. Flag value traps, currency artefacts, and cyclical distortions — never quietly exclude them.
+Preserve the voice. Fix cadence where it is off. Banker formatting everywhere. Every concept carries its limitation and its disclaimer. Anything visual is built for the terminal edition — amber on black, square corners, mono for numbers and labels. There is no second colourway to check against, and adding one back means restoring a toggle, not just a palette. New content goes in one of the four tabs using the existing block/table patterns. Flag value traps, currency artefacts, and cyclical distortions — never quietly exclude them.
 
 ## 9. Do not
 
