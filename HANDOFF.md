@@ -24,13 +24,13 @@ The terminal colourway - amber phosphor on near-black - carrying three reference
 
 **FRAZETTA - one light source.** Amber pools from the top-left corner (`.wrap::after`, first gradient) and the frame falls away into shadow at the edges (second gradient, the vignette). The scanline sits under both. Together they make phosphor look like it is behind glass rather than painted on a flat div. Type carries the same light: the nameplate and the headline figures have a phosphor bloom, `--glow`, and nothing else does.
 
-**TARTAKOVSKY - the cut.** Changing tab is a CRT power-cycle, not a fade. Three elements in `#wipe`: a black plane `.blk`, a centre line `.ln`, a raster bar `.scan`. Sequence over 700ms:
+**TARTAKOVSKY - the cut.** Changing tab is a tube switching off and on, not a fade. Three elements in `#wipe`: two black halves `.top` and `.bot`, and a centre line `.ln`. Sequence over 560ms, every segment on the `--cut` easing:
 
-- 0-110ms: the black plane comes up and the amber line draws across the middle of the screen. The picture collapses to a phosphor line.
-- 110-265ms: hold on the line. The panel is exchanged at 200ms, in the dark.
-- 265-700ms: the plane clips away top to bottom (`clip-path: inset`), led by the raster bar with its glow. The new panel is revealed the way a tube redraws.
+- 0-170ms: the halves grow in from the top and bottom edges and the picture collapses to a white-hot line with an amber bloom.
+- 170-270ms: the line shrinks to a dot and goes out. The panel is exchanged at 230ms, in the dark.
+- 270-560ms: the halves part from the centre, each carrying a hairline of phosphor on its edge, and the new panel is already standing behind them.
 
-Sections then drop in from the top on a 40ms stagger, along the same axis the raster left on. The overlay clears at 740ms. Guarded against fast clicking (`running`), and skipped entirely under `prefers-reduced-motion` in favour of an instant swap.
+Sections settle by 4px on a 40ms stagger, nothing more - the reveal is the halves parting. Overlay clears at 590ms. Guarded against fast clicking (`running`), and skipped entirely under `prefers-reduced-motion` in favour of an instant swap.
 
 **Type.** Mono everywhere the page is scanned: nameplate at `.30em` tracking, section heads, tabs, tables, dials, status line. Serif only where something is read - the weekly assessment, the strategy cards, The Lab's theses, all of The Story. Square corners throughout, 1px rules, no radius anywhere.
 

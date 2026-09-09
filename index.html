@@ -73,43 +73,44 @@
   @media (prefers-reduced-motion:reduce){ .wrap::before{display:none} }
   .sheet{max-width:1180px; margin:0 auto; position:relative; z-index:1}
 
-  /* ---------- the cut: CRT off, swap in the dark, raster back on ---------- */
+  /* ---------- the cut: tube off, swap in the dark, halves part ---------- */
   .wipe{position:fixed; inset:0; z-index:60; pointer-events:none; visibility:hidden}
   .wipe.run{visibility:visible}
-  .wipe .blk{position:absolute; inset:0; background:#000; opacity:0;
-    clip-path:inset(0 0 0 0); will-change:clip-path,opacity}
-  .wipe .ln{position:absolute; left:0; right:0; top:50%; height:3px; margin-top:-1px;
-    background:var(--gold-lift); transform:scaleX(0); opacity:0; will-change:transform,opacity;
-    box-shadow:0 0 10px 3px rgba(255,176,0,.85), 0 0 42px 12px rgba(255,176,0,.35)}
-  .wipe .scan{position:absolute; left:0; right:0; top:0; height:64px; opacity:0;
-    transform:translateY(-64px); will-change:transform,opacity;
-    background:linear-gradient(180deg, rgba(255,176,0,0) 0%, rgba(255,176,0,.35) 60%, var(--gold-lift) 100%);
-    box-shadow:0 2px 14px 2px rgba(255,176,0,.55)}
-  @keyframes crtBlk{
-    0%  {opacity:0;  clip-path:inset(0 0 0 0)}
-    16% {opacity:1;  clip-path:inset(0 0 0 0)}
-    38% {opacity:1;  clip-path:inset(0 0 0 0)}
-    100%{opacity:1;  clip-path:inset(100% 0 0 0)}
+  .wipe .top,.wipe .bot{position:absolute; left:0; right:0; height:50%; background:#000;
+    will-change:transform; transform:scaleY(0)}
+  .wipe .top{top:0; transform-origin:50% 0;
+    box-shadow:0 1px 0 0 var(--gold-lift), 0 0 16px 1px rgba(255,176,0,.55)}
+  .wipe .bot{bottom:0; transform-origin:50% 100%;
+    box-shadow:0 -1px 0 0 var(--gold-lift), 0 0 16px 1px rgba(255,176,0,.55)}
+  .wipe .ln{position:absolute; left:0; right:0; top:50%; height:2px; margin-top:-1px;
+    background:#fff; opacity:0; will-change:transform,opacity;
+    box-shadow:0 0 8px 2px rgba(255,200,77,.9), 0 0 36px 10px rgba(255,176,0,.45)}
+  @keyframes crtTop{
+    0%  {transform:translateY(0) scaleY(0)}
+    30% {transform:translateY(0) scaleY(1)}
+    48% {transform:translateY(0) scaleY(1)}
+    100%{transform:translateY(-100%) scaleY(1)}
+  }
+  @keyframes crtBot{
+    0%  {transform:translateY(0) scaleY(0)}
+    30% {transform:translateY(0) scaleY(1)}
+    48% {transform:translateY(0) scaleY(1)}
+    100%{transform:translateY(100%) scaleY(1)}
   }
   @keyframes crtLine{
-    0%  {transform:scaleX(0);   opacity:0}
-    12% {transform:scaleX(1);   opacity:1}
+    0%  {transform:scaleX(1);   opacity:0}
+    22% {transform:scaleX(1);   opacity:1}
     32% {transform:scaleX(1);   opacity:1}
-    42% {transform:scaleX(1) scaleY(.3); opacity:0}
-    100%{transform:scaleX(1) scaleY(.3); opacity:0}
+    46% {transform:scaleX(.015); opacity:1}
+    50% {transform:scaleX(.015); opacity:0}
+    100%{transform:scaleX(.015); opacity:0}
   }
-  @keyframes crtScan{
-    0%  {transform:translateY(-64px); opacity:0}
-    38% {transform:translateY(-64px); opacity:0}
-    41% {opacity:1}
-    100%{transform:translateY(100vh); opacity:.9}
-  }
-  .wipe.run .blk{animation:crtBlk .70s var(--cut) both}
-  .wipe.run .ln{animation:crtLine .70s var(--cut) both}
-  .wipe.run .scan{animation:crtScan .70s linear both}
+  .wipe.run .top{animation:crtTop .56s var(--cut) both}
+  .wipe.run .bot{animation:crtBot .56s var(--cut) both}
+  .wipe.run .ln{animation:crtLine .56s var(--cut) both}
 
-  /* the panel arrives the way the raster leaves it: from the top, quickly */
-  @keyframes push{from{opacity:0; transform:translateY(-8px)}to{opacity:1; transform:none}}
+  /* the panel is already in place when the halves part; a short settle only */
+  @keyframes push{from{opacity:0; transform:translateY(4px)}to{opacity:1; transform:none}}
   .panel{display:none}
   .panel.active{display:block}
   .panel.active>section,.panel.active>div>section,.panel.active>div{
@@ -466,7 +467,7 @@
   }
 </style></head>
 <body>
-<div class="wipe" id="wipe" aria-hidden="true"><i class="blk"></i><i class="ln"></i><i class="scan"></i></div>
+<div class="wipe" id="wipe" aria-hidden="true"><i class="top"></i><i class="bot"></i><i class="ln"></i></div>
 <div class="wrap"><div class="sheet">
   <div class="plate">
   <header class="masthead">
@@ -1862,8 +1863,8 @@
       if(running) return;
       running=true;
       wipe.classList.remove("run"); void wipe.offsetWidth; wipe.classList.add("run");
-      setTimeout(function(){ swap(id); }, 200);   /* the frame is black 110-265ms */
-      setTimeout(function(){ wipe.classList.remove("run"); running=false; }, 740);
+      setTimeout(function(){ swap(id); }, 230);   /* the frame is dark 170-270ms */
+      setTimeout(function(){ wipe.classList.remove("run"); running=false; }, 590);
     }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
   })();
@@ -2112,7 +2113,7 @@
      reader can sit on a ten-minute-old copy after a refresh. version.json is
      fetched uncached and compared against the hash baked in at build time. */
   (function(){
-    var BUILD="a163b7326dc0";
+    var BUILD="22e116deec9f";
     if(!window.fetch||BUILD.charAt(0)==="_") return;
     function notice(){
       var d=document.createElement("div");
