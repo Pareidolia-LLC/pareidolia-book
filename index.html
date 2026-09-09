@@ -714,6 +714,40 @@
   .statusbar b{color:var(--accent); font-weight:600}
   .statusbar .live{color:var(--up)}
   :root[data-cw="terminal"] .wrap{padding-bottom:64px}
+
+  /* ---- banknote engraving, struck in phosphor -----------------------------
+     The terminal edition had thrown the security printing away: the rosette was
+     hidden, the engraved double rule flattened to a hairline, the guilloche
+     reduced to a scanline. It is all back, drawn in amber instead of green. The
+     palette, the fonts and the desk chrome are untouched - this is the bill's
+     line-work on the phosphor, not a second colourway. */
+
+  /* the ornament returns, lit like the nameplate */
+  :root[data-cw="terminal"] .rosette{display:block; opacity:.6;
+    filter:drop-shadow(0 0 7px rgba(255,176,0,.42))}
+  :root[data-cw="terminal"] .om path,:root[data-cw="terminal"] .om circle{stroke:var(--accent); stroke-width:.62}
+  :root[data-cw="terminal"] .omring{stroke:var(--accent); stroke-width:1.1; opacity:.9}
+  :root[data-cw="terminal"] .omring2{stroke:var(--accent); stroke-width:.5; opacity:.42}
+
+  /* the engraved double rule under the nameplate, as a certificate carries it */
+  :root[data-cw="terminal"] .dateline{border-top:2.5px double var(--accent);
+    border-bottom:1px solid rgba(255,176,0,.42); color:var(--muted)}
+
+  /* engine-turned metal on the plate, and the inner frame a bill is printed with */
+  :root[data-cw="terminal"] .plate{position:relative;
+    background:repeating-linear-gradient(115deg,rgba(255,176,0,.055) 0 6px,transparent 6px 7px),var(--plate);
+    box-shadow:inset 0 1px 0 0 rgba(255,176,0,.16)}
+  :root[data-cw="terminal"] .plate::before{content:""; position:absolute; inset:5px 6px 0;
+    border:1px solid rgba(255,176,0,.26); border-bottom:0; pointer-events:none; z-index:0}
+  :root[data-cw="terminal"] .plate>*{position:relative; z-index:1}
+
+  /* guilloche crosshatch behind the scanline: two shallow angles, barely there */
+  :root[data-cw="terminal"] .wrap::before{background:
+    repeating-linear-gradient(180deg,var(--pinstripe) 0px,var(--pinstripe) 1px,transparent 1px,transparent 3px),
+    repeating-linear-gradient(115deg,rgba(255,176,0,.042) 0px,rgba(255,176,0,.042) 1px,transparent 1px,transparent 9px),
+    repeating-linear-gradient(65deg,rgba(255,176,0,.032) 0px,rgba(255,176,0,.032) 1px,transparent 1px,transparent 11px)}
+
+  @media (max-width:560px){ :root[data-cw="terminal"] .rosette{opacity:.5} }
 </style></head>
 <body>
 <div class="wrap"><div class="sheet">
@@ -2301,7 +2335,7 @@
      reader can sit on a ten-minute-old copy after a refresh. version.json is
      fetched uncached and compared against the hash baked in at build time. */
   (function(){
-    var BUILD="e90f5a4b2de3";
+    var BUILD="4549ac133702";
     if(!window.fetch||BUILD.charAt(0)==="_") return;
     function notice(){
       var d=document.createElement("div");
