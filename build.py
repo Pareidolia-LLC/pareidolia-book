@@ -81,16 +81,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .wrap{background:var(--bg); color:var(--ink); font-family:var(--mono);
     min-height:100vh; padding:var(--pagepad) var(--pagepad) 70px;
     line-height:1.5; -webkit-font-smoothing:antialiased; position:relative; overflow:hidden}
-  /* scanline */
-  .wrap::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:repeating-linear-gradient(180deg,
-      var(--pinstripe) 0px, var(--pinstripe) 1px, transparent 1px, transparent 3px)}
   /* one light source, and glass: amber pools top-left, the edges fall away */
   .wrap::after{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
     background:
       radial-gradient(110% 80% at 8% -8%, rgba(255,176,0,.10), transparent 55%),
       radial-gradient(ellipse at 50% 42%, transparent 52%, rgba(0,0,0,.58) 100%)}
-  @media (prefers-reduced-motion:reduce){ .wrap::before{display:none} }
   .sheet{max-width:none; margin:0; position:relative; z-index:1}
   .stage{position:relative}
 
@@ -465,7 +460,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
                   steps(), so everything moves on twos like a cel.
      NAGEL        the hot colour is a slab. It slides (the tab), stamps
                   (the grade), and snaps (the states) - never blends.
-     FRAZETTA     one light. It breathes, a beam sweeps the glass, and a
+     FRAZETTA     one light. It breathes, and a
                   figure that has just landed flares before it settles.
      ===================================================================== */
   @keyframes cutIn{from{clip-path:inset(-60px 100% -60px -60px)}to{clip-path:inset(-60px)}}
@@ -482,9 +477,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     0%  {text-shadow:0 0 34px rgba(255,201,77,.95), 0 0 90px rgba(255,176,0,.55)}
     100%{text-shadow:0 0 14px rgba(255,176,0,.22)}}
   @keyframes breathe{0%,100%{opacity:.82}50%{opacity:1}}
-  @keyframes beam{0%{transform:translateY(-4px)}100%{transform:translateY(100vh)}}
   @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-  @keyframes flick{0%,93%,100%{opacity:1}94%{opacity:.78}95%{opacity:1}97%{opacity:.9}98%{opacity:1}}
 
   /* the tab slab: one amber plane that slides between the keys */
   .tabs.hasink{position:sticky}
@@ -508,7 +501,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     /* --- boot: the desk powers up, key by key --- */
     .mark .ch{display:inline-block; animation:chOn .3s steps(3) both;
       animation-delay:calc(.08s + var(--i,0)*.032s)}
-    .mark{animation:flick 13s steps(1) 4s infinite}
     .statusbar::after{animation:blink 1.1s steps(1) infinite}
     .tag{animation:snapOn .01s steps(1) both .5s}
     .dateline span{animation:snapOn .01s steps(1) both}
@@ -531,9 +523,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
     /* --- the light --- */
     .wrap::after{animation:breathe 7s ease-in-out infinite}
-    .beam{position:fixed; left:0; right:0; top:0; height:2px; z-index:1; pointer-events:none;
-      background:rgba(255,176,0,.22); box-shadow:0 0 12px 2px rgba(255,176,0,.18);
-      animation:beam 9s linear infinite}
 
     /* --- headline figures: cut in, count, then flare and settle --- */
     .stat{animation:cutIn .34s steps(6) backwards}
@@ -2163,7 +2152,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   (function(){
     var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    /* --- boot: the nameplate is struck a key at a time, a beam sweeps the glass --- */
+    /* --- boot: the nameplate is struck a key at a time --- */
     if(!still){
       var mk=document.querySelector(".mark"), tx=mk&&mk.firstChild;
       if(tx&&tx.nodeType===3){
@@ -2175,8 +2164,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
         mk.replaceChild(frag,tx);
         var dot=mk.querySelector(".dot"); if(dot){ dot.classList.add("ch"); dot.style.setProperty("--i",t.length); }
       }
-      var bm=document.createElement("i"); bm.className="beam"; bm.setAttribute("aria-hidden","true");
-      document.body.appendChild(bm);
       setTimeout(function(){ document.documentElement.classList.add("booted"); }, 1500);
       /* a revealed section gives its clip back so nothing inside is ever trapped */
       document.addEventListener("transitionend",function(e){
