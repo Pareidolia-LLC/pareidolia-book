@@ -277,11 +277,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     font-size:23px; font-weight:600; letter-spacing:-.01em; margin:10px 0 5px; color:var(--ink)}
   .dial .rule{font-family:var(--serif); font-size:12.5px; color:var(--faint); line-height:1.55}
   .rc-note{margin-top:16px; font-family:var(--serif); font-size:15px; line-height:1.72;
-    color:var(--muted); max-width:80ch}
+    color:var(--muted)}
   .rc-note b{color:var(--accent); font-weight:600; font-family:var(--mono);
     font-size:10px; letter-spacing:.18em; text-transform:uppercase}
   .rbasis{font-family:var(--serif); font-style:italic; font-size:13px; color:var(--faint);
-    margin-top:12px; line-height:1.65; max-width:80ch}
+    margin-top:12px; line-height:1.65; }
   .hlabel{font-family:var(--mono); font-size:9.5px; letter-spacing:.19em;
     text-transform:uppercase; color:var(--faint); margin:26px 0 4px}
   .hnote{font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; color:var(--faint); margin:0 0 10px}
@@ -367,10 +367,10 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .con li{font-family:var(--serif); font-size:13.5px; line-height:1.6; color:var(--muted); margin:6px 0}
 
   /* ---------- editorial prose ---------- */
-  .prose{font-family:var(--serif); font-size:16px; line-height:1.78; color:var(--muted); max-width:68ch; margin:0 0 15px}
+  .prose{font-family:var(--serif); font-size:16px; line-height:1.8; color:var(--muted); margin:0 0 15px}
   .prose b,.prose strong{color:var(--ink); font-weight:600}
   .prose a{color:var(--accent); text-decoration:underline; text-underline-offset:3px}
-  .proselist{margin:0 0 15px; padding-left:19px; max-width:68ch}
+  .proselist{margin:0 0 15px; padding-left:19px; }
   .proselist li{font-family:var(--serif); font-size:15px; line-height:1.7; color:var(--muted); margin:0 0 9px}
   .proselist li b{color:var(--ink); font-weight:600}
 
@@ -391,9 +391,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .fsview{display:none}
   .fsview.active{display:block}
   #panel-ideation .concept>.eyebrow{margin-top:22px}
-  .fs-kicker{font-family:var(--serif); font-style:italic; font-size:17px; line-height:1.65; color:var(--ink); max-width:64ch; margin:0 0 18px}
+  .fs-kicker{font-family:var(--serif); font-style:italic; font-size:17px; line-height:1.65; color:var(--ink); margin:0 0 18px}
   .fs-note{font-family:var(--serif); font-size:14px; line-height:1.7; color:var(--faint);
-    max-width:70ch; border-left:2px solid var(--accent); padding-left:16px; margin:18px 0}
+    border-left:2px solid var(--accent); padding-left:16px; margin:18px 0}
   .fs-cover{font-family:var(--mono); font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--faint); margin-top:10px}
   .fs-legend{display:flex; flex-wrap:wrap; gap:6px; margin:16px 0 6px}
   .fs-sw{display:inline-block; width:8px; height:8px; margin-right:6px; vertical-align:1px}
@@ -456,7 +456,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   /* ---------- footer ---------- */
   footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line)}
-  footer p{font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; color:var(--faint); line-height:1.9; margin:0 0 8px; max-width:88ch}
+  footer p{font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; color:var(--faint); line-height:1.9; margin:0 0 8px}
   footer .meth{font-size:8.5px; letter-spacing:.16em; text-transform:uppercase; opacity:.75}
 
   /* ---------- stale bar ---------- */
