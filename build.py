@@ -64,9 +64,11 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     --engrave:#C9A227; --label:#C9A227;
     --plate:#0A101C; --plate-edge:#26344F; --plate-rule:#C9A227; --plate-ink:#9AA7BC;
     --pinstripe:rgba(232,236,243,.030); --pinstripe-gold:rgba(201,162,39,.06);
-    --glow:5px 5px 0 #24407A, 0 0 14px rgba(201,162,39,.22);
+    --glow:4px 4px 0 var(--outline), 0 0 24px rgba(229,197,90,.30);
+    --outline:#05080F; --oxblood:#7A2530; --bone:#F2EDE0;
     color-scheme:dark;
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --display:Impact,Haettenschweiler,"Franklin Gothic Demi Cond","Arial Narrow Bold","Arial Black",sans-serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --mono:"SFMono-Regular","SF Mono",ui-monospace,"Cascadia Mono","Segoe UI Mono",Menlo,Consolas,monospace;
     --pagepad:clamp(10px,1.2vw,18px);
@@ -81,69 +83,41 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .wrap{background:var(--bg); color:var(--ink); font-family:var(--mono);
     min-height:100vh; padding:var(--pagepad) var(--pagepad) 70px;
     line-height:1.5; -webkit-font-smoothing:antialiased; position:relative; overflow:hidden}
-  /* one light source, and glass: amber pools top-left, the edges fall away */
+  /* FRAZETTA. One warm light from the top-left, an oxblood rim answering from
+     the bottom-right, and the edges falling into shadow. Under it, canvas. */
+  .wrap::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   .wrap::after{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
     background:
-      radial-gradient(110% 80% at 8% -8%, rgba(201,162,39,.10), transparent 55%),
-      radial-gradient(ellipse at 50% 42%, transparent 52%, rgba(0,0,0,.58) 100%)}
+      radial-gradient(70% 55% at 10% -6%, rgba(229,197,90,.30), rgba(201,120,40,.12) 42%, transparent 70%),
+      radial-gradient(55% 45% at 102% 108%, rgba(122,37,48,.30), transparent 62%),
+      radial-gradient(ellipse at 50% 45%, transparent 48%, rgba(0,0,0,.62) 100%)}
   .sheet{max-width:none; margin:0; position:relative; z-index:1}
   .stage{position:relative}
 
-  /* ---------- the cut: tube off, swap in the dark, halves part ---------- */
-  .wipe{position:fixed; left:0; top:0; width:100%; height:100%; z-index:60; pointer-events:none; visibility:hidden}
-  .wipe.run{visibility:visible}
-  .wipe .top,.wipe .bot{position:absolute; left:0; right:0; height:50%; background:#05080F;
-    will-change:transform; transform:scaleY(0)}
-  .wipe .top{top:0; transform-origin:50% 0;
-    box-shadow:0 1px 0 0 var(--gold-lift), 0 0 16px 1px rgba(201,162,39,.55)}
-  .wipe .bot{bottom:0; transform-origin:50% 100%;
-    box-shadow:0 -1px 0 0 var(--gold-lift), 0 0 16px 1px rgba(201,162,39,.55)}
-  .wipe .ln{position:absolute; left:0; right:0; top:50%; height:2px; margin-top:-1px;
-    background:#fff; opacity:0; will-change:transform,opacity;
-    box-shadow:0 0 8px 2px rgba(229,197,90,.9), 0 0 36px 10px rgba(201,162,39,.45)}
-  @keyframes crtTop{
-    0%  {transform:translateY(0) scaleY(0)}
-    30% {transform:translateY(0) scaleY(1)}
-    48% {transform:translateY(0) scaleY(1)}
-    100%{transform:translateY(-100%) scaleY(1)}
-  }
-  @keyframes crtBot{
-    0%  {transform:translateY(0) scaleY(0)}
-    30% {transform:translateY(0) scaleY(1)}
-    48% {transform:translateY(0) scaleY(1)}
-    100%{transform:translateY(100%) scaleY(1)}
-  }
-  @keyframes crtLine{
-    0%  {transform:scaleX(1);   opacity:0}
-    22% {transform:scaleX(1);   opacity:1}
-    32% {transform:scaleX(1);   opacity:1}
-    46% {transform:scaleX(.015); opacity:1}
-    50% {transform:scaleX(.015); opacity:0}
-    100%{transform:scaleX(.015); opacity:0}
-  }
-  .wipe.run .top{animation:crtTop .56s var(--cut) both}
-  .wipe.run .bot{animation:crtBot .56s var(--cut) both}
-  .wipe.run .ln{animation:crtLine .56s var(--cut) both}
-
   .panel{display:none}
   .panel.active{display:block}
-  @media (prefers-reduced-motion:reduce){ .wipe{display:none} }
 
-  /* ---------- masthead: phosphor nameplate ---------- */
-  .plate{display:flex; align-items:flex-end; justify-content:space-between; gap:16px 30px;
-    flex-wrap:wrap; padding:6px 0 12px; border-bottom:2px solid var(--accent)}
-  .masthead{display:block; padding:0}
-  .mark{font-family:var(--mono); font-weight:600;
-    font-size:clamp(26px,5.2vw,52px); line-height:1; letter-spacing:.30em;
-    text-transform:uppercase; color:var(--accent); text-shadow:var(--glow)}
+  /* ---------- NAGEL masthead: flat planes, one diagonal, a poster face ---------- */
+  .plate{position:relative; display:flex; align-items:flex-end; justify-content:space-between;
+    gap:16px 30px; flex-wrap:wrap; padding:26px 26px 22px; overflow:hidden;
+    background:var(--panel); box-shadow:inset 0 0 0 2px var(--line)}
+  .plate::before{content:""; position:absolute; top:0; bottom:0; left:56%; right:0; z-index:0;
+    background:var(--accent); clip-path:polygon(22% 0,100% 0,100% 100%,0 100%)}
+  .plate::after{content:""; position:absolute; top:0; bottom:0; left:56%; right:0; z-index:0;
+    background:var(--outline); clip-path:polygon(16% 0,22% 0,0 100%,-6% 100%)}
+  .masthead{display:block; padding:0; position:relative; z-index:1}
+  .mark{font-family:var(--display); font-weight:400;
+    font-size:clamp(44px,7.4vw,104px); line-height:.92; letter-spacing:.015em;
+    text-transform:uppercase; color:var(--bone); text-shadow:var(--glow)}
   .mark .dot{color:var(--up)}
   .tag{font-family:var(--mono); font-size:11px; letter-spacing:.16em;
-    text-transform:uppercase; color:var(--muted); max-width:52ch; line-height:1.7; margin:8px 0 0}
+    text-transform:uppercase; color:var(--muted); max-width:52ch; line-height:1.7; margin:14px 0 0}
   .rosette,.om{display:none}
-  .dateline{display:flex; flex-direction:column; align-items:flex-end; gap:5px;
-    font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-align:right;
-    text-transform:uppercase; color:var(--muted); padding:0 0 6px}
-  .dateline b{color:var(--accent); font-weight:600}
+  .dateline{position:relative; z-index:1; display:flex; flex-direction:column; align-items:flex-end; gap:6px;
+    font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.2em; text-align:right;
+    text-transform:uppercase; color:#0A101C; padding:0}
+  .dateline b{color:var(--accent); background:#0A101C; padding:3px 8px; font-weight:600}
 
   /* ---------- tape ---------- */
   .tape{display:block; overflow:hidden; position:relative;
@@ -159,14 +133,14 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   /* ---------- tabs: the function rail, active one an amber slab ---------- */
   .tabs{display:flex; gap:0; position:sticky; top:0; z-index:7;
-    background:var(--panel-2); border-bottom:1px solid var(--line);
+    background:var(--panel-2); border-bottom:3px solid var(--accent);
     overflow-x:auto; scrollbar-width:none; margin:0 0 14px}
   .tabs::-webkit-scrollbar{display:none}
   .tab{appearance:none; background:none; border:0; cursor:pointer; font:inherit;
     font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.13em;
     text-transform:uppercase; color:var(--muted); padding:14px 20px 12px;
     white-space:nowrap; position:relative; transition:color .14s, background .14s}
-  .tab{border-right:1px solid var(--line)}
+  .tab{border-right:2px solid var(--line)}
   .tab .fk{color:var(--accent); margin-right:9px; opacity:1; font-weight:600; font-size:9px;
     border:1px solid var(--line); padding:1px 5px; background:var(--bg)}
   .tab.active .fk{background:#0A101C; color:var(--accent); border-color:#0A101C; opacity:1}
@@ -180,34 +154,40 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .scrollprog.scrolled{opacity:1}
 
   /* ---------- section heads ---------- */
-  section,.concept{position:relative; margin-top:14px; border:1px solid var(--line);
-    background:var(--panel); padding:34px 14px 14px}
-  section:not(:has(> .eyebrow)){padding-top:14px}
+  section,.concept{position:relative; margin-top:14px; border:2px solid var(--line);
+    background:var(--panel); padding:36px 16px 16px}
+  section::before,.concept::before{content:""; position:absolute; top:-2px; right:-2px; width:26px; height:26px;
+    background:linear-gradient(to bottom left, var(--bg) 50%, var(--line) 50%, var(--line) calc(50% + 2.8px), transparent calc(50% + 2.8px))}
+  .concept::before{display:none}
+  section:not(:has(> .eyebrow)){padding-top:16px}
   .panel.active>section:first-child,.panel.active>div:first-child section:first-child{margin-top:0}
   .bookgrid>section{margin-top:0}
-  .eyebrow{position:absolute; top:-1px; left:-1px; margin:0; display:inline-flex; align-items:center;
-    padding:5px 11px 4px; background:var(--accent); color:#0A101C;
+  .eyebrow{position:absolute; top:-2px; left:-2px; margin:0; display:inline-flex; align-items:center;
+    padding:6px 22px 5px 12px; background:var(--accent); color:#0A101C;
+    clip-path:polygon(0 0,100% 0,calc(100% - 11px) 100%,0 100%);
     font-family:var(--mono); font-size:9px; font-weight:600; letter-spacing:.24em; text-transform:uppercase;
     white-space:nowrap; max-width:calc(100% + 2px); overflow:hidden; text-overflow:ellipsis}
   .eyebrow b,.eyebrow span{color:inherit}
-  h2{font-family:var(--mono); font-weight:600; font-size:clamp(16px,1.6vw,21px);
-    letter-spacing:.06em; text-transform:uppercase; margin:0 0 6px; color:var(--accent)}
+  h2{font-family:var(--display); font-weight:400; font-size:clamp(22px,2.1vw,30px); line-height:1;
+    letter-spacing:.02em; text-transform:uppercase; margin:0 0 10px; color:var(--bone);
+    text-shadow:3px 3px 0 var(--outline)}
   h3{font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:.12em;
     text-transform:uppercase; color:var(--muted); margin:0 0 8px}
 
   /* ---------- headline numbers: phosphor lit ---------- */
   .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:1px; background:var(--line); border:1px solid var(--line); margin-top:12px}
-  .stat{background:var(--panel); padding:22px 22px 20px}
+    gap:2px; background:var(--line); border:2px solid var(--line); margin-top:12px}
+  .stat{background:var(--panel); padding:22px 22px 20px; border-top:3px solid var(--line)}
+  .stat:first-child{border-top-color:var(--accent)}
   .stat .k{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em;
     text-transform:uppercase; color:var(--muted)}
-  .stat .v{font-family:var(--mono); font-variant-numeric:tabular-nums;
-    font-size:clamp(34px,4.8vw,52px); font-weight:600; letter-spacing:-.02em;
-    line-height:1; margin:14px 0 0; color:var(--accent); text-shadow:0 0 14px rgba(201,162,39,.22)}
+  .stat .v{font-family:var(--display); font-weight:400;
+    font-size:clamp(46px,5.6vw,72px); letter-spacing:.01em;
+    line-height:.95; margin:14px 0 0; color:var(--accent); text-shadow:3px 3px 0 var(--outline), 0 0 18px rgba(201,162,39,.22)}
   .stat .m{font-family:var(--serif); font-size:12.5px; color:var(--faint); margin-top:10px; line-height:1.5}
   .pos{color:var(--up)} .neg{color:var(--down)}
-  .stat .v.pos{color:var(--up); text-shadow:0 0 14px rgba(60,199,126,.25)}
-  .stat .v.neg{color:var(--down); text-shadow:0 0 14px rgba(224,72,78,.25)}
+  .stat .v.pos{color:var(--up); text-shadow:3px 3px 0 var(--outline), 0 0 18px rgba(60,199,126,.28)}
+  .stat .v.neg{color:var(--down); text-shadow:3px 3px 0 var(--outline), 0 0 18px rgba(224,72,78,.28)}
   .asofline{font-family:var(--mono); font-size:9.5px; letter-spacing:.18em;
     text-transform:uppercase; color:var(--faint); margin:12px 0 0}
   .asofline b{color:var(--muted); font-weight:600}
@@ -242,8 +222,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
 
   /* ---------- after-action: the grade is an amber slab ---------- */
   .rc-head{display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin:14px 0 16px}
-  .grade{font-family:var(--mono); font-weight:600; font-size:48px; line-height:.9;
-    letter-spacing:-.02em; padding:12px 20px; background:var(--accent); color:#0A101C}
+  .grade{font-family:var(--display); font-weight:400; font-size:58px; line-height:.9;
+    letter-spacing:0; padding:12px 22px 10px; background:var(--accent); color:#0A101C;
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%)}
   .rc-head .wk{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em;
     text-transform:uppercase; color:var(--muted); line-height:1.9}
   .rc-head .wkret{font-weight:600; font-variant-numeric:tabular-nums}
@@ -252,7 +233,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     border:1px solid var(--line); padding:3px 8px; margin-top:7px}
   .dials{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
     gap:1px; background:var(--line); border:1px solid var(--line)}
-  .dial{background:var(--panel); padding:16px 17px 15px; border-top:2px solid var(--line)}
+  .dial{background:var(--panel); padding:16px 17px 15px; border-top:4px solid var(--line)}
   .dial.pass{border-top-color:var(--up)}
   .dial.warn{border-top-color:var(--warn)}
   .dial.fail{border-top-color:var(--down)}
@@ -263,8 +244,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .state.pass{background:var(--up)}
   .state.warn{background:var(--warn)}
   .state.fail{background:var(--down)}
-  .dial .dv{font-family:var(--mono); font-variant-numeric:tabular-nums;
-    font-size:23px; font-weight:600; letter-spacing:-.01em; margin:10px 0 5px; color:var(--ink)}
+  .dial .dv{font-family:var(--display); font-weight:400;
+    font-size:32px; letter-spacing:.01em; line-height:1; margin:12px 0 6px; color:var(--bone); text-shadow:2px 2px 0 var(--outline)}
   .dial .rule{font-family:var(--serif); font-size:12.5px; color:var(--faint); line-height:1.55}
   .rc-note{margin-top:14px; font-family:var(--serif); font-size:15px; line-height:1.7;
     color:var(--muted)}
@@ -286,7 +267,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .gcard.recon{opacity:.62}
   .gcard.recon:hover,.gcard.recon.active{opacity:1}
   .gw{font-family:var(--mono); font-size:9px; letter-spacing:.11em; text-transform:uppercase; color:var(--faint)}
-  .gg{font-family:var(--mono); font-size:22px; font-weight:600; letter-spacing:-.02em; line-height:1.15; margin:4px 0 2px}
+  .gg{font-family:var(--display); font-size:26px; font-weight:400; letter-spacing:.01em; line-height:1.1; margin:4px 0 2px; text-shadow:2px 2px 0 var(--outline)}
   .gr{font-family:var(--mono); font-size:10px; font-variant-numeric:tabular-nums}
   .gnow{font-family:var(--mono); font-size:7.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin-top:3px}
   .grecon{font-family:var(--mono); font-size:7.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-top:3px}
@@ -314,7 +295,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .legend-strat span{display:inline-flex; gap:8px; align-items:center}
 
   /* ---------- tables ---------- */
-  .tablewrap{overflow-x:auto; border:1px solid var(--line); margin-top:12px}
+  .tablewrap{overflow-x:auto; border:2px solid var(--line); margin-top:12px}
   table{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:11px}
   thead th{background:var(--panel-2); color:var(--accent); font-weight:600;
     font-size:9px; letter-spacing:.17em; text-transform:uppercase; text-align:left;
@@ -332,7 +313,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* ---------- strategy cards ---------- */
   .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
     gap:1px; background:var(--line); border:1px solid var(--line); margin-top:14px}
-  .appr{background:var(--panel); padding:20px; display:flex; flex-direction:column; border-top:2px solid var(--accent)}
+  .appr{background:var(--panel); padding:20px; display:flex; flex-direction:column; border-top:4px solid var(--accent)}
   .appr:nth-child(2){border-top-color:var(--warn)}
   .appr:nth-child(3){border-top-color:var(--compare)}
   .appr h3{font-family:var(--mono); font-size:12.5px; font-weight:600; letter-spacing:.1em;
@@ -349,7 +330,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* ---------- mandate ---------- */
   .con{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:1px; background:var(--line); border:1px solid var(--line); margin-top:14px}
-  .con .box{background:var(--panel); padding:17px 18px; border-top:2px solid var(--line)}
+  .con .box{background:var(--panel); padding:17px 18px; border-top:4px solid var(--line)}
   .con .box.ok{border-top-color:var(--up)}
   .con .box.no{border-top-color:var(--down)}
   .con .box h4{font-family:var(--mono); font-size:9px; letter-spacing:.19em; text-transform:uppercase; color:var(--faint); margin:0 0 11px}
@@ -466,16 +447,16 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   @keyframes cutIn{from{clip-path:inset(-60px 100% -60px -60px)}to{clip-path:inset(-60px)}}
   @keyframes snapOn{from{opacity:0}to{opacity:1}}
   @keyframes chOn{
-    0%  {opacity:0; text-shadow:none}
-    40% {opacity:1; text-shadow:0 0 28px rgba(229,197,90,.95), 0 0 80px rgba(201,162,39,.55)}
-    100%{opacity:1; text-shadow:var(--glow)}}
+    0%  {opacity:0; text-shadow:none; transform:translate(-6px,-6px)}
+    40% {opacity:1; text-shadow:none; transform:translate(-6px,-6px)}
+    100%{opacity:1; text-shadow:var(--glow); transform:none}}
   @keyframes stamp{
     0%  {transform:scale(1.7); opacity:0}
     35% {transform:scale(1.7); opacity:1}
     100%{transform:scale(1);   opacity:1}}
   @keyframes flare{
-    0%  {text-shadow:0 0 34px rgba(229,197,90,.95), 0 0 90px rgba(201,162,39,.55)}
-    100%{text-shadow:0 0 14px rgba(201,162,39,.22)}}
+    0%  {text-shadow:3px 3px 0 var(--outline), 0 0 34px rgba(229,197,90,.95), 0 0 90px rgba(201,162,39,.55)}
+    100%{text-shadow:3px 3px 0 var(--outline), 0 0 18px rgba(201,162,39,.22)}}
   @keyframes breathe{0%,100%{opacity:.82}50%{opacity:1}}
   @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 
@@ -486,6 +467,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .tabs.hasink .tab.active .fk{transition:color .1s steps(2) .28s}
   .tabs.hasink .tabink{display:block; position:absolute; left:0; top:0; height:100%; width:0;
     background:var(--accent); z-index:0; pointer-events:none;
+    clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%);
     transition:left .4s var(--cut), width .4s var(--cut), top .4s var(--cut)}
 
   /* hovers snap on twos */
@@ -687,13 +669,14 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     .dials{grid-template-columns:1fr}
     .con{grid-template-columns:1fr}
     .cards{grid-template-columns:1fr}
-    .mark{font-size:clamp(22px,7.5vw,34px); letter-spacing:.18em}
-    .dateline{align-items:flex-start; text-align:left}
-    .plate{flex-direction:column; align-items:flex-start}
+    .mark{font-size:clamp(40px,12vw,58px); letter-spacing:.01em}
+    .dateline{align-items:flex-start; text-align:left; color:var(--muted)}
+    .dateline b{background:none; padding:0}
+    .plate{flex-direction:column; align-items:flex-start; padding:18px 16px}
+    .plate::before,.plate::after{display:none}
   }
 </style></head>
 <body>
-<div class="wipe" id="wipe" aria-hidden="true"><i class="top"></i><i class="bot"></i><i class="ln"></i></div>
 <div class="wrap"><div class="sheet">
   <div class="plate">
   <header class="masthead">
@@ -2080,33 +2063,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       if(window.__motion) window.__motion(panels[id]);
     }
 
-    /* Three slabs cross the frame on a stagger. The panel is exchanged while
-       the second one covers it, so the change is never seen happening - the
-       cut does the work, the way a wipe does in an animated cut. */
-    var wipe=document.getElementById("wipe"), running=false;
-    var still=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-    /* The cut is confined to the stage - the part of it on screen, below the
-       key rail. The masthead and the keys stay lit while the tube goes off. */
-    function fit(){
-      var st=document.getElementById("stage"), tb=document.querySelector(".tabs");
-      if(!st) return;
-      var r=st.getBoundingClientRect(), kb=tb?tb.getBoundingClientRect().bottom:0;
-      var top=Math.max(0,r.top,kb), bot=Math.min(window.innerHeight,r.bottom);
-      wipe.style.top=top+"px"; wipe.style.left=r.left+"px";
-      wipe.style.width=r.width+"px"; wipe.style.height=Math.max(0,bot-top)+"px";
-    }
-    function activate(id){
-      var cur=document.querySelector(".panel.active");
-      if(still||!wipe||(cur&&cur.id==="panel-"+id)){ swap(id); return; }
-      if(running) return;
-      running=true;
-      fit();
-      wipe.classList.remove("run"); void wipe.offsetWidth; wipe.classList.add("run");
-      window.__inkHold=true;
-      setTimeout(function(){ swap(id); }, 230);   /* the frame is dark 170-270ms */
-      setTimeout(function(){ wipe.classList.remove("run"); running=false;
-        window.__inkHold=false; if(window.__tabInk) window.__tabInk(); }, 590);
-    }
+    /* A hard cut. The sections of the new panel cut in on twos; the slab on
+       the key rail slides. Nothing covers the frame. */
+    function activate(id){ swap(id); }
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
   })();
 
@@ -2179,7 +2138,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       bar.appendChild(ink);
       bar.classList.add("hasink");
       var place=function(){
-        if(window.__inkHold) return;   /* the slab moves after the cut, in view */
         var on=bar.querySelector(".tab.active");
         if(!on){ink.style.opacity=0;return;}
         ink.style.opacity=1;

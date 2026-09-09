@@ -14,33 +14,15 @@ A public-facing private trading book. One operator. The site is the ledger, the 
 
 ## 2. Design system — what is actually there
 
-### 2.1 The desk, restruck
+### 2.1 Frazetta and Tartakovsky, as finance bros
 
-The banker's colourway - brass on deep navy - carrying three references. Each one is translated into something a CRT can actually do, which is the constraint that keeps it from becoming a paperback cover.
+Two references, built into the chrome. The brief was literal: how would those two make a book site if they worked a desk. A banker's palette underneath: ground `#0A101C`, panels `#101A2B` / `#16223A`, rule `#26344F`, ink `#E8ECF3`, bone `#F2EDE0`, one hot colour brass `#C9A227`, oxblood `#7A2530` for the rim light, outline `#05080F`, up `#3CC77E`, down `#E0484E`, steel blue `#5B9BD5` for a comparison line only.
 
-**The palette is a banker's.** Ground deep navy `#0A101C`, panels `#101A2B` / `#16223A`, rule `#26344F`. Ink `#E8ECF3`, muted `#9AA7BC`, faint `#697690`. One hot colour, brass `#C9A227`, with a lift `#E5C55A` for the glow. Up `#3CC77E`, down `#E0484E`, steel blue `#5B9BD5` only for a comparison line. The nameplate's flat drop is royal blue `#24407A`. Nothing else. If a new colour seems necessary it is a sign the hierarchy is wrong.
+**FRAZETTA - the numbers are the heroes, and the light is warm.** Headline returns, dial values, the grade and the week grades are set in the display face (`--display`: Impact and its cousins) at poster size, with a hard dark drop and a warm bloom behind them. They are the muscle in the frame. `.wrap::after` carries the light: a warm bloom from the top-left (brass into burnt orange), an oxblood rim answering from the bottom-right, and the edges falling into shadow. `.wrap::before` is canvas grain - an inline SVG turbulence at 5% - so flat colour reads as painted. That is the only texture on the page; there is no scanline and no screen effect.
 
-**NAGEL - flat planes, one hot colour.** The active tab, the week's grade, the timeline-view pill, the heavy insider badge and every table head are solid brass with the ground colour knocked out of them. Amber is a *surface* at full strength or a glow; it is never a tint. The grade slab takes the grade's own colour (green, brass, red) as its background - the JS sets `background`, not `color`, so do not reintroduce a text colour there or it becomes brass on brass.
+**TARTAKOVSKY - angular blocks, thick outlines, hard cuts.** The masthead is a composition: a brass plane cut on the diagonal behind the identity block with a thick dark stroke on the same angle. Every window is a 2px keyline with a 26px chamfer on its top-right corner (a gradient in `::before`, so it survives the reveal clip). Every brass slab has a slanted edge - the key on the rail, the window titles, the grade's cut corner. Cards carry 3-4px top bars. Headings are the display face in bone with a hard dark drop, never a glow. Changing tab is a hard cut with no overlay at all: the new panel's sections cut in left to right on `steps()`, the slab slides on the rail, and that is the whole transition. Everything that enters does so on twos; nothing fades.
 
-**FRAZETTA - one light source.** Amber pools from the top-left corner (`.wrap::after`, first gradient) and the frame falls away into shadow at the edges (second gradient, the vignette). No scanline, no screen texture: the light is the only thing that says glass. Type carries the same light: the nameplate and the headline figures have a phosphor bloom, `--glow`, and nothing else does.
-
-**TARTAKOVSKY - the cut.** Changing tab is a tube switching off and on, not a fade. Three elements in `#wipe`: two black halves `.top` and `.bot`, and a centre line `.ln`. Sequence over 560ms, every segment on the `--cut` easing:
-
-- 0-170ms: the halves grow in from the top and bottom edges and the picture collapses to a white-hot line with an brass bloom.
-- 170-270ms: the line shrinks to a dot and goes out. The panel is exchanged at 230ms, in the dark.
-- 270-560ms: the halves part from the centre, each carrying a hairline of phosphor on its edge, and the new panel is already standing behind them.
-
-Sections settle by 4px on a 40ms stagger, nothing more - the reveal is the halves parting. Overlay clears at 590ms. Guarded against fast clicking (`running`), and skipped entirely under `prefers-reduced-motion` in favour of an instant swap.
-
-**Motion, everywhere, by the same three rules.** Nothing on the page fades. Every entrance is a `clip-path` cut on `steps()`, so it moves on twos like a cel - sections wipe in left to right in twelve frames, the eyebrow rule draws itself, the heading is cut after it. The hot colour is a slab: the active tab is one brass plane (`.tabink`) that slides between the keys after the cut, the grade is stamped down from 1.7x in three frames every time a week is picked, the dial states stamp in behind it. The light is one source: the top-left pool breathes on a seven-second cycle, and a headline figure flares white-hot the instant its count lands, then settles to its resting glow. On boot the nameplate is struck a letter at a time, then the strapline, the dateline, the keys, the figures and the status line snap on in that order. The curve is traced as a scope trace every time The Book comes up; the allocation bars fill on twos one after another; the heat rasters in cell by cell; table rows on The Book and The Record snap in top to bottom. All of it lives in one `@media (prefers-reduced-motion:no-preference)` block and is absent otherwise.
-
-**The desk, 1989.** Full bleed: the sheet has no maximum width and the page padding is a thin bezel, so a wide monitor gets a wide desk. Every `section` and every `.concept` is a window - a 1px frame on the panel colour with its title (`.eyebrow`) set as an brass tab on the top edge of the frame, the way a terminal page carries its name. The keys on the rail are keycaps: the digit sits in a small bordered box. The nameplate carries a flat teal offset shadow under its glow - Nagel's one trick, a hard drop in a second colour. The status line ends in a blinking cursor. Tables are dense: 11px, 6px rows.
-
-**The cut is confined.** `#wipe` is sized by JS (`fit()`) to the part of `#stage` that is on screen below the key rail, so the masthead and the keys stay lit while the tube goes off. The halves collapse to the centre of that box, not the viewport.
-
-**Type.** Mono everywhere the page is scanned: nameplate at `.30em` tracking, section heads, tabs, tables, dials, status line. Serif only where something is read - the weekly assessment, the strategy cards, The Lab's theses, all of The Story. Square corners throughout, 1px rules, no radius anywhere.
-
-**Kept from before:** the tape crawling the book and the headline figures; the function-rail digits on the tabs; the status line pinned to the bottom.
+**Kept:** the tape, the keycaps, the status line with its cursor, the stamped grade, the counted figures, the traced curve, the rastered heat.
 
 **Two traps for the next editor.** `.tag` is overloaded - masthead strapline and a badge inside a strategy card - so scope carefully. And `.fsview{display:none}` is what keeps each concept's sub-views apart; drop it and every view in all three concepts renders at once.
 
