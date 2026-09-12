@@ -1,21 +1,21 @@
 {
-  "asOf": "Sep 5, 2026",
+  "asOf": "Sep 12, 2026",
   "curveLabel": "Time-weighted · Since inception, Oct 2025",
   "returns": [
     {
       "k": "Return · YTD 2026",
-      "v": -3.89,
+      "v": -6.75,
       "m": "Time-weighted, net"
     },
     {
       "k": "Return · Trailing 12M",
-      "v": -4.21,
+      "v": -7.06,
       "m": "Since inception, Oct 2025"
     },
     {
       "k": "Return · Last 7 Days",
-      "v": -1.18,
-      "m": "No equity trades; four names uncovered"
+      "v": -3.07,
+      "m": "Calls rewritten on five names; event sleeve settled at zero"
     }
   ],
   "reports": [
@@ -1260,7 +1260,6 @@
       "weekLabel": "Week of Aug 31 – Sep 4, 2026",
       "grade": "C",
       "weekRet": -1.08,
-      "now": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -1282,21 +1281,49 @@
         }
       ],
       "note": "A quiet week that fixed nothing. Not one equity trade was placed in five sessions — no new names, no averaging down, none of last week's escalation repeated, and the book came off margin. That is the improvement, and it is real. What did not change is the reserve: cash closed at 0.6% of NAV, a third consecutive week under the 10% floor, with stock at 99.8% of net asset value. Being fully invested is not the same as being on margin, but it leaves nothing to deploy and nothing to absorb a shock. The quieter problem is the engine. Short calls on BBAI, KEEL, SERV and XNDU all came off at zero in Friday's expiry processing and none were rewritten, so ten of twelve names now sit as uncovered stock. Covered-call premium is the one line in this book with a real edge, and for most of the collateral it is currently switched off. −1.1% on the week; the forecast sleeve ran 15 trades for data and is not scored."
+    },
+    {
+      "w": "Sep 11",
+      "weekLabel": "Week of Sep 7 – Sep 11, 2026",
+      "grade": "D",
+      "weekRet": -3.13,
+      "now": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "pass",
+          "value": "SPCX 18.7%",
+          "rule": "Inside the 20% cap · PLTR 17.9% just behind it"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "1.2%",
+          "rule": "Fourth week under the 10% floor · off margin, but stock is 98.9% of NAV"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "fail",
+          "value": "698 lots, none back",
+          "rule": "JPUSD is a banned root — 20 entries, 300 lots at 0.95+, every contract settled at zero"
+        }
+      ],
+      "note": "The wheel came back on and the sleeve blew a hole in the week. Tuesday's open rewrote calls on five names — HUN, KEEL, SERV, BBAI and XNDU — which is exactly what last week's card asked for, and it worked: the SERV, BBAI and XNDU weeklies expired worthless on Friday and the premium was kept whole. That is the engine restarting, and it is the one thing here worth repeating. Against it sits the forecast sleeve, and there is no soft way to write this up. JPUSD is a banned root — banned on the full history, in writing, because of what it has already cost this book. It was entered by hand twenty times across four sessions: 673 contracts, 300 of them priced at 0.95 or higher, most of them lifted at market into a seven-cent quote. The engine's own guardrails would have refused every one of those tickets — it caps entry at 0.92 and caps a single settlement at 0.4% of net asset value, and both were ignored because the orders never went through it. Every contract settled at zero. So did the 25 on CFBTC. The sleeve was roughly 2.1% of net asset value and it accounted for about two thirds of the week's loss; strip it out and the book was down around a percent. Cash closed at 1.2% of net asset value, a fourth consecutive week beneath the 10% floor, which is why there was nothing to rebuild the reserve with and nothing to absorb the hit. Position size is the only dial that held — SPCX has taken over as the largest name at 18.7%, inside the cap. Two dials red. The one that matters is the one the system was built to prevent, and it was not the system that failed."
     }
   ],
   "career": {
     "sinceLabel": "Oct 2025",
-    "asOfLabel": "Sep 5, 2026",
+    "asOfLabel": "Sep 12, 2026",
     "headline": [
       {
         "k": "Closed trades",
-        "v": "2,102",
+        "v": "2,108",
         "m": "Engagements opened, closed & booked"
       },
       {
         "k": "Win rate",
-        "v": "59.6%",
-        "m": "1,253 won · 849 lost"
+        "v": "59.7%",
+        "m": "1,259 won · 849 lost"
       },
       {
         "k": "Profit factor",
@@ -1315,7 +1342,7 @@
       },
       {
         "k": "Profitable months",
-        "v": "6 / 11",
+        "v": "7 / 12",
         "m": "By realized P&L"
       }
     ],
@@ -1341,98 +1368,98 @@
       {
         "name": "Event contracts",
         "tag": "forecast",
-        "win": 57.9,
+        "win": 58.0,
         "pf": 0.89,
-        "closes": 1896,
+        "closes": 1902,
         "tone": "warn",
-        "note": "High-volume churn at break-even, negative once costs are counted. Decommissioned — activity mistaken for work."
+        "note": "Reopened in August to gather data for a systematic build. The week of Sep 7 is what it costs when the rules get bypassed."
       }
     ],
     "insights": [
-      "Loss asymmetry is the leak. The average loser runs 1.7× the average winner, so a 60% hit rate still finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
-      "The engine is real: covered-call premium takes 78% of its closes at a 3.8 profit factor across 165 closes. That is the business. Everything else is management around it.",
-      "The forecast sleeve is running again, on purpose. It was shut in August after accounting for 90% of all closes and effectively none of the contribution; it reopened on Aug 24 across ForecastX and Kalshi to gather clean data for a systematic strategy under construction. Judge it on what it returns once that record exists, not on the churn that came before.",
-      "Share legs run a 0.27 profit factor across 34 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it was breached again this week.",
-      "The ledger moves on the back office's schedule, not the market's. NU's August assignment only reached the trade feed a week after the fact, lifting profit factor from 0.88 to 0.91 and the share-leg line from 0.23 to 0.27. NIQ's assignment followed the same path. Expect the forecast sleeve's current run to land in these figures late as well — and do not read any of those revisions as something the market did."
+      "Loss asymmetry is still the leak. The average loser runs 1.6× the average winner, so a 59.7% hit rate finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
+      "The engine is real: covered-call premium takes 77% of its closes at a 3.5 profit factor across 171 closes. That is the business, and everything else is management around it. It was switched off for two weeks at the start of September and switched back on in the week of Sep 7. The gap cost nothing visible, which is precisely why it is easy to let happen again.",
+      "The forecast sleeve reopened on Aug 24 to gather clean data for a systematic strategy under construction, and for two weeks that is what it did. In the week of Sep 7 it stopped being a data run: 698 contracts went into two roots, one of them on the strategy's own banned list, entered by hand at prices and sizes the strategy would have refused outright. Every contract settled at zero. The sleeve is no longer being judged on a thin record. It is being judged on whether the rules that were written down get followed.",
+      "Share legs run a 0.34 profit factor across 35 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it has now held for six consecutive weeks — the longest clean run in the record.",
+      "The ledger moves on the back office's schedule, not the market's. NU's August assignment reached the trade feed a week after the fact and NIQ's followed the same path. The same lag is live right now: not one contract from the week of Sep 7 carries realized P&L yet, so September counts as a green month on the strength of three closes booked in its first three days. Read that tile as a cutoff, not as a verdict — the sleeve's loss lands in it later."
     ]
   },
   "positions": [
     {
-      "t": "PLTR",
-      "s": "dir",
-      "w": 18.08,
-      "r": 2.63
-    },
-    {
       "t": "SPCX",
       "s": "dir",
-      "w": 17.88,
-      "r": 6.76
+      "w": 18.73,
+      "r": 8.47
+    },
+    {
+      "t": "PLTR",
+      "s": "dir",
+      "w": 17.86,
+      "r": -1.59
     },
     {
       "t": "GRPN",
       "s": "wheel",
-      "w": 13.02,
-      "r": -30.17
+      "w": 13.47,
+      "r": -29.91
     },
     {
       "t": "KVYO",
       "s": "wheel",
-      "w": 12.86,
-      "r": 1.78
+      "w": 11.65,
+      "r": -10.53
     },
     {
       "t": "SERV",
       "s": "dir",
-      "w": 11.97,
-      "r": -17.76
+      "w": 11.17,
+      "r": -25.57
+    },
+    {
+      "t": "KEEL",
+      "s": "wheel",
+      "w": 6.36,
+      "r": -5.78
     },
     {
       "t": "XNDU",
       "s": "dir",
-      "w": 6.76,
-      "r": -6.58
-    },
-    {
-      "t": "KEEL",
-      "s": "dir",
-      "w": 5.99,
-      "r": -8.42
+      "w": 6.16,
+      "r": -17.46
     },
     {
       "t": "BBAI",
       "s": "dir",
-      "w": 5.04,
-      "r": -14.27
+      "w": 5.11,
+      "r": -15.74
     },
     {
       "t": "HUN",
-      "s": "dir",
-      "w": 3.32,
-      "r": -1.21
+      "s": "wheel",
+      "w": 3.4,
+      "r": -2.03
     },
     {
       "t": "PR",
       "s": "dir",
-      "w": 2.02,
-      "r": -0.96
+      "w": 2.12,
+      "r": 0.82
     },
     {
       "t": "OLN",
       "s": "dir",
-      "w": 1.5,
-      "r": -0.67
+      "w": 1.53,
+      "r": -1.65
     },
     {
       "t": "VSXY",
       "s": "dir",
-      "w": 1.31,
-      "r": -16.01
+      "w": 1.35,
+      "r": -15.91
     },
     {
       "t": "Cash",
       "s": "cash",
-      "w": 0.55,
+      "w": 1.15,
       "r": null
     }
   ],
@@ -1798,7 +1825,12 @@
       -0.05820222,
       -0.03093111,
       -0.04108161,
-      -0.04209177
+      -0.04108161,
+      -0.0394343,
+      -0.0719473,
+      -0.0847861,
+      -0.07113383,
+      -0.07055142
     ],
     "dates": [
       "20251016",
@@ -2034,7 +2066,12 @@
       "20260902",
       "20260903",
       "20260904",
-      "20260905"
+      "20260907",
+      "20260908",
+      "20260909",
+      "20260910",
+      "20260911",
+      "20260912"
     ]
   },
   "record": {
