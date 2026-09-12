@@ -1285,7 +1285,7 @@
     {
       "w": "Sep 11",
       "weekLabel": "Week of Sep 7 – Sep 11, 2026",
-      "grade": "D",
+      "grade": "C−",
       "weekRet": -3.13,
       "now": true,
       "dials": [
@@ -1303,12 +1303,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "fail",
-          "value": "698 lots, none back",
-          "rule": "JPUSD is a banned root — 20 entries, 300 lots at 0.95+, every contract settled at zero"
+          "state": "warn",
+          "value": "data run · JPUSD",
+          "rule": "Sanctioned for data, not scored · flagged: a banned root was active and the run reached 2.1% of NAV"
         }
       ],
-      "note": "The wheel came back on and the sleeve blew a hole in the week. Tuesday's open rewrote calls on five names — HUN, KEEL, SERV, BBAI and XNDU — which is exactly what last week's card asked for, and it worked: the SERV, BBAI and XNDU weeklies expired worthless on Friday and the premium was kept whole. That is the engine restarting, and it is the one thing here worth repeating. Against it sits the forecast sleeve, and there is no soft way to write this up. JPUSD is a banned root — banned on the full history, in writing, because of what it has already cost this book. It was entered by hand twenty times across four sessions: 673 contracts, 300 of them priced at 0.95 or higher, most of them lifted at market into a seven-cent quote. The engine's own guardrails would have refused every one of those tickets — it caps entry at 0.92 and caps a single settlement at 0.4% of net asset value, and both were ignored because the orders never went through it. Every contract settled at zero. So did the 25 on CFBTC. The sleeve was roughly 2.1% of net asset value and it accounted for about two thirds of the week's loss; strip it out and the book was down around a percent. Cash closed at 1.2% of net asset value, a fourth consecutive week beneath the 10% floor, which is why there was nothing to rebuild the reserve with and nothing to absorb the hit. Position size is the only dial that held — SPCX has taken over as the largest name at 18.7%, inside the cap. Two dials red. The one that matters is the one the system was built to prevent, and it was not the system that failed."
+      "note": "The wheel came back on, and the sleeve ran hot on a name it was not supposed to be in. Tuesday's open rewrote calls on five names — HUN, KEEL, SERV, BBAI and XNDU — which is exactly what last week's card asked for, and it worked: the SERV, BBAI and XNDU weeklies expired worthless on Friday and the premium was kept whole. Four names are covered again and the engine is earning. The forecast sleeve remains sanctioned for data collection and is not scored on what it returns. That rule has not changed and it is not being changed here. What is flagged is the shape of the run rather than its result: 698 contracts went out across four sessions, 673 of them JPUSD, a root the forecast engine carries on its own banned list, entered by hand at an average of 0.85 with 300 lots at 0.95 or above. The engine caps entry at 0.92 and caps a single settlement at 0.4% of net asset value; none of these tickets passed through it. Every contract settled at zero, and that is the data point. The size is the issue, not the loss — at roughly 2.1% of net asset value the sleeve carried about two thirds of the week's drawdown, and a data run does not need to be that large to produce data. Strip it out and the book was down about a percent. The one genuine breach on this card is cash, which closed at 1.2% of net asset value, a fourth consecutive week beneath the 10% floor, though the book stayed off margin. Position size held, with SPCX taking over as the largest name at 18.7%."
     }
   ],
   "career": {
@@ -1372,13 +1372,13 @@
         "pf": 0.89,
         "closes": 1902,
         "tone": "warn",
-        "note": "Reopened in August to gather data for a systematic build. The week of Sep 7 is what it costs when the rules get bypassed."
+        "note": "Reopened in August to gather data for a systematic build. Not scored on what it returns; watched on size and on which roots it touches."
       }
     ],
     "insights": [
       "Loss asymmetry is still the leak. The average loser runs 1.6× the average winner, so a 59.7% hit rate finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
       "The engine is real: covered-call premium takes 77% of its closes at a 3.5 profit factor across 171 closes. That is the business, and everything else is management around it. It was switched off for two weeks at the start of September and switched back on in the week of Sep 7. The gap cost nothing visible, which is precisely why it is easy to let happen again.",
-      "The forecast sleeve reopened on Aug 24 to gather clean data for a systematic strategy under construction, and for two weeks that is what it did. In the week of Sep 7 it stopped being a data run: 698 contracts went into two roots, one of them on the strategy's own banned list, entered by hand at prices and sizes the strategy would have refused outright. Every contract settled at zero. The sleeve is no longer being judged on a thin record. It is being judged on whether the rules that were written down get followed.",
+      "The forecast sleeve reopened on Aug 24 to gather clean data for a systematic strategy under construction, and it is deliberately not scored on what it returns. That sanction stands. The week of Sep 7 is the first real test of its edges: 698 contracts, 673 of them in a root the strategy itself bans, entered by hand at prices and sizes the engine would have refused, every one settling at zero. The data is real and it is being kept. The open question is size — a data run does not need two per cent of the book to produce a data point.",
       "Share legs run a 0.34 profit factor across 35 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it has now held for six consecutive weeks — the longest clean run in the record.",
       "The ledger moves on the back office's schedule, not the market's. NU's August assignment reached the trade feed a week after the fact and NIQ's followed the same path. The same lag is live right now: not one contract from the week of Sep 7 carries realized P&L yet, so September counts as a green month on the strength of three closes booked in its first three days. Read that tile as a cutoff, not as a verdict — the sleeve's loss lands in it later."
     ]

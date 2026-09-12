@@ -2129,6 +2129,14 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       });
     }
 
+    /* The viewport height, or 0 when it genuinely cannot be measured — which
+       happens in a hidden or prerendered tab. Every caller below treats 0 as
+       "show it" rather than "hide it": content being visible is the safe
+       failure, an unrecoverable blank panel is not. */
+    var vport=function(){
+      return window.innerHeight || document.documentElement.clientHeight || 0;
+    };
+
     /* --- the slab that sits under the active tab --- */
     var bar=document.querySelector(".tabs");
     if(bar){
@@ -2159,15 +2167,27 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       document.body.appendChild(prog);
       var tick=false;
       var upd=function(){
-        var h=document.documentElement.scrollHeight-window.innerHeight;
+        var h=document.documentElement.scrollHeight-vport();
         var p=h>0?Math.min(1,Math.max(0,window.scrollY/h)):0;
         prog.style.transform="scaleX("+p+")";
         if(window.__sweep) window.__sweep();
-        tick=false;
       };
+      /* Coalesce to one run per scroll burst, but never depend on a frame
+         arriving: requestAnimationFrame is paused in a background tab and in
+         some throttled mobile browsers, and a sweep that never runs leaves
+         every .reveal section clipped for the rest of the session. The timer
+         is the guarantee; the frame is just the smooth path. Whichever lands
+         first does the work and the other finds the flag already cleared. */
+      var run=function(){ if(!tick) return; tick=false; upd(); };
       window.addEventListener("scroll",function(){
-        if(!tick){tick=true;requestAnimationFrame(upd);}
+        if(tick) return;
+        tick=true;
+        requestAnimationFrame(run);
+        setTimeout(run,120);
       },{passive:true});
+      document.addEventListener("visibilitychange",function(){
+        if(!document.hidden) upd();
+      });
       upd();
     }
 
@@ -2177,7 +2197,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
        at opacity 0. This sweep runs on every scroll frame, so a section that
        is on screen is always visible. */
     var sweep=function(){
-      var vh=window.innerHeight;
+      var vh=vport() || 1e9;   /* unmeasurable: reveal rather than hide */
       [].forEach.call(document.querySelectorAll(".reveal:not(.seen)"),function(el){
         var r=el.getBoundingClientRect();
         if(r.top < vh*0.94 && r.bottom > 0) el.classList.add("seen");
@@ -2186,11 +2206,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     window.__sweep=sweep;
     window.__reveal=function(root){
       if(still) return;
+      var h=vport();
+      if(!h) return;            /* cannot measure: leave every section visible */
       var host=root||document;
       [].forEach.call(host.querySelectorAll("section, .chart-card"),function(el){
         if(el.dataset.rv) return;
         var r=el.getBoundingClientRect();
-        if(r.top < window.innerHeight*0.94) return;  /* already on screen: leave it */
+        if(r.top < h*0.94) return;                  /* already on screen: leave it */
         el.dataset.rv="1";
         el.classList.add("reveal");
       });
@@ -2200,7 +2222,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     setTimeout(function(){
       [].forEach.call(document.querySelectorAll(".reveal:not(.seen)"),function(el){
         var r=el.getBoundingClientRect();
-        if(r.top < window.innerHeight*1.6) el.classList.add("seen");
+        if(r.top < (vport()||1e9)*1.6) el.classList.add("seen");
       });
     },4000);
 
