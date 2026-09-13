@@ -28,7 +28,7 @@ Two references, built into the chrome. The brief was literal: how would those tw
 
 ### 2.2 Layout
 
-- One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets (Concepts 04 and 05 are static memos in the markup). No external fonts, images, scripts, or calls after load.
+- One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets (Concepts 01 to 07 are static markup: five archive papers and two deck memos). No external fonts, images, scripts, or calls after load.
 - Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS - do not add number spans to the markup or they will double up.
 - Page padding `clamp(10px,1.2vw,18px)`, no content-column cap. Card grids use 1px gaps over the rule colour rather than per-card borders, so a grid reads as one ruled panel inside its window.
 - Prose stays serif at a real measure (16px/1.78, 68ch) wherever something is read rather than scanned - the weekly assessment, The Lab's theses, all of The Story.
@@ -66,14 +66,18 @@ The redesign prototype's skeleton, kept when the paper skin was dropped. The fun
 |---|---|---|---|
 | 01 | **The Book** | `book` | Three return tiles · return curve with timeline selector · book summary, concept of operations, risk posture (from `book`) · allocation bars · positions ledger · the three strategy cards **The Wheel / Forecast contracts / Outright** with control lines and the control framework |
 | 02 | **The Record** | `record` | **Weekly After-Action** (card + history strip of every week since inception) · Service Record (career ledger) · Between the After-Actions · Accolades · Failures · Discipline tally · Best closes · Worst closes · By name · Event sleeve by contract · How to read this |
-| 03 | **The Lab** | `ideation` | The five research concepts, each a sub-tab: **01 Futuresight Index**, **02 Value Scanner**, **03 Quality Growth**, then two static memos rebuilt from decks: **04 A Case for Forecast Events**, **05 Xbox Takeover** |
+| 03 | **The Lab** | `ideation` | Ten concepts in chronological order, each a sub-tab: the 2022–23 archive, verbatim (**01 Investment Risk Management**, **02 Risk Management Final**, **03 Data Analytics for Risk Management**, **04 Insurance Operations Final**, **05 Market Overview**), two deck memos (**06 A Case for Forecast Events**, **07 Xbox Takeover**), then **08 Futuresight Index**, **09 Value Scanner**, **10 Quality Growth** |
 | 04 | **The Story** | `story` | Origin, intent, About me (the trading journey, rebuilt from the deck), contact (from `pages.story`, into `#story-blocks`) · doctrine — what we hold to be true, mental models, target set (from `pages.concepts`, into `#panel-concepts`, which is now a plain container, not a panel) · discipline blocks (from `pages.discipline`) · Mandate & Constraints (from `constraints`) |
 
 The former P&L, The Desk and The Mandate panels no longer exist; their sections moved as listed. `blocks()` in the JS still targets `booksummary`, `panel-concepts`, `page-discipline-inline` and now `story-blocks`. The curve redraws on activating `book`; the allocation bars animate on `book`; the Futuresight chart draws on `ideation`.
 
 **Weekly after-action conventions.** One card per Monday–Friday week, dated the week's last trading day. Solid chip = graded live that Friday. Dashed chip marked *rebuilt* = reconstructed after the fact from the trade record (`recon: true`), badged on the card and carrying a basis note. Three dials — position size (20% cap), cash buffer (10% floor), event sleeve. **The event dial is omitted entirely in weeks with no forecast trades.** In reconstructed weeks it is graded on what the sleeve returned (closes, win rate, profit factor), not on today's rules. Since Aug 24 2026 the sleeve is sanctioned for data collection and the dial reports it without scoring it.
 
-**Concept 01 rule:** no backtest, ever. The roster was chosen knowing what had happened; a historical curve would measure hindsight.
+**Futuresight (Concept 08) rule:** no backtest, ever. The roster was chosen knowing what had happened; a historical curve would measure hindsight.
+
+**Order rule:** concepts stay in chronological order by the date each was written or opened. A new concept is inserted by date and everything after it renumbers.
+
+**Archive rule:** Concepts 01 to 05 are reproduced verbatim. Never correct, update or rewrite their text; only the framing note, dateline and disclaimer around them are site copy.
 
 ## 5. Content formats
 
