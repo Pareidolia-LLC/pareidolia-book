@@ -70,14 +70,20 @@ Adding another means another `.cbtn` plus either a JSON-backed view or a static 
 | 04 | Data Analytics for Risk Management (Apr 27, 2023) | archive paper in `build.py` | nothing, verbatim |
 | 05 | Insurance Operations Final (May 5, 2023) | archive paper in `build.py` | nothing, verbatim |
 | 06 | Market Overview (Aug 31, 2023) | archive brief in `build.py` | nothing, verbatim |
-| 07 | Systematized Capital Management (Aug 25, 2024) | static memo in `build.py` | nothing, edit the markup |
-| 08 | A Case for Forecast Events (Apr 2026) | static memo in `build.py` | nothing, edit the markup |
-| 09 | Xbox Takeover (Jul 2026) | static memo in `build.py` | nothing, edit the markup |
-| 10 | Futuresight Index (Aug 24, 2026) | `futuresight.json` (locked roster) + `futuresight_prices.json` | `python futuresight_fetch.py --range 2y` |
-| 11 | Value Scanner (Aug 24, 2026) | `valuescan.json` | `python valuescan_sync.py` |
-| 12 | Quality Growth (Aug 25, 2026) | `growthscan.json` | `python growthscan_sync.py` |
+| 07 | S&P Roulette (Jul 6, 2024) | `roulette.json` (static S&P 1500 snapshot) | nothing, replace the snapshot |
+| 08 | Systematized Capital Management (Aug 25, 2024) | static memo in `build.py` | nothing, edit the markup |
+| 09 | A Case for Forecast Events (Apr 2026) | static memo in `build.py` | nothing, edit the markup |
+| 10 | Xbox Takeover (Jul 2026) | static memo in `build.py` | nothing, edit the markup |
+| 11 | Futuresight Index (Aug 24, 2026) | `futuresight.json` (locked roster) + `futuresight_prices.json` | `python futuresight_fetch.py --range 2y` |
+| 12 | Value Scanner (Aug 24, 2026) | `valuescan.json` | `python valuescan_sync.py` |
+| 13 | Quality Growth (Aug 25, 2026) | `growthscan.json` | `python growthscan_sync.py` |
 
-Concepts 11 and 12 are **screens that live outside this repo** — `../../value-scanner/`
+Concept 07 is a **random-draw benchmark**, not a screen: `roulette.json` is a static
+snapshot of 1,506 S&P 1500 constituents (ticker, name, GICS sector index, tier index)
+lifted from the S&P Roulette artifact. Nothing is priced or fetched, and the page carries
+no dollar stake - draws are shown as equal weights only.
+
+Concepts 12 and 13 are **screens that live outside this repo** — `../../value-scanner/`
 and `../../growth-scanner/`. Each sync script reads the scanner's own `data.json`,
 trims it to the fields the page draws, writes the file above, and drops a dated copy
 in `history/`. Nothing else in the repo reaches outside it, so a fresh clone still
@@ -89,7 +95,7 @@ and 2023, moved over from the Pareidolia Lab artifact. They are reproduced word 
 submitted, including the author's own positions and figures as of each date, and are never edited
 after the fact. Only a framing note, a dateline and the standard disclaimer sit around each one.
 
-Concepts 07 to 09 are **brief static memos**, each rebuilt from one of Laskoskie's decks:
+Concepts 08 to 10 are **brief static memos**, each rebuilt from one of Laskoskie's decks:
 Systematized Capital Management, A Case for Forecast Events and Xbox Takeover. My Trading Journey is The Story tab's About Me section. Memo content lives directly in the
 markup in `build.py` and nothing refreshes them. Each keeps the site's rules: dollar-free for the
 book itself, and the verbatim concept disclaimer.
@@ -103,15 +109,15 @@ python futuresight_fetch.py --range 2y
 python build.py
 ```
 
-Concept 12 publishes the scanner's **compounder** profile. To put the pre-profit
+Concept 13 publishes the scanner's **compounder** profile. To put the pre-profit
 cohort on the page instead, run the scanner with `--profile emerging` before
 syncing — the sync records which profile it captured and the page labels itself
 from that field, so the two cannot disagree.
 
 **The rule that governs all of these: no backtest, ever.** A roster or a screen
 assembled today, with today's knowledge of what already happened, produces a
-historical curve that measures hindsight rather than skill. Concept 10 is tracked
-forward from a locked open at fixed weights. Concepts 11 and 12 are dated screens —
+historical curve that measures hindsight rather than skill. Concept 11 is tracked
+forward from a locked open at fixed weights. Concepts 12 and 13 are dated screens —
 each run is a snapshot of what the filter returned on that date, kept in `history/`,
 never stitched into a performance record.
 

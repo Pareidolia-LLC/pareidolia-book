@@ -449,8 +449,75 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .lab-cites ol{margin:12px 0 0; padding-left:20px; font-family:var(--serif); font-size:13px; line-height:1.6; color:var(--faint)}
   .lab-cites li{margin-bottom:6px; overflow-wrap:anywhere}
 
-  /* ---------- concept 07: systematized capital management ---------- */
+  /* ---------- concept 08: systematized capital management ---------- */
   .scm-flow{display:block; width:100%; max-width:640px; height:auto; margin:10px 0 6px}
+
+  /* ---------- concept 07: s&p roulette ---------- */
+  .rl-felt{display:grid; grid-template-columns:minmax(0,400px) minmax(0,1fr); gap:28px; align-items:start; margin:22px 0 26px}
+  .rl-wheelbox{display:flex; flex-direction:column; align-items:center; gap:14px; min-width:0}
+  canvas#rlWheel{display:block; width:100%; max-width:400px; aspect-ratio:1; height:auto}
+  .rl-verdict{width:100%; max-width:400px; background:var(--panel-2); border:2px solid var(--line); border-top:3px solid var(--accent);
+    padding:14px 16px; min-height:98px; display:flex; flex-direction:column; justify-content:center; gap:3px}
+  .rl-vt{font-family:var(--display); font-size:34px; line-height:1; letter-spacing:.03em; color:var(--bone); text-shadow:3px 3px 0 var(--outline)}
+  .rl-vn{font-family:var(--serif); font-size:15px; line-height:1.35; color:var(--muted)}
+  .rl-vm{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:7px}
+  .rl-verdict.idle .rl-vt{font-family:var(--mono); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); text-shadow:none}
+  .rl-rail{display:flex; flex-direction:column; gap:20px; min-width:0}
+  .rl-block{display:flex; flex-direction:column; gap:10px; min-width:0}
+  .rl-label{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px 12px;
+    font-family:var(--mono); font-size:9.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--faint)}
+  .rl-label span{color:var(--muted); font-weight:400; letter-spacing:.06em; text-transform:none}
+  .rl-actions{display:flex; gap:8px; flex-wrap:wrap}
+  .rl-actions.after{margin-top:12px}
+  .rl-btn{appearance:none; cursor:pointer; font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.16em;
+    text-transform:uppercase; padding:11px 18px; border:2px solid var(--accent); background:none; color:var(--accent); transition:.14s}
+  .rl-btn:hover:not(:disabled){background:var(--accent-soft)}
+  .rl-btn.solid{background:var(--accent); color:#0A101C; padding-right:30px; clip-path:polygon(0 0,100% 0,calc(100% - 11px) 100%,0 100%)}
+  .rl-btn.solid:hover:not(:disabled){background:var(--gold-lift)}
+  .rl-btn.quiet{border-color:var(--line); color:var(--muted)}
+  .rl-btn.quiet:hover:not(:disabled){border-color:var(--faint); color:var(--ink); background:none}
+  .rl-btn:disabled{opacity:.42; cursor:not-allowed}
+  .rl-seg{margin-top:0}
+  .rl-odds{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:1px; background:var(--line); border:2px solid var(--line)}
+  .rl-odd{appearance:none; cursor:pointer; font:inherit; background:var(--panel); border:0; padding:9px 11px; text-align:left;
+    color:var(--ink); display:flex; flex-direction:column; gap:4px; transition:.14s}
+  .rl-odd:hover{background:var(--panel-2)}
+  .rl-odd[aria-pressed="false"]{opacity:.36}
+  .rl-on{display:flex; align-items:center; gap:7px; font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; line-height:1.25}
+  .rl-op{font-family:var(--mono); font-size:9.5px; color:var(--faint); font-variant-numeric:tabular-nums; padding-left:15px}
+  .rl-dot{display:inline-block; width:8px; height:8px; flex:none; background:var(--c,var(--faint))}
+  .rl-stake{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+  .rl-fl{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint)}
+  .rl-num{font-family:var(--mono); font-size:12px; background:var(--panel); color:var(--ink); border:1px solid var(--line); padding:7px 10px; width:90px}
+  .rl-num:focus{outline:none; border-color:var(--accent)}
+  .rl-tag{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; color:var(--muted); white-space:nowrap}
+  .chip.rl-lg{color:var(--up); border-color:rgba(60,199,126,.45)}
+  .chip.rl-md{color:var(--accent); border-color:rgba(201,162,39,.45)}
+  .chip.rl-sm{color:var(--compare); border-color:rgba(91,155,213,.45)}
+  .rl-slot{color:var(--faint); width:30px}
+  .rl-co{min-width:160px; line-height:1.3}
+  #rlBook tr.locked td{background:rgba(201,162,39,.12)}
+  #rlBook td:nth-child(2),#rlBook td:nth-child(4),#rlBook td:nth-child(6){white-space:nowrap}
+  .rl-rowbtns{display:flex; gap:5px; justify-content:flex-end}
+  .rl-mini{appearance:none; cursor:pointer; font-family:var(--mono); font-size:8.5px; font-weight:600; letter-spacing:.1em;
+    text-transform:uppercase; padding:4px 8px; border:1px solid var(--line); background:none; color:var(--faint)}
+  .rl-mini:hover,.rl-mini[aria-pressed="true"]{border-color:var(--accent); color:var(--accent)}
+  .rl-mini[aria-pressed="true"]{background:var(--accent-soft)}
+  .rl-empty{padding:30px 16px; text-align:center; font-family:var(--serif); font-size:14px; color:var(--faint)}
+  .rl-mix{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:26px; margin-top:24px}
+  .rl-bars{display:flex; flex-direction:column; gap:7px; margin-top:10px}
+  .rl-brow{display:grid; grid-template-columns:132px minmax(0,1fr) 96px; gap:10px; align-items:center}
+  .rl-bname{display:flex; align-items:center; gap:7px; min-width:0; font-family:var(--mono); font-size:10px; color:var(--muted)}
+  .rl-nm{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .rl-track{position:relative; height:14px; background:var(--panel-2); overflow:hidden}
+  .rl-fill{position:absolute; top:0; bottom:0; left:0; background:var(--c)}
+  .rl-mark{position:absolute; top:0; bottom:0; width:2px; background:var(--bone); opacity:.7}
+  .rl-bval{font-family:var(--mono); font-size:10px; color:var(--faint); text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
+  .rl-bval b{color:var(--ink); font-weight:600}
+  .rl-legend{display:flex; align-items:center; gap:7px; margin-top:10px; font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; color:var(--faint)}
+  .rl-tick{display:inline-block; width:2px; height:11px; background:var(--bone); opacity:.7}
+  @media (max-width:760px){ .rl-felt{grid-template-columns:1fr; gap:22px} }
+  @media (max-width:520px){ .rl-brow{grid-template-columns:92px minmax(0,1fr) 78px; gap:8px} .rl-vt{font-size:28px} }
 
   /* ---------- status line ---------- */
   .statusbar{display:flex; position:fixed; left:0; right:0; bottom:0; z-index:20;
@@ -851,12 +918,13 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <button type="button" class="cbtn" data-c="analytics" role="tab">Concept 04<b>Data Analytics</b></button>
       <button type="button" class="cbtn" data-c="insops" role="tab">Concept 05<b>Insurance Operations</b></button>
       <button type="button" class="cbtn" data-c="market" role="tab">Concept 06<b>Market Overview</b></button>
-      <button type="button" class="cbtn" data-c="scm" role="tab">Concept 07<b>Capital Management</b></button>
-      <button type="button" class="cbtn" data-c="forecast" role="tab">Concept 08<b>Forecast Events</b></button>
-      <button type="button" class="cbtn" data-c="xbox" role="tab">Concept 09<b>Xbox Takeover</b></button>
-      <button type="button" class="cbtn" data-c="futuresight" role="tab">Concept 10<b>Futuresight Index</b></button>
-      <button type="button" class="cbtn" data-c="value" role="tab">Concept 11<b>Value Scanner</b></button>
-      <button type="button" class="cbtn" data-c="growth" role="tab">Concept 12<b>Quality Growth</b></button>
+      <button type="button" class="cbtn" data-c="roulette" role="tab">Concept 07<b>S&amp;P Roulette</b></button>
+      <button type="button" class="cbtn" data-c="scm" role="tab">Concept 08<b>Capital Management</b></button>
+      <button type="button" class="cbtn" data-c="forecast" role="tab">Concept 09<b>Forecast Events</b></button>
+      <button type="button" class="cbtn" data-c="xbox" role="tab">Concept 10<b>Xbox Takeover</b></button>
+      <button type="button" class="cbtn" data-c="futuresight" role="tab">Concept 11<b>Futuresight Index</b></button>
+      <button type="button" class="cbtn" data-c="value" role="tab">Concept 12<b>Value Scanner</b></button>
+      <button type="button" class="cbtn" data-c="growth" role="tab">Concept 13<b>Quality Growth</b></button>
     </div></nav>
 
     <div class="concept active" id="con-riskmgmt">
@@ -972,8 +1040,71 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <p class="fs-note">Research I run for myself, not advice. I am not a licensed financial advisor. Reproduced word for word as submitted in August 2023, so its figures, forecasts and positions reflect that date rather than a current view. Act on it and the risk is yours, not mine.</p>
     </div><!-- /con-market -->
 
+    <div class="concept" id="con-roulette">
+      <div class="eyebrow">Concept 07 &middot; random-draw benchmark &middot; Jul 6, 2024</div>
+      <h2>S&amp;P Roulette</h2>
+      <p class="fs-kicker">A monkey with a dartboard, formalised.</p>
+      <p class="prose">Spin the wheel and draw a name out of the S&amp;P 1500. The wheel is carved by sector at the index's own weights, so every company in the drum has exactly the same chance of coming up. No skill, no thesis, no edge: just the null hypothesis with a nicer interface. It is the bar every other concept in the Lab has to clear.</p>
+      <p class="fs-note">Research I run for myself, not advice. I am not a licensed financial advisor. A random draw is a benchmark, not a strategy, and a wheel has no view on any company it lands on; the constituent list is a static snapshot, so a name here may since have left the index, merged away or been renamed. Act on it and the risk is yours, not mine.</p>
+
+      <div class="rl-felt">
+        <div class="rl-wheelbox">
+          <canvas id="rlWheel" role="img" aria-label="Roulette wheel divided into eleven sector segments, each sized to that sector's share of the S&amp;P 1500."></canvas>
+          <div class="rl-verdict idle" id="rlVerdict" role="status" aria-live="polite">
+            <div class="rl-vt">No spin yet</div>
+            <div class="rl-vn">Press spin. The wheel picks, you live with it.</div>
+          </div>
+        </div>
+        <div class="rl-rail">
+          <div class="rl-actions">
+            <button type="button" class="rl-btn solid" id="rlSpin">Spin</button>
+            <button type="button" class="rl-btn" id="rlDeal">Deal <span id="rlDealN">10</span></button>
+            <button type="button" class="rl-btn quiet" id="rlClear">Clear table</button>
+          </div>
+          <div class="rl-block">
+            <div class="rl-label">Index <span>which drums are in play</span></div>
+            <div class="tlviews rl-seg" id="rlCaps" role="group" aria-label="Index tiers in play">
+              <button type="button" class="tlv active" data-cap="0" aria-pressed="true">S&amp;P 500</button><button type="button" class="tlv active" data-cap="1" aria-pressed="true">Midcap 400</button><button type="button" class="tlv active" data-cap="2" aria-pressed="true">Smallcap 600</button>
+            </div>
+          </div>
+          <div class="rl-block">
+            <div class="rl-label">Sectors <span>click to take one off the board</span></div>
+            <div class="rl-odds" id="rlOdds" role="group" aria-label="Sectors in play, with draw probability"></div>
+          </div>
+          <div class="rl-block">
+            <div class="rl-label">Book size <span>equal weight, split across the draw</span></div>
+            <div class="rl-stake">
+              <label class="rl-fl" for="rlSize">Positions</label>
+              <input type="number" class="rl-num" id="rlSize" value="10" min="1" max="30" step="1">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>The draw</h3>
+      <p class="fs-cover" id="rlMeta"></p>
+      <div class="tablewrap"><table><thead><tr>
+        <th></th><th>Ticker</th><th>Company</th><th>Sector</th><th>Tier</th><th class="r">Weight</th><th class="r"></th>
+      </tr></thead><tbody id="rlBook"></tbody></table>
+      <div class="rl-empty" id="rlEmpty">Table's clean. Spin once for a single name, or deal a full book.</div></div>
+      <div class="rl-actions after"><button type="button" class="rl-btn quiet" id="rlCopy">Copy tickers</button></div>
+
+      <div class="rl-mix">
+        <div>
+          <div class="rl-label">Sector mix <span>drawn vs. index</span></div>
+          <div class="rl-bars" id="rlBars"></div>
+          <div class="rl-legend"><i class="rl-tick"></i> index weight in the live universe</div>
+        </div>
+        <div>
+          <div class="rl-label">What the wheel just told you</div>
+          <p class="prose" id="rlRead" style="margin-top:10px"></p>
+        </div>
+      </div>
+      <p class="fs-cover">Constituents: a static snapshot of the S&amp;P 500, Midcap 400 and Smallcap 600 with GICS sector and tier. No prices, no fundamentals, no returns, and nothing fetched live.</p>
+    </div><!-- /con-roulette -->
+
     <div class="concept" id="con-scm">
-      <div class="eyebrow">Concept 07 &middot; memo &middot; capital management framework &middot; Aug 25, 2024</div>
+      <div class="eyebrow">Concept 08 &middot; memo &middot; capital management framework &middot; Aug 25, 2024</div>
       <h2>Systematized Capital Management</h2>
       <p class="fs-kicker">And liquidity automation. How do we manage money? Income comes in, expenses go out, and what is left is invested. Systematized capital management puts that on rails: a fixed set of accounts with money moving between them on its own, so the decisions that need a person shrink to almost nothing.</p>
       <h3>Personal capital management</h3>
@@ -993,7 +1124,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     </div><!-- /con-scm -->
 
     <div class="concept" id="con-forecast">
-      <div class="eyebrow">Concept 08 &middot; memo &middot; USD/JPY case study</div>
+      <div class="eyebrow">Concept 09 &middot; memo &middot; USD/JPY case study</div>
       <h2>A Case for Forecast Events</h2>
       <p class="fs-kicker">Replicate futures trading with forecast events. A forecast event is a Yes-or-No contract on a single number &mdash; will USD/JPY settle above 159.25 on Friday &mdash; and the Yes price is the market&rsquo;s probability, quoted in cents. A ladder of those strikes carries the same view as a futures position, with the most you can lose fixed at entry.</p>
       <h3>The data</h3>
@@ -1016,7 +1147,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     </div><!-- /con-forecast -->
 
     <div class="concept" id="con-xbox">
-      <div class="eyebrow">Concept 09 &middot; memo &middot; game theory design project &middot; July 2026</div>
+      <div class="eyebrow">Concept 10 &middot; memo &middot; game theory design project &middot; July 2026</div>
       <h2>Xbox Takeover</h2>
       <p class="fs-kicker">A refined vision for the brand: publisher first, studios merged by DNA, and an action plan for the IP vault. Xbox should be a game publisher and curator that happens to sell consoles.</p>
       <div class="stats"><div class="stat"><div class="k">Spent on ZeniMax + ABK</div><div class="v">$76.2B</div><div class="m">Two acquisitions, 2021 and 2023</div></div><div class="stat"><div class="k">Core first-party studios</div><div class="v">9</div><div class="m">Xbox Game Studios</div></div><div class="stat"><div class="k">Franchises owned</div><div class="v">93</div><div class="m">Every IP in the vault, A to Z</div></div><div class="stat"><div class="k">Roles cut</div><div class="v">3,200</div><div class="m">The July 2026 reset</div></div></div>
@@ -1071,7 +1202,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     </div><!-- /con-xbox -->
 
     <div class="concept" id="con-futuresight">
-    <div class="eyebrow">Concept 10 &middot; opened Aug 2026 &middot; forward-tracked</div>
+    <div class="eyebrow">Concept 11 &middot; opened Aug 2026 &middot; forward-tracked</div>
     <h2>Futuresight Index</h2>
     <p class="fs-kicker">Ideation is where a thesis gets written down, weighted, and then held to a public record before any of it is traded. Futuresight is the first concept in the series.</p>
     <p class="prose">A thematic basket built from the technology that science fiction got specific about &mdash; autonomous weapons, machine intelligence, cyberware, brain interfaces, seabed mining, the data brokers, and the petrochemical layer underneath all of it. Every company is listed once, in the industry it plays into most, and tagged with the risk factor that actually moves its price.</p>
@@ -1110,7 +1241,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     </div><!-- /con-futuresight -->
 
     <div class="concept" id="con-value">
-      <div class="eyebrow">Concept 11 &middot; deep value screen &middot; run <span id="vsRun"></span></div>
+      <div class="eyebrow">Concept 12 &middot; deep value screen &middot; run <span id="vsRun"></span></div>
       <h2>Value Scanner</h2>
       <p class="fs-kicker">The opposite instinct to Futuresight. Futuresight buys a story; this buys a balance sheet nobody wants.</p>
       <p class="prose">A screen of the entire US market for companies trading under 3&times; sales and under 1&times; book, ranked by cheapness against quality, with the value traps that fill a raw price-to-book list flagged rather than hidden. Everything comes from free data with no API key.</p>
@@ -1155,7 +1286,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     </div><!-- /con-value -->
 
     <div class="concept" id="con-growth">
-      <div class="eyebrow">Concept 12 &middot; quality growth screen &middot; run <span id="gsRun"></span></div>
+      <div class="eyebrow">Concept 13 &middot; quality growth screen &middot; run <span id="gsRun"></span></div>
       <h2>Quality Growth</h2>
       <p class="fs-kicker">This one sits between Futuresight and the Value Scanner. Futuresight buys a story and the Value Scanner buys a balance sheet nobody wants; this one looks for a business that is already working and asks whether the market has noticed yet.</p>
       <p class="prose">A screen for companies expanding operations accretively &mdash; where capital newly put to work earns more than the capital already there &mdash; scored across seven pillars covering growth, margins and returns, cash generation, balance sheet and liquidity, capital allocation, valuation, and how thinly the name is held and covered. That last one is the tilt: a good business every fund already owns and twenty analysts already model is a worse idea than the same business nobody is writing about.</p>
@@ -1206,6 +1337,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
         <p class="prose">Return on invested capital here uses operating income after a flat statutory tax against reported invested capital &mdash; a proxy, not a modelled cost-of-capital comparison. Compound growth rates come from four annual filings, so the window is three years at most and shorter for anything recently listed. Institutional ownership above 100% is a real artifact of securities lending rather than a bug. And the underlying data is Yahoo\u2019s: it is occasionally wrong on individual names, so verify before acting on any of it.</p>
       </div>
     </div><!-- /con-growth -->
+
   </div>
   <div class="panel" id="panel-story">
   <div id="story-blocks"></div>
@@ -1232,6 +1364,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   var FS = __FS_JSON__;
   var VS = __VS_JSON__;
   var GS = __GS_JSON__;
+  var RL = __RL_JSON__;
   var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   /* Charts are drawn on paper surfaces, which re-declare the palette for their
      own subtree; read the variables from there rather than from the night root
@@ -1847,17 +1980,18 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       b.addEventListener("click",function(){
         var c=b.getAttribute("data-c");
         btns.forEach(function(x){x.classList.toggle("on",x.getAttribute("data-c")===c);});
-        ["riskmgmt","riskfinal","starbucks","analytics","insops","market","scm","forecast","xbox","futuresight","value","growth"].forEach(function(k){
+        ["riskmgmt","riskfinal","starbucks","analytics","insops","market","roulette","scm","forecast","xbox","futuresight","value","growth"].forEach(function(k){
           var el=document.getElementById("con-"+k);
           if(el) el.classList.toggle("active",k===c);
         });
+        if(c==="roulette" && window.__rlDraw) window.__rlDraw();
         if(c==="futuresight" && window.__fsDraw &&
            document.getElementById("fsv-track").classList.contains("active")) window.__fsDraw();
       });
     });
   })();
 
-  /* ---------------- Concept 11: Value Scanner ---------------- */
+  /* ---------------- Concept 12: Value Scanner ---------------- */
   (function(){
     if(!VS || !VS.rows || !VS.rows.length) return;
     var R=VS.rows;
@@ -2053,7 +2187,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     head(); renderVS();
   })();
 
-  /* ---------------- Concept 12: Quality Growth ---------------- */
+  /* ---------------- Concept 13: Quality Growth ---------------- */
   (function(){
     if(!GS || !GS.rows || !GS.rows.length) return;
     var R=GS.rows, PIL=GS.pillars||[], W=GS.weights||{}, c=GS.criteria||{};
@@ -2337,6 +2471,280 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     tabs.forEach(function(t){t.addEventListener("click",function(){activate(t.getAttribute("data-panel"));});});
   })();
 
+
+  /* ---------------- Concept 07: S&P Roulette ---------------- */
+  (function(){
+    if(!RL || !RL.rows || !RL.rows.length) return;
+    var cv=document.getElementById("rlWheel"); if(!cv || !cv.getContext) return;
+    /* eleven GICS sectors in GICS order - the order is the spectrum */
+    var SEC=[["Energy","Enrg","#F2854A"],["Materials","Matl","#D9B45A"],["Industrials","Indu","#A3AC6C"],
+             ["Consumer Discretionary","CDis","#F095B8"],["Consumer Staples","CStp","#4FC26A"],["Health Care","Hlth","#3FD6A0"],
+             ["Financials","Finl","#5AA0F0"],["Information Technology","InfT","#9D8CF0"],["Communication Services","Comm","#C98CE0"],
+             ["Utilities","Util","#4FC3D6"],["Real Estate","REst","#C0927A"]];
+    var TIER=["Large","Mid","Small"], TCLS=["rl-lg","rl-md","rl-sm"];
+    var U=RL.rows.map(function(r){return {tk:r[0],co:r[1],si:r[2],ci:r[3]};});
+    var st={caps:[true,true,true], secs:SEC.map(function(){return true;}), book:[], spinning:false, angle:0};
+    var $=function(id){return document.getElementById(id);};
+    var fmt=function(n){return n.toLocaleString("en-US");};
+    var pct=function(x){return (x*100).toFixed(1)+"%";};
+    var esc=function(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");};
+    var css=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();};
+    var TAU=Math.PI*2, POINTER=-Math.PI/2, segs=[];
+    var reduced=!!(window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches);
+
+    function live(){ return U.filter(function(c){return st.caps[c.ci]&&st.secs[c.si];}); }
+    function free(extra){
+      var t={}; st.book.concat(extra||[]).forEach(function(r){t[r.tk]=1;});
+      return live().filter(function(c){return !t[c.tk];});
+    }
+    function any(pool){ return pool[Math.floor(Math.random()*pool.length)]; }
+    function dot(i){ return "<i class='rl-dot' style='--c:"+SEC[i][2]+"'></i>"; }
+
+    function layout(){
+      var pool=live(), a=0; segs=[];
+      SEC.forEach(function(s,i){
+        var n=0; pool.forEach(function(c){ if(c.si===i) n++; });
+        if(!n) return;
+        var span=n/pool.length*TAU;
+        segs.push({i:i,name:s[0],short:s[1],color:s[2],n:n,share:n/pool.length,a0:a,a1:a+span,mid:a+span/2});
+        a+=span;
+      });
+    }
+
+    /* the betting layout: sector odds, each one a switch */
+    function renderOdds(){
+      var pool=live(), box=$("rlOdds");
+      box.innerHTML=SEC.map(function(s,i){
+        var n=U.filter(function(c){return c.si===i&&st.caps[c.ci];}).length;
+        var p=st.secs[i]&&pool.length?n/pool.length:0;
+        return "<button type='button' class='rl-odd' data-s='"+i+"' aria-pressed='"+st.secs[i]+"'>"+
+          "<span class='rl-on'>"+dot(i)+s[0]+"</span>"+
+          "<span class='rl-op'>"+n+" \u00b7 "+(st.secs[i]?pct(p):"off the board")+"</span></button>";
+      }).join("");
+      [].forEach.call(box.querySelectorAll(".rl-odd"),function(b){
+        b.addEventListener("click",function(){
+          if(st.spinning) return;
+          var i=+b.getAttribute("data-s");
+          st.secs[i]=!st.secs[i];
+          if(!live().length){ st.secs[i]=true; return; }   /* never empty the drum */
+          refresh();
+        });
+      });
+    }
+    [].forEach.call($("rlCaps").querySelectorAll(".tlv"),function(b){
+      b.addEventListener("click",function(){
+        if(st.spinning) return;
+        var i=+b.getAttribute("data-cap");
+        st.caps[i]=!st.caps[i];
+        if(!live().length){ st.caps[i]=true; return; }
+        b.classList.toggle("active",st.caps[i]);
+        b.setAttribute("aria-pressed",String(st.caps[i]));
+        refresh();
+      });
+    });
+    function refresh(){ layout(); renderOdds(); drawWheel(st.angle); renderMix(); }
+
+    /* the wheel */
+    function drawWheel(rot){
+      var dpr=Math.min(window.devicePixelRatio||1,2);
+      var w=cv.getBoundingClientRect().width;
+      var S=Math.round(w>0?Math.min(w,460):320);
+      cv.width=S*dpr; cv.height=S*dpr;
+      var ctx=cv.getContext("2d");
+      ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,S,S);
+      var cx=S/2, cy=S/2, rO=S*.47, rR=S*.435, rI=S*.215, rB=S*.325;
+      var brass=css("--accent")||"#C9A227", bg=css("--bg")||"#0A101C", panel=css("--panel")||"#101A2B",
+          bone=css("--bone")||"#F2EDE0", faint=css("--faint")||"#697690",
+          mono=css("--mono")||"monospace", disp=css("--display")||"Impact,sans-serif";
+
+      ctx.beginPath(); ctx.arc(cx,cy,rO,0,TAU); ctx.fillStyle=bg; ctx.fill();
+      ctx.lineWidth=2; ctx.strokeStyle=brass; ctx.stroke();
+
+      ctx.save(); ctx.translate(cx,cy); ctx.rotate(rot);
+      segs.forEach(function(s){
+        ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,rR,s.a0,s.a1); ctx.closePath();
+        ctx.fillStyle=s.color; ctx.fill(); ctx.lineWidth=2; ctx.strokeStyle=bg; ctx.stroke();
+        if(s.a1-s.a0>0.14){
+          /* labels stay upright: flip the ones that land on the left half */
+          var ab=((s.mid+rot)%TAU+TAU)%TAU, flip=ab>Math.PI/2&&ab<Math.PI*1.5;
+          ctx.save(); ctx.rotate(s.mid);
+          if(flip){ ctx.rotate(Math.PI); ctx.textAlign="left"; } else ctx.textAlign="right";
+          ctx.textBaseline="middle"; ctx.fillStyle="#0A101C";
+          ctx.font="700 "+Math.max(9,S*.03).toFixed(1)+"px "+mono;
+          ctx.fillText(s.short.toUpperCase(), flip?-(rR-S*.035):rR-S*.035, 0);
+          ctx.restore();
+        }
+      });
+      ctx.restore();
+
+      ctx.beginPath(); ctx.arc(cx,cy,rI,0,TAU); ctx.fillStyle=panel; ctx.fill();
+      ctx.lineWidth=2; ctx.strokeStyle=brass; ctx.stroke();
+      ctx.textAlign="center"; ctx.textBaseline="alphabetic";
+      ctx.fillStyle="#05080F"; ctx.font=(S*.095).toFixed(1)+"px "+disp;
+      ctx.fillText(fmt(live().length),cx+2,cy+S*.02+2);
+      ctx.fillStyle=bone; ctx.fillText(fmt(live().length),cx,cy+S*.02);
+      ctx.fillStyle=faint; ctx.font="600 "+(S*.026).toFixed(1)+"px "+mono;
+      ctx.fillText("IN THE DRUM",cx,cy+S*.07);
+
+      var bx=cx+Math.cos(POINTER)*rB, by=cy+Math.sin(POINTER)*rB;
+      ctx.beginPath(); ctx.arc(bx,by,S*.022,0,TAU); ctx.fillStyle=bone; ctx.fill();
+      ctx.lineWidth=2; ctx.strokeStyle="#05080F"; ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(cx,cy-rO+S*.03); ctx.lineTo(cx-S*.02,cy-rO-S*.018); ctx.lineTo(cx+S*.02,cy-rO-S*.018);
+      ctx.closePath(); ctx.fillStyle=brass; ctx.fill(); ctx.lineWidth=2; ctx.strokeStyle="#05080F"; ctx.stroke();
+    }
+
+    function angleFor(si){
+      var s=null; segs.forEach(function(x){ if(x.i===si) s=x; });
+      if(!s) return 0;
+      var inset=(s.a1-s.a0)*.16;
+      return POINTER-(s.a0+inset+Math.random()*((s.a1-s.a0)-inset*2));
+    }
+    function spinTo(pick,done){
+      var from=st.angle, to=angleFor(pick.si);
+      while(to<from) to+=TAU;
+      to+=(4+Math.floor(Math.random()*2))*TAU;
+      var ended=false, finish=function(){
+        if(ended) return; ended=true;
+        st.angle=to%TAU; drawWheel(st.angle); done();
+      };
+      if(reduced){ finish(); return; }
+      var dur=2600+Math.random()*500, t0=null;
+      /* a starved rAF (background tab) must not leave the table locked */
+      setTimeout(finish,dur+600);
+      (function frame(now){
+        if(ended) return;
+        if(t0===null) t0=now;
+        var t=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-t,4);
+        st.angle=from+(to-from)*e; drawWheel(st.angle);
+        if(t<1) requestAnimationFrame(frame); else finish();
+      })(performance.now());
+    }
+
+    function announce(c){
+      var v=$("rlVerdict"); v.classList.remove("idle");
+      v.innerHTML="<div class='rl-vt'>"+esc(c.tk)+"</div><div class='rl-vn'>"+esc(c.co)+"</div>"+
+        "<div class='rl-vm'><span class='rl-tag'>"+dot(c.si)+SEC[c.si][0]+"</span>"+
+        "<span class='chip "+TCLS[c.ci]+"'>"+TIER[c.ci]+"</span></div>";
+    }
+    function busy(b){ st.spinning=b; ["rlSpin","rlDeal","rlClear"].forEach(function(id){ $(id).disabled=b; }); }
+    function size(){ return Math.max(1,Math.min(30,parseInt($("rlSize").value,10)||10)); }
+
+    $("rlSpin").addEventListener("click",function(){
+      if(st.spinning) return;
+      var pool=free(); if(!pool.length) return;
+      var c=any(pool); busy(true);
+      spinTo(c,function(){ announce(c); st.book.push({tk:c.tk,co:c.co,si:c.si,ci:c.ci,locked:false}); renderBook(); renderMix(); busy(false); });
+    });
+    $("rlDeal").addEventListener("click",function(){
+      if(st.spinning) return;
+      st.book=st.book.filter(function(r){return r.locked;});
+      var need=size()-st.book.length, picks=[];
+      for(var i=0;i<need;i++){ var pool=free(picks); if(!pool.length) break; picks.push(any(pool)); }
+      if(!picks.length){ renderBook(); renderMix(); return; }
+      busy(true);
+      spinTo(picks[picks.length-1],function(){
+        picks.forEach(function(p){ st.book.push({tk:p.tk,co:p.co,si:p.si,ci:p.ci,locked:false}); });
+        announce(picks[picks.length-1]); renderBook(); renderMix(); busy(false);
+      });
+    });
+    $("rlClear").addEventListener("click",function(){
+      if(st.spinning) return;
+      st.book=[];
+      var v=$("rlVerdict"); v.classList.add("idle");
+      v.innerHTML="<div class='rl-vt'>Table cleared</div><div class='rl-vn'>Spin again whenever you're ready.</div>";
+      renderBook(); renderMix();
+    });
+    $("rlCopy").addEventListener("click",function(){
+      if(!st.book.length) return;
+      var b=$("rlCopy"), txt=st.book.map(function(r){return r.tk;}).join(", ");
+      var back=function(){ setTimeout(function(){ b.textContent="Copy tickers"; },1600); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(function(){ b.textContent="Copied"; back(); },
+          function(){ b.textContent=txt.slice(0,40)+"\u2026"; back(); });
+      } else { b.textContent=txt.slice(0,40)+"\u2026"; back(); }
+    });
+    $("rlSize").addEventListener("input",function(){ $("rlDealN").textContent=size(); });
+
+    /* the draw: equal weight, no money on the table */
+    function renderBook(){
+      var n=st.book.length, w=n?1/n:0;
+      $("rlEmpty").style.display=n?"none":"block";
+      $("rlMeta").textContent=n?(n+" position"+(n===1?"":"s")+" \u00b7 "+pct(w)+" each"):"0 positions";
+      var tb=$("rlBook");
+      tb.innerHTML=st.book.map(function(r,i){
+        return "<tr class='"+(r.locked?"locked":"")+"'>"+
+          "<td class='rl-slot'>"+(i<9?"0":"")+(i+1)+"</td>"+
+          "<td class='tk'>"+esc(r.tk)+"</td>"+
+          "<td class='rl-co'>"+esc(r.co)+"</td>"+
+          "<td><span class='rl-tag'>"+dot(r.si)+SEC[r.si][0]+"</span></td>"+
+          "<td><span class='chip "+TCLS[r.ci]+"'>"+TIER[r.ci]+"</span></td>"+
+          "<td class='num r'>"+pct(w)+"</td>"+
+          "<td class='r'><div class='rl-rowbtns'>"+
+            "<button type='button' class='rl-mini' data-lock='"+i+"' aria-pressed='"+r.locked+"'>"+(r.locked?"Held":"Hold")+"</button>"+
+            "<button type='button' class='rl-mini' data-re='"+i+"'>Respin</button></div></td></tr>";
+      }).join("");
+      [].forEach.call(tb.querySelectorAll("[data-lock]"),function(b){
+        b.addEventListener("click",function(){ var i=+b.getAttribute("data-lock"); st.book[i].locked=!st.book[i].locked; renderBook(); });
+      });
+      [].forEach.call(tb.querySelectorAll("[data-re]"),function(b){
+        b.addEventListener("click",function(){
+          if(st.spinning) return;
+          var i=+b.getAttribute("data-re"), old=st.book[i];
+          st.book.splice(i,1);
+          var pool=free(); st.book.splice(i,0,old);
+          if(!pool.length) return;
+          var c=any(pool);
+          st.book[i]={tk:c.tk,co:c.co,si:c.si,ci:c.ci,locked:false};
+          announce(c); renderBook(); renderMix();
+        });
+      });
+    }
+
+    /* the mix: how far the draw drifted from the index */
+    function renderMix(){
+      var n=st.book.length;
+      var rows=segs.map(function(s){
+        var d=st.book.filter(function(r){return r.si===s.i;}).length;
+        return {i:s.i,name:s.name,color:s.color,share:s.share,drawn:d,ds:n?d/n:0};
+      }).sort(function(a,b){ return (b.ds-a.ds)||(b.share-a.share); });
+      var max=.0001; rows.forEach(function(r){ max=Math.max(max,r.ds,r.share); });
+      $("rlBars").innerHTML=rows.map(function(r){
+        return "<div class='rl-brow'><span class='rl-bname'>"+dot(r.i)+"<span class='rl-nm'>"+r.name+"</span></span>"+
+          "<span class='rl-track'><span class='rl-fill' style='--c:"+r.color+";width:"+(r.ds/max*100).toFixed(1)+"%'></span>"+
+          "<span class='rl-mark' style='left:"+(r.share/max*100).toFixed(1)+"%'></span></span>"+
+          "<span class='rl-bval'><b>"+(n?pct(r.ds):"\u2014")+"</b> / "+pct(r.share)+"</span></div>";
+      }).join("");
+      var ro=$("rlRead");
+      if(!n){
+        ro.textContent="Deal a book and this reads back how far the draw drifted from the index, which is the whole point. Ten names out of "+
+          fmt(U.length)+" will miss the index mix badly and often, and seeing by how much is more instructive than any stock tip on this page.";
+        return;
+      }
+      var over=rows.filter(function(r){return r.drawn;}).sort(function(a,b){return (b.ds-b.share)-(a.ds-a.share);})[0];
+      var miss=rows.filter(function(r){return !r.drawn;}).sort(function(a,b){return b.share-a.share;});
+      var tvd=rows.reduce(function(s,r){return s+Math.abs(r.ds-r.share);},0)/2;
+      var tiers=[0,1,2].filter(function(c){return st.caps[c];}).map(function(c){
+        return st.book.filter(function(r){return r.ci===c;}).length+" "+TIER[c].toLowerCase();
+      }).join(", ");
+      var bits=[n+" name"+(n===1?"":"s")+": "+tiers+"."];
+      if(over && over.ds>over.share) bits.push("Heaviest tilt is <b>"+over.name+"</b> at "+pct(over.ds)+" against "+pct(over.share)+" of the drum.");
+      if(miss.length) bits.push("Nothing at all from "+miss.length+" sector"+(miss.length===1?"":"s")+": "+
+        miss.slice(0,3).map(function(m){return m.name;}).join(", ")+(miss.length>3?" and others":"")+".");
+      bits.push("Total drift from the index mix: <b>"+pct(tvd)+"</b> of the book sitting in the wrong sector.");
+      ro.innerHTML=bits.join(" ");
+    }
+
+    /* open in a working state: a dealt book, so the page shows what it does */
+    layout(); renderOdds(); drawWheel(st.angle);
+    var pool=live().slice();
+    for(var i=0;i<10&&pool.length;i++){ var c=pool.splice(Math.floor(Math.random()*pool.length),1)[0]; st.book.push({tk:c.tk,co:c.co,si:c.si,ci:c.ci,locked:false}); }
+    announce(st.book[st.book.length-1]); renderBook(); renderMix();
+
+    window.__rlDraw=function(){ drawWheel(st.angle); };
+    var rt; window.addEventListener("resize",function(){ clearTimeout(rt); rt=setTimeout(function(){ drawWheel(st.angle); },110); });
+  })();
 
   /* ---------------- the record as heat -------------------------------------
      46 weeks at a glance. Magnitude is scaled against the largest absolute
@@ -2676,14 +3084,20 @@ html = html.replace("__FS_JSON__", json.dumps(fs, ensure_ascii=False))
 vs_path = os.path.join(HERE, "valuescan.json")
 vs = json.load(open(vs_path, encoding="utf-8")) if os.path.exists(vs_path) else None
 if vs is None:
-    print("warning: valuescan.json missing - run valuescan_sync.py; Concept 11 will render empty")
+    print("warning: valuescan.json missing - run valuescan_sync.py; Concept 12 will render empty")
 html = html.replace("__VS_JSON__", json.dumps(vs, ensure_ascii=False))
 
 gs_path = os.path.join(HERE, "growthscan.json")
 gs = json.load(open(gs_path, encoding="utf-8")) if os.path.exists(gs_path) else None
 if gs is None:
-    print("warning: growthscan.json missing - run growthscan_sync.py; Concept 12 will render empty")
+    print("warning: growthscan.json missing - run growthscan_sync.py; Concept 13 will render empty")
 html = html.replace("__GS_JSON__", json.dumps(gs, ensure_ascii=False))
+
+rl_path = os.path.join(HERE, "roulette.json")
+rl = json.load(open(rl_path, encoding="utf-8")) if os.path.exists(rl_path) else None
+if rl is None:
+    print("warning: roulette.json missing; Concept 07 will render empty")
+html = html.replace("__RL_JSON__", json.dumps(rl, ensure_ascii=False, separators=(",", ":")))
 # Hash the finished page (placeholder still in it) so an unchanged rebuild keeps
 # the same id and never triggers a pointless reload.
 import hashlib, datetime as _dt

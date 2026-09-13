@@ -28,7 +28,7 @@ Two references, built into the chrome. The brief was literal: how would those tw
 
 ### 2.2 Layout
 
-- One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets (Concepts 01 to 09 are static markup: six archive pieces and three deck memos). No external fonts, images, scripts, or calls after load.
+- One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets (Concepts 01 to 06 and 08 to 10 are static markup: six archive pieces and three deck memos; 07 is the roulette wheel over `roulette.json`). No external fonts, images, scripts, or calls after load.
 - Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS - do not add number spans to the markup or they will double up.
 - Page padding `clamp(10px,1.2vw,18px)`, no content-column cap. Card grids use 1px gaps over the rule colour rather than per-card borders, so a grid reads as one ruled panel inside its window.
 - Prose stays serif at a real measure (16px/1.78, 68ch) wherever something is read rather than scanned - the weekly assessment, The Lab's theses, all of The Story.
@@ -66,14 +66,14 @@ The redesign prototype's skeleton, kept when the paper skin was dropped. The fun
 |---|---|---|---|
 | 01 | **The Book** | `book` | Three return tiles · return curve with timeline selector · book summary, concept of operations, risk posture (from `book`) · allocation bars · positions ledger · the three strategy cards **The Wheel / Forecast contracts / Outright** with control lines and the control framework |
 | 02 | **The Record** | `record` | **Weekly After-Action** (card + history strip of every week since inception) · Service Record (career ledger) · Between the After-Actions · Accolades · Failures · Discipline tally · Best closes · Worst closes · By name · Event sleeve by contract · How to read this |
-| 03 | **The Lab** | `ideation` | Twelve concepts in chronological order, each a sub-tab: the 2022–23 archive, verbatim (**01 Investment Risk Management**, **02 Risk Management Final**, **03 Starbucks Banking Paper**, **04 Data Analytics for Risk Management**, **05 Insurance Operations Final**, **06 Market Overview**), three deck memos (**07 Systematized Capital Management**, **08 A Case for Forecast Events**, **09 Xbox Takeover**), then **10 Futuresight Index**, **11 Value Scanner**, **12 Quality Growth** |
+| 03 | **The Lab** | `ideation` | Thirteen concepts in chronological order, each a sub-tab: the 2022–23 archive, verbatim (**01 Investment Risk Management**, **02 Risk Management Final**, **03 Starbucks Banking Paper**, **04 Data Analytics for Risk Management**, **05 Insurance Operations Final**, **06 Market Overview**), **07 S&P Roulette** (random-draw benchmark, static constituent snapshot in `roulette.json`), three deck memos (**08 Systematized Capital Management**, **09 A Case for Forecast Events**, **10 Xbox Takeover**), then **11 Futuresight Index**, **12 Value Scanner**, **13 Quality Growth** |
 | 04 | **The Story** | `story` | Origin, intent, About me (the trading journey, rebuilt from the deck), contact (from `pages.story`, into `#story-blocks`) · doctrine — what we hold to be true, mental models, target set (from `pages.concepts`, into `#panel-concepts`, which is now a plain container, not a panel) · discipline blocks (from `pages.discipline`) · Mandate & Constraints (from `constraints`) |
 
 The former P&L, The Desk and The Mandate panels no longer exist; their sections moved as listed. `blocks()` in the JS still targets `booksummary`, `panel-concepts`, `page-discipline-inline` and now `story-blocks`. The curve redraws on activating `book`; the allocation bars animate on `book`; the Futuresight chart draws on `ideation`.
 
 **Weekly after-action conventions.** One card per Monday–Friday week, dated the week's last trading day. Solid chip = graded live that Friday. Dashed chip marked *rebuilt* = reconstructed after the fact from the trade record (`recon: true`), badged on the card and carrying a basis note. Three dials — position size (20% cap), cash buffer (10% floor), event sleeve. **The event dial is omitted entirely in weeks with no forecast trades.** In reconstructed weeks it is graded on what the sleeve returned (closes, win rate, profit factor), not on today's rules. Since Aug 24 2026 the sleeve is sanctioned for data collection and the dial reports it without scoring it.
 
-**Futuresight (Concept 10) rule:** no backtest, ever. The roster was chosen knowing what had happened; a historical curve would measure hindsight.
+**Futuresight (Concept 11) rule:** no backtest, ever. The roster was chosen knowing what had happened; a historical curve would measure hindsight.
 
 **Order rule:** concepts stay in chronological order by the date each was written or opened. A new concept is inserted by date and everything after it renumbers.
 
