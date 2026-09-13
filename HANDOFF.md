@@ -22,7 +22,7 @@ Two references, built into the chrome. The brief was literal: how would those tw
 
 **TARTAKOVSKY - angular blocks, thick outlines, hard cuts.** The masthead is a composition: a brass plane cut on the diagonal behind the identity block with a thick dark stroke on the same angle. Every window is a 2px keyline with a 26px chamfer on its top-right corner (a gradient in `::before`, so it survives the reveal clip). Every brass slab has a slanted edge - the key on the rail, the window titles, the grade's cut corner. Cards carry 3-4px top bars. Headings are the display face in bone with a hard dark drop, never a glow. Changing tab is one move with no overlay: the new panel is revealed in place by a single slanted wipe (`@keyframes slant`, a `clip-path` polygon sweeping left to right with the same slant as the slabs) while it slides in from the right with a slight smear, 440ms on the cut easing. The slab on the rail moves on the same clock. Nothing else animates on a tab change. Everything that enters elsewhere does so on twos; nothing fades.
 
-**Kept:** the tape, the keycaps, the status line with its cursor, the stamped grade, the counted figures, the traced curve, the rastered heat.
+**Kept:** the tape, the keycaps, the concept switcher as a second tape (it crawls, stops under a pointer, focus or touch, and wraps to rows under reduced motion), the status line with its cursor, the stamped grade, the counted figures, the traced curve, the rastered heat.
 
 **Two traps for the next editor.** `.tag` is overloaded - masthead strapline and a badge inside a strategy card - so scope carefully. And `.fsview{display:none}` is what keeps each concept's sub-views apart; drop it and every view in all three concepts renders at once.
 

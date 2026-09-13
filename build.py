@@ -346,13 +346,23 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   .proselist li b{color:var(--ink); font-weight:600}
 
   /* ---------- concepts ---------- */
-  .cnav{display:flex; gap:1px; background:var(--line); border:1px solid var(--line);
-    overflow-x:auto; scrollbar-width:none; margin-bottom:14px}
-  .cnav::-webkit-scrollbar{display:none}
-  .cbtn{appearance:none; background:var(--panel); border:0; cursor:pointer; font:inherit;
+  /* the switcher is a second tape: the keycaps crawl in a loop (doubled in JS so the
+     -50% wrap is seamless), and stop dead under a pointer, a focus or a thumb */
+  .cnav{position:relative; overflow:hidden; background:var(--line); border:1px solid var(--line); margin-bottom:14px;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%)}
+  .ctrack{display:flex; width:max-content; animation:crawl 90s linear infinite}
+  .cnav:hover .ctrack,.cnav:focus-within .ctrack,.cnav.hold .ctrack{animation-play-state:paused}
+  .cbtn{appearance:none; background:var(--panel); border:0; margin-right:1px; cursor:pointer; font:inherit;
     font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase;
     color:var(--faint); padding:12px 18px; text-align:left; white-space:nowrap;
     display:flex; flex-direction:column; gap:5px; transition:.14s}
+  @media (prefers-reduced-motion:reduce){
+    .cnav{-webkit-mask-image:none; mask-image:none}
+    .ctrack{animation:none; width:auto; flex-wrap:wrap; gap:1px}
+    .cbtn{margin-right:0; flex:1 1 150px}
+    .cbtn.dup{display:none}
+  }
   .cbtn b{font-size:12px; letter-spacing:.05em; color:var(--muted); text-transform:none}
   .cbtn:hover{background:var(--panel-2)}
   .cbtn.on{background:rgba(201,162,39,.12)}
@@ -834,7 +844,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   </section>
   </div>
   <div class="panel" id="panel-ideation">
-    <nav class="cnav" id="cnav" role="tablist" aria-label="Concepts">
+    <nav class="cnav" id="cnav" role="tablist" aria-label="Concepts"><div class="ctrack" id="ctrack">
       <button type="button" class="cbtn on" data-c="riskmgmt" role="tab">Concept 01<b>Investment Risk</b></button>
       <button type="button" class="cbtn" data-c="riskfinal" role="tab">Concept 02<b>Risk Management Final</b></button>
       <button type="button" class="cbtn" data-c="starbucks" role="tab">Concept 03<b>Starbucks Banking Paper</b></button>
@@ -847,7 +857,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <button type="button" class="cbtn" data-c="futuresight" role="tab">Concept 10<b>Futuresight Index</b></button>
       <button type="button" class="cbtn" data-c="value" role="tab">Concept 11<b>Value Scanner</b></button>
       <button type="button" class="cbtn" data-c="growth" role="tab">Concept 12<b>Quality Growth</b></button>
-    </nav>
+    </div></nav>
 
     <div class="concept active" id="con-riskmgmt">
       <div class="eyebrow">Concept 01 &middot; portfolio risk &middot; Nov 27, 2022</div>
@@ -1819,11 +1829,24 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   /* ---------------- Ideation: concept switcher ---------------- */
   (function(){
     var nav=document.getElementById("cnav"); if(!nav) return;
+    /* the tape: a second, inert copy of the keycaps rides behind the first so the loop never shows a seam */
+    var track=document.getElementById("ctrack");
+    [].slice.call(track.querySelectorAll(".cbtn")).forEach(function(b){
+      var d=b.cloneNode(true);
+      d.classList.add("dup"); d.setAttribute("aria-hidden","true"); d.setAttribute("tabindex","-1");
+      track.appendChild(d);
+    });
+    /* a thumb holds the tape still long enough to land the tap */
+    var hold;
+    nav.addEventListener("touchstart",function(){ clearTimeout(hold); nav.classList.add("hold"); },{passive:true});
+    nav.addEventListener("touchend",function(){
+      clearTimeout(hold); hold=setTimeout(function(){ nav.classList.remove("hold"); },2600);
+    },{passive:true});
     var btns=[].slice.call(nav.querySelectorAll(".cbtn"));
     btns.forEach(function(b){
       b.addEventListener("click",function(){
         var c=b.getAttribute("data-c");
-        btns.forEach(function(x){x.classList.toggle("on",x===b);});
+        btns.forEach(function(x){x.classList.toggle("on",x.getAttribute("data-c")===c);});
         ["riskmgmt","riskfinal","starbucks","analytics","insops","market","scm","forecast","xbox","futuresight","value","growth"].forEach(function(k){
           var el=document.getElementById("con-"+k);
           if(el) el.classList.toggle("active",k===c);
