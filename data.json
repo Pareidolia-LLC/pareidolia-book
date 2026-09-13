@@ -1583,9 +1583,43 @@
         ]
       },
       {
+        "eyebrow": "About me",
+        "h": "My trading journey",
+        "p": [
+          "A BBA in Finance from the University of Houston, class of 2023. Investing since January 2020, trading since January 2024.",
+          "It started strictly in securities — stocks, nothing else. I got bored and frustrated with that alone, and confused by the financial dogma handed down as fact, so trading was the logical next step."
+        ]
+      },
+      {
+        "eyebrow": "How it evolved",
+        "p": [
+          "It mutated out of light margin use. It started with buying weekly out-of-the-money calls and evolved with every trade made and lost. The toolkit now: cash-secured puts, covered calls, straddles and strangles, and LEAPS calls."
+        ],
+        "ul": [
+          "<b>Quirks.</b> Brokers getting in the way, Reg T margin calls, wash sales, and getting scalped on illiquid names.",
+          "<b>Risk.</b> Tail events and illiquidity. Scaling up can set off several accidental wash sales, and opinions have to stay adaptive. The largest single-trade loss is withheld here, like every dollar figure on this site."
+        ]
+      },
+      {
+        "eyebrow": "Resources",
+        "p": [
+          "<b>Books.</b> <i>One Up on Wall Street</i>, Peter Lynch · <i>Zero to One</i>, Peter Thiel · <i>Security Analysis</i> (7th edition), Graham and Dodd · <i>Stay the Course</i>, John Bogle · <i>Value: The Four Cornerstones of Corporate Finance</i>.",
+          "<b>Podcasts.</b> Options Insider Radio Network · Wealth Building with Options · All-In · Founders · Prof G Markets, a bit political, and the bias shows."
+        ]
+      },
+      {
+        "eyebrow": "What’s next",
+        "ul": [
+          "Irregular uploads, possibly on psychology and philosophy.",
+          "Scaling up Pareidolia.",
+          "Expect an update before or in Q1."
+        ]
+      },
+      {
         "eyebrow": "Contact",
         "p": [
-          "<a href=\"https://x.com/Pareidolian_\" target=\"_blank\" rel=\"noopener\">@Pareidolian_ on X</a>"
+          "<a href=\"https://x.com/Pareidolian_\" target=\"_blank\" rel=\"noopener\">@Pareidolian_ on X</a>",
+          "Better not to go at it alone. To reach me directly, my LinkedIn is under my name: Thomas Laskoskie."
         ]
       }
     ]

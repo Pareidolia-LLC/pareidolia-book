@@ -416,16 +416,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   #gsRows td:last-child{white-space:nowrap; padding-right:12px}
   #gsPillars td:first-child{font-family:var(--serif); font-size:13px}
 
-  /* ---------- concept 04: forecast events ---------- */
-  canvas#fcfit,canvas#fcres{display:block; width:100%; height:260px; margin-top:10px}
-  canvas#fcres{height:200px}
-  .fc-ladder{display:block; width:100%; height:auto; margin-top:10px}
+  /* ---------- concept memos (04-05) ---------- */
+  .concept>h3{margin-top:22px}
   .fc-eq{font-family:var(--mono); font-size:13px; letter-spacing:.04em; color:var(--bone);
     background:var(--panel-2); border:2px solid var(--line); padding:10px 14px; margin:12px 0;
     overflow-x:auto; white-space:nowrap}
-  .fc-pair{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr)); gap:14px; margin-top:12px}
   .fc-won{color:var(--up); font-weight:600}
-  .fc-lost{color:var(--down); font-weight:600}
 
   /* ---------- status line ---------- */
   .statusbar{display:flex; position:fixed; left:0; right:0; bottom:0; z-index:20;
@@ -824,6 +820,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       <button type="button" class="cbtn" data-c="value" role="tab">Concept 02<b>Value Scanner</b></button>
       <button type="button" class="cbtn" data-c="growth" role="tab">Concept 03<b>Quality Growth</b></button>
       <button type="button" class="cbtn" data-c="forecast" role="tab">Concept 04<b>Forecast Events</b></button>
+      <button type="button" class="cbtn" data-c="xbox" role="tab">Concept 05<b>Xbox Takeover</b></button>
     </nav>
 
     <div class="concept active" id="con-futuresight">
@@ -964,63 +961,82 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     </div><!-- /con-growth -->
 
     <div class="concept" id="con-forecast">
-      <div class="eyebrow">Concept 04 &middot; forecast events &middot; USD/JPY case study</div>
+      <div class="eyebrow">Concept 04 &middot; memo &middot; USD/JPY case study</div>
       <h2>A Case for Forecast Events</h2>
-      <p class="fs-kicker">The first three concepts buy securities. This one buys a question. A forecast event is a Yes-or-No contract on a single number &mdash; will USD/JPY settle above 159.25 on Friday &mdash; and the Yes price is the market&rsquo;s probability, quoted in cents. The case is that a futures view can be carried through that ladder instead of a leveraged contract, with the most you can lose printed on the ticket.</p>
-      <p class="prose">It comes from a deck I built around one pair and three questions, asked in order. What does daily price action say about where a session closes? What does the ForecastX ladder say about the same close? And where the two disagree, which one should size the trade? The material is eighty-two sessions of USD/JPY to April 24, 2026, a regression of the close on the day&rsquo;s open, high and low, and two live ladders from April 23 and 24 checked against where the pair actually settled.</p>
-      <p class="fs-note">Same footing as the other three: research I run for myself, not advice. I am not a licensed financial advisor. A binary caps the loss at what you paid, and that is the trap rather than the comfort &mdash; buying the likely side at 95 cents risks 95 to make 5, so one miss erases roughly two dozen wins. That arithmetic is the real risk in this concept. Act on it and the risk is yours, not mine.</p>
-      <div class="tlviews" id="fcviews" role="tablist" aria-label="Forecast event views"></div>
-
-      <div class="fsview active" id="fcv-concept">
-        <div class="stats" id="fcStats"></div>
-        <h3 style="margin-top:22px">The case, in three steps</h3>
-        <ul class="proselist">
-          <li><b>Proxy product.</b> A forecast ladder is a column of strikes a quarter of a yen apart, each a contract that settles at a dollar or at nothing. Read top to bottom it is a probability curve for the close &mdash; the same thing a futures position trades, with the downside fixed at entry instead of at the margin call.</li>
-          <li><b>Price action against gut feel.</b> The regression turns the day&rsquo;s range into a number for where the close should land, so a lean on a strike can be checked against something other than instinct.</li>
-          <li><b>Applied statistics.</b> The only place a trade exists is where the ladder and the model disagree. Where they agree the price is fair, and the spread is simply the cost of taking it.</li>
-        </ul>
-      </div>
-
-      <div class="fsview" id="fcv-data">
-        <p class="prose">Eighty-two daily sessions ending April 24, 2026, with each close regressed on that session&rsquo;s open, high and low. The figures are the deck&rsquo;s own, rebuilt from its chart data and re-fitted independently; the coefficients and the fit statistics match it to six decimal places.</p>
-        <div class="fc-eq" id="fcEq"></div>
-        <div class="chart-card">
-          <div class="chart-head"><h2>Close against the fitted close</h2><span class="sub">82 sessions to Apr 24, 2026</span></div>
-          <canvas id="fcfit" role="img" aria-label="USD/JPY daily close and fitted close over 82 sessions."></canvas>
-          <div class="marks"><span><i class="swatch" style="background:var(--bone)"></i>Actual close</span><span><i class="swatch" style="background:var(--accent)"></i>Fitted close</span></div>
-        </div>
-        <div class="chart-card" style="margin-top:14px">
-          <div class="chart-head"><h2>Residuals</h2><span class="sub">Actual minus fitted, yen</span></div>
-          <canvas id="fcres" role="img" aria-label="Regression residuals plotted against the fitted close."></canvas>
-        </div>
-        <h3 style="margin-top:22px">Coefficients</h3>
-        <div class="tablewrap"><table><thead><tr><th>Term</th><th class="r">Coefficient</th><th class="r">Std error</th><th class="r">t stat</th><th class="r">P-value</th><th class="r">Lower 95%</th><th class="r">Upper 95%</th></tr></thead><tbody id="fcCoef"></tbody></table></div>
-        <div class="fc-pair">
-          <div><h3 style="margin-top:10px">Regression statistics</h3><div class="tablewrap"><table><tbody id="fcReg"></tbody></table></div></div>
-          <div><h3 style="margin-top:10px">Analysis of variance</h3><div class="tablewrap"><table><thead><tr><th>Source</th><th class="r">df</th><th class="r">SS</th><th class="r">MS</th><th class="r">F</th><th class="r">Sig. F</th></tr></thead><tbody id="fcAnova"></tbody></table></div></div>
-        </div>
-      </div>
-
-      <div class="fsview" id="fcv-ladders">
-        <p class="prose">Each rung is its own contract: will USD/JPY settle above this strike? The Yes price is the market&rsquo;s probability in cents, and read across the rungs it becomes a curve for where the close lands &mdash; the same question a futures position answers, with the most you can lose written on the ticket. Bars are green where Yes settled and red where it did not. The solid line is where the pair actually closed; the dashed line is the fitted close. Yes and No are quoted separately and do not add to 100.</p>
-        <div class="fc-pair" id="fcLadders"></div>
-      </div>
-
-      <div class="fsview" id="fcv-limits">
-        <h3>The 0.98 is borrowed from the close</h3>
-        <p class="prose">The regression explains each close with that same session&rsquo;s high and low. Neither is known until the session is over, and every one of the 82 closes sits inside its own range by definition &mdash; so the fit describes a finished day rather than predicting one. That is where an R&sup2; of 0.98 comes from.</p>
-        <div class="stats" id="fcLimit"></div>
-        <p class="prose" style="margin-top:14px">Keep only what is on the screen while a ticket can still be written &mdash; the open &mdash; and the fit falls to 0.86 with a standard error of 0.78 yen. That is barely better than assuming today closes where yesterday did, which misses by 0.81. The ladder is priced a quarter of a yen apart, finer than either error, so this model cannot pick a strike. What it can do is describe the range a close usually lands in, which is how a strike&rsquo;s price should be sanity-checked rather than overruled. The two April ladders show exactly that: on both days the fitted close landed on the wrong side of a strike it was built to call.</p>
-        <h3 style="margin-top:22px">What would make it a forecast</h3>
-        <ul class="proselist">
-          <li>Fit the close on information dated before the session &mdash; the prior close, the prior range, the overnight move &mdash; and publish the out-of-sample error, not the in-sample R&sup2;.</li>
-          <li>Grade it against the ladder by settlement event, not by contract. Two strikes on one day are one bet in a bigger size.</li>
-          <li>Track it forward from a dated start, the way the other concepts are tracked. No backtest of what trading it would have returned.</li>
-        </ul>
-        <h3 style="margin-top:22px">The live record</h3>
-        <p class="prose">This concept is not a clean slate. USD/JPY is traded in the book&rsquo;s event sleeve, and across its full settled history it has returned less than it cost, which is why the forecast engine carries it on its banned list. That result is on The Record. This page is the argument for how the product should be used; The Record is how it has been used.</p>
-      </div>
+      <p class="fs-kicker">Replicate futures trading with forecast events. A forecast event is a Yes-or-No contract on a single number &mdash; will USD/JPY settle above 159.25 on Friday &mdash; and the Yes price is the market&rsquo;s probability, quoted in cents. A ladder of those strikes carries the same view as a futures position, with the most you can lose fixed at entry.</p>
+      <h3>The data</h3>
+      <p class="prose">Eighty-two daily sessions of USD/JPY to April 24, 2026: the intraday high-low, the open-close, and a regression of the close on the day&rsquo;s open, high and low.</p>
+      <div class="fc-eq">Close = 0.0064 &minus; 0.7070 &times; Open + 0.6903 &times; High + 1.0182 &times; Low</div>
+      <div class="stats"><div class="stat"><div class="k">Fit &middot; R&sup2;</div><div class="v">0.982</div><div class="m">82 sessions</div></div><div class="stat"><div class="k">Adjusted R&sup2;</div><div class="v">0.981</div><div class="m">Three inputs</div></div><div class="stat"><div class="k">Std error &middot; yen</div><div class="v">0.29</div><div class="m">Across the whole window</div></div></div>
+      <h3>Reading the ladder</h3>
+      <p class="prose">Visualizing gut feeling with data: the ForecastX ladders for April 23 and 24, set against where the pair actually closed.</p>
+      <div class="tablewrap"><table><thead><tr><th>Session</th><th>Contract</th><th class="r">Yes, cents</th><th class="r">Close</th><th class="r">Settled</th></tr></thead><tbody>
+        <tr><td class="tk">Apr 23, 2026</td><td>Above 159.00</td><td class="r">60</td><td class="r">159.73</td><td class="r"><span class="fc-won">Yes</span></td></tr>
+        <tr><td class="tk">Apr 24, 2026</td><td>Above 159.25</td><td class="r">85</td><td class="r">159.37</td><td class="r"><span class="fc-won">Yes</span></td></tr>
+      </tbody></table></div>
+      <h3>Live application</h3>
+      <ul class="proselist">
+        <li><b>Proxy product.</b> The ladder stands in for a futures contract, with the downside written on the ticket.</li>
+        <li><b>Gut feel against price action.</b> The regression gives a lean on a strike something to be checked against besides instinct.</li>
+        <li><b>Applied statistics.</b> A trade only exists where the ladder and the model disagree.</li>
+      </ul>
+      <p class="fs-note">Research I run for myself, not advice. I am not a licensed financial advisor. The regression uses each session&rsquo;s own high and low, so it describes a finished day rather than forecasting the next one. Act on it and the risk is yours, not mine.</p>
     </div><!-- /con-forecast -->
+
+    <div class="concept" id="con-xbox">
+      <div class="eyebrow">Concept 05 &middot; memo &middot; game theory design project &middot; July 2026</div>
+      <h2>Xbox Takeover</h2>
+      <p class="fs-kicker">A refined vision for the brand: publisher first, studios merged by DNA, and an action plan for the IP vault. Xbox should be a game publisher and curator that happens to sell consoles.</p>
+      <div class="stats"><div class="stat"><div class="k">Spent on ZeniMax + ABK</div><div class="v">$76.2B</div><div class="m">Two acquisitions, 2021 and 2023</div></div><div class="stat"><div class="k">Core first-party studios</div><div class="v">9</div><div class="m">Xbox Game Studios</div></div><div class="stat"><div class="k">Franchises owned</div><div class="v">93</div><div class="m">Every IP in the vault, A to Z</div></div><div class="stat"><div class="k">Roles cut</div><div class="v">3,200</div><div class="m">The July 2026 reset</div></div></div>
+      <h3>Why this pitch</h3>
+      <p class="prose">I grew up playing a variety of games, and I look at a business as an investor and independent trader &mdash; with an owner-operator&rsquo;s rationale. I got my first Xbox at ten. The thesis: a mismanaged brand that should be the home of gaming, built on Game Pass and a PC-native experience.</p>
+      <h3>The trigger: the July 2026 reset</h3>
+      <ul class="proselist">
+        <li><b>Cuts.</b> 3,200 roles eliminated at Xbox, roughly 4,800 company-wide.</li>
+        <li><b>Divestments.</b> Double Fine and Compulsion go independent with their IP. Ninja Theory and Undead Labs are sold, so Hellblade and State of Decay leave the vault.</li>
+        <li><b>Cancellations.</b> The Halo live-service Project Ekur is cancelled; Everwild and Perfect Dark were already dead. ZeniMax is narrowed to Fallout and The Elder Scrolls.</li>
+        <li><b>Platform elevation.</b> Minecraft and Candy Crush are treated as profit platforms, not games.</li>
+      </ul>
+      <h3>The strategy</h3>
+      <ul class="proselist">
+        <li><b>Make quality games people want to play.</b> The org already agrees: Minecraft and Candy Crush run alongside the console business. Content is core.</li>
+        <li><b>Put exclusivity back in gear.</b> Divest studios but retain equity. Hardware is a venue; recapture brand identity and keep the IP on Xbox.</li>
+        <li><b>Curation is king.</b> Xbox should be a quality brand that keeps customers inside its own ecosystem.</li>
+      </ul>
+      <h3>The $76B audit</h3>
+      <div class="tablewrap"><table><thead><tr><th>Year</th><th>Event</th><th>What it meant</th></tr></thead><tbody>
+        <tr><td class="tk">2021</td><td>ZeniMax / Bethesda, $7.5B</td><td>The Elder Scrolls, Fallout, Doom and Dishonored enter the vault</td></tr>
+        <tr><td class="tk">2023</td><td>Activision Blizzard King, $68.7B</td><td>Call of Duty, Warcraft, Diablo, Candy Crush</td></tr>
+        <tr><td class="tk">2024&ndash;25</td><td>The bill arrives</td><td>Tango, Arkane Austin, Alpha Dog and The Initiative closed; Perfect Dark and Everwild killed</td></tr>
+        <tr><td class="tk">2026</td><td>The reset</td><td>Four studios out, 3,200 roles cut, Arkane Lyon in limbo</td></tr>
+      </tbody></table></div>
+      <p class="prose" style="margin-top:14px"><b>The verdict.</b> A schizophrenic, underused war chest of assets: talent and IP sit idle while studios are shut down. Trim the fat and take risk. Every IP should be in use, or on the market.</p>
+      <h3>Merge by DNA</h3>
+      <p class="prose">Good, profitable experiences built by merging the best talent into genre houses &mdash; one studio group per genre, with several teams running projects inside each. Imagine a Halo by id Software.</p>
+      <div class="tablewrap"><table><thead><tr><th>House</th><th>Studios</th><th>Flagship IP</th></tr></thead><tbody>
+        <tr><td class="tk">Shooter</td><td>Halo Studios, The Coalition, id, the Call of Duty studios</td><td>Halo, Call of Duty, Doom, Gears of War, Wolfenstein</td></tr>
+        <tr><td class="tk">RPG</td><td>Bethesda Game Studios, Obsidian, inXile, Arkane</td><td>The Elder Scrolls, Fallout, Starfield, Fable, The Outer Worlds</td></tr>
+        <tr><td class="tk">Racing</td><td>Playground, Turn 10</td><td>Forza, Project Gotham Racing</td></tr>
+        <tr><td class="tk">Worlds &amp; Live</td><td>Mojang, Rare, Blizzard, King</td><td>Minecraft, Warcraft, Overwatch, Sea of Thieves, Candy Crush</td></tr>
+        <tr><td class="tk">Strategy</td><td>World&rsquo;s Edge and the classic RTS teams</td><td>Age of Empires, StarCraft, Warcraft RTS</td></tr>
+        <tr><td class="tk">Arcade &amp; Family</td><td>Revival specialists</td><td>Crash Bandicoot, Spyro, Banjo-Kazooie, Tony Hawk&rsquo;s Pro Skater</td></tr>
+        <tr><td class="tk">New IP Lab</td><td>Elsewhere Entertainment and the archive</td><td>One sitting IP reinvented every year</td></tr>
+      </tbody></table></div>
+      <h3>The vault: use, sell or license</h3>
+      <div class="tablewrap"><table><thead><tr><th>Path</th><th>Rule</th><th>Examples</th></tr></thead><tbody>
+        <tr><td class="tk">Use</td><td>Quarterly cadence: rotate vault IP into production so something ships from the vault every quarter</td><td>Perfect Dark revival, Banjo-Kazooie, StarCraft to the Strategy House, Crackdown as a Game Pass live title</td></tr>
+        <tr><td class="tk">Sell</td><td>No strategic fit: IP that will never anchor the brand becomes cash and goodwill in someone else&rsquo;s hands</td><td>Prototype, Singularity, the Sierra adventure catalog</td></tr>
+        <tr><td class="tk">License</td><td>Partners build, Xbox owns &mdash; the Toys for Bob model</td><td>Spyro and Crash to platformer specialists, Guitar Hero to a rhythm-game developer</td></tr>
+      </tbody></table></div>
+      <h3>Moving forward</h3>
+      <ul class="proselist">
+        <li><b>Own the publisher identity.</b> Rebrand around the catalog and the console, with the focus on being a games company.</li>
+        <li><b>Genre houses, no more silos.</b> Merge studios by DNA into verticals, with the best talent concentrated and every genre covered on purpose.</li>
+        <li><b>A vault that ships quarterly.</b> Use, sell or license every IP. One vault revival in production at all times, so nothing sits on the shelf for a decade again.</li>
+        <li><b>Build for volatility.</b> Studios and IP now enter and exit yearly. A modular brand system, with houses and franchises as sub-brands, flexes where a monolith breaks.</li>
+      </ul>
+      <p class="fs-note">Research I run for myself, not advice. I am not a licensed financial advisor. This is an outside-in design exercise built from public reporting, not inside knowledge of Microsoft&rsquo;s plans, and it is not a view on Microsoft stock. Act on it and the risk is yours, not mine.</p>
+    </div><!-- /con-xbox -->
   </div>
   <div class="panel" id="panel-story">
   <div id="story-blocks"></div>
@@ -1047,7 +1063,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   var FS = __FS_JSON__;
   var VS = __VS_JSON__;
   var GS = __GS_JSON__;
-  var FC = __FC_JSON__;
   var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   /* Charts are drawn on paper surfaces, which re-declare the palette for their
      own subtree; read the variables from there rather than from the night root
@@ -1650,13 +1665,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       b.addEventListener("click",function(){
         var c=b.getAttribute("data-c");
         btns.forEach(function(x){x.classList.toggle("on",x===b);});
-        ["futuresight","value","growth","forecast"].forEach(function(k){
+        ["futuresight","value","growth","forecast","xbox"].forEach(function(k){
           var el=document.getElementById("con-"+k);
           if(el) el.classList.toggle("active",k===c);
         });
         if(c==="futuresight" && window.__fsDraw &&
            document.getElementById("fsv-track").classList.contains("active")) window.__fsDraw();
-        if(c==="forecast" && window.__fcDraw) window.__fcDraw();
       });
     });
   })();
@@ -1855,153 +1869,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     }
     qbox.addEventListener("input", renderVS);
     head(); renderVS();
-  })();
-
-  /* ---------------- Concept 04: A Case for Forecast Events ---------------- */
-  (function(){
-    if(!FC || !FC.series) return;
-    var S=FC.series, R=FC.regression, MINUS="\u2212", DASH="\u2014";
-    var cssv=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();};
-    var num=function(x,d){
-      if(x===null||x===undefined||isNaN(x)) return DASH;
-      var p=Math.abs(x).toFixed(d).split("."); p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");
-      var s=p.join("."); return x<0?"("+s+")":s;
-    };
-    var pval=function(p){
-      if(p===null||p===undefined) return DASH;
-      if(p>=0.001) return p.toFixed(3);
-      var e=p.toExponential(1).split("e"); return e[0]+"e"+e[1].replace("-",MINUS);
-    };
-    var yesAt=function(l,k){ for(var i=0;i<l.rows.length;i++){ if(l.rows[i].k===k) return l.rows[i].yes; } return null; };
-    var tile=function(k,v,m){ return '<div class="stat"><div class="k">'+k+'</div><div class="v">'+v+'</div><div class="m">'+m+'</div></div>'; };
-
-    /* headline tiles */
-    var t=tile("Fit \u00b7 R\u00b2",R.r2.toFixed(3),R.n+" sessions \u00b7 close on open, high and low")+
-          tile("Std error \u00b7 yen",R.se.toFixed(2),"In-sample, across the whole window");
-    FC.ladders.forEach(function(l){
-      t+=tile(l.label+" \u00b7 close",l.close.toFixed(2),"Fitted "+l.model.toFixed(2)+" \u00b7 focus strike "+l.focus.toFixed(2)+" quoted at "+yesAt(l,l.focus));
-    });
-    document.getElementById("fcStats").innerHTML=t;
-    document.getElementById("fcLimit").innerHTML=
-      tile("Open, high, low",R.r2.toFixed(3),"R\u00b2 \u00b7 uses the finished day")+
-      tile("Open only",FC.checks.openOnlyR2.toFixed(3),"R\u00b2 \u00b7 known while a ticket can be written")+
-      tile("Error \u00b7 open only",FC.checks.openOnlySE.toFixed(2),"Yen, standard error")+
-      tile("Yesterday\u2019s close",FC.checks.randomWalkRMSE.toFixed(2),"Yen, error of the no-model guess");
-
-    /* equation and tables */
-    var c=R.coef, sg=function(b){return (b<0?" "+MINUS+" ":" + ")+Math.abs(b).toFixed(4);};
-    document.getElementById("fcEq").textContent="Close = "+c[0].b.toFixed(4)+sg(c[1].b)+" \u00d7 Open"+sg(c[2].b)+" \u00d7 High"+sg(c[3].b)+" \u00d7 Low";
-    document.getElementById("fcCoef").innerHTML=c.map(function(x){
-      return '<tr><td class="tk">'+x.term+'</td><td class="r">'+num(x.b,4)+'</td><td class="r">'+num(x.se,4)+'</td><td class="r">'+num(x.t,2)+
-        '</td><td class="r">'+pval(x.p)+'</td><td class="r">'+num(x.lo,3)+'</td><td class="r">'+num(x.hi,3)+'</td></tr>';
-    }).join("");
-    document.getElementById("fcReg").innerHTML=[
-      ["Multiple R",R.r.toFixed(4)],["R\u00b2",R.r2.toFixed(4)],["Adjusted R\u00b2",R.adjr2.toFixed(4)],
-      ["Standard error, yen",R.se.toFixed(4)],["Observations",String(R.n)]
-    ].map(function(r){return '<tr><td>'+r[0]+'</td><td class="r">'+r[1]+'</td></tr>';}).join("");
-    var A=R.anova;
-    document.getElementById("fcAnova").innerHTML=
-      '<tr><td>Regression</td><td class="r">'+A.reg.df+'</td><td class="r">'+num(A.reg.ss,2)+'</td><td class="r">'+num(A.reg.ms,2)+'</td><td class="r">'+num(A.reg.f,1)+'</td><td class="r">'+pval(A.reg.sig)+'</td></tr>'+
-      '<tr><td>Residual</td><td class="r">'+A.res.df+'</td><td class="r">'+num(A.res.ss,2)+'</td><td class="r">'+num(A.res.ms,4)+'</td><td class="r">'+DASH+'</td><td class="r">'+DASH+'</td></tr>'+
-      '<tr><td>Total</td><td class="r">'+A.tot.df+'</td><td class="r">'+num(A.tot.ss,2)+'</td><td class="r">'+DASH+'</td><td class="r">'+DASH+'</td><td class="r">'+DASH+'</td></tr>';
-
-    /* ladders: one stepped probability curve per day, with the close and the fitted close */
-    function ladderSVG(l){
-      var W=640,H=240,pl=40,pr=14,pt=16,pb=34;
-      var ks=l.rows.map(function(r){return r.k;});
-      var x0=Math.min.apply(null,ks.concat([l.close,l.model]))-0.2, x1=Math.max.apply(null,ks.concat([l.close,l.model]))+0.2;
-      var X=function(v){return pl+(v-x0)/(x1-x0)*(W-pl-pr);}, Y=function(p){return pt+(1-p/100)*(H-pt-pb);};
-      var f=function(n){return n.toFixed(1);};
-      var o='<svg class="fc-ladder" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Yes prices by strike for USD/JPY on '+l.date+', with the settled close marked.">';
-      [0,25,50,75,100].forEach(function(g){
-        o+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+f(Y(g))+'" y2="'+f(Y(g))+'" style="stroke:var(--grid);stroke-width:1"/>'+
-           '<text x="'+(pl-6)+'" y="'+f(Y(g)+3)+'" text-anchor="end" style="fill:var(--faint);font:10px var(--mono)">'+g+'</text>';
-      });
-      var bw=(X(0.25)-X(0))*0.62;
-      l.rows.forEach(function(r){
-        var cx=X(r.k);
-        if(r.yes!==null){
-          var won=l.close>r.k;
-          o+='<rect x="'+f(cx-bw/2)+'" y="'+f(Y(r.yes))+'" width="'+f(bw)+'" height="'+f(Y(0)-Y(r.yes))+'" style="fill:'+(won?'var(--up)':'var(--down)')+';opacity:'+(r.k===l.focus?1:0.55)+'"/>'+
-             '<text x="'+f(cx)+'" y="'+f(Y(r.yes)-5)+'" text-anchor="middle" style="fill:var(--ink);font:10px var(--mono)">'+r.yes+'</text>';
-        }
-        o+='<text x="'+f(cx)+'" y="'+(H-pb+14)+'" text-anchor="middle" style="fill:var(--muted);font:10px var(--mono)">'+r.k.toFixed(2)+'</text>';
-      });
-      o+='<line x1="'+f(X(l.close))+'" x2="'+f(X(l.close))+'" y1="'+pt+'" y2="'+f(Y(0))+'" style="stroke:var(--bone);stroke-width:2"/>'+
-         '<line x1="'+f(X(l.model))+'" x2="'+f(X(l.model))+'" y1="'+pt+'" y2="'+f(Y(0))+'" style="stroke:var(--accent);stroke-width:2;stroke-dasharray:5 4"/>'+
-         '<text x="'+pl+'" y="'+(H-4)+'" style="fill:var(--faint);font:9px var(--mono);letter-spacing:.12em">STRIKE \u00b7 YES QUOTED, CENTS</text>';
-      return o+'</svg>';
-    }
-    document.getElementById("fcLadders").innerHTML=FC.ladders.map(function(l){
-      var rowsHtml=l.rows.map(function(r){
-        var won=l.close>r.k;
-        return '<tr><td class="tk">'+r.k.toFixed(2)+'</td><td class="r">'+(r.yes===null?DASH:r.yes)+'</td><td class="r">'+(r.no===null?DASH:r.no)+
-          '</td><td class="r">'+(r.oi===null?DASH:num(r.oi,0))+'</td><td class="r"><span class="'+(won?'fc-won':'fc-lost')+'">'+(won?'Yes':'No')+'</span></td></tr>';
-      }).join("");
-      return '<div><div class="chart-card"><div class="chart-head"><h2>USD/JPY \u00b7 '+l.date+'</h2><span class="sub">Settled '+l.close.toFixed(2)+' \u00b7 fitted '+l.model.toFixed(2)+'</span></div>'+
-        ladderSVG(l)+
-        '<div class="marks"><span><i class="swatch" style="background:var(--up)"></i>Yes settled</span><span><i class="swatch" style="background:var(--down)"></i>No settled</span>'+
-        '<span><i class="swatch" style="background:var(--bone)"></i>Close</span><span><i class="swatch" style="background:var(--accent)"></i>Fitted close</span></div></div>'+
-        '<p class="prose" style="margin-top:14px">'+l.read+'</p>'+
-        '<div class="tablewrap"><table><thead><tr><th>Above strike</th><th class="r">Yes, cents</th><th class="r">No, cents</th><th class="r">Open interest</th><th class="r">Settled</th></tr></thead><tbody>'+rowsHtml+'</tbody></table></div></div>';
-    }).join("");
-
-    /* canvases */
-    function setup(cv){
-      var dpr=window.devicePixelRatio||1, W=cv.clientWidth, H=cv.clientHeight;
-      if(!W||!H) return null;
-      cv.width=W*dpr; cv.height=H*dpr; var ctx=cv.getContext("2d");
-      ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
-      return {ctx:ctx,W:W,H:H};
-    }
-    function drawFit(){
-      var cv=document.getElementById("fcfit"); if(!cv) return; var g=setup(cv); if(!g) return;
-      var ctx=g.ctx,W=g.W,H=g.H,pl=46,pr=14,pt=12,pb=26,n=S.close.length;
-      var all=S.close.concat(S.pred), lo=Math.floor(Math.min.apply(null,all)*2)/2-0.25, hi=Math.ceil(Math.max.apply(null,all)*2)/2+0.25;
-      var X=function(i){return pl+i/(n-1)*(W-pl-pr);}, Y=function(v){return pt+(hi-v)/(hi-lo)*(H-pt-pb);};
-      ctx.font="10px "+cssv("--mono"); ctx.fillStyle=cssv("--faint"); ctx.strokeStyle=cssv("--grid"); ctx.lineWidth=1;
-      for(var v=Math.ceil(lo); v<=hi; v+=1){ var y=Y(v); ctx.beginPath(); ctx.moveTo(pl,y); ctx.lineTo(W-pr,y); ctx.stroke(); ctx.textAlign="right"; ctx.fillText(v.toFixed(0),pl-6,y+3); }
-      ctx.textAlign="left"; ctx.fillText("Session 1",pl,H-8); ctx.textAlign="right"; ctx.fillText(FC.windowEnd,W-pr,H-8);
-      function line(arr,color,w,dash){ ctx.save(); ctx.strokeStyle=color; ctx.lineWidth=w; ctx.setLineDash(dash||[]); ctx.beginPath();
-        arr.forEach(function(val,i){ if(i) ctx.lineTo(X(i),Y(val)); else ctx.moveTo(X(i),Y(val)); }); ctx.stroke(); ctx.restore(); }
-      line(S.close,cssv("--bone"),2); line(S.pred,cssv("--accent"),1.5,[5,4]);
-    }
-    function drawRes(){
-      var cv=document.getElementById("fcres"); if(!cv) return; var g=setup(cv); if(!g) return;
-      var ctx=g.ctx,W=g.W,H=g.H,pl=46,pr=14,pt=12,pb=26;
-      var m=Math.ceil(Math.max.apply(null,S.res.map(Math.abs))*4)/4;
-      var lo=Math.min.apply(null,S.pred), hi=Math.max.apply(null,S.pred);
-      var X=function(v){return pl+(v-lo)/(hi-lo)*(W-pl-pr);}, Y=function(v){return pt+(m-v)/(2*m)*(H-pt-pb);};
-      ctx.font="10px "+cssv("--mono"); ctx.fillStyle=cssv("--faint"); ctx.strokeStyle=cssv("--grid"); ctx.lineWidth=1;
-      [-m,-m/2,0,m/2,m].forEach(function(v){ var y=Y(v); ctx.beginPath(); ctx.moveTo(pl,y); ctx.lineTo(W-pr,y); ctx.stroke();
-        ctx.textAlign="right"; ctx.fillText((v<0?MINUS:"")+Math.abs(v).toFixed(2),pl-6,y+3); });
-      ctx.textAlign="left"; ctx.fillText(lo.toFixed(1),pl,H-8); ctx.textAlign="right"; ctx.fillText(hi.toFixed(1)+" fitted close",W-pr,H-8);
-      ctx.strokeStyle=cssv("--slate"); ctx.beginPath(); ctx.moveTo(pl,Y(0)); ctx.lineTo(W-pr,Y(0)); ctx.stroke();
-      ctx.fillStyle=cssv("--accent"); ctx.globalAlpha=0.8;
-      S.pred.forEach(function(p,i){ ctx.beginPath(); ctx.arc(X(p),Y(S.res[i]),3,0,Math.PI*2); ctx.fill(); });
-      ctx.globalAlpha=1;
-    }
-    window.__fcDraw=function(){ drawFit(); drawRes(); };
-    window.addEventListener("resize",function(){
-      var con=document.getElementById("con-forecast");
-      if(con && con.classList.contains("active")) window.__fcDraw();
-    });
-
-    /* sub-views */
-    var VW=[["concept","Concept"],["data","Data"],["ladders","Ladders"],["limits","Limits"]];
-    var vh=document.getElementById("fcviews");
-    VW.forEach(function(v,i){
-      var b=document.createElement("button");
-      b.type="button"; b.className="tlv"+(i===0?" active":"");
-      b.setAttribute("role","tab"); b.textContent=v[1];
-      b.addEventListener("click",function(){
-        [].forEach.call(vh.children,function(x){x.classList.remove("active");});
-        b.classList.add("active");
-        VW.forEach(function(w){document.getElementById("fcv-"+w[0]).classList.toggle("active",w[0]===v[0]);});
-        if(v[0]==="data") window.__fcDraw();
-      });
-      vh.appendChild(b);
-    });
   })();
 
   /* ---------------- Concept 03: Quality Growth ---------------- */
@@ -2278,7 +2145,6 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       if(id==="book" && window.__drawCurve) window.__drawCurve();
       if(id==="book" && window.__animBars) window.__animBars();
       if(id==="ideation" && window.__fsDraw) window.__fsDraw();
-      if(id==="ideation" && window.__fcDraw) window.__fcDraw();
       window.scrollTo(0,0);
       if(window.__motion) window.__motion(panels[id]);
     }
@@ -2636,12 +2502,6 @@ gs = json.load(open(gs_path, encoding="utf-8")) if os.path.exists(gs_path) else 
 if gs is None:
     print("warning: growthscan.json missing - run growthscan_sync.py; Concept 03 will render empty")
 html = html.replace("__GS_JSON__", json.dumps(gs, ensure_ascii=False))
-
-fc_path = os.path.join(HERE, "forecastcase.json")
-fc = json.load(open(fc_path, encoding="utf-8")) if os.path.exists(fc_path) else None
-if fc is None:
-    print("warning: forecastcase.json missing; Concept 04 will render empty")
-html = html.replace("__FC_JSON__", json.dumps(fc, ensure_ascii=False))
 # Hash the finished page (placeholder still in it) so an unchanged rebuild keeps
 # the same id and never triggers a pointless reload.
 import hashlib, datetime as _dt
