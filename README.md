@@ -66,29 +66,31 @@ Adding another means another `.cbtn` plus either a JSON-backed view or a static 
 |---|---|---|---|
 | 01 | Investment Risk Management (Nov 27, 2022) | archive paper in `build.py` | nothing, verbatim |
 | 02 | Risk Management Final (Dec 7, 2022) | archive paper in `build.py` | nothing, verbatim |
-| 03 | Data Analytics for Risk Management (Apr 27, 2023) | archive paper in `build.py` | nothing, verbatim |
-| 04 | Insurance Operations Final (May 5, 2023) | archive paper in `build.py` | nothing, verbatim |
-| 05 | Market Overview (Aug 31, 2023) | archive brief in `build.py` | nothing, verbatim |
-| 06 | A Case for Forecast Events (Apr 2026) | static memo in `build.py` | nothing, edit the markup |
-| 07 | Xbox Takeover (Jul 2026) | static memo in `build.py` | nothing, edit the markup |
-| 08 | Futuresight Index (Aug 24, 2026) | `futuresight.json` (locked roster) + `futuresight_prices.json` | `python futuresight_fetch.py --range 2y` |
-| 09 | Value Scanner (Aug 24, 2026) | `valuescan.json` | `python valuescan_sync.py` |
-| 10 | Quality Growth (Aug 25, 2026) | `growthscan.json` | `python growthscan_sync.py` |
+| 03 | Starbucks Banking Paper (Dec 10, 2022) | archive paper in `build.py` | nothing, verbatim |
+| 04 | Data Analytics for Risk Management (Apr 27, 2023) | archive paper in `build.py` | nothing, verbatim |
+| 05 | Insurance Operations Final (May 5, 2023) | archive paper in `build.py` | nothing, verbatim |
+| 06 | Market Overview (Aug 31, 2023) | archive brief in `build.py` | nothing, verbatim |
+| 07 | Systematized Capital Management (Aug 25, 2024) | static memo in `build.py` | nothing, edit the markup |
+| 08 | A Case for Forecast Events (Apr 2026) | static memo in `build.py` | nothing, edit the markup |
+| 09 | Xbox Takeover (Jul 2026) | static memo in `build.py` | nothing, edit the markup |
+| 10 | Futuresight Index (Aug 24, 2026) | `futuresight.json` (locked roster) + `futuresight_prices.json` | `python futuresight_fetch.py --range 2y` |
+| 11 | Value Scanner (Aug 24, 2026) | `valuescan.json` | `python valuescan_sync.py` |
+| 12 | Quality Growth (Aug 25, 2026) | `growthscan.json` | `python growthscan_sync.py` |
 
-Concepts 09 and 10 are **screens that live outside this repo** — `../../value-scanner/`
+Concepts 11 and 12 are **screens that live outside this repo** — `../../value-scanner/`
 and `../../growth-scanner/`. Each sync script reads the scanner's own `data.json`,
 trims it to the fields the page draws, writes the file above, and drops a dated copy
 in `history/`. Nothing else in the repo reaches outside it, so a fresh clone still
 builds: the synced JSON is committed, and a missing file only makes that one concept
 render empty with a warning from `build.py`.
 
-Concepts 01 to 05 are the **archive**: four working papers and a market brief written in 2022
+Concepts 01 to 06 are the **archive**: five working papers and a market brief written in 2022
 and 2023, moved over from the Pareidolia Lab artifact. They are reproduced word for word as
 submitted, including the author's own positions and figures as of each date, and are never edited
 after the fact. Only a framing note, a dateline and the standard disclaimer sit around each one.
 
-Concepts 06 and 07 are **brief static memos**, each rebuilt from one of Laskoskie's decks: A Case
-for Forecast Events and Xbox Takeover. My Trading Journey is The Story tab's About Me section. Memo content lives directly in the
+Concepts 07 to 09 are **brief static memos**, each rebuilt from one of Laskoskie's decks:
+Systematized Capital Management, A Case for Forecast Events and Xbox Takeover. My Trading Journey is The Story tab's About Me section. Memo content lives directly in the
 markup in `build.py` and nothing refreshes them. Each keeps the site's rules: dollar-free for the
 book itself, and the verbatim concept disclaimer.
 
@@ -101,15 +103,15 @@ python futuresight_fetch.py --range 2y
 python build.py
 ```
 
-Concept 10 publishes the scanner's **compounder** profile. To put the pre-profit
+Concept 12 publishes the scanner's **compounder** profile. To put the pre-profit
 cohort on the page instead, run the scanner with `--profile emerging` before
 syncing — the sync records which profile it captured and the page labels itself
 from that field, so the two cannot disagree.
 
 **The rule that governs all of these: no backtest, ever.** A roster or a screen
 assembled today, with today's knowledge of what already happened, produces a
-historical curve that measures hindsight rather than skill. Concept 08 is tracked
-forward from a locked open at fixed weights. Concepts 09 and 10 are dated screens —
+historical curve that measures hindsight rather than skill. Concept 10 is tracked
+forward from a locked open at fixed weights. Concepts 11 and 12 are dated screens —
 each run is a snapshot of what the filter returned on that date, kept in `history/`,
 never stitched into a performance record.
 
