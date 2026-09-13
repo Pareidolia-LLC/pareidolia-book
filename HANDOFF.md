@@ -28,7 +28,7 @@ Two references, built into the chrome. The brief was literal: how would those tw
 
 ### 2.2 Layout
 
-- One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets. No external fonts, images, scripts, or calls after load.
+- One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the four concept datasets. No external fonts, images, scripts, or calls after load.
 - Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS - do not add number spans to the markup or they will double up.
 - Page padding `clamp(10px,1.2vw,18px)`, no content-column cap. Card grids use 1px gaps over the rule colour rather than per-card borders, so a grid reads as one ruled panel inside its window.
 - Prose stays serif at a real measure (16px/1.78, 68ch) wherever something is read rather than scanned - the weekly assessment, The Lab's theses, all of The Story.
@@ -66,7 +66,7 @@ The redesign prototype's skeleton, kept when the paper skin was dropped. The fun
 |---|---|---|---|
 | 01 | **The Book** | `book` | Three return tiles · return curve with timeline selector · book summary, concept of operations, risk posture (from `book`) · allocation bars · positions ledger · the three strategy cards **The Wheel / Forecast contracts / Outright** with control lines and the control framework |
 | 02 | **The Record** | `record` | **Weekly After-Action** (card + history strip of every week since inception) · Service Record (career ledger) · Between the After-Actions · Accolades · Failures · Discipline tally · Best closes · Worst closes · By name · Event sleeve by contract · How to read this |
-| 03 | **The Lab** | `ideation` | The three research concepts, each a sub-tab: **01 Futuresight Index**, **02 Value Scanner**, **03 Quality Growth** |
+| 03 | **The Lab** | `ideation` | The four research concepts, each a sub-tab: **01 Futuresight Index**, **02 Value Scanner**, **03 Quality Growth**, **04 A Case for Forecast Events** |
 | 04 | **The Story** | `story` | Origin, intent, contact (from `pages.story`, into `#story-blocks`) · doctrine — what we hold to be true, mental models, target set (from `pages.concepts`, into `#panel-concepts`, which is now a plain container, not a panel) · discipline blocks (from `pages.discipline`) · Mandate & Constraints (from `constraints`) |
 
 The former P&L, The Desk and The Mandate panels no longer exist; their sections moved as listed. `blocks()` in the JS still targets `booksummary`, `panel-concepts`, `page-discipline-inline` and now `story-blocks`. The curve redraws on activating `book`; the allocation bars animate on `book`; the Futuresight chart draws on `ideation`.
@@ -135,8 +135,9 @@ These are **not** in `DATA`. `build.py` reads them and embeds them for The Pipe.
 | `futuresight_prices.json` | `futuresight_fetch.py` | `asOf, builtAt, navSeries, tierSeries{core,growth,spec}, factorSeries{AI,DATA,DEF,ENERGY,IND,MED,RATES,SW}, benchSeries{SPY,QQQ}, names[...], factorCorr{keys,m,window}, coverage{priced,tracked,roster}, untracked, failed, basisSlipped` |
 | `valuescan.json` | `valuescan_sync.py` | `generatedAt, syncedAt, criteria, universeHits, zSafeCount, rows:[{rank,score,ticker,name,sector,industry,mcap,price,pb,ps,pe,fcfYield,roe,roic,de,currentRatio,revGrowth,divYield,chg52w,pctOffLow,insider,flags,fx,otc,...}]` |
 | `growthscan.json` | `growthscan_sync.py` | `generatedAt, syncedAt, profile, weights{Growth,Returns,Cash,Balance,Capital,Value,Neglect}, pillars[7], criteria, universeHits, rows:[{... epsCagr3y, fcfCagr3y, incRoic, fcfConversion, evEbitda, evFcf, forwardPe, analysts, insider, flags ...}]` |
+| `forecastcase.json` | hand-maintained static study (Laskoskie deck) | `source, windowEnd, series{open,high,low,close,pred,res}` (82 sessions) `, regression{n,r,r2,adjr2,se,coef:[{term,b,se,t,p,lo,hi}],anova{reg,res,tot}}, checks{openOnlyR2,openOnlySE,randomWalkRMSE,closesInsideRange}, ladders:[{label,date,close,model,focus,rows:[{k,yes,no,oi}],read}]` |
 
-`build.py` prints what it merged: `built index.html (...) from data.json + futuresight (N priced) + valuescan (N names) + growthscan (N names)`. A missing file warns and renders that concept empty rather than failing the build.
+`build.py` prints what it merged: `built index.html (...) from data.json + futuresight (N priced) + valuescan (N names) + growthscan (N names)`; `forecastcase.json` is merged silently. A missing file warns and renders that concept empty rather than failing the build.
 
 ## 7. Technical notes
 
