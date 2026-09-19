@@ -1,21 +1,21 @@
 {
-  "asOf": "Sep 12, 2026",
+  "asOf": "Sep 19, 2026",
   "curveLabel": "Time-weighted · Since inception, Oct 2025",
   "returns": [
     {
       "k": "Return · YTD 2026",
-      "v": -6.75,
+      "v": -5.77,
       "m": "Time-weighted, net"
     },
     {
       "k": "Return · Trailing 12M",
-      "v": -7.06,
+      "v": -6.08,
       "m": "Since inception, Oct 2025"
     },
     {
       "k": "Return · Last 7 Days",
-      "v": -3.07,
-      "m": "Calls rewritten on five names; event sleeve settled at zero"
+      "v": 1.11,
+      "m": "KEEL called away at the strike; event sleeve settled at zero"
     }
   ],
   "reports": [
@@ -1287,7 +1287,6 @@
       "weekLabel": "Week of Sep 7 – Sep 11, 2026",
       "grade": "C−",
       "weekRet": -3.13,
-      "now": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -1309,35 +1308,63 @@
         }
       ],
       "note": "The wheel came back on, and the sleeve ran hot on a name it was not supposed to be in. Tuesday's open rewrote calls on five names — HUN, KEEL, SERV, BBAI and XNDU — which is exactly what last week's card asked for, and it worked: the SERV, BBAI and XNDU weeklies expired worthless on Friday and the premium was kept whole. Four names are covered again and the engine is earning. The forecast sleeve remains sanctioned for data collection and is not scored on what it returns. That rule has not changed and it is not being changed here. What is flagged is the shape of the run rather than its result: 698 contracts went out across four sessions, 673 of them JPUSD, a root the forecast engine carries on its own banned list, entered by hand at an average of 0.85 with 300 lots at 0.95 or above. The engine caps entry at 0.92 and caps a single settlement at 0.4% of net asset value; none of these tickets passed through it. Every contract settled at zero, and that is the data point. The size is the issue, not the loss — at roughly 2.1% of net asset value the sleeve carried about two thirds of the week's drawdown, and a data run does not need to be that large to produce data. Strip it out and the book was down about a percent. The one genuine breach on this card is cash, which closed at 1.2% of net asset value, a fourth consecutive week beneath the 10% floor, though the book stayed off margin. Position size held, with SPCX taking over as the largest name at 18.7%."
+    },
+    {
+      "w": "Sep 18",
+      "weekLabel": "Week of Sep 14 – Sep 18, 2026",
+      "grade": "C",
+      "weekRet": 1.34,
+      "now": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "pass",
+          "value": "SPCX 18.8%",
+          "rule": "Inside the 20% cap · PLTR level with it at 18.8%"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "fail",
+          "value": "8.8%",
+          "rule": "Fifth week under the 10% floor · the closest yet, lifted by the KEEL assignment rather than a trim"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "data run · JPUSD",
+          "rule": "Sanctioned for data, not scored · flagged: a banned root for a second straight week, about 2% of NAV again"
+        }
+      ],
+      "note": "The covered calls did their job this week, and one of them finished it. KEEL ended Friday in the money on its 4 strike, so the shares were called away at the strike. That is the wheel completing a turn, not a loss: the stock was bought in mid-August at about 3.78, so the call sold it above cost, on top of a month of premium written against it. Round trip, the position returned roughly 10% in five weeks, and the cash it released is most of why the reserve moved. Monday rolled the calls on GRPN, KVYO and SERV out to October at fresh premium after buying the old ones back for pennies. The HUN, BBAI and XNDU calls expired worthless on Friday; the BBAI and XNDU ones had been written at a cent, which covers the stock on paper and earns almost nothing. Three names go into next week covered. Cash closed at 8.8% of net asset value: still under the 10% floor for a fifth straight week, but the nearest it has come, and it got there because a strike was hit rather than because anything was trimmed. Two small new names, ACTG and BHF, were bought midweek while the reserve was still at the bottom. The event sleeve remains sanctioned for data collection and is not scored on what it returns. What is flagged is that it ran on JPUSD for a second consecutive week, the root the forecast engine bans, entered by hand: 700 contracts across three sessions at an average near 0.80, every ticket under the engine's 0.92 entry cap this time, every one settled at zero. That is about 2% of net asset value, the same size last week's card called too large for a data run. Position size held, with SPCX and PLTR level at 18.8%. The book was up 1.3% on the week; without the sleeve it would have been up about three."
     }
   ],
   "career": {
     "sinceLabel": "Oct 2025",
-    "asOfLabel": "Sep 12, 2026",
+    "asOfLabel": "Sep 19, 2026",
     "headline": [
       {
         "k": "Closed trades",
-        "v": "2,108",
+        "v": "2,112",
         "m": "Engagements opened, closed & booked"
       },
       {
         "k": "Win rate",
-        "v": "59.7%",
-        "m": "1,259 won · 849 lost"
+        "v": "59.8%",
+        "m": "1,262 won · 850 lost"
       },
       {
         "k": "Profit factor",
-        "v": "0.94",
+        "v": "0.95",
         "m": "Gross wins ÷ gross losses"
       },
       {
         "k": "Payoff ratio",
-        "v": "0.63",
+        "v": "0.64",
         "m": "Avg win ÷ avg loss"
       },
       {
         "k": "Names traded",
-        "v": "104",
+        "v": "106",
         "m": "Distinct symbols"
       },
       {
@@ -1350,9 +1377,9 @@
       {
         "name": "Covered-call premium",
         "tag": "wheel",
-        "win": 77.2,
-        "pf": 3.52,
-        "closes": 171,
+        "win": 77.1,
+        "pf": 3.59,
+        "closes": 175,
         "tone": "up",
         "note": "The engine. Premium taken on shares already held — managed, rolled, and bought back cheap. This is the line that pays."
       },
@@ -1376,90 +1403,96 @@
       }
     ],
     "insights": [
-      "Loss asymmetry is still the leak. The average loser runs 1.6× the average winner, so a 59.7% hit rate finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
-      "The engine is real: covered-call premium takes 77% of its closes at a 3.5 profit factor across 171 closes. That is the business, and everything else is management around it. It was switched off for two weeks at the start of September and switched back on in the week of Sep 7. The gap cost nothing visible, which is precisely why it is easy to let happen again.",
-      "The forecast sleeve reopened on Aug 24 to gather clean data for a systematic strategy under construction, and it is deliberately not scored on what it returns. That sanction stands. The week of Sep 7 is the first real test of its edges: 698 contracts, 673 of them in a root the strategy itself bans, entered by hand at prices and sizes the engine would have refused, every one settling at zero. The data is real and it is being kept. The open question is size — a data run does not need two per cent of the book to produce a data point.",
-      "Share legs run a 0.34 profit factor across 35 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it has now held for six consecutive weeks — the longest clean run in the record.",
-      "The ledger moves on the back office's schedule, not the market's. NU's August assignment reached the trade feed a week after the fact and NIQ's followed the same path. The same lag is live right now: not one contract from the week of Sep 7 carries realized P&L yet, so September counts as a green month on the strength of three closes booked in its first three days. Read that tile as a cutoff, not as a verdict — the sleeve's loss lands in it later."
+      "Loss asymmetry is still the leak. The average loser runs 1.6× the average winner, so a 59.8% hit rate finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
+      "The engine is real: covered-call premium takes 77% of its closes at a 3.6 profit factor across 175 closes. That is the business, and everything else is management around it. It was switched off for two weeks at the start of September and switched back on in the week of Sep 7, and in the week of Sep 14 it completed a full turn: KEEL's calls were assigned at a strike above what the shares cost. The gap cost nothing visible, which is precisely why it is easy to let happen again.",
+      "The forecast sleeve reopened on Aug 24 to gather clean data for a systematic strategy under construction, and it is deliberately not scored on what it returns. That sanction stands. The week of Sep 7 is the first real test of its edges: 698 contracts, 673 of them in a root the strategy itself bans, entered by hand at prices and sizes the engine would have refused, every one settling at zero. The data is real and it is being kept. The week of Sep 14 repeated it: 700 more contracts, all JPUSD, all settled at zero, the entry prices back inside the engine's cap but the root and the size unchanged. The open question is still size — a data run does not need two per cent of the book, twice, to produce a data point.",
+      "Share legs run a 0.34 profit factor across 35 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it has now held for seven consecutive weeks — the longest clean run in the record.",
+      "The ledger moves on the back office's schedule, not the market's. NU's August assignment reached the trade feed a week after the fact and NIQ's followed the same path. The same lag is live right now: not one contract from the JPUSD runs of Sep 7 or Sep 14 carries realized P&L yet, and neither does KEEL's assignment, so September counts as a green month on the strength of a handful of premium closes. Read that tile as a cutoff, not as a verdict — the sleeve's loss lands in it later."
     ]
   },
   "positions": [
     {
       "t": "SPCX",
       "s": "dir",
-      "w": 18.73,
-      "r": 8.47
+      "w": 18.83,
+      "r": 10.19
     },
     {
       "t": "PLTR",
       "s": "dir",
-      "w": 17.86,
-      "r": -1.59
+      "w": 18.76,
+      "r": 4.43
     },
     {
       "t": "GRPN",
       "s": "wheel",
-      "w": 13.47,
-      "r": -29.91
+      "w": 13.67,
+      "r": -28.09
     },
     {
       "t": "KVYO",
       "s": "wheel",
-      "w": 11.65,
-      "r": -10.53
+      "w": 10.87,
+      "r": -15.67
     },
     {
       "t": "SERV",
-      "s": "dir",
-      "w": 11.17,
-      "r": -25.57
-    },
-    {
-      "t": "KEEL",
       "s": "wheel",
-      "w": 6.36,
-      "r": -5.78
+      "w": 10.8,
+      "r": -27.22
     },
     {
       "t": "XNDU",
       "s": "dir",
-      "w": 6.16,
-      "r": -17.46
+      "w": 5.27,
+      "r": -28.66
     },
     {
       "t": "BBAI",
       "s": "dir",
-      "w": 5.11,
-      "r": -15.74
+      "w": 4.93,
+      "r": -17.79
     },
     {
       "t": "HUN",
-      "s": "wheel",
-      "w": 3.4,
-      "r": -2.03
+      "s": "dir",
+      "w": 3.2,
+      "r": -6.65
     },
     {
       "t": "PR",
       "s": "dir",
-      "w": 2.12,
-      "r": 0.82
+      "w": 2.0,
+      "r": -3.5
     },
     {
       "t": "OLN",
       "s": "dir",
-      "w": 1.53,
-      "r": -1.65
+      "w": 1.48,
+      "r": -3.71
     },
     {
       "t": "VSXY",
       "s": "dir",
-      "w": 1.35,
-      "r": -15.91
+      "w": 1.37,
+      "r": -13.37
+    },
+    {
+      "t": "BHF",
+      "s": "dir",
+      "w": 0.88,
+      "r": 1.5
+    },
+    {
+      "t": "ACTG",
+      "s": "dir",
+      "w": 0.32,
+      "r": -2.32
     },
     {
       "t": "Cash",
       "s": "cash",
-      "w": 1.15,
+      "w": 8.79,
       "r": null
     }
   ],
@@ -1864,7 +1897,12 @@
       -0.0719473,
       -0.0847861,
       -0.07113383,
-      -0.07055142
+      -0.06742545,
+      -0.08457816,
+      -0.07813837,
+      -0.06617526,
+      -0.05870274,
+      -0.06077768
     ],
     "dates": [
       "20251016",
@@ -2105,7 +2143,12 @@
       "20260909",
       "20260910",
       "20260911",
-      "20260912"
+      "20260914",
+      "20260915",
+      "20260916",
+      "20260917",
+      "20260918",
+      "20260919"
     ]
   },
   "record": {
