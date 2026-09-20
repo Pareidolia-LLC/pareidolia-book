@@ -184,31 +184,31 @@ end**: if the project has not produced by then, it is closed rather than carried
 What stays true: the dial still watches **size** and **which roots it touches**,
 because a banned root is a banned root whether the week won or lost.
 
-### Reading the sleeve's week is not obvious - the feed hides the wins
+### Reading the sleeve's week: net both legs, and wait for them
 
-Since the venue changed in August 2026, event contracts book like this:
+A settled event contract books in two places, and neither one alone is the
+result:
 
-| Outcome | What the trade feed shows |
+| Row | What it is |
 |---|---|
-| Loss | a negative `realized_pnl` written back onto the **original BUY row**, days later |
-| Win | **nothing at all** - the payout arrives as cash |
-| Settlement | a `SELL` row at price 0 carrying `realized_pnl: 0`, whatever the outcome |
+| the original BUY ticket takes a negative `realized_pnl` | the **cost leg** - what the ticket paid. Not a loss. |
+| a `SELL` at 1, no exchange tag, carrying `realized_pnl` | the **payout**. The contract settled in the money. |
+| a `SELL` at 0, no exchange tag | settled worthless. |
+| a `SELL` at 0 **carrying** the venue tag | a placeholder posted at settlement, before the outcome rows arrive. |
 
-So a week of event trades reads as a total loss right after it happens, and as a
-smaller loss a week later once the losers book. That is exactly how the cards of
-Sep 11 and Sep 18 first went out saying "every contract settled at zero" when the
-second of those weeks had in fact won. Both were corrected on 2026-09-20.
+**Score a week by summing `realized_pnl` across every event row stamped in it**
+- cost legs and payouts together. Counting the negative rows alone reads a
+normal week as a disaster, which is exactly how the Sep 11 and Sep 18 cards
+went out wrong twice before this was understood.
 
-**To score a week:** take every BUY on `FORECASTX`/`KALSHI` in that week, sum the
-stake (`size x price` plus commission), sum the negative `realized_pnl` now
-attached to those rows - those are the losers - and treat every remaining
-contract as settling at $1. Net = winners - stake. Mark the most recent week
-**provisional**: loss records have taken up to eight days to appear.
+**The outcome rows lag.** As of Sep 20 not one of the 700 contracts that
+settled in the week of Sep 14 had booked either leg, though the placeholders
+were all there. A fresh week of event trades is **incomplete, not a loss** -
+leave the figure blank until it books.
 
-**Settlement timing:** these dailies settle at about **20:20 ET on the evening
-the contract expires** (stamped ~00:20 UTC the next calendar day). A Friday
-contract settles Friday night, not Sunday or Monday; the cash is there
-immediately. Only the loss *records* lag.
+**Settlement timing:** the dailies settle about **20:20 ET on the evening the
+contract expires** (the placeholder is stamped ~00:20 UTC the next day). A
+Friday contract settles Friday night, not Sunday or Monday.
 
 ## Dial wording - one shape for every card
 

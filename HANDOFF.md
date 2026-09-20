@@ -77,7 +77,7 @@ The former P&L, The Desk and The Mandate panels no longer exist; their sections 
 
 **Order rule:** concepts stay in chronological order by the date each was written or opened. A new concept is inserted by date and everything after it renumbers.
 
-**Event sleeve rule:** graded on what it returns (restored 2026-09-20 and applied back to Aug 24), minimum 100 contracts per action, reviewed at year end. Scoring a week means inferring the winners: the feed books event losses back onto the original BUY row days later and never books a win at all - see README, "The event sleeve".
+**Event sleeve rule:** graded on what it returns (restored 2026-09-20 and applied back to Aug 24), minimum 100 contracts per action, reviewed at year end. Scoring a week means netting both legs: the BUY ticket carries the cost, a separate settlement row carries the payout (SELL at 1) or the wipeout (SELL at 0), and those outcome rows lag the trade by up to a week - see README, "The event sleeve".
 
 **Archive rule:** Concepts 01 to 06 are reproduced verbatim. Never correct, update or rewrite their text; only the framing note, dateline and disclaimer around them are site copy.
 
