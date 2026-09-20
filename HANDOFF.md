@@ -116,6 +116,8 @@ reports     [{w, weekLabel, grade, weekRet, dials:[{key,state,value,rule}], note
               oldest -> newest · state in pass|warn|fail · exactly one card has now:true
               recon:true marks a rebuilt week; a live card simply has NO recon key (there is no recon:false)
               dials may have 2 or 3 entries
+              dial rule = "<verdict> · <detail>", verdict from a fixed set per dial,
+              " · " the only separator, no em dashes - see README "Dial wording"
 career      {sinceLabel, asOfLabel, headline:[{k,v,m}], buckets:[{name,tag,tone,win,pf,closes,note}], insights:[str]}
               headline/bucket figures are script-owned (career_stats.py --write); insights and bucket notes are hand-written
 positions   [{t, s, w, r}]                s in wheel|dir|cash · w,r percent · r null hides the return

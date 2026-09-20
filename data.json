@@ -30,19 +30,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 71.2%",
-          "rule": "3.6× the 20% cap"
+          "rule": "Over the 20% cap · 3.6× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "warn",
           "value": "≥5.6%",
-          "rule": "Stock at 94% of NAV — too close to the floor to call"
+          "rule": "Too close to the 10% floor to call · stock at 94% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.57",
-          "rule": "11 event closes, 64% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 11 event closes, 64% won"
         }
       ],
       "note": "ASTS carried 71.2% of NAV against a 20% cap. Stock was 94% of NAV — too close to the floor for this reconstruction to call either way. The event sleeve turned over 11 closes at 64% won for a 0.57 profit factor. 12 closes booked in all, 67% won."
@@ -58,19 +58,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 72.5%",
-          "rule": "3.6× the 20% cap"
+          "rule": "Over the 20% cap · 3.6× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "warn",
           "value": "≥8.5%",
-          "rule": "Stock at 92% of NAV — too close to the floor to call"
+          "rule": "Too close to the 10% floor to call · stock at 92% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 2.23",
-          "rule": "19 event closes, 58% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 19 event closes, 58% won"
         }
       ],
       "note": "ASTS carried 72.5% of NAV against a 20% cap. Stock was 92% of NAV — too close to the floor for this reconstruction to call either way. The event sleeve turned over 19 closes at 58% won for a 2.23 profit factor. 21 closes booked in all, 62% won."
@@ -86,19 +86,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 69.6%",
-          "rule": "3.5× the 20% cap"
+          "rule": "Over the 20% cap · 3.5× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 102% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 102% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.90",
-          "rule": "29 event closes, 62% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 29 event closes, 62% won"
         }
       ],
       "note": "ASTS carried 69.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. The event sleeve turned over 29 closes at 62% won for a 0.90 profit factor. 31 closes booked in all, 65% won."
@@ -114,19 +114,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 65.8%",
-          "rule": "3.3× the 20% cap"
+          "rule": "Over the 20% cap · 3.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤0.8%",
-          "rule": "Stock at 99% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 99% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.48",
-          "rule": "18 event closes, 56% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 18 event closes, 56% won"
         }
       ],
       "note": "ASTS carried 65.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 18 closes at 56% won for a 0.48 profit factor. 21 closes booked in all, 62% won."
@@ -142,19 +142,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 61.5%",
-          "rule": "3.1× the 20% cap"
+          "rule": "Over the 20% cap · 3.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤2.4%",
-          "rule": "Stock at 98% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 98% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 2.04",
-          "rule": "20 event closes, 85% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 20 event closes, 85% won"
         }
       ],
       "note": "ASTS carried 61.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. The event sleeve turned over 20 closes at 85% won for a 2.04 profit factor. 22 closes booked in all, 86% won."
@@ -170,19 +170,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 61.8%",
-          "rule": "3.1× the 20% cap"
+          "rule": "Over the 20% cap · 3.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤0.8%",
-          "rule": "Stock at 99% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 99% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "warn",
           "value": "flat · pf 1.20",
-          "rule": "44 event closes, 68% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 44 event closes, 68% won"
         }
       ],
       "note": "ASTS carried 61.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 44 closes at 68% won for a 1.20 profit factor. 45 closes booked in all, 69% won."
@@ -198,19 +198,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 74.7%",
-          "rule": "3.7× the 20% cap"
+          "rule": "Over the 20% cap · 3.7× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 114% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 114% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.78",
-          "rule": "42 event closes, 62% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 42 event closes, 62% won"
         }
       ],
       "note": "ASTS carried 74.7% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 42 closes at 62% won for a 0.78 profit factor. 43 closes booked in all, 63% won."
@@ -226,19 +226,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 31.1%",
-          "rule": "1.6× the 20% cap"
+          "rule": "Over the 20% cap · 1.6× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "≥62.6%",
-          "rule": "Stock at 37% of NAV — clear of the 10% floor"
+          "rule": "Above the 10% floor · stock at 37% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 1.89",
-          "rule": "51 event closes, 78% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 51 event closes, 78% won"
         }
       ],
       "note": "OWL carried 31.1% of NAV against a 20% cap. Stock was 37% of NAV, so the reserve held. The event sleeve turned over 51 closes at 78% won for a 1.89 profit factor. 52 closes booked in all, 77% won."
@@ -254,19 +254,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 45.7%",
-          "rule": "2.3× the 20% cap"
+          "rule": "Over the 20% cap · 2.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤4.8%",
-          "rule": "Stock at 95% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 95% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.78",
-          "rule": "41 event closes, 61% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 41 event closes, 61% won"
         }
       ],
       "note": "OWL carried 45.7% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 41 closes at 61% won for a 0.78 profit factor. 42 closes booked in all, 62% won."
@@ -282,19 +282,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 44.8%",
-          "rule": "2.2× the 20% cap"
+          "rule": "Over the 20% cap · 2.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤5.0%",
-          "rule": "Stock at 95% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 95% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 1.70",
-          "rule": "46 event closes, 76% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 46 event closes, 76% won"
         }
       ],
       "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. The event sleeve turned over 46 closes at 76% won for a 1.70 profit factor. 46 closes booked in all, 76% won."
@@ -310,19 +310,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 44.8%",
-          "rule": "2.2× the 20% cap"
+          "rule": "Over the 20% cap · 2.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤4.3%",
-          "rule": "Stock at 96% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 96% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 2.21",
-          "rule": "70 event closes, 77% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 70 event closes, 77% won"
         }
       ],
       "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. The event sleeve turned over 70 closes at 77% won for a 2.21 profit factor. 71 closes booked in all, 77% won."
@@ -338,19 +338,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 44.3%",
-          "rule": "2.2× the 20% cap"
+          "rule": "Over the 20% cap · 2.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤3.9%",
-          "rule": "Stock at 96% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 96% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.89",
-          "rule": "37 event closes, 68% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 37 event closes, 68% won"
         }
       ],
       "note": "OWL carried 44.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. The event sleeve turned over 37 closes at 68% won for a 0.89 profit factor. 39 closes booked in all, 69% won."
@@ -366,19 +366,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "CMA 47.3%",
-          "rule": "2.4× the 20% cap"
+          "rule": "Over the 20% cap · 2.4× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤3.9%",
-          "rule": "Stock at 96% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 96% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "warn",
           "value": "flat · pf 1.02",
-          "rule": "79 event closes, 67% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 79 event closes, 67% won"
         }
       ],
       "note": "CMA carried 47.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. OWL and ZETA were added to below carry. The event sleeve turned over 79 closes at 67% won for a 1.02 profit factor. 81 closes booked in all, 68% won."
@@ -394,19 +394,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "CMA 28.6%",
-          "rule": "1.4× the 20% cap"
+          "rule": "Over the 20% cap · 1.4× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "≥15.5%",
-          "rule": "Stock at 84% of NAV — clear of the 10% floor"
+          "rule": "Above the 10% floor · stock at 84% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.68",
-          "rule": "93 event closes, 55% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 93 event closes, 55% won"
         }
       ],
       "note": "CMA carried 28.6% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. ZETA was added to below carry. The event sleeve turned over 93 closes at 55% won for a 0.68 profit factor. 96 closes booked in all, 56% won."
@@ -422,19 +422,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "CMA 30.9%",
-          "rule": "1.5× the 20% cap"
+          "rule": "Over the 20% cap · 1.5× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "warn",
           "value": "≥9.1%",
-          "rule": "Stock at 91% of NAV — too close to the floor to call"
+          "rule": "Too close to the 10% floor to call · stock at 91% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.89",
-          "rule": "96 event closes, 69% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 96 event closes, 69% won"
         }
       ],
       "note": "CMA carried 30.9% of NAV against a 20% cap. Stock was 91% of NAV — too close to the floor for this reconstruction to call either way. OWL was added to below carry. The event sleeve turned over 96 closes at 69% won for a 0.89 profit factor. 98 closes booked in all, 69% won."
@@ -450,19 +450,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "FITB 36.9%",
-          "rule": "1.8× the 20% cap"
+          "rule": "Over the 20% cap · 1.8× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 101% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 101% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.49",
-          "rule": "86 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 86 event closes, 50% won"
         }
       ],
       "note": "FITB carried 36.9% of NAV against a 20% cap. Stock alone came to 101% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. The event sleeve turned over 86 closes at 50% won for a 0.49 profit factor. 87 closes booked in all, 51% won."
@@ -478,19 +478,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "FITB 35.9%",
-          "rule": "1.8× the 20% cap"
+          "rule": "Over the 20% cap · 1.8× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 102% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 102% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.48",
-          "rule": "21 event closes, 52% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 21 event closes, 52% won"
         }
       ],
       "note": "FITB carried 35.9% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 21 closes at 52% won for a 0.48 profit factor. 23 closes booked in all, 57% won."
@@ -506,19 +506,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 29.8%",
-          "rule": "1.5× the 20% cap"
+          "rule": "Over the 20% cap · 1.5× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "≥53.7%",
-          "rule": "Stock at 46% of NAV — clear of the 10% floor"
+          "rule": "Above the 10% floor · stock at 46% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.35",
-          "rule": "10 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 10 event closes, 50% won"
         }
       ],
       "note": "OWL carried 29.8% of NAV against a 20% cap. Stock was 46% of NAV, so the reserve held. The event sleeve turned over 10 closes at 50% won for a 0.35 profit factor. 15 closes booked in all, 67% won."
@@ -534,13 +534,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 79.6%",
-          "rule": "4.0× the 20% cap"
+          "rule": "Over the 20% cap · 4.0× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 102% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 102% of NAV, borrowed"
         }
       ],
       "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 20 closes booked in all, 65% won."
@@ -556,19 +556,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 88.5%",
-          "rule": "4.4× the 20% cap"
+          "rule": "Over the 20% cap · 4.4× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤1.8%",
-          "rule": "Stock at 98% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 98% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.53",
-          "rule": "10 event closes, 70% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 10 event closes, 70% won"
         }
       ],
       "note": "OWL carried 88.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 10 closes at 70% won for a 0.53 profit factor. 26 closes booked in all, 81% won."
@@ -584,19 +584,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 82.9%",
-          "rule": "4.1× the 20% cap"
+          "rule": "Over the 20% cap · 4.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 106% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 106% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "warn",
           "value": "flat · pf 0.94",
-          "rule": "59 event closes, 66% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 59 event closes, 66% won"
         }
       ],
       "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SRPT was added to below carry. The event sleeve turned over 59 closes at 66% won for a 0.94 profit factor. 67 closes booked in all, 70% won."
@@ -612,19 +612,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 84.3%",
-          "rule": "4.2× the 20% cap"
+          "rule": "Over the 20% cap · 4.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 109% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 109% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.77",
-          "rule": "21 event closes, 43% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 21 event closes, 43% won"
         }
       ],
       "note": "OWL carried 84.3% of NAV against a 20% cap. Stock alone came to 109% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and SRPT were added to below carry. The event sleeve turned over 21 closes at 43% won for a 0.77 profit factor. 22 closes booked in all, 45% won."
@@ -640,19 +640,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 82.6%",
-          "rule": "4.1× the 20% cap"
+          "rule": "Over the 20% cap · 4.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 111% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 111% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "warn",
           "value": "flat · pf 1.01",
-          "rule": "26 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 26 event closes, 50% won"
         }
       ],
       "note": "OWL carried 82.6% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 26 closes at 50% won for a 1.01 profit factor. 32 closes booked in all, 50% won."
@@ -668,19 +668,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 79.6%",
-          "rule": "4.0× the 20% cap"
+          "rule": "Over the 20% cap · 4.0× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 113% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 113% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.72",
-          "rule": "102 event closes, 57% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 102 event closes, 57% won"
         }
       ],
       "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 102 closes at 57% won for a 0.72 profit factor. 106 closes booked in all, 58% won."
@@ -696,19 +696,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 79.5%",
-          "rule": "4.0× the 20% cap"
+          "rule": "Over the 20% cap · 4.0× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 111% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 111% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.84",
-          "rule": "38 event closes, 76% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 38 event closes, 76% won"
         }
       ],
       "note": "OWL carried 79.5% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 38 closes at 76% won for a 0.84 profit factor. 49 closes booked in all, 82% won."
@@ -724,19 +724,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 86.4%",
-          "rule": "4.3× the 20% cap"
+          "rule": "Over the 20% cap · 4.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 116% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 116% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "warn",
           "value": "flat · pf 1.20",
-          "rule": "42 event closes, 62% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 42 event closes, 62% won"
         }
       ],
       "note": "OWL carried 86.4% of NAV against a 20% cap. Stock alone came to 116% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 42 closes at 62% won for a 1.20 profit factor. 51 closes booked in all, 51% won."
@@ -752,19 +752,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 82.9%",
-          "rule": "4.1× the 20% cap"
+          "rule": "Over the 20% cap · 4.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 113% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 113% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 1.46",
-          "rule": "39 event closes, 64% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 39 event closes, 64% won"
         }
       ],
       "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 39 closes at 64% won for a 1.46 profit factor. 39 closes booked in all, 64% won."
@@ -780,19 +780,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 85.3%",
-          "rule": "4.3× the 20% cap"
+          "rule": "Over the 20% cap · 4.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 114% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 114% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.54",
-          "rule": "29 event closes, 76% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 29 event closes, 76% won"
         }
       ],
       "note": "OWL carried 85.3% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 29 closes at 76% won for a 0.54 profit factor. 34 closes booked in all, 79% won."
@@ -808,19 +808,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 89.0%",
-          "rule": "4.5× the 20% cap"
+          "rule": "Over the 20% cap · 4.5× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 115% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 115% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.78",
-          "rule": "30 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 30 event closes, 50% won"
         }
       ],
       "note": "OWL carried 89.0% of NAV against a 20% cap. Stock alone came to 115% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 30 closes at 50% won for a 0.78 profit factor. 30 closes booked in all, 50% won."
@@ -836,19 +836,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 83.6%",
-          "rule": "4.2× the 20% cap"
+          "rule": "Over the 20% cap · 4.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 108% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 108% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "warn",
           "value": "flat · pf 0.92",
-          "rule": "21 event closes, 29% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 21 event closes, 29% won"
         }
       ],
       "note": "OWL carried 83.6% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 21 closes at 29% won for a 0.92 profit factor. 21 closes booked in all, 29% won."
@@ -864,19 +864,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 86.0%",
-          "rule": "4.3× the 20% cap"
+          "rule": "Over the 20% cap · 4.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 108% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 108% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 1.27",
-          "rule": "11 event closes, 73% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 11 event closes, 73% won"
         }
       ],
       "note": "OWL carried 86.0% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 11 closes at 73% won for a 1.27 profit factor. 11 closes booked in all, 73% won."
@@ -892,19 +892,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 76.8%",
-          "rule": "3.8× the 20% cap"
+          "rule": "Over the 20% cap · 3.8× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 106% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 106% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf ∞",
-          "rule": "6 event closes, 100% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 6 event closes, 100% won"
         }
       ],
       "note": "OWL carried 76.8% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 6 closes at 100% won for a n/a profit factor. 8 closes booked in all, 88% won."
@@ -920,19 +920,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 85.6%",
-          "rule": "4.3× the 20% cap"
+          "rule": "Over the 20% cap · 4.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 107% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 107% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 1.75",
-          "rule": "7 event closes, 86% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 7 event closes, 86% won"
         }
       ],
       "note": "OWL carried 85.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 7 closes at 86% won for a 1.75 profit factor. 10 closes booked in all, 80% won."
@@ -948,19 +948,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 84.0%",
-          "rule": "4.2× the 20% cap"
+          "rule": "Over the 20% cap · 4.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 105% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 105% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 1.43",
-          "rule": "66 event closes, 46% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 66 event closes, 46% won"
         }
       ],
       "note": "OWL carried 84.0% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 66 closes at 46% won for a 1.43 profit factor. 73 closes booked in all, 51% won."
@@ -976,19 +976,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 81.6%",
-          "rule": "4.1× the 20% cap"
+          "rule": "Over the 20% cap · 4.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 107% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 107% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "carried · pf 1.36",
-          "rule": "49 event closes, 67% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 49 event closes, 67% won"
         }
       ],
       "note": "OWL carried 81.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 49 closes at 67% won for a 1.36 profit factor. 50 closes booked in all, 68% won."
@@ -1004,19 +1004,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 78.1%",
-          "rule": "3.9× the 20% cap"
+          "rule": "Over the 20% cap · 3.9× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
-          "value": "margin",
-          "rule": "Stock at 105% of NAV — borrowed, so the 10% floor was breached"
+          "value": "on margin",
+          "rule": "Under the 10% floor · stock at 105% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.59",
-          "rule": "81 event closes, 41% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 81 event closes, 41% won"
         }
       ],
       "note": "OWL carried 78.1% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SPCX was added to below carry. The event sleeve turned over 81 closes at 41% won for a 0.59 profit factor. 88 closes booked in all, 45% won."
@@ -1032,19 +1032,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "SRPT 26.3%",
-          "rule": "1.3× the 20% cap"
+          "rule": "Over the 20% cap · 1.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "≥61.7%",
-          "rule": "Stock at 38% of NAV — clear of the 10% floor"
+          "rule": "Above the 10% floor · stock at 38% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "warn",
           "value": "flat · pf 1.00",
-          "rule": "57 event closes, 47% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 57 event closes, 47% won"
         }
       ],
       "note": "SRPT carried 26.3% of NAV against a 20% cap. Stock was 38% of NAV, so the reserve held. The event sleeve turned over 57 closes at 47% won for a 1.00 profit factor. 73 closes booked in all, 51% won."
@@ -1060,19 +1060,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "SRPT 33.4%",
-          "rule": "1.7× the 20% cap"
+          "rule": "Over the 20% cap · 1.7× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "≤5.0%",
-          "rule": "Stock at 95% of NAV — below the 10% floor"
+          "rule": "Under the 10% floor · stock at 95% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.57",
-          "rule": "127 event closes, 44% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 127 event closes, 44% won"
         }
       ],
       "note": "SRPT carried 33.4% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. SPCX was added to below carry. The event sleeve turned over 127 closes at 44% won for a 0.57 profit factor. 134 closes booked in all, 46% won."
@@ -1086,20 +1086,20 @@
         {
           "key": "Dial 1 · Position size",
           "state": "fail",
-          "value": "SRPT ~31%",
+          "value": "SRPT ~31.0%",
           "rule": "Over the 20% cap · SPCX −29% not offloaded"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "17.6%",
-          "rule": "Above the 10% floor — rebuilt this week"
+          "rule": "Above the 10% floor · rebuilt this week"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.74",
-          "rule": "98 event closes, 39% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 98 event closes, 39% won"
         }
       ],
       "note": "The cash floor was restored to 17.6%, and that is the only credit on offer. The oversized names sat untouched — SRPT near 31%, SPCX at −29%, SERV through its stop — and new positions went on with no written thesis behind them. The engine is sound. The discipline around it is not."
@@ -1114,7 +1114,7 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "SRPT 29.9%",
-          "rule": "≈30% of book, cap is 20% · GRPN 19.4%"
+          "rule": "Over the 20% cap · about 30% of the book · GRPN 19.4%"
         },
         {
           "key": "Dial 2 · Cash buffer",
@@ -1126,7 +1126,7 @@
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.56",
-          "rule": "36 event closes, 64% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 36 event closes, 64% won"
         }
       ],
       "note": "The market did most of the −4% — marks on names already held; realized activity was quiet. But the controllable leak, SRPT at 30% of the book, stayed wide open two weeks after it was flagged. Cash discipline was the only line held."
@@ -1142,19 +1142,19 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "SRPT 28.2%",
-          "rule": "1.4× the 20% cap"
+          "rule": "Over the 20% cap · 1.4× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "≥16.4%",
-          "rule": "Stock at 84% of NAV — clear of the 10% floor"
+          "rule": "Above the 10% floor · stock at 84% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "fail",
           "value": "drag · pf 0.87",
-          "rule": "49 event closes, 55% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 49 event closes, 55% won"
         }
       ],
       "note": "SRPT carried 28.2% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. The event sleeve turned over 49 closes at 55% won for a 0.87 profit factor. 54 closes booked in all, 57% won."
@@ -1169,19 +1169,19 @@
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "GRPN 18.4%",
-          "rule": "Top name under the 20% cap · SRPT (was 30%) fully offloaded"
+          "rule": "Inside the 20% cap · SRPT (was 30%) fully offloaded"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "30.8%",
-          "rule": "Well above the 10% floor · leverage 0.7×"
+          "rule": "Above the 10% floor · well clear · leverage 0.7×"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "warn",
           "value": "flat · pf 1.17",
-          "rule": "32 event closes, 50% won — graded on what the sleeve returned, not on today's ban"
+          "rule": "Graded on what the sleeve returned, not on today's ban · 32 event closes, 50% won"
         }
       ],
       "note": "The week the concentration finally broke. SRPT — roughly 30% of the book for three weeks — was called away on the Aug 7 expiry, taking cash from 1.7% to 30.8% and putting every dial back inside its limit for the first time. That is the single most useful thing done all quarter. It does not earn an A: mid-week the reserve sat at 1.7% against a 10% floor, and SPCX was added to below carry while already deep in a loss — averaging down a broken thesis, which is prohibited outright. The week closed clean because an expiry landed, not because the book was run that way. +3.1% on the week."
@@ -1196,13 +1196,13 @@
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "NIQ 18.6%",
-          "rule": "Top name under the 20% cap · three names above 15%"
+          "rule": "Inside the 20% cap · three names above 15%"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "16.7%",
-          "rule": "Back above the 10% floor after the NU assignment · sat at 0.7% mid-week"
+          "rule": "Above the 10% floor · back over it after the NU assignment · sat at 0.7% mid-week"
         }
       ],
       "note": "All three dials closed clean. They did not stay clean. The 30.8% reserve taken off the SRPT exit was committed across three sessions into NU, NIQ, XNDU, PLTR, SPCX and BBAI, running cash to 0.7% and gross to 1.09× by midweek. Friday's expiry reversed it: the NU $15 calls were assigned, the shares called away at the strike, reserve rebuilt to 16.7%, book back under 1×. Credit where it is due — that exit was pre-arranged by the covered call, the strategy working as designed. But the floor was breached for two days first, and that was a decision, not an accident. +3.2% on the week, the cap held, the sleeve stayed shut."
@@ -1217,13 +1217,13 @@
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "PLTR 16.4%",
-          "rule": "Top name under the 20% cap once NIQ was called away"
+          "rule": "Inside the 20% cap · top name once NIQ was called away"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "18.8%",
-          "rule": "Back above the 10% floor on the NIQ assignment · sat at 2.4% into the weekend"
+          "rule": "Above the 10% floor · back over it on the NIQ assignment · sat at 2.4% into the weekend"
         }
       ],
       "note": "The NIQ $15 calls assigned overnight — the shares called away at the strike, the proceeds back in the account — and all three dials close clean: top name 16.4%, cash 18.8%, gross back to 0.90×. That is the wheel doing exactly what it is built to do, and it is the second week running that an assignment has repaired the reserve. It is also the second week running that the reserve was spent before the assignment arrived: cash ran to 2.4% and gross to 1.14× on Monday and Tuesday, into a new 500-share KEEL position and more PLTR, against money that had not settled. The grade is held down by SERV, where 200 shares were added at 4.87 to 4.90 into a name already 17% underwater. Averaging down a broken thesis is prohibited outright, no dial catches it, and it is the one thing here that was not rescued by an expiry. GRPN's calls were also rolled down from the $40 strike to $23 and $26, capping the recovery on a name 27% below cost. −2.6% on the week."
@@ -1238,19 +1238,19 @@
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "PLTR 19.1%",
-          "rule": "Inside the 20% cap, with 0.9 points to spare"
+          "rule": "Inside the 20% cap · 0.9 points to spare"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "0.2%",
-          "rule": "Stock at 101.5% of NAV — borrowed, against a 10% floor"
+          "rule": "Under the 10% floor · stock at 101.5% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "data run",
-          "rule": "79 forecast trades across ForecastX and Kalshi — sanctioned for data collection, not scored"
+          "rule": "Sanctioned for data, not scored · 79 forecast trades across ForecastX and Kalshi"
         }
       ],
       "note": "The cap held and nothing else did. Cash finished the week at 0.2% of NAV — with stock at 101.5% of net asset value, meaning the book is carrying borrowed money against a 10% floor. Into that, four new names were opened: PR, VSXY, HUN and OLN. Opening positions is a choice; opening four of them on margin with no reserve is the pattern this report card exists to catch. SPCX was also added to below carry for the third time in six weeks — averaging down a broken thesis, prohibited outright, and by now a habit rather than a lapse. The forecast sleeve came back on hard, 79 trades across ForecastX and Kalshi, and is deliberately not scored: it is sanctioned as data collection ahead of building the forecast algorithm. +1.6% on the week, and PLTR at 19.1% is the closest the top name has come to the cap without breaching it."
@@ -1271,13 +1271,13 @@
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "0.6%",
-          "rule": "Third week under the 10% floor · off margin, but stock is 99.8% of NAV"
+          "rule": "Under the 10% floor · third straight week · off margin, but stock is 99.8% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
           "value": "data run",
-          "rule": "15 forecast trades on ForecastX — sanctioned for data collection, not scored"
+          "rule": "Sanctioned for data, not scored · 15 forecast trades on ForecastX"
         }
       ],
       "note": "A quiet week that fixed nothing. Not one equity trade was placed in five sessions — no new names, no averaging down, none of last week's escalation repeated, and the book came off margin. That is the improvement, and it is real. What did not change is the reserve: cash closed at 0.6% of NAV, a third consecutive week under the 10% floor, with stock at 99.8% of net asset value. Being fully invested is not the same as being on margin, but it leaves nothing to deploy and nothing to absorb a shock. The quieter problem is the engine. Short calls on BBAI, KEEL, SERV and XNDU all came off at zero in Friday's expiry processing and none were rewritten, so ten of twelve names now sit as uncovered stock. Covered-call premium is the one line in this book with a real edge, and for most of the collateral it is currently switched off. −1.1% on the week; the forecast sleeve ran 15 trades for data and is not scored."
@@ -1298,7 +1298,7 @@
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "1.2%",
-          "rule": "Fourth week under the 10% floor · off margin, but stock is 98.9% of NAV"
+          "rule": "Under the 10% floor · fourth straight week · off margin, but stock is 98.9% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1326,7 +1326,7 @@
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "8.8%",
-          "rule": "Fifth week under the 10% floor · the closest yet, lifted by the KEEL assignment rather than a trim"
+          "rule": "Under the 10% floor · fifth straight week · the closest yet, lifted by the KEEL assignment rather than a trim"
         },
         {
           "key": "Dial 3 · Event sleeve",

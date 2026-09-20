@@ -173,6 +173,31 @@ never drift from the return series. Two consequences worth knowing:
   one card dated Aug 7. Jul 13 and Jul 25 were re-dated to Jul 17 and Jul 24. Every `weekRet` is now
   recomputed Friday-to-Friday off the inception curve rather than over an ad-hoc window.
 
+## Dial wording - one shape for every card
+
+Every dial on every card, live or reconstructed, reads the same way:
+
+```
+value : "SPCX 18.8%" | "8.8%" | "on margin" | "≥16.4%" | "data run · JPUSD" | "drag · pf 0.57"
+rule  : "<verdict> · <detail> · <detail>"
+```
+
+The verdict comes first and is drawn from a fixed set, so a reader can scan a
+year of cards without re-reading the sentence each time:
+
+| Dial | Verdicts |
+|---|---|
+| Position size | `Inside the 20% cap` / `Over the 20% cap` |
+| Cash buffer | `Above the 10% floor` / `Under the 10% floor` / `Too close to the 10% floor to call` |
+| Event sleeve | `Graded on what the sleeve returned, not on today's ban` / `Sanctioned for data, not scored` |
+
+Details follow the verdict, separated by ` · `, sentence case, no trailing
+period. Em dashes do not appear in a dial rule - they belong in the note, which
+is prose and stays prose. Bare percentages carry one decimal (`8.8%`, not `9%`);
+a reconstructed bound keeps its `≥`/`≤`. The whole set was normalised on
+2026-09-20; before that the live cards and the reconstructed ones used different
+separators and clause orders for the same facts.
+
 ## Reconstructed after-actions (Oct 2025 - Jul 2026)
 
 39 weeks before the live record were rebuilt from the trade history and published alongside the six
