@@ -15,7 +15,7 @@
     {
       "k": "Return · Last 7 Days",
       "v": 1.11,
-      "m": "KEEL called away at the strike; event sleeve settled at zero"
+      "m": "KEEL called away at the strike; the event sleeve's first positive week at size"
     }
   ],
   "reports": [
@@ -1231,7 +1231,7 @@
     {
       "w": "Aug 28",
       "weekLabel": "Week of Aug 24 – Aug 28, 2026",
-      "grade": "D+",
+      "grade": "D",
       "weekRet": 1.56,
       "dials": [
         {
@@ -1248,12 +1248,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "pass",
-          "value": "data run",
-          "rule": "Sanctioned for data, not scored · 79 forecast trades across ForecastX and Kalshi"
+          "state": "fail",
+          "value": "drag · pf 0.34",
+          "rule": "Graded on what the sleeve returned · 1,040 contracts at 3.1% of NAV · 340 lost · net −0.7% of NAV"
         }
       ],
-      "note": "The cap held and nothing else did. Cash finished the week at 0.2% of NAV — with stock at 101.5% of net asset value, meaning the book is carrying borrowed money against a 10% floor. Into that, four new names were opened: PR, VSXY, HUN and OLN. Opening positions is a choice; opening four of them on margin with no reserve is the pattern this report card exists to catch. SPCX was also added to below carry for the third time in six weeks — averaging down a broken thesis, prohibited outright, and by now a habit rather than a lapse. The forecast sleeve came back on hard, 79 trades across ForecastX and Kalshi, and is deliberately not scored: it is sanctioned as data collection ahead of building the forecast algorithm. +1.6% on the week, and PLTR at 19.1% is the closest the top name has come to the cap without breaching it."
+      "note": "The cap held and nothing else did. Cash finished the week at 0.2% of NAV — with stock at 101.5% of net asset value, meaning the book is carrying borrowed money against a 10% floor. Into that, four new names were opened: PR, VSXY, HUN and OLN. Opening positions is a choice; opening four of them on margin with no reserve is the pattern this report card exists to catch. SPCX was also added to below carry for the third time in six weeks — averaging down a broken thesis, prohibited outright, and by now a habit rather than a lapse. The forecast sleeve came back on hard: 79 trades, 1,040 contracts across ForecastX and Kalshi, 3.1% of net asset value at stake. It was written up that Friday as unscored data collection. Scored on what it returned, which is how it is graded now, it cost about seven tenths of a point of net asset value, 340 of those contracts settling worthless. +1.6% on the week, and PLTR at 19.1% is the closest the top name has come to the cap without breaching it."
     },
     {
       "w": "Sep 4",
@@ -1276,11 +1276,11 @@
         {
           "key": "Dial 3 · Event sleeve",
           "state": "pass",
-          "value": "data run",
-          "rule": "Sanctioned for data, not scored · 15 forecast trades on ForecastX"
+          "value": "carried · 230 for 230",
+          "rule": "Graded on what the sleeve returned · 230 contracts at 0.7% of NAV · none lost · net +0.1% of NAV"
         }
       ],
-      "note": "A quiet week that fixed nothing. Not one equity trade was placed in five sessions — no new names, no averaging down, none of last week's escalation repeated, and the book came off margin. That is the improvement, and it is real. What did not change is the reserve: cash closed at 0.6% of NAV, a third consecutive week under the 10% floor, with stock at 99.8% of net asset value. Being fully invested is not the same as being on margin, but it leaves nothing to deploy and nothing to absorb a shock. The quieter problem is the engine. Short calls on BBAI, KEEL, SERV and XNDU all came off at zero in Friday's expiry processing and none were rewritten, so ten of twelve names now sit as uncovered stock. Covered-call premium is the one line in this book with a real edge, and for most of the collateral it is currently switched off. −1.1% on the week; the forecast sleeve ran 15 trades for data and is not scored."
+      "note": "A quiet week that fixed nothing. Not one equity trade was placed in five sessions — no new names, no averaging down, none of last week's escalation repeated, and the book came off margin. That is the improvement, and it is real. What did not change is the reserve: cash closed at 0.6% of NAV, a third consecutive week under the 10% floor, with stock at 99.8% of net asset value. Being fully invested is not the same as being on margin, but it leaves nothing to deploy and nothing to absorb a shock. The quieter problem is the engine. Short calls on BBAI, KEEL, SERV and XNDU all came off at zero in Friday's expiry processing and none were rewritten, so ten of twelve names now sit as uncovered stock. Covered-call premium is the one line in this book with a real edge, and for most of the collateral it is currently switched off. −1.1% on the week. The forecast sleeve ran 15 trades for 230 contracts, 0.7% of net asset value, and not one of them lost: about a tenth of a point to the good, the only week of the four since the sleeve reopened that came through clean."
     },
     {
       "w": "Sep 11",
@@ -1302,17 +1302,17 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "data run · JPUSD",
-          "rule": "Sanctioned for data, not scored · flagged: a banned root was active and the run reached 2.1% of NAV"
+          "state": "fail",
+          "value": "drag · pf 0.34",
+          "rule": "Graded on what the sleeve returned · 698 contracts at 2.1% of NAV · 225 lost · net −0.5% of NAV · banned root"
         }
       ],
-      "note": "The wheel came back on, and the sleeve ran hot on a name it was not supposed to be in. Tuesday's open rewrote calls on five names — HUN, KEEL, SERV, BBAI and XNDU — which is exactly what last week's card asked for, and it worked: the SERV, BBAI and XNDU weeklies expired worthless on Friday and the premium was kept whole. Four names are covered again and the engine is earning. The forecast sleeve remains sanctioned for data collection and is not scored on what it returns. That rule has not changed and it is not being changed here. What is flagged is the shape of the run rather than its result: 698 contracts went out across four sessions, 673 of them JPUSD, a root the forecast engine carries on its own banned list, entered by hand at an average of 0.85 with 300 lots at 0.95 or above. The engine caps entry at 0.92 and caps a single settlement at 0.4% of net asset value; none of these tickets passed through it. Every contract settled at zero, and that is the data point. The size is the issue, not the loss — at roughly 2.1% of net asset value the sleeve carried about two thirds of the week's drawdown, and a data run does not need to be that large to produce data. Strip it out and the book was down about a percent. The one genuine breach on this card is cash, which closed at 1.2% of net asset value, a fourth consecutive week beneath the 10% floor, though the book stayed off margin. Position size held, with SPCX taking over as the largest name at 18.7%."
+      "note": "The wheel came back on, and the sleeve ran hot on a name it was not supposed to be in. Tuesday's open rewrote calls on five names — HUN, KEEL, SERV, BBAI and XNDU — which is exactly what last week's card asked for, and it worked: the SERV, BBAI and XNDU weeklies expired worthless on Friday and the premium was kept whole. Four names are covered again and the engine is earning. The sleeve is scored on what it returns, a rule restored on Sep 20 and applied back to the week it reopened. What was flagged at the time was the shape of the run: 698 contracts went out across four sessions, 673 of them JPUSD, a root the forecast engine carries on its own banned list, entered by hand at an average of 0.85 with 300 lots at 0.95 or above. The engine caps entry at 0.92 and caps a single settlement at 0.4% of net asset value; none of these tickets passed through it. This card first said every contract settled at zero. That was a misreading of the trade feed, corrected on Sep 20: the feed books an event loss back against the original ticket days later and never books a win as a trade at all, because a winner pays out as cash. With the settlements through, 225 of the 698 contracts lost and the rest paid, so the sleeve cost about half a point of net asset value rather than the 2.1% it staked. The size is still the issue, and the single largest loser was the 100-lot bought at 0.95 — the exact ticket the engine's entry ceiling exists to refuse. The one genuine breach on this card is cash, which closed at 1.2% of net asset value, a fourth consecutive week beneath the 10% floor, though the book stayed off margin. Position size held, with SPCX taking over as the largest name at 18.7%."
     },
     {
       "w": "Sep 18",
       "weekLabel": "Week of Sep 14 – Sep 18, 2026",
-      "grade": "C",
+      "grade": "C+",
       "weekRet": 1.34,
       "now": true,
       "dials": [
@@ -1330,12 +1330,12 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "data run · JPUSD",
-          "rule": "Sanctioned for data, not scored · flagged: a banned root for a second straight week, about 2% of NAV again"
+          "state": "pass",
+          "value": "carried · 700 for 700",
+          "rule": "Graded on what the sleeve returned · 700 contracts at 2.0% of NAV · none lost · net +0.5% of NAV, provisional · banned root at twice the engine's size"
         }
       ],
-      "note": "The covered calls did their job this week, and one of them finished it. KEEL ended Friday in the money on its 4 strike, so the shares were called away at the strike. That is the wheel completing a turn, not a loss: the stock was bought in mid-August at about 3.78, so the call sold it above cost, on top of a month of premium written against it. From purchase to assignment, the position returned roughly 10% in five weeks, and the cash it released is most of why the reserve moved. Monday rolled the calls on GRPN, KVYO and SERV out to October at fresh premium after buying the old ones back for pennies. The HUN, BBAI and XNDU calls expired worthless on Friday; the BBAI and XNDU ones had been written at a cent, which covers the stock on paper and earns almost nothing. Three names go into next week covered. Cash closed at 8.8% of net asset value: still under the 10% floor for a fifth straight week, but the nearest it has come, and it got there because a strike was hit rather than because anything was trimmed. Two small new names, ACTG and BHF, were bought midweek while the reserve was still at the bottom. The event sleeve remains sanctioned for data collection and is not scored on what it returns. What is flagged is that it ran on JPUSD for a second consecutive week, the root the forecast engine bans, entered by hand: 700 contracts across three sessions at an average near 0.80, every ticket under the engine's 0.92 entry cap this time, every one settled at zero. That is about 2% of net asset value, the same size last week's card called too large for a data run. Position size held, with SPCX and PLTR level at 18.8%. The book was up 1.3% on the week; without the sleeve it would have been up about three."
+      "note": "The covered calls did their job this week, and one of them finished it. KEEL ended Friday in the money on its 4 strike, so the shares were called away at the strike. That is the wheel completing a turn, not a loss: the stock was bought in mid-August at about 3.78, so the call sold it above cost, on top of a month of premium written against it. From purchase to assignment, the position returned roughly 10% in five weeks, and the cash it released is most of why the reserve moved. Monday rolled the calls on GRPN, KVYO and SERV out to October at fresh premium after buying the old ones back for pennies. The HUN, BBAI and XNDU calls expired worthless on Friday; the BBAI and XNDU ones had been written at a cent, which covers the stock on paper and earns almost nothing. Three names go into next week covered. Cash closed at 8.8% of net asset value: still under the 10% floor for a fifth straight week, but the nearest it has come, and it got there because a strike was hit rather than because anything was trimmed. Two small new names, ACTG and BHF, were bought midweek while the reserve was still at the bottom. The event sleeve is scored again from this week. It ran on JPUSD for a second consecutive week, the root the forecast engine bans, entered by hand: 700 contracts across three sessions at an average near 0.80, every ticket under the engine's 0.92 entry cap this time, about 2% of net asset value at stake. Not one of those tickets has had a loss booked against it, and the cash that came back says the run settled in the money — roughly half a point of net asset value to the good, which is the first positive week the sleeve has produced at size. Call it provisional: this venue books a losing event against the original ticket days after the fact and never books the winners at all, so the final figure firms up over the coming week. The root is still banned and the size is still twice what the engine would have allowed; being right about the yen does not make either of those disappear. Position size held, with SPCX and PLTR level at 18.8%. The book was up 1.3% on the week, about nine tenths of it from the securities book and the rest from the sleeve."
     }
   ],
   "career": {
@@ -1399,15 +1399,15 @@
         "pf": 0.89,
         "closes": 1902,
         "tone": "warn",
-        "note": "Reopened in August to gather data for a systematic build. Not scored on what it returns; watched on size and on which roots it touches."
+        "note": "Reopened in August for a systematic build and graded on returns again from Sep 20, with a year-end review. Counted from the trade feed, which since the August venue change records event losses but not event wins, so recent weeks read worse in this column than the cash balance says."
       }
     ],
     "insights": [
       "Loss asymmetry is still the leak. The average loser runs 1.6× the average winner, so a 59.8% hit rate finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
       "The engine is real: covered-call premium takes 77% of its closes at a 3.6 profit factor across 175 closes. That is the business, and everything else is management around it. It was switched off for two weeks at the start of September and switched back on in the week of Sep 7, and in the week of Sep 14 it completed a full turn: KEEL's calls were assigned at a strike above what the shares cost. The gap cost nothing visible, which is precisely why it is easy to let happen again.",
-      "The forecast sleeve reopened on Aug 24 to gather clean data for a systematic strategy under construction, and it is deliberately not scored on what it returns. That sanction stands. The week of Sep 7 is the first real test of its edges: 698 contracts, 673 of them in a root the strategy itself bans, entered by hand at prices and sizes the engine would have refused, every one settling at zero. The data is real and it is being kept. The week of Sep 14 repeated it: 700 more contracts, all JPUSD, all settled at zero, the entry prices back inside the engine's cap but the root and the size unchanged. The open question is still size — a data run does not need two per cent of the book, twice, to produce a data point.",
+      "The forecast sleeve reopened on Aug 24 to gather data for a systematic strategy under construction, and for four weeks it was not scored on what it returned. That sanction ended on Sep 20 and the grading was applied backwards, so the record now reads: −0.7% of net asset value in the week of Aug 24, +0.1% in the week of Aug 31, −0.5% in the week of Sep 7, and about +0.5% in the week of Sep 14. Three of those four weeks ran in JPUSD, a root the strategy itself bans on 96 settled events, and the winning week was no exception. The sleeve is monitored on size and on which roots it touches, it now trades a minimum of 100 contracts an action, and it is reviewed at year end on what it has actually produced.",
       "Share legs run a 0.34 profit factor across 35 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it has now held for seven consecutive weeks — the longest clean run in the record.",
-      "The ledger moves on the back office's schedule, not the market's. NU's August assignment reached the trade feed a week after the fact and NIQ's followed the same path. The same lag is live right now: not one contract from the JPUSD runs of Sep 7 or Sep 14 carries realized P&L yet, and neither does KEEL's assignment, so September counts as a green month on the strength of a handful of premium closes. Read that tile as a cutoff, not as a verdict — the sleeve's loss lands in it later."
+      "The ledger moves on the back office's schedule, not the market's. NU's August assignment reached the trade feed a week after the fact and NIQ's followed the same path; the Sep 7 sleeve's losses only landed this week, and KEEL's assignment has not landed at all. There is a sharper edge to it since the event venue changed in August: a losing contract is booked back against the ticket that bought it, while a winning one is never booked as a trade and arrives as cash instead. A week of event trades therefore reads as pure loss in this ledger until it is reconciled against the balance, which is how two winning weeks were first written up here as total losses. Read the tile as a cutoff, not a verdict."
     ]
   },
   "positions": [

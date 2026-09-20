@@ -173,6 +173,43 @@ never drift from the return series. Two consequences worth knowing:
   one card dated Aug 7. Jul 13 and Jul 25 were re-dated to Jul 17 and Jul 24. Every `weekRet` is now
   recomputed Friday-to-Friday off the inception curve rather than over an ad-hoc window.
 
+## The event sleeve: graded, monitored, reviewed at year end
+
+From 2026-09-20 the sleeve is **scored on what it returns**, and the grading was
+applied backwards to the week it reopened. The four-week sanction that graded it
+only on size is over. It trades a **minimum of 100 contracts per action**
+(`min_contracts_per_action` in the forecast engine) and it is **reviewed at year
+end**: if the project has not produced by then, it is closed rather than carried.
+
+What stays true: the dial still watches **size** and **which roots it touches**,
+because a banned root is a banned root whether the week won or lost.
+
+### Reading the sleeve's week is not obvious - the feed hides the wins
+
+Since the venue changed in August 2026, event contracts book like this:
+
+| Outcome | What the trade feed shows |
+|---|---|
+| Loss | a negative `realized_pnl` written back onto the **original BUY row**, days later |
+| Win | **nothing at all** - the payout arrives as cash |
+| Settlement | a `SELL` row at price 0 carrying `realized_pnl: 0`, whatever the outcome |
+
+So a week of event trades reads as a total loss right after it happens, and as a
+smaller loss a week later once the losers book. That is exactly how the cards of
+Sep 11 and Sep 18 first went out saying "every contract settled at zero" when the
+second of those weeks had in fact won. Both were corrected on 2026-09-20.
+
+**To score a week:** take every BUY on `FORECASTX`/`KALSHI` in that week, sum the
+stake (`size x price` plus commission), sum the negative `realized_pnl` now
+attached to those rows - those are the losers - and treat every remaining
+contract as settling at $1. Net = winners - stake. Mark the most recent week
+**provisional**: loss records have taken up to eight days to appear.
+
+**Settlement timing:** these dailies settle at about **20:20 ET on the evening
+the contract expires** (stamped ~00:20 UTC the next calendar day). A Friday
+contract settles Friday night, not Sunday or Monday; the cash is there
+immediately. Only the loss *records* lag.
+
 ## Dial wording - one shape for every card
 
 Every dial on every card, live or reconstructed, reads the same way:
@@ -189,7 +226,7 @@ year of cards without re-reading the sentence each time:
 |---|---|
 | Position size | `Inside the 20% cap` / `Over the 20% cap` |
 | Cash buffer | `Above the 10% floor` / `Under the 10% floor` / `Too close to the 10% floor to call` |
-| Event sleeve | `Graded on what the sleeve returned, not on today's ban` / `Sanctioned for data, not scored` |
+| Event sleeve | `Graded on what the sleeve returned` (live weeks) / `Graded on what the sleeve returned, not on today's ban` (reconstructed) / `Sanctioned for data, not scored` (the Aug-Sep 2026 sanction only, now ended) |
 
 Details follow the verdict, separated by ` · `, sentence case, no trailing
 period. Em dashes do not appear in a dial rule - they belong in the note, which
