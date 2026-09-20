@@ -109,6 +109,14 @@ python futuresight_fetch.py --range 2y
 python build.py
 ```
 
+Then the two generated blocks, in this order - `record_stats.py` reads the career buckets,
+so it runs second:
+
+```bash
+python career_stats.py --write ../data/trades_*.json
+python record_stats.py --write ../data/trades_*.json
+```
+
 Concept 13 publishes the scanner's **compounder** profile. To put the pre-profit
 cohort on the page instead, run the scanner with `--profile emerging` before
 syncing — the sync records which profile it captured and the page labels itself
@@ -262,7 +270,14 @@ Working files live in `trading-system/data/` (outside this repo - they contain d
 
 ## Best & Worst tab
 
-`record` drives it. Everything is a rate, a ratio, or a share - no dollars, in line with the rest of
+`record` drives it, and **`python record_stats.py --write <trade dumps>` regenerates it** -
+same contract as `career_stats.py`: it rewrites every tile and table and leaves `notes`
+alone, printing what moved. It reads the inception curve and the report cards out of
+`data.json`, the covered-call line out of the career buckets, and the trades out of the
+dumps; single-trade extremes need `../data/nav_series.json` for the NAV on the day each
+trade closed, so extend that file when the weekly refresh adds sessions. Before 2026-09-20
+this block was assembled by hand and had drifted - the covered-call tile still read 165
+closes when the ledger said 182, and the discipline counts still said 44 weeks. Everything is a rate, a ratio, or a share - no dollars, in line with the rest of
 the site. Single-trade extremes are expressed as a share of NAV **on the day the trade closed**,
 which is the honest way to size a loss without printing it. `names` and `events` give each symbol's
 share of the account's *entire* realized gains and *entire* realized losses, which is what shows

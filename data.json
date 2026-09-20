@@ -2180,8 +2180,8 @@
       },
       {
         "k": "The engine",
-        "v": "3.75 pf",
-        "m": "Covered-call premium, 78% of 165 closes won"
+        "v": "3.76 pf",
+        "m": "Covered-call premium, 78% of 182 closes won"
       }
     ],
     "failures": [
@@ -2212,24 +2212,24 @@
       },
       {
         "k": "Still below the peak",
-        "v": "-13.69%",
+        "v": "-15.15%",
         "m": "Distance from the high-water mark"
       }
     ],
     "discipline": [
       {
         "k": "Weeks over the 20% cap",
-        "v": "41 / 44",
+        "v": "41 / 48",
         "m": "Single-name concentration"
       },
       {
         "k": "Weeks carrying margin",
-        "v": "21 / 44",
+        "v": "22 / 48",
         "m": "Stock value above net asset value"
       },
       {
         "k": "Weeks fully inside every limit",
-        "v": "3 / 44",
+        "v": "3 / 48",
         "m": "Cap held and reserve intact"
       }
     ],
@@ -2253,16 +2253,16 @@
         "v": "+2.29%"
       },
       {
+        "t": "NIQ",
+        "d": "Aug 21, 2026",
+        "s": "STK",
+        "v": "+2.26%"
+      },
+      {
         "t": "SRPT",
         "d": "Jun 11, 2026",
         "s": "OPT",
         "v": "+1.66%"
-      },
-      {
-        "t": "ASTS",
-        "d": "Nov 7, 2025",
-        "s": "OPT",
-        "v": "+1.48%"
       }
     ],
     "losses": [
@@ -2299,11 +2299,67 @@
     ],
     "names": [
       {
+        "t": "OWL",
+        "closes": 111,
+        "win": 77,
+        "pf": 0.58,
+        "g": 23.2,
+        "l": 39.0
+      },
+      {
+        "t": "SRPT",
+        "closes": 18,
+        "win": 50,
+        "pf": 0.97,
+        "g": 10.1,
+        "l": 10.1
+      },
+      {
+        "t": "ASTS",
+        "closes": 10,
+        "win": 90,
+        "pf": 1.03,
+        "g": 4.2,
+        "l": 4.0
+      },
+      {
+        "t": "FITB",
+        "closes": 2,
+        "win": 100,
+        "pf": null,
+        "g": 5.6,
+        "l": 0.0
+      },
+      {
+        "t": "GRPN",
+        "closes": 8,
+        "win": 75,
+        "pf": 2.28,
+        "g": 2.6,
+        "l": 1.1
+      },
+      {
+        "t": "NIQ",
+        "closes": 1,
+        "win": 100,
+        "pf": null,
+        "g": 3.0,
+        "l": 0.0
+      },
+      {
+        "t": "SERV",
+        "closes": 14,
+        "win": 79,
+        "pf": 36.49,
+        "g": 2.0,
+        "l": 0.1
+      },
+      {
         "t": "NU",
         "closes": 3,
         "win": 100,
         "pf": null,
-        "g": 2.3,
+        "g": 2.1,
         "l": 0.0
       },
       {
@@ -2311,122 +2367,66 @@
         "closes": 4,
         "win": 100,
         "pf": null,
-        "g": 1.4,
+        "g": 1.3,
         "l": 0.0
       },
       {
-        "t": "GRPN",
-        "closes": 6,
-        "win": 67,
-        "pf": 1.88,
-        "g": 2.3,
-        "l": 1.1
-      },
-      {
-        "t": "SERV",
-        "closes": 9,
-        "win": 89,
-        "pf": 2705.27,
-        "g": 1.0,
-        "l": 0.0
-      },
-      {
-        "t": "TOST",
-        "closes": 4,
-        "win": 100,
-        "pf": null,
-        "g": 0.8,
-        "l": 0.0
-      },
-      {
-        "t": "RDW",
-        "closes": 3,
-        "win": 67,
-        "pf": 5.59,
-        "g": 0.8,
-        "l": 0.1
-      },
-      {
-        "t": "SRPT",
-        "closes": 18,
-        "win": 50,
-        "pf": 0.97,
-        "g": 11.2,
-        "l": 10.5
-      },
-      {
-        "t": "ASTS",
-        "closes": 10,
-        "win": 90,
-        "pf": 1.03,
-        "g": 4.7,
-        "l": 4.1
-      },
-      {
-        "t": "BBAI",
-        "closes": 4,
-        "win": 100,
-        "pf": null,
-        "g": 0.4,
-        "l": 0.0
-      },
-      {
-        "t": "OWL",
-        "closes": 111,
-        "win": 77,
-        "pf": 0.58,
-        "g": 25.6,
-        "l": 40.4
+        "t": "XNDU",
+        "closes": 5,
+        "win": 40,
+        "pf": 1.16,
+        "g": 0.6,
+        "l": 0.5
       }
     ],
     "events": [
       {
-        "t": "CFBTC",
-        "closes": 227,
-        "win": 49,
-        "pf": 1.14,
-        "g": 8.6,
-        "l": 6.8
+        "t": "JPUSD",
+        "closes": 461,
+        "win": 53,
+        "pf": 0.9,
+        "g": 18.9,
+        "l": 20.4
       },
       {
-        "t": "INNKI",
-        "closes": 28,
-        "win": 68,
-        "pf": 5.16,
-        "g": 0.8,
-        "l": 0.1
+        "t": "CFBTC",
+        "closes": 260,
+        "win": 46,
+        "pf": 1.11,
+        "g": 8.6,
+        "l": 7.5
+      },
+      {
+        "t": "CBBTC",
+        "closes": 188,
+        "win": 66,
+        "pf": 1.04,
+        "g": 2.1,
+        "l": 1.9
+      },
+      {
+        "t": "CFETH",
+        "closes": 78,
+        "win": 59,
+        "pf": 0.97,
+        "g": 1.4,
+        "l": 1.4
+      },
+      {
+        "t": "CBETH",
+        "closes": 154,
+        "win": 66,
+        "pf": 0.82,
+        "g": 1.0,
+        "l": 1.1
       },
       {
         "t": "CBSOL",
         "closes": 130,
         "win": 80,
         "pf": 1.61,
-        "g": 1.2,
-        "l": 0.7
-      },
-      {
-        "t": "USEUR",
-        "closes": 28,
-        "win": 46,
-        "pf": 0.27,
-        "g": 0.3,
-        "l": 1.1
-      },
-      {
-        "t": "METLG",
-        "closes": 41,
-        "win": 51,
-        "pf": 0.33,
-        "g": 0.5,
-        "l": 1.3
-      },
-      {
-        "t": "JPUSD",
-        "closes": 430,
-        "win": 51,
-        "pf": 0.86,
-        "g": 18.6,
-        "l": 19.7
+        "g": 1.1,
+        "l": 0.6
       }
     ],
     "notes": [
