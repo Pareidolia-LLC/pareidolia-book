@@ -77,6 +77,8 @@ The former P&L, The Desk and The Mandate panels no longer exist; their sections 
 
 **Order rule:** concepts stay in chronological order by the date each was written or opened. A new concept is inserted by date and everything after it renumbers.
 
+**Grading rule (rewritten 2026-09-20):** the letter is a weighted score out of 100 - performance 40, wheel execution 25, risk craft 20, liquidity 10, event sleeve 5 - not a breach count. Concentration is a band (25% clean / 25-35% watch / 35%+ breach, +5 for a covered name) and its *direction* is scored; cash is a 2-20% band, not a floor. A week worse than -5% caps at C-, worse than -10% at D+. `grade_model.py --write` rescores all 48 cards every run and also writes `score`, `components`, `wins`, `watch`, `next`.
+
 **Generated blocks:** `career` comes from `career_stats.py --write`, `record` from `record_stats.py --write` (run career first - record reads its buckets). Both leave the hand-written prose (`insights`, bucket notes, `record.notes`) alone.
 
 **Event sleeve rule:** graded on what it returns (restored 2026-09-20 and applied back to Aug 24), minimum 100 contracts per action, reviewed at year end. Scoring a week means netting both legs: the BUY ticket carries the cost, a separate settlement row carries the payout (SELL at 1) or the wipeout (SELL at 0), and those outcome rows lag the trade by up to a week - see README, "The event sleeve".
@@ -116,7 +118,8 @@ Top-level keys, exactly: `asOf · curveLabel · returns · reports · career · 
 asOf        "Sep 5, 2026"                 the page date; career.asOfLabel MUST equal it or build.py exits
 curveLabel  str
 returns     [{k, v, m}]                   v is a number (percent); m is the subtitle
-reports     [{w, weekLabel, grade, weekRet, dials:[{key,state,value,rule}], note, now?, recon?}]
+reports     [{w, weekLabel, grade, score, weekRet, dials:[{key,state,value,rule}],
+              components:[{k,pts,max,score}], wins:[str], watch:[str], next:[str], note, now?, recon?}]
               oldest -> newest · state in pass|warn|fail · exactly one card has now:true
               recon:true marks a rebuilt week; a live card simply has NO recon key (there is no recon:false)
               dials may have 2 or 3 entries

@@ -22,7 +22,7 @@
     {
       "w": "Oct 24",
       "weekLabel": "Week of Oct 20 – Oct 24, 2025",
-      "grade": "F",
+      "grade": "B−",
       "weekRet": 3.48,
       "recon": true,
       "dials": [
@@ -30,13 +30,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 71.2%",
-          "rule": "Over the 20% cap · 3.6× the limit"
+          "rule": "Past the 35% line · 3.6× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "warn",
+          "state": "pass",
           "value": "≥5.6%",
-          "rule": "Too close to the 10% floor to call · stock at 94% of NAV"
+          "rule": "Inside the 2-20% band · stock at 94% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -45,12 +45,56 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 11 event closes, 64% won"
         }
       ],
-      "note": "ASTS carried 71.2% of NAV against a 20% cap. Stock was 94% of NAV — too close to the floor for this reconstruction to call either way. The event sleeve turned over 11 closes at 64% won for a 0.57 profit factor. 12 closes booked in all, 67% won."
+      "note": "ASTS carried 71.2% of NAV against a 20% cap. Stock was 94% of NAV — too close to the floor for this reconstruction to call either way. The event sleeve turned over 11 closes at 64% won for a 0.57 profit factor. 12 closes booked in all, 67% won.",
+      "score": 68.6,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 31.1,
+          "max": 40,
+          "score": 78
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 16.7,
+          "max": 25,
+          "score": 67
+        },
+        {
+          "k": "Risk craft",
+          "pts": 9.4,
+          "max": 20,
+          "score": 47
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.4,
+          "max": 5,
+          "score": 28
+        }
+      ],
+      "wins": [
+        "Book up 3.48% on the week.",
+        "Covered-call premium added 0.27% of net asset value across 3 names.",
+        "Calls written or rolled on 4 contracts · ASTS, LUMN, OWL."
+      ],
+      "watch": [
+        "ASTS at 71.2% of net asset value, past the 35% line."
+      ],
+      "next": [
+        "Bring ASTS under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Oct 31",
       "weekLabel": "Week of Oct 27 – Oct 31, 2025",
-      "grade": "D",
+      "grade": "A−",
       "weekRet": 6.97,
       "recon": true,
       "dials": [
@@ -58,13 +102,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 72.5%",
-          "rule": "Over the 20% cap · 3.6× the limit"
+          "rule": "Past the 35% line · 3.6× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "warn",
+          "state": "pass",
           "value": "≥8.5%",
-          "rule": "Too close to the 10% floor to call · stock at 92% of NAV"
+          "rule": "Inside the 2-20% band · stock at 92% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -73,7 +117,51 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 19 event closes, 58% won"
         }
       ],
-      "note": "ASTS carried 72.5% of NAV against a 20% cap. Stock was 92% of NAV — too close to the floor for this reconstruction to call either way. The event sleeve turned over 19 closes at 58% won for a 2.23 profit factor. 21 closes booked in all, 62% won."
+      "note": "ASTS carried 72.5% of NAV against a 20% cap. Stock was 92% of NAV — too close to the floor for this reconstruction to call either way. The event sleeve turned over 19 closes at 58% won for a 2.23 profit factor. 21 closes booked in all, 62% won.",
+      "score": 83.9,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 40.0,
+          "max": 40,
+          "score": 100
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 19.6,
+          "max": 25,
+          "score": 79
+        },
+        {
+          "k": "Risk craft",
+          "pts": 9.2,
+          "max": 20,
+          "score": 46
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 5.0,
+          "max": 5,
+          "score": 100
+        }
+      ],
+      "wins": [
+        "Book up 6.97% on the week.",
+        "Covered-call premium added 0.74% of net asset value across 1 name.",
+        "Calls written or rolled on 1 contracts · ASTS."
+      ],
+      "watch": [
+        "ASTS at 72.5% of net asset value, past the 35% line."
+      ],
+      "next": [
+        "Bring ASTS under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Nov 7",
@@ -86,13 +174,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 69.6%",
-          "rule": "Over the 20% cap · 3.5× the limit"
+          "rule": "Past the 35% line · 3.5× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 102% of NAV, borrowed"
+          "rule": "On margin · stock at 102% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -101,12 +189,60 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 29 event closes, 62% won"
         }
       ],
-      "note": "ASTS carried 69.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. The event sleeve turned over 29 closes at 62% won for a 0.90 profit factor. 31 closes booked in all, 65% won."
+      "note": "ASTS carried 69.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. The event sleeve turned over 29 closes at 62% won for a 0.90 profit factor. 31 closes booked in all, 65% won.",
+      "score": 32.4,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 0.0,
+          "max": 40,
+          "score": 0
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 25.0,
+          "max": 25,
+          "score": 100
+        },
+        {
+          "k": "Risk craft",
+          "pts": 5.1,
+          "max": 20,
+          "score": 26
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.2,
+          "max": 5,
+          "score": 45
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 2.44% of net asset value across 1 name.",
+        "Calls written or rolled on 2 contracts · ASTS.",
+        "Concentration coming down, 72.5% to 69.6%."
+      ],
+      "watch": [
+        "Book down 10.20% on the week.",
+        "ASTS at 69.6% of net asset value, past the 35% line.",
+        "Book carried borrowed money.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring ASTS under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Nov 14",
       "weekLabel": "Week of Nov 10 – Nov 14, 2025",
-      "grade": "F",
+      "grade": "D",
       "weekRet": -6.17,
       "recon": true,
       "dials": [
@@ -114,13 +250,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 65.8%",
-          "rule": "Over the 20% cap · 3.3× the limit"
+          "rule": "Past the 35% line · 3.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "warn",
           "value": "≤0.8%",
-          "rule": "Under the 10% floor · stock at 99% of NAV"
+          "rule": "Under the 2% floor · stock at 99% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -129,12 +265,58 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 18 event closes, 56% won"
         }
       ],
-      "note": "ASTS carried 65.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 18 closes at 56% won for a 0.48 profit factor. 21 closes booked in all, 62% won."
+      "note": "ASTS carried 65.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 18 closes at 56% won for a 0.48 profit factor. 21 closes booked in all, 62% won.",
+      "score": 42.0,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 0.3,
+          "max": 40,
+          "score": 1
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 25.0,
+          "max": 25,
+          "score": 100
+        },
+        {
+          "k": "Risk craft",
+          "pts": 9.5,
+          "max": 20,
+          "score": 48
+        },
+        {
+          "k": "Liquidity",
+          "pts": 6.0,
+          "max": 10,
+          "score": 60
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.2,
+          "max": 5,
+          "score": 24
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 2.84% of net asset value across 2 names.",
+        "Calls written or rolled on 2 contracts · ASTS, OWL.",
+        "Concentration coming down, 69.6% to 65.8%."
+      ],
+      "watch": [
+        "Book down 6.17% on the week.",
+        "ASTS at 65.8% of net asset value, past the 35% line.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring ASTS under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Nov 21",
       "weekLabel": "Week of Nov 17 – Nov 21, 2025",
-      "grade": "D−",
+      "grade": "D+",
       "weekRet": -10.48,
       "recon": true,
       "dials": [
@@ -142,13 +324,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 61.5%",
-          "rule": "Over the 20% cap · 3.1× the limit"
+          "rule": "Past the 35% line · 3.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "pass",
           "value": "≤2.4%",
-          "rule": "Under the 10% floor · stock at 98% of NAV"
+          "rule": "Inside the 2-20% band · stock at 98% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -157,12 +339,57 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 20 event closes, 85% won"
         }
       ],
-      "note": "ASTS carried 61.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. The event sleeve turned over 20 closes at 85% won for a 2.04 profit factor. 22 closes booked in all, 86% won."
+      "note": "ASTS carried 61.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. The event sleeve turned over 20 closes at 85% won for a 2.04 profit factor. 22 closes booked in all, 86% won.",
+      "score": 45.9,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 0.0,
+          "max": 40,
+          "score": 0
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 22.0,
+          "max": 25,
+          "score": 88
+        },
+        {
+          "k": "Risk craft",
+          "pts": 11.9,
+          "max": 20,
+          "score": 60
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.0,
+          "max": 10,
+          "score": 70
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 5.0,
+          "max": 5,
+          "score": 100
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 1.11% of net asset value across 1 name.",
+        "Calls written or rolled on 2 contracts · ASTS.",
+        "Concentration coming down, 65.8% to 61.5%."
+      ],
+      "watch": [
+        "Book down 10.48% on the week.",
+        "ASTS at 61.5% of net asset value, past the 35% line."
+      ],
+      "next": [
+        "Bring ASTS under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Nov 28",
       "weekLabel": "Week of Nov 24 – Nov 28, 2025",
-      "grade": "F",
+      "grade": "A−",
       "weekRet": 8.92,
       "recon": true,
       "dials": [
@@ -170,13 +397,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 61.8%",
-          "rule": "Over the 20% cap · 3.1× the limit"
+          "rule": "Past the 35% line · 3.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "warn",
           "value": "≤0.8%",
-          "rule": "Under the 10% floor · stock at 99% of NAV"
+          "rule": "Under the 2% floor · stock at 99% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -185,12 +412,57 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 44 event closes, 68% won"
         }
       ],
-      "note": "ASTS carried 61.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 44 closes at 68% won for a 1.20 profit factor. 45 closes booked in all, 69% won."
+      "note": "ASTS carried 61.8% of NAV against a 20% cap. Stock was 99% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 44 closes at 68% won for a 1.20 profit factor. 45 closes booked in all, 69% won.",
+      "score": 81.3,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 40.0,
+          "max": 40,
+          "score": 100
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 24.0,
+          "max": 25,
+          "score": 96
+        },
+        {
+          "k": "Risk craft",
+          "pts": 8.3,
+          "max": 20,
+          "score": 42
+        },
+        {
+          "k": "Liquidity",
+          "pts": 6.0,
+          "max": 10,
+          "score": 60
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 3.0,
+          "max": 5,
+          "score": 60
+        }
+      ],
+      "wins": [
+        "Book up 8.92% on the week.",
+        "Covered-call premium added 1.43% of net asset value across 2 names.",
+        "Calls written or rolled on 2 contracts · ASTS, OWL."
+      ],
+      "watch": [
+        "ASTS at 61.8% of net asset value, past the 35% line.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring ASTS under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Dec 5",
       "weekLabel": "Week of Dec 1 – Dec 5, 2025",
-      "grade": "F",
+      "grade": "C+",
       "weekRet": 8.77,
       "recon": true,
       "dials": [
@@ -198,13 +470,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "ASTS 74.7%",
-          "rule": "Over the 20% cap · 3.7× the limit"
+          "rule": "Past the 35% line · 3.7× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 114% of NAV, borrowed"
+          "rule": "On margin · stock at 114% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -213,26 +485,74 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 42 event closes, 62% won"
         }
       ],
-      "note": "ASTS carried 74.7% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 42 closes at 62% won for a 0.78 profit factor. 43 closes booked in all, 63% won."
+      "note": "ASTS carried 74.7% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 42 closes at 62% won for a 0.78 profit factor. 43 closes booked in all, 63% won.",
+      "score": 62.7,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 40.0,
+          "max": 40,
+          "score": 100
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 19.3,
+          "max": 25,
+          "score": 77
+        },
+        {
+          "k": "Risk craft",
+          "pts": 1.4,
+          "max": 20,
+          "score": 7
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.9,
+          "max": 5,
+          "score": 39
+        }
+      ],
+      "wins": [
+        "Book up 8.77% on the week.",
+        "Covered-call premium added 0.69% of net asset value across 2 names.",
+        "Calls written or rolled on 2 contracts · ASTS, OWL."
+      ],
+      "watch": [
+        "ASTS at 74.7% of net asset value, past the 35% line.",
+        "Concentration rising, 61.8% to 74.7%.",
+        "Book carried borrowed money.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring ASTS under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Dec 12",
       "weekLabel": "Week of Dec 8 – Dec 12, 2025",
-      "grade": "C",
+      "grade": "B−",
       "weekRet": 1.62,
       "recon": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
+          "state": "warn",
           "value": "OWL 31.1%",
-          "rule": "Over the 20% cap · 1.6× the limit"
+          "rule": "In the 25-35% watch band · 1.6× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "pass",
+          "state": "warn",
           "value": "≥62.6%",
-          "rule": "Above the 10% floor · stock at 37% of NAV"
+          "rule": "Above the 20% band · stock at 37% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -241,12 +561,56 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 51 event closes, 78% won"
         }
       ],
-      "note": "OWL carried 31.1% of NAV against a 20% cap. Stock was 37% of NAV, so the reserve held. The event sleeve turned over 51 closes at 78% won for a 1.89 profit factor. 52 closes booked in all, 77% won."
+      "note": "OWL carried 31.1% of NAV against a 20% cap. Stock was 37% of NAV, so the reserve held. The event sleeve turned over 51 closes at 78% won for a 1.89 profit factor. 52 closes booked in all, 77% won.",
+      "score": 66.0,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 25.2,
+          "max": 40,
+          "score": 63
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 10.0,
+          "max": 25,
+          "score": 40
+        },
+        {
+          "k": "Risk craft",
+          "pts": 18.6,
+          "max": 20,
+          "score": 93
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.5,
+          "max": 10,
+          "score": 75
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 4.7,
+          "max": 5,
+          "score": 94
+        }
+      ],
+      "wins": [
+        "Book up 1.62% on the week.",
+        "Concentration coming down, 74.7% to 31.1%."
+      ],
+      "watch": [
+        "The engine sat idle: no premium written all week.",
+        "OWL at 31.1% of net asset value, inside the 25-35% watch band."
+      ],
+      "next": [
+        "Write calls on the uncovered names - premium is the one line with a measured edge."
+      ]
     },
     {
       "w": "Dec 19",
       "weekLabel": "Week of Dec 15 – Dec 19, 2025",
-      "grade": "D−",
+      "grade": "C",
       "weekRet": 0.46,
       "recon": true,
       "dials": [
@@ -254,13 +618,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 45.7%",
-          "rule": "Over the 20% cap · 2.3× the limit"
+          "rule": "Past the 35% line · 2.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "pass",
           "value": "≤4.8%",
-          "rule": "Under the 10% floor · stock at 95% of NAV"
+          "rule": "Inside the 2-20% band · stock at 95% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -269,12 +633,58 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 41 event closes, 61% won"
         }
       ],
-      "note": "OWL carried 45.7% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 41 closes at 61% won for a 0.78 profit factor. 42 closes booked in all, 62% won."
+      "note": "OWL carried 45.7% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 41 closes at 61% won for a 0.78 profit factor. 42 closes booked in all, 62% won.",
+      "score": 56.8,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 21.5,
+          "max": 40,
+          "score": 54
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 18.1,
+          "max": 25,
+          "score": 72
+        },
+        {
+          "k": "Risk craft",
+          "pts": 8.3,
+          "max": 20,
+          "score": 42
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.0,
+          "max": 10,
+          "score": 70
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.9,
+          "max": 5,
+          "score": 39
+        }
+      ],
+      "wins": [
+        "Book up 0.46% on the week.",
+        "Covered-call premium added 0.49% of net asset value across 1 name.",
+        "Calls written or rolled on 1 contracts · OWL."
+      ],
+      "watch": [
+        "OWL at 45.7% of net asset value, past the 35% line.",
+        "Concentration rising, 31.1% to 45.7%.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Dec 26",
       "weekLabel": "Week of Dec 22 – Dec 26, 2025",
-      "grade": "D",
+      "grade": "C",
       "weekRet": -0.38,
       "recon": true,
       "dials": [
@@ -282,13 +692,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 44.8%",
-          "rule": "Over the 20% cap · 2.2× the limit"
+          "rule": "Past the 35% line · 2.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "pass",
           "value": "≤5.0%",
-          "rule": "Under the 10% floor · stock at 95% of NAV"
+          "rule": "Inside the 2-20% band · stock at 95% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -297,12 +707,55 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 46 event closes, 76% won"
         }
       ],
-      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. The event sleeve turned over 46 closes at 76% won for a 1.70 profit factor. 46 closes booked in all, 76% won."
+      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. The event sleeve turned over 46 closes at 76% won for a 1.70 profit factor. 46 closes booked in all, 76% won.",
+      "score": 57.1,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 18.8,
+          "max": 40,
+          "score": 47
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.0,
+          "max": 25,
+          "score": 60
+        },
+        {
+          "k": "Risk craft",
+          "pts": 12.0,
+          "max": 20,
+          "score": 60
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.0,
+          "max": 10,
+          "score": 70
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 4.2,
+          "max": 5,
+          "score": 85
+        }
+      ],
+      "wins": [
+        "Calls written or rolled on 1 contracts · OWL."
+      ],
+      "watch": [
+        "Book down 0.38% on the week.",
+        "OWL at 44.8% of net asset value, past the 35% line."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Jan 2",
       "weekLabel": "Week of Dec 29 – Jan 2, 2026",
-      "grade": "D",
+      "grade": "C+",
       "weekRet": 1.87,
       "recon": true,
       "dials": [
@@ -310,13 +763,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 44.8%",
-          "rule": "Over the 20% cap · 2.2× the limit"
+          "rule": "Past the 35% line · 2.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "pass",
           "value": "≤4.3%",
-          "rule": "Under the 10% floor · stock at 96% of NAV"
+          "rule": "Inside the 2-20% band · stock at 96% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -325,12 +778,55 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 70 event closes, 77% won"
         }
       ],
-      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. The event sleeve turned over 70 closes at 77% won for a 2.21 profit factor. 71 closes booked in all, 77% won."
+      "note": "OWL carried 44.8% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. The event sleeve turned over 70 closes at 77% won for a 2.21 profit factor. 71 closes booked in all, 77% won.",
+      "score": 63.5,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 26.0,
+          "max": 40,
+          "score": 65
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 13.5,
+          "max": 25,
+          "score": 54
+        },
+        {
+          "k": "Risk craft",
+          "pts": 12.0,
+          "max": 20,
+          "score": 60
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.0,
+          "max": 10,
+          "score": 70
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 5.0,
+          "max": 5,
+          "score": 100
+        }
+      ],
+      "wins": [
+        "Book up 1.87% on the week.",
+        "Covered-call premium added 0.17% of net asset value."
+      ],
+      "watch": [
+        "OWL at 44.8% of net asset value, past the 35% line."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Jan 9",
       "weekLabel": "Week of Jan 5 – Jan 9, 2026",
-      "grade": "D−",
+      "grade": "B−",
       "weekRet": 3.89,
       "recon": true,
       "dials": [
@@ -338,13 +834,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 44.3%",
-          "rule": "Over the 20% cap · 2.2× the limit"
+          "rule": "Past the 35% line · 2.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "pass",
           "value": "≤3.9%",
-          "rule": "Under the 10% floor · stock at 96% of NAV"
+          "rule": "Inside the 2-20% band · stock at 96% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -353,12 +849,56 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 37 event closes, 68% won"
         }
       ],
-      "note": "OWL carried 44.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. The event sleeve turned over 37 closes at 68% won for a 0.89 profit factor. 39 closes booked in all, 69% won."
+      "note": "OWL carried 44.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. The event sleeve turned over 37 closes at 68% won for a 0.89 profit factor. 39 closes booked in all, 69% won.",
+      "score": 69.8,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 32.4,
+          "max": 40,
+          "score": 81
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 16.0,
+          "max": 25,
+          "score": 64
+        },
+        {
+          "k": "Risk craft",
+          "pts": 12.1,
+          "max": 20,
+          "score": 60
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.0,
+          "max": 10,
+          "score": 70
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.2,
+          "max": 5,
+          "score": 44
+        }
+      ],
+      "wins": [
+        "Book up 3.89% on the week.",
+        "Covered-call premium added 0.17% of net asset value across 1 name.",
+        "Calls written or rolled on 4 contracts · OWL."
+      ],
+      "watch": [
+        "OWL at 44.3% of net asset value, past the 35% line."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Jan 16",
       "weekLabel": "Week of Jan 12 – Jan 16, 2026",
-      "grade": "D",
+      "grade": "C",
       "weekRet": 1.94,
       "recon": true,
       "dials": [
@@ -366,13 +906,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "CMA 47.3%",
-          "rule": "Over the 20% cap · 2.4× the limit"
+          "rule": "Past the 35% line · 2.4× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "pass",
           "value": "≤3.9%",
-          "rule": "Under the 10% floor · stock at 96% of NAV"
+          "rule": "Inside the 2-20% band · stock at 96% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -381,26 +921,72 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 79 event closes, 67% won"
         }
       ],
-      "note": "CMA carried 47.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. OWL and ZETA were added to below carry. The event sleeve turned over 79 closes at 67% won for a 1.02 profit factor. 81 closes booked in all, 68% won."
+      "note": "CMA carried 47.3% of NAV against a 20% cap. Stock was 96% of NAV, leaving no room under the 10% floor. OWL and ZETA were added to below carry. The event sleeve turned over 79 closes at 67% won for a 1.02 profit factor. 81 closes booked in all, 68% won.",
+      "score": 59.6,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 26.2,
+          "max": 40,
+          "score": 66
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.7,
+          "max": 25,
+          "score": 63
+        },
+        {
+          "k": "Risk craft",
+          "pts": 8.2,
+          "max": 20,
+          "score": 41
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.0,
+          "max": 10,
+          "score": 70
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.5,
+          "max": 5,
+          "score": 51
+        }
+      ],
+      "wins": [
+        "Book up 1.94% on the week.",
+        "Covered-call premium added 0.11% of net asset value across 3 names.",
+        "Calls written or rolled on 4 contracts · CMA, OWL, PR."
+      ],
+      "watch": [
+        "CMA at 47.3% of net asset value, past the 35% line.",
+        "Concentration rising, 44.3% to 47.3%.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring CMA under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Jan 23",
       "weekLabel": "Week of Jan 19 – Jan 23, 2026",
-      "grade": "C",
+      "grade": "B−",
       "weekRet": 0.47,
       "recon": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
+          "state": "warn",
           "value": "CMA 28.6%",
-          "rule": "Over the 20% cap · 1.4× the limit"
+          "rule": "In the 25-35% watch band · 1.4× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "≥15.5%",
-          "rule": "Above the 10% floor · stock at 84% of NAV"
+          "rule": "Inside the 2-20% band · stock at 84% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -409,26 +995,70 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 93 event closes, 55% won"
         }
       ],
-      "note": "CMA carried 28.6% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. ZETA was added to below carry. The event sleeve turned over 93 closes at 55% won for a 0.68 profit factor. 96 closes booked in all, 56% won."
+      "note": "CMA carried 28.6% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. ZETA was added to below carry. The event sleeve turned over 93 closes at 55% won for a 0.68 profit factor. 96 closes booked in all, 56% won.",
+      "score": 66.9,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 21.5,
+          "max": 40,
+          "score": 54
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 17.1,
+          "max": 25,
+          "score": 68
+        },
+        {
+          "k": "Risk craft",
+          "pts": 16.6,
+          "max": 20,
+          "score": 83
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.7,
+          "max": 5,
+          "score": 34
+        }
+      ],
+      "wins": [
+        "Book up 0.47% on the week.",
+        "Covered-call premium added 0.34% of net asset value across 5 names.",
+        "Calls written or rolled on 5 contracts · KDP, KVUE, NXE, PFE, ZETA.",
+        "Concentration coming down, 47.3% to 28.6%."
+      ],
+      "watch": [
+        "CMA at 28.6% of net asset value, inside the 25-35% watch band.",
+        "Added to a position below its carry."
+      ],
+      "next": []
     },
     {
       "w": "Jan 30",
       "weekLabel": "Week of Jan 26 – Jan 30, 2026",
-      "grade": "D",
+      "grade": "D+",
       "weekRet": -4.85,
       "recon": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
+          "state": "warn",
           "value": "CMA 30.9%",
-          "rule": "Over the 20% cap · 1.5× the limit"
+          "rule": "In the 25-35% watch band · 1.5× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "warn",
+          "state": "pass",
           "value": "≥9.1%",
-          "rule": "Too close to the 10% floor to call · stock at 91% of NAV"
+          "rule": "Inside the 2-20% band · stock at 91% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -437,12 +1067,56 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 96 event closes, 69% won"
         }
       ],
-      "note": "CMA carried 30.9% of NAV against a 20% cap. Stock was 91% of NAV — too close to the floor for this reconstruction to call either way. OWL was added to below carry. The event sleeve turned over 96 closes at 69% won for a 0.89 profit factor. 98 closes booked in all, 69% won."
+      "note": "CMA carried 30.9% of NAV against a 20% cap. Stock was 91% of NAV — too close to the floor for this reconstruction to call either way. OWL was added to below carry. The event sleeve turned over 96 closes at 69% won for a 0.89 profit factor. 98 closes booked in all, 69% won.",
+      "score": 45.5,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 4.5,
+          "max": 40,
+          "score": 11
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.4,
+          "max": 25,
+          "score": 62
+        },
+        {
+          "k": "Risk craft",
+          "pts": 13.4,
+          "max": 20,
+          "score": 67
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.2,
+          "max": 5,
+          "score": 44
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 0.07% of net asset value across 2 names.",
+        "Calls written or rolled on 2 contracts · OWL, PR."
+      ],
+      "watch": [
+        "Book down 4.85% on the week.",
+        "CMA at 30.9% of net asset value, inside the 25-35% watch band.",
+        "Concentration rising, 28.6% to 30.9%.",
+        "Added to a position below its carry."
+      ],
+      "next": []
     },
     {
       "w": "Feb 6",
       "weekLabel": "Week of Feb 2 – Feb 6, 2026",
-      "grade": "F",
+      "grade": "D+",
       "weekRet": 0.46,
       "recon": true,
       "dials": [
@@ -450,13 +1124,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "FITB 36.9%",
-          "rule": "Over the 20% cap · 1.8× the limit"
+          "rule": "Past the 35% line · 1.8× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 101% of NAV, borrowed"
+          "rule": "On margin · stock at 101% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -465,12 +1139,60 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 86 event closes, 50% won"
         }
       ],
-      "note": "FITB carried 36.9% of NAV against a 20% cap. Stock alone came to 101% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. The event sleeve turned over 86 closes at 50% won for a 0.49 profit factor. 87 closes booked in all, 51% won."
+      "note": "FITB carried 36.9% of NAV against a 20% cap. Stock alone came to 101% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and RKLB were added to below carry. The event sleeve turned over 86 closes at 50% won for a 0.49 profit factor. 87 closes booked in all, 51% won.",
+      "score": 45.2,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 21.5,
+          "max": 40,
+          "score": 54
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 17.3,
+          "max": 25,
+          "score": 69
+        },
+        {
+          "k": "Risk craft",
+          "pts": 5.2,
+          "max": 20,
+          "score": 26
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.2,
+          "max": 5,
+          "score": 24
+        }
+      ],
+      "wins": [
+        "Book up 0.46% on the week.",
+        "Covered-call premium added 0.37% of net asset value across 1 name.",
+        "Calls written or rolled on 2 contracts · OWL."
+      ],
+      "watch": [
+        "FITB at 36.9% of net asset value, past the 35% line.",
+        "Concentration rising, 30.9% to 36.9%.",
+        "Book carried borrowed money.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring FITB under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Feb 13",
       "weekLabel": "Week of Feb 9 – Feb 13, 2026",
-      "grade": "F",
+      "grade": "D−",
       "weekRet": -1.36,
       "recon": true,
       "dials": [
@@ -478,13 +1200,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "FITB 35.9%",
-          "rule": "Over the 20% cap · 1.8× the limit"
+          "rule": "Past the 35% line · 1.8× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 102% of NAV, borrowed"
+          "rule": "On margin · stock at 102% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -493,7 +1215,54 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 21 event closes, 52% won"
         }
       ],
-      "note": "FITB carried 35.9% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 21 closes at 52% won for a 0.48 profit factor. 23 closes booked in all, 57% won."
+      "note": "FITB carried 35.9% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 21 closes at 52% won for a 0.48 profit factor. 23 closes booked in all, 57% won.",
+      "score": 39.3,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 15.6,
+          "max": 40,
+          "score": 39
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.5,
+          "max": 25,
+          "score": 62
+        },
+        {
+          "k": "Risk craft",
+          "pts": 6.9,
+          "max": 20,
+          "score": 35
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.2,
+          "max": 5,
+          "score": 24
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 0.09% of net asset value across 2 names.",
+        "Calls written or rolled on 9 contracts · NXE, OWL."
+      ],
+      "watch": [
+        "Book down 1.36% on the week.",
+        "FITB at 35.9% of net asset value, past the 35% line.",
+        "Book carried borrowed money.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring FITB under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Feb 20",
@@ -504,15 +1273,15 @@
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
+          "state": "warn",
           "value": "OWL 29.8%",
-          "rule": "Over the 20% cap · 1.5× the limit"
+          "rule": "In the 25-35% watch band · 1.5× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "pass",
+          "state": "warn",
           "value": "≥53.7%",
-          "rule": "Above the 10% floor · stock at 46% of NAV"
+          "rule": "Above the 20% band · stock at 46% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -521,12 +1290,54 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 10 event closes, 50% won"
         }
       ],
-      "note": "OWL carried 29.8% of NAV against a 20% cap. Stock was 46% of NAV, so the reserve held. The event sleeve turned over 10 closes at 50% won for a 0.35 profit factor. 15 closes booked in all, 67% won."
+      "note": "OWL carried 29.8% of NAV against a 20% cap. Stock was 46% of NAV, so the reserve held. The event sleeve turned over 10 closes at 50% won for a 0.35 profit factor. 15 closes booked in all, 67% won.",
+      "score": 58.4,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 18.3,
+          "max": 40,
+          "score": 46
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 13.1,
+          "max": 25,
+          "score": 53
+        },
+        {
+          "k": "Risk craft",
+          "pts": 18.6,
+          "max": 20,
+          "score": 93
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.5,
+          "max": 10,
+          "score": 75
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 0.9,
+          "max": 5,
+          "score": 18
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 0.10% of net asset value.",
+        "Concentration coming down, 35.9% to 29.8%."
+      ],
+      "watch": [
+        "Book down 0.54% on the week.",
+        "OWL at 29.8% of net asset value, inside the 25-35% watch band."
+      ],
+      "next": []
     },
     {
       "w": "Feb 27",
       "weekLabel": "Week of Feb 23 – Feb 27, 2026",
-      "grade": "F",
+      "grade": "D−",
       "weekRet": -0.56,
       "recon": true,
       "dials": [
@@ -534,21 +1345,62 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 79.6%",
-          "rule": "Over the 20% cap · 4.0× the limit"
+          "rule": "Past the 35% line · 4.0× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 102% of NAV, borrowed"
+          "rule": "On margin · stock at 102% of NAV, borrowed"
         }
       ],
-      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 20 closes booked in all, 65% won."
+      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 102% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. 20 closes booked in all, 65% won.",
+      "score": 39.2,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 18.2,
+          "max": 40,
+          "score": 46
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 17.7,
+          "max": 25,
+          "score": 71
+        },
+        {
+          "k": "Risk craft",
+          "pts": 1.4,
+          "max": 20,
+          "score": 7
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 0.43% of net asset value across 4 names.",
+        "Calls written or rolled on 41 contracts · ABCL, OWL, RDW, SRPT."
+      ],
+      "watch": [
+        "Book down 0.56% on the week.",
+        "OWL at 79.6% of net asset value, past the 35% line.",
+        "Concentration rising, 29.8% to 79.6%.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Mar 6",
       "weekLabel": "Week of Mar 2 – Mar 6, 2026",
-      "grade": "F",
+      "grade": "D",
       "weekRet": -4.12,
       "recon": true,
       "dials": [
@@ -556,13 +1408,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 88.5%",
-          "rule": "Over the 20% cap · 4.4× the limit"
+          "rule": "Past the 35% line · 4.4× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "warn",
           "value": "≤1.8%",
-          "rule": "Under the 10% floor · stock at 98% of NAV"
+          "rule": "Under the 2% floor · stock at 98% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -571,7 +1423,53 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 10 event closes, 70% won"
         }
       ],
-      "note": "OWL carried 88.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 10 closes at 70% won for a 0.53 profit factor. 26 closes booked in all, 81% won."
+      "note": "OWL carried 88.5% of NAV against a 20% cap. Stock was 98% of NAV, leaving no room under the 10% floor. OWL was added to below carry. The event sleeve turned over 10 closes at 70% won for a 0.53 profit factor. 26 closes booked in all, 81% won.",
+      "score": 41.1,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 6.8,
+          "max": 40,
+          "score": 17
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 21.6,
+          "max": 25,
+          "score": 86
+        },
+        {
+          "k": "Risk craft",
+          "pts": 5.4,
+          "max": 20,
+          "score": 27
+        },
+        {
+          "k": "Liquidity",
+          "pts": 6.0,
+          "max": 10,
+          "score": 60
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.3,
+          "max": 5,
+          "score": 26
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 1.05% of net asset value across 1 name.",
+        "Calls written or rolled on 17 contracts · OWL."
+      ],
+      "watch": [
+        "Book down 4.12% on the week.",
+        "OWL at 88.5% of net asset value, past the 35% line.",
+        "Concentration rising, 79.6% to 88.5%.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else."
+      ]
     },
     {
       "w": "Mar 13",
@@ -584,13 +1482,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 82.9%",
-          "rule": "Over the 20% cap · 4.1× the limit"
+          "rule": "Past the 35% line · 4.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 106% of NAV, borrowed"
+          "rule": "On margin · stock at 106% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -599,12 +1497,60 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 59 event closes, 66% won"
         }
       ],
-      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SRPT was added to below carry. The event sleeve turned over 59 closes at 66% won for a 0.94 profit factor. 67 closes booked in all, 70% won."
+      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SRPT was added to below carry. The event sleeve turned over 59 closes at 66% won for a 0.94 profit factor. 67 closes booked in all, 70% won.",
+      "score": 33.9,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 2.0,
+          "max": 40,
+          "score": 5
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 25.0,
+          "max": 25,
+          "score": 100
+        },
+        {
+          "k": "Risk craft",
+          "pts": 4.6,
+          "max": 20,
+          "score": 23
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.4,
+          "max": 5,
+          "score": 47
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 5.77% of net asset value across 2 names.",
+        "Calls written or rolled on 12 contracts · OWL, SRPT.",
+        "Concentration coming down, 88.5% to 82.9%."
+      ],
+      "watch": [
+        "Book down 5.63% on the week.",
+        "OWL at 82.9% of net asset value, past the 35% line.",
+        "Book carried borrowed money.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Mar 20",
       "weekLabel": "Week of Mar 16 – Mar 20, 2026",
-      "grade": "F",
+      "grade": "C−",
       "weekRet": 4.0,
       "recon": true,
       "dials": [
@@ -612,13 +1558,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 84.3%",
-          "rule": "Over the 20% cap · 4.2× the limit"
+          "rule": "Past the 35% line · 4.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 109% of NAV, borrowed"
+          "rule": "On margin · stock at 109% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -627,7 +1573,53 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 21 event closes, 43% won"
         }
       ],
-      "note": "OWL carried 84.3% of NAV against a 20% cap. Stock alone came to 109% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and SRPT were added to below carry. The event sleeve turned over 21 closes at 43% won for a 0.77 profit factor. 22 closes booked in all, 45% won."
+      "note": "OWL carried 84.3% of NAV against a 20% cap. Stock alone came to 109% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL and SRPT were added to below carry. The event sleeve turned over 21 closes at 43% won for a 0.77 profit factor. 22 closes booked in all, 45% won.",
+      "score": 52.5,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 32.8,
+          "max": 40,
+          "score": 82
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 14.8,
+          "max": 25,
+          "score": 59
+        },
+        {
+          "k": "Risk craft",
+          "pts": 3.0,
+          "max": 20,
+          "score": 15
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.9,
+          "max": 5,
+          "score": 38
+        }
+      ],
+      "wins": [
+        "Book up 4.00% on the week.",
+        "Covered-call premium added 0.37% of net asset value."
+      ],
+      "watch": [
+        "OWL at 84.3% of net asset value, past the 35% line.",
+        "Book carried borrowed money.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Mar 27",
@@ -640,13 +1632,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 82.6%",
-          "rule": "Over the 20% cap · 4.1× the limit"
+          "rule": "Past the 35% line · 4.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 111% of NAV, borrowed"
+          "rule": "On margin · stock at 111% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -655,12 +1647,58 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 26 event closes, 50% won"
         }
       ],
-      "note": "OWL carried 82.6% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 26 closes at 50% won for a 1.01 profit factor. 32 closes booked in all, 50% won."
+      "note": "OWL carried 82.6% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 26 closes at 50% won for a 1.01 profit factor. 32 closes booked in all, 50% won.",
+      "score": 32.5,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 24.4,
+          "max": 40,
+          "score": 61
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 2.5,
+          "max": 25,
+          "score": 10
+        },
+        {
+          "k": "Risk craft",
+          "pts": 3.0,
+          "max": 20,
+          "score": 15
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.5,
+          "max": 5,
+          "score": 50
+        }
+      ],
+      "wins": [
+        "Book up 1.39% on the week.",
+        "Calls written or rolled on 8 contracts · OWL, SRPT."
+      ],
+      "watch": [
+        "OWL at 82.6% of net asset value, past the 35% line.",
+        "Book carried borrowed money.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Apr 3",
       "weekLabel": "Week of Mar 30 – Apr 3, 2026",
-      "grade": "F",
+      "grade": "D+",
       "weekRet": 0.61,
       "recon": true,
       "dials": [
@@ -668,13 +1706,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 79.6%",
-          "rule": "Over the 20% cap · 4.0× the limit"
+          "rule": "Past the 35% line · 4.0× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 113% of NAV, borrowed"
+          "rule": "On margin · stock at 113% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -683,12 +1721,59 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 102 event closes, 57% won"
         }
       ],
-      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 102 closes at 57% won for a 0.72 profit factor. 106 closes booked in all, 58% won."
+      "note": "OWL carried 79.6% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 102 closes at 57% won for a 0.72 profit factor. 106 closes booked in all, 58% won.",
+      "score": 48.0,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 22.0,
+          "max": 40,
+          "score": 55
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 17.6,
+          "max": 25,
+          "score": 70
+        },
+        {
+          "k": "Risk craft",
+          "pts": 6.6,
+          "max": 20,
+          "score": 33
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.8,
+          "max": 5,
+          "score": 36
+        }
+      ],
+      "wins": [
+        "Book up 0.61% on the week.",
+        "Covered-call premium added 0.42% of net asset value across 1 name.",
+        "Calls written or rolled on 3 contracts · OWL.",
+        "Concentration coming down, 82.6% to 79.6%."
+      ],
+      "watch": [
+        "OWL at 79.6% of net asset value, past the 35% line.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Apr 10",
       "weekLabel": "Week of Apr 6 – Apr 10, 2026",
-      "grade": "F",
+      "grade": "D−",
       "weekRet": -3.88,
       "recon": true,
       "dials": [
@@ -696,13 +1781,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 79.5%",
-          "rule": "Over the 20% cap · 4.0× the limit"
+          "rule": "Past the 35% line · 4.0× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 111% of NAV, borrowed"
+          "rule": "On margin · stock at 111% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -711,12 +1796,58 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 38 event closes, 76% won"
         }
       ],
-      "note": "OWL carried 79.5% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 38 closes at 76% won for a 0.84 profit factor. 49 closes booked in all, 82% won."
+      "note": "OWL carried 79.5% of NAV against a 20% cap. Stock alone came to 111% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 38 closes at 76% won for a 0.84 profit factor. 49 closes booked in all, 82% won.",
+      "score": 39.7,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 7.6,
+          "max": 40,
+          "score": 19
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 25.0,
+          "max": 25,
+          "score": 100
+        },
+        {
+          "k": "Risk craft",
+          "pts": 5.0,
+          "max": 20,
+          "score": 25
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.1,
+          "max": 5,
+          "score": 42
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 2.25% of net asset value across 1 name.",
+        "Calls written or rolled on 13 contracts · OWL."
+      ],
+      "watch": [
+        "Book down 3.88% on the week.",
+        "OWL at 79.5% of net asset value, past the 35% line.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Apr 17",
       "weekLabel": "Week of Apr 13 – Apr 17, 2026",
-      "grade": "F",
+      "grade": "D+",
       "weekRet": 10.16,
       "recon": true,
       "dials": [
@@ -724,13 +1855,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 86.4%",
-          "rule": "Over the 20% cap · 4.3× the limit"
+          "rule": "Past the 35% line · 4.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 116% of NAV, borrowed"
+          "rule": "On margin · stock at 116% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -739,12 +1870,58 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 42 event closes, 62% won"
         }
       ],
-      "note": "OWL carried 86.4% of NAV against a 20% cap. Stock alone came to 116% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 42 closes at 62% won for a 1.20 profit factor. 51 closes booked in all, 51% won."
+      "note": "OWL carried 86.4% of NAV against a 20% cap. Stock alone came to 116% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 42 closes at 62% won for a 1.20 profit factor. 51 closes booked in all, 51% won.",
+      "score": 48.9,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 40.0,
+          "max": 40,
+          "score": 100
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 2.5,
+          "max": 25,
+          "score": 10
+        },
+        {
+          "k": "Risk craft",
+          "pts": 3.4,
+          "max": 20,
+          "score": 17
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 3.0,
+          "max": 5,
+          "score": 60
+        }
+      ],
+      "wins": [
+        "Book up 10.16% on the week.",
+        "Calls written or rolled on 8 contracts · OWL."
+      ],
+      "watch": [
+        "OWL at 86.4% of net asset value, past the 35% line.",
+        "Concentration rising, 79.5% to 86.4%.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Apr 24",
       "weekLabel": "Week of Apr 20 – Apr 24, 2026",
-      "grade": "F",
+      "grade": "D−",
       "weekRet": -2.79,
       "recon": true,
       "dials": [
@@ -752,13 +1929,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 82.9%",
-          "rule": "Over the 20% cap · 4.1× the limit"
+          "rule": "Past the 35% line · 4.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 113% of NAV, borrowed"
+          "rule": "On margin · stock at 113% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -767,12 +1944,58 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 39 event closes, 64% won"
         }
       ],
-      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 39 closes at 64% won for a 1.46 profit factor. 39 closes booked in all, 64% won."
+      "note": "OWL carried 82.9% of NAV against a 20% cap. Stock alone came to 113% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 39 closes at 64% won for a 1.46 profit factor. 39 closes booked in all, 64% won.",
+      "score": 36.3,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 11.1,
+          "max": 40,
+          "score": 28
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.0,
+          "max": 25,
+          "score": 60
+        },
+        {
+          "k": "Risk craft",
+          "pts": 6.6,
+          "max": 20,
+          "score": 33
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 3.6,
+          "max": 5,
+          "score": 73
+        }
+      ],
+      "wins": [
+        "Calls written or rolled on 1 contracts · RIG.",
+        "Concentration coming down, 86.4% to 82.9%."
+      ],
+      "watch": [
+        "Book down 2.79% on the week.",
+        "OWL at 82.9% of net asset value, past the 35% line.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "May 1",
       "weekLabel": "Week of Apr 27 – May 1, 2026",
-      "grade": "F",
+      "grade": "C+",
       "weekRet": 5.62,
       "recon": true,
       "dials": [
@@ -780,13 +2003,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 85.3%",
-          "rule": "Over the 20% cap · 4.3× the limit"
+          "rule": "Past the 35% line · 4.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 114% of NAV, borrowed"
+          "rule": "On margin · stock at 114% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -795,12 +2018,59 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 29 event closes, 76% won"
         }
       ],
-      "note": "OWL carried 85.3% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 29 closes at 76% won for a 0.54 profit factor. 34 closes booked in all, 79% won."
+      "note": "OWL carried 85.3% of NAV against a 20% cap. Stock alone came to 114% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 29 closes at 76% won for a 0.54 profit factor. 34 closes booked in all, 79% won.",
+      "score": 60.8,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 38.0,
+          "max": 40,
+          "score": 95
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 18.1,
+          "max": 25,
+          "score": 72
+        },
+        {
+          "k": "Risk craft",
+          "pts": 3.4,
+          "max": 20,
+          "score": 17
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.4,
+          "max": 5,
+          "score": 27
+        }
+      ],
+      "wins": [
+        "Book up 5.62% on the week.",
+        "Covered-call premium added 0.49% of net asset value across 1 name.",
+        "Calls written or rolled on 6 contracts · OWL."
+      ],
+      "watch": [
+        "OWL at 85.3% of net asset value, past the 35% line.",
+        "Concentration rising, 82.9% to 85.3%.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "May 8",
       "weekLabel": "Week of May 4 – May 8, 2026",
-      "grade": "F",
+      "grade": "D",
       "weekRet": 1.34,
       "recon": true,
       "dials": [
@@ -808,13 +2078,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 89.0%",
-          "rule": "Over the 20% cap · 4.5× the limit"
+          "rule": "Past the 35% line · 4.5× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 115% of NAV, borrowed"
+          "rule": "On margin · stock at 115% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -823,7 +2093,53 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 30 event closes, 50% won"
         }
       ],
-      "note": "OWL carried 89.0% of NAV against a 20% cap. Stock alone came to 115% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 30 closes at 50% won for a 0.78 profit factor. 30 closes booked in all, 50% won."
+      "note": "OWL carried 89.0% of NAV against a 20% cap. Stock alone came to 115% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 30 closes at 50% won for a 0.78 profit factor. 30 closes booked in all, 50% won.",
+      "score": 44.6,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 24.3,
+          "max": 40,
+          "score": 61
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.0,
+          "max": 25,
+          "score": 60
+        },
+        {
+          "k": "Risk craft",
+          "pts": 3.4,
+          "max": 20,
+          "score": 17
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.9,
+          "max": 5,
+          "score": 39
+        }
+      ],
+      "wins": [
+        "Book up 1.34% on the week.",
+        "Calls written or rolled on 7 contracts · OWL."
+      ],
+      "watch": [
+        "OWL at 89.0% of net asset value, past the 35% line.",
+        "Concentration rising, 85.3% to 89.0%.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "May 15",
@@ -836,13 +2152,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 83.6%",
-          "rule": "Over the 20% cap · 4.2× the limit"
+          "rule": "Past the 35% line · 4.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 108% of NAV, borrowed"
+          "rule": "On margin · stock at 108% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -851,12 +2167,59 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 21 event closes, 29% won"
         }
       ],
-      "note": "OWL carried 83.6% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 21 closes at 29% won for a 0.92 profit factor. 21 closes booked in all, 29% won."
+      "note": "OWL carried 83.6% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 21 closes at 29% won for a 0.92 profit factor. 21 closes booked in all, 29% won.",
+      "score": 24.1,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 5.2,
+          "max": 40,
+          "score": 13
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 10.0,
+          "max": 25,
+          "score": 40
+        },
+        {
+          "k": "Risk craft",
+          "pts": 6.6,
+          "max": 20,
+          "score": 33
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.3,
+          "max": 5,
+          "score": 46
+        }
+      ],
+      "wins": [
+        "Concentration coming down, 89.0% to 83.6%."
+      ],
+      "watch": [
+        "Book down 4.63% on the week.",
+        "The engine sat idle: no premium written all week.",
+        "OWL at 83.6% of net asset value, past the 35% line.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Write calls on the uncovered names - premium is the one line with a measured edge.",
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "May 22",
       "weekLabel": "Week of May 18 – May 22, 2026",
-      "grade": "F",
+      "grade": "D+",
       "weekRet": 3.46,
       "recon": true,
       "dials": [
@@ -864,13 +2227,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 86.0%",
-          "rule": "Over the 20% cap · 4.3× the limit"
+          "rule": "Past the 35% line · 4.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 108% of NAV, borrowed"
+          "rule": "On margin · stock at 108% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -879,12 +2242,59 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 11 event closes, 73% won"
         }
       ],
-      "note": "OWL carried 86.0% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 11 closes at 73% won for a 1.27 profit factor. 11 closes booked in all, 73% won."
+      "note": "OWL carried 86.0% of NAV against a 20% cap. Stock alone came to 108% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 11 closes at 73% won for a 1.27 profit factor. 11 closes booked in all, 73% won.",
+      "score": 47.6,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 31.1,
+          "max": 40,
+          "score": 78
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 10.0,
+          "max": 25,
+          "score": 40
+        },
+        {
+          "k": "Risk craft",
+          "pts": 3.4,
+          "max": 20,
+          "score": 17
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 3.2,
+          "max": 5,
+          "score": 64
+        }
+      ],
+      "wins": [
+        "Book up 3.46% on the week."
+      ],
+      "watch": [
+        "The engine sat idle: no premium written all week.",
+        "OWL at 86.0% of net asset value, past the 35% line.",
+        "Concentration rising, 83.6% to 86.0%.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Write calls on the uncovered names - premium is the one line with a measured edge.",
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "May 29",
       "weekLabel": "Week of May 25 – May 29, 2026",
-      "grade": "F",
+      "grade": "C−",
       "weekRet": 1.5,
       "recon": true,
       "dials": [
@@ -892,13 +2302,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 76.8%",
-          "rule": "Over the 20% cap · 3.8× the limit"
+          "rule": "Past the 35% line · 3.8× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 106% of NAV, borrowed"
+          "rule": "On margin · stock at 106% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -907,7 +2317,53 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 6 event closes, 100% won"
         }
       ],
-      "note": "OWL carried 76.8% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 6 closes at 100% won for a n/a profit factor. 8 closes booked in all, 88% won."
+      "note": "OWL carried 76.8% of NAV against a 20% cap. Stock alone came to 106% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 6 closes at 100% won for a n/a profit factor. 8 closes booked in all, 88% won.",
+      "score": 51.4,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 24.8,
+          "max": 40,
+          "score": 62
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.0,
+          "max": 25,
+          "score": 60
+        },
+        {
+          "k": "Risk craft",
+          "pts": 6.6,
+          "max": 20,
+          "score": 33
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 5.0,
+          "max": 5,
+          "score": 100
+        }
+      ],
+      "wins": [
+        "Book up 1.50% on the week.",
+        "Calls written or rolled on 4 contracts · OWL.",
+        "Concentration coming down, 86.0% to 76.8%."
+      ],
+      "watch": [
+        "OWL at 76.8% of net asset value, past the 35% line.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Jun 5",
@@ -920,13 +2376,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 85.6%",
-          "rule": "Over the 20% cap · 4.3× the limit"
+          "rule": "Past the 35% line · 4.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 107% of NAV, borrowed"
+          "rule": "On margin · stock at 107% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -935,12 +2391,58 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 7 event closes, 86% won"
         }
       ],
-      "note": "OWL carried 85.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 7 closes at 86% won for a 1.75 profit factor. 10 closes booked in all, 80% won."
+      "note": "OWL carried 85.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. OWL was added to below carry. The event sleeve turned over 7 closes at 86% won for a 1.75 profit factor. 10 closes booked in all, 80% won.",
+      "score": 29.4,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 8.6,
+          "max": 40,
+          "score": 22
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.0,
+          "max": 25,
+          "score": 60
+        },
+        {
+          "k": "Risk craft",
+          "pts": 1.4,
+          "max": 20,
+          "score": 7
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 4.4,
+          "max": 5,
+          "score": 88
+        }
+      ],
+      "wins": [
+        "Calls written or rolled on 1 contracts · OWL."
+      ],
+      "watch": [
+        "Book down 3.55% on the week.",
+        "OWL at 85.6% of net asset value, past the 35% line.",
+        "Concentration rising, 76.8% to 85.6%.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Jun 12",
       "weekLabel": "Week of Jun 8 – Jun 12, 2026",
-      "grade": "F",
+      "grade": "C",
       "weekRet": 0.63,
       "recon": true,
       "dials": [
@@ -948,13 +2450,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 84.0%",
-          "rule": "Over the 20% cap · 4.2× the limit"
+          "rule": "Past the 35% line · 4.2× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 105% of NAV, borrowed"
+          "rule": "On margin · stock at 105% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -963,12 +2465,58 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 66 event closes, 46% won"
         }
       ],
-      "note": "OWL carried 84.0% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 66 closes at 46% won for a 1.43 profit factor. 73 closes booked in all, 51% won."
+      "note": "OWL carried 84.0% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 66 closes at 46% won for a 1.43 profit factor. 73 closes booked in all, 51% won.",
+      "score": 55.6,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 22.0,
+          "max": 40,
+          "score": 55
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 25.0,
+          "max": 25,
+          "score": 100
+        },
+        {
+          "k": "Risk craft",
+          "pts": 5.0,
+          "max": 20,
+          "score": 25
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 3.6,
+          "max": 5,
+          "score": 72
+        }
+      ],
+      "wins": [
+        "Book up 0.63% on the week.",
+        "Covered-call premium added 6.23% of net asset value across 2 names.",
+        "Calls written or rolled on 6 contracts · OWL, SRPT."
+      ],
+      "watch": [
+        "OWL at 84.0% of net asset value, past the 35% line.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Jun 19",
       "weekLabel": "Week of Jun 15 – Jun 19, 2026",
-      "grade": "F",
+      "grade": "C−",
       "weekRet": 1.29,
       "recon": true,
       "dials": [
@@ -976,13 +2524,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 81.6%",
-          "rule": "Over the 20% cap · 4.1× the limit"
+          "rule": "Past the 35% line · 4.1× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 107% of NAV, borrowed"
+          "rule": "On margin · stock at 107% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -991,7 +2539,54 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 49 event closes, 67% won"
         }
       ],
-      "note": "OWL carried 81.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 49 closes at 67% won for a 1.36 profit factor. 50 closes booked in all, 68% won."
+      "note": "OWL carried 81.6% of NAV against a 20% cap. Stock alone came to 107% of net asset value, so the book was carrying borrowed money against a 10% cash floor. The event sleeve turned over 49 closes at 67% won for a 1.36 profit factor. 50 closes booked in all, 68% won.",
+      "score": 50.0,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 24.1,
+          "max": 40,
+          "score": 60
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.9,
+          "max": 25,
+          "score": 64
+        },
+        {
+          "k": "Risk craft",
+          "pts": 6.6,
+          "max": 20,
+          "score": 33
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 3.4,
+          "max": 5,
+          "score": 68
+        }
+      ],
+      "wins": [
+        "Book up 1.29% on the week.",
+        "Covered-call premium added 0.15% of net asset value across 1 name.",
+        "Calls written or rolled on 3 contracts · OWL.",
+        "Concentration coming down, 84.0% to 81.6%."
+      ],
+      "watch": [
+        "OWL at 81.6% of net asset value, past the 35% line.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Jun 26",
@@ -1004,13 +2599,13 @@
           "key": "Dial 1 · Position size",
           "state": "fail",
           "value": "OWL 78.1%",
-          "rule": "Over the 20% cap · 3.9× the limit"
+          "rule": "Past the 35% line · 3.9× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "on margin",
-          "rule": "Under the 10% floor · stock at 105% of NAV, borrowed"
+          "rule": "On margin · stock at 105% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1019,26 +2614,74 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 81 event closes, 41% won"
         }
       ],
-      "note": "OWL carried 78.1% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SPCX was added to below carry. The event sleeve turned over 81 closes at 41% won for a 0.59 profit factor. 88 closes booked in all, 45% won."
+      "note": "OWL carried 78.1% of NAV against a 20% cap. Stock alone came to 105% of net asset value, so the book was carrying borrowed money against a 10% cash floor. SPCX was added to below carry. The event sleeve turned over 81 closes at 41% won for a 0.59 profit factor. 88 closes booked in all, 45% won.",
+      "score": 31.9,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 0.9,
+          "max": 40,
+          "score": 2
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 25.0,
+          "max": 25,
+          "score": 100
+        },
+        {
+          "k": "Risk craft",
+          "pts": 4.6,
+          "max": 20,
+          "score": 23
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.5,
+          "max": 5,
+          "score": 30
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 2.06% of net asset value across 1 name.",
+        "Calls written or rolled on 7 contracts · OWL.",
+        "Concentration coming down, 81.6% to 78.1%."
+      ],
+      "watch": [
+        "Book down 5.98% on the week.",
+        "OWL at 78.1% of net asset value, past the 35% line.",
+        "Book carried borrowed money.",
+        "Added to a position below its carry."
+      ],
+      "next": [
+        "Bring OWL under 35% before adding anywhere else.",
+        "Come off margin before taking any new risk."
+      ]
     },
     {
       "w": "Jul 3",
       "weekLabel": "Week of Jun 29 – Jul 3, 2026",
-      "grade": "B−",
+      "grade": "A−",
       "weekRet": 2.92,
       "recon": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
+          "state": "warn",
           "value": "SRPT 26.3%",
-          "rule": "Over the 20% cap · 1.3× the limit"
+          "rule": "In the 25-35% watch band · 1.3× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "pass",
+          "state": "warn",
           "value": "≥61.7%",
-          "rule": "Above the 10% floor · stock at 38% of NAV"
+          "rule": "Above the 20% band · stock at 38% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1047,26 +2690,69 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 57 event closes, 47% won"
         }
       ],
-      "note": "SRPT carried 26.3% of NAV against a 20% cap. Stock was 38% of NAV, so the reserve held. The event sleeve turned over 57 closes at 47% won for a 1.00 profit factor. 73 closes booked in all, 51% won."
+      "note": "SRPT carried 26.3% of NAV against a 20% cap. Stock was 38% of NAV, so the reserve held. The event sleeve turned over 57 closes at 47% won for a 1.00 profit factor. 73 closes booked in all, 51% won.",
+      "score": 82.9,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 29.3,
+          "max": 40,
+          "score": 73
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 25.0,
+          "max": 25,
+          "score": 100
+        },
+        {
+          "k": "Risk craft",
+          "pts": 18.6,
+          "max": 20,
+          "score": 93
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.5,
+          "max": 10,
+          "score": 75
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.5,
+          "max": 5,
+          "score": 50
+        }
+      ],
+      "wins": [
+        "Book up 2.92% on the week.",
+        "Covered-call premium added 1.80% of net asset value across 1 name.",
+        "Calls written or rolled on 14 contracts · OWL.",
+        "Concentration coming down, 78.1% to 26.3%."
+      ],
+      "watch": [
+        "SRPT at 26.3% of net asset value, inside the 25-35% watch band."
+      ],
+      "next": []
     },
     {
       "w": "Jul 10",
       "weekLabel": "Week of Jul 6 – Jul 10, 2026",
-      "grade": "D−",
+      "grade": "D+",
       "weekRet": -3.49,
       "recon": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
+          "state": "warn",
           "value": "SRPT 33.4%",
-          "rule": "Over the 20% cap · 1.7× the limit"
+          "rule": "In the 25-35% watch band · 1.7× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "pass",
           "value": "≤5.0%",
-          "rule": "Under the 10% floor · stock at 95% of NAV"
+          "rule": "Inside the 2-20% band · stock at 95% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1075,7 +2761,50 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 127 event closes, 44% won"
         }
       ],
-      "note": "SRPT carried 33.4% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. SPCX was added to below carry. The event sleeve turned over 127 closes at 44% won for a 0.57 profit factor. 134 closes booked in all, 46% won."
+      "note": "SRPT carried 33.4% of NAV against a 20% cap. Stock was 95% of NAV, leaving no room under the 10% floor. SPCX was added to below carry. The event sleeve turned over 127 closes at 44% won for a 0.57 profit factor. 134 closes booked in all, 46% won.",
+      "score": 45.3,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 8.8,
+          "max": 40,
+          "score": 22
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 14.7,
+          "max": 25,
+          "score": 59
+        },
+        {
+          "k": "Risk craft",
+          "pts": 13.4,
+          "max": 20,
+          "score": 67
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.0,
+          "max": 10,
+          "score": 70
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.4,
+          "max": 5,
+          "score": 28
+        }
+      ],
+      "wins": [
+        "Calls written or rolled on 19 contracts · BBAI, GRPN, KEY, NU, OWL."
+      ],
+      "watch": [
+        "Book down 3.49% on the week.",
+        "SRPT at 33.4% of net asset value, inside the 25-35% watch band.",
+        "Concentration rising, 26.3% to 33.4%.",
+        "Added to a position below its carry."
+      ],
+      "next": []
     },
     {
       "w": "Jul 17",
@@ -1085,15 +2814,15 @@
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
+          "state": "warn",
           "value": "SRPT ~31.0%",
-          "rule": "Over the 20% cap · SPCX −29% not offloaded"
+          "rule": "In the 25-35% watch band · SPCX −29% not offloaded"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "17.6%",
-          "rule": "Above the 10% floor · rebuilt this week"
+          "rule": "Inside the 2-20% band · rebuilt this week"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1102,7 +2831,52 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 98 event closes, 39% won"
         }
       ],
-      "note": "The cash floor was restored to 17.6%, and that is the only credit on offer. The oversized names sat untouched — SRPT near 31%, SPCX at −29%, SERV through its stop — and new positions went on with no written thesis behind them. The engine is sound. The discipline around it is not."
+      "note": "The cash floor was restored to 17.6%, and that is the only credit on offer. The oversized names sat untouched — SRPT near 31%, SPCX at −29%, SERV through its stop — and new positions went on with no written thesis behind them. The engine is sound. The discipline around it is not.",
+      "score": 58.0,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 9.9,
+          "max": 40,
+          "score": 25
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 19.7,
+          "max": 25,
+          "score": 79
+        },
+        {
+          "k": "Risk craft",
+          "pts": 16.6,
+          "max": 20,
+          "score": 83
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.9,
+          "max": 5,
+          "score": 37
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 0.75% of net asset value across 3 names.",
+        "Calls written or rolled on 6 contracts · BBAI, GRPN, SERV.",
+        "Concentration coming down, 33.4% to 31.0%.",
+        "Cash at 17.6%, inside the 2-20% band."
+      ],
+      "watch": [
+        "Book down 3.17% on the week.",
+        "SRPT at 31.0% of net asset value, inside the 25-35% watch band.",
+        "Added to a position below its carry."
+      ],
+      "next": []
     },
     {
       "w": "Jul 24",
@@ -1112,15 +2886,15 @@
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
+          "state": "warn",
           "value": "SRPT 29.9%",
-          "rule": "Over the 20% cap · about 30% of the book · GRPN 19.4%"
+          "rule": "In the 25-35% watch band · about 30% of the book · GRPN 19.4%"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "14.4%",
-          "rule": "Above the 10% floor"
+          "rule": "Inside the 2-20% band"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1129,26 +2903,69 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 36 event closes, 64% won"
         }
       ],
-      "note": "The market did most of the −4% — marks on names already held; realized activity was quiet. But the controllable leak, SRPT at 30% of the book, stayed wide open two weeks after it was flagged. Cash discipline was the only line held."
+      "note": "The market did most of the −4% — marks on names already held; realized activity was quiet. But the controllable leak, SRPT at 30% of the book, stayed wide open two weeks after it was flagged. Cash discipline was the only line held.",
+      "score": 51.5,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 7.3,
+          "max": 40,
+          "score": 18
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.9,
+          "max": 25,
+          "score": 64
+        },
+        {
+          "k": "Risk craft",
+          "pts": 17.0,
+          "max": 20,
+          "score": 85
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 1.4,
+          "max": 5,
+          "score": 28
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 0.14% of net asset value across 4 names.",
+        "Calls written or rolled on 6 contracts · GRPN, KVYO, SERV, TOST.",
+        "Cash at 14.4%, inside the 2-20% band."
+      ],
+      "watch": [
+        "Book down 3.98% on the week.",
+        "SRPT at 29.9% of net asset value, inside the 25-35% watch band."
+      ],
+      "next": []
     },
     {
       "w": "Jul 31",
       "weekLabel": "Week of Jul 27 – Jul 31, 2026",
-      "grade": "C",
+      "grade": "C+",
       "weekRet": 0.1,
       "recon": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
-          "state": "fail",
+          "state": "warn",
           "value": "SRPT 28.2%",
-          "rule": "Over the 20% cap · 1.4× the limit"
+          "rule": "In the 25-35% watch band · 1.4× the limit"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "≥16.4%",
-          "rule": "Above the 10% floor · stock at 84% of NAV"
+          "rule": "Inside the 2-20% band · stock at 84% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1157,25 +2974,66 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 49 event closes, 55% won"
         }
       ],
-      "note": "SRPT carried 28.2% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. The event sleeve turned over 49 closes at 55% won for a 0.87 profit factor. 54 closes booked in all, 57% won."
+      "note": "SRPT carried 28.2% of NAV against a 20% cap. Stock was 84% of NAV, so the reserve held. The event sleeve turned over 49 closes at 55% won for a 0.87 profit factor. 54 closes booked in all, 57% won.",
+      "score": 64.5,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 20.3,
+          "max": 40,
+          "score": 51
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.0,
+          "max": 25,
+          "score": 60
+        },
+        {
+          "k": "Risk craft",
+          "pts": 17.0,
+          "max": 20,
+          "score": 85
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.2,
+          "max": 5,
+          "score": 44
+        }
+      ],
+      "wins": [
+        "Book up 0.10% on the week.",
+        "Calls written or rolled on 4 contracts · NU, SRPT, TOST."
+      ],
+      "watch": [
+        "SRPT at 28.2% of net asset value, inside the 25-35% watch band."
+      ],
+      "next": []
     },
     {
       "w": "Aug 7",
       "weekLabel": "Week of Aug 3 – Aug 7, 2026",
-      "grade": "B−",
+      "grade": "B",
       "weekRet": 3.11,
       "dials": [
         {
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "GRPN 18.4%",
-          "rule": "Inside the 20% cap · SRPT (was 30%) fully offloaded"
+          "rule": "Inside the 25% band · SRPT (was 30%) fully offloaded"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "pass",
+          "state": "warn",
           "value": "30.8%",
-          "rule": "Above the 10% floor · well clear · leverage 0.7×"
+          "rule": "Above the 20% band · well clear · leverage 0.7×"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1184,7 +3042,51 @@
           "rule": "Graded on what the sleeve returned, not on today's ban · 32 event closes, 50% won"
         }
       ],
-      "note": "The week the concentration finally broke. SRPT — roughly 30% of the book for three weeks — was called away on the Aug 7 expiry, taking cash from 1.7% to 30.8% and putting every dial back inside its limit for the first time. That is the single most useful thing done all quarter. It does not earn an A: mid-week the reserve sat at 1.7% against a 10% floor, and SPCX was added to below carry while already deep in a loss — averaging down a broken thesis, which is prohibited outright. The week closed clean because an expiry landed, not because the book was run that way. +3.1% on the week."
+      "note": "The week the concentration finally broke. SRPT — roughly 30% of the book for three weeks — was called away on the Aug 7 expiry, taking cash from 1.7% to 30.8% and putting every dial back inside its limit for the first time. That is the single most useful thing done all quarter. It does not earn an A: mid-week the reserve sat at 1.7% against a 10% floor, and SPCX was added to below carry while already deep in a loss — averaging down a broken thesis, which is prohibited outright. The week closed clean because an expiry landed, not because the book was run that way. +3.1% on the week.",
+      "score": 71.5,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 30.0,
+          "max": 40,
+          "score": 75
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 11.6,
+          "max": 25,
+          "score": 46
+        },
+        {
+          "k": "Risk craft",
+          "pts": 19.6,
+          "max": 20,
+          "score": 98
+        },
+        {
+          "k": "Liquidity",
+          "pts": 7.5,
+          "max": 10,
+          "score": 75
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.9,
+          "max": 5,
+          "score": 58
+        }
+      ],
+      "wins": [
+        "Book up 3.11% on the week.",
+        "Calls written or rolled on 12 contracts · BBAI, NIQ, NU, SRPT.",
+        "Top name GRPN at 18.4%, inside the 25% line.",
+        "Concentration coming down, 28.2% to 18.4%."
+      ],
+      "watch": [
+        "Cash at 30.8%, above the 20% band - capital sitting idle.",
+        "Added to a position below its carry."
+      ],
+      "next": []
     },
     {
       "w": "Aug 14",
@@ -1196,16 +3098,53 @@
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "NIQ 18.6%",
-          "rule": "Inside the 20% cap · three names above 15%"
+          "rule": "Inside the 25% band · three names above 15%"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "16.7%",
-          "rule": "Above the 10% floor · back over it after the NU assignment · sat at 0.7% mid-week"
+          "rule": "Inside the 2-20% band · back over it after the NU assignment · sat at 0.7% mid-week"
         }
       ],
-      "note": "All three dials closed clean. They did not stay clean. The 30.8% reserve taken off the SRPT exit was committed across three sessions into NU, NIQ, XNDU, PLTR, SPCX and BBAI, running cash to 0.7% and gross to 1.09× by midweek. Friday's expiry reversed it: the NU $15 calls were assigned, the shares called away at the strike, reserve rebuilt to 16.7%, book back under 1×. Credit where it is due — that exit was pre-arranged by the covered call, the strategy working as designed. But the floor was breached for two days first, and that was a decision, not an accident. +3.2% on the week, the cap held, the sleeve stayed shut."
+      "note": "All three dials closed clean. They did not stay clean. The 30.8% reserve taken off the SRPT exit was committed across three sessions into NU, NIQ, XNDU, PLTR, SPCX and BBAI, running cash to 0.7% and gross to 1.09× by midweek. Friday's expiry reversed it: the NU $15 calls were assigned, the shares called away at the strike, reserve rebuilt to 16.7%, book back under 1×. Credit where it is due — that exit was pre-arranged by the covered call, the strategy working as designed. But the floor was breached for two days first, and that was a decision, not an accident. +3.2% on the week, the cap held, the sleeve stayed shut.",
+      "score": 77.2,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 30.3,
+          "max": 40,
+          "score": 76
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.0,
+          "max": 25,
+          "score": 60
+        },
+        {
+          "k": "Risk craft",
+          "pts": 18.0,
+          "max": 20,
+          "score": 90
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        }
+      ],
+      "wins": [
+        "Book up 3.22% on the week.",
+        "Calls written or rolled on 11 contracts · BBAI, NIQ, NU, SERV, XNDU.",
+        "Top name NIQ at 18.6%, inside the 25% line.",
+        "Cash at 16.7%, inside the 2-20% band."
+      ],
+      "watch": [
+        "Added to a position below its carry."
+      ],
+      "next": []
     },
     {
       "w": "Aug 21",
@@ -1217,34 +3156,71 @@
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "PLTR 16.4%",
-          "rule": "Inside the 20% cap · top name once NIQ was called away"
+          "rule": "Inside the 25% band · top name once NIQ was called away"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "pass",
           "value": "18.8%",
-          "rule": "Above the 10% floor · back over it on the NIQ assignment · sat at 2.4% into the weekend"
+          "rule": "Inside the 2-20% band · back over it on the NIQ assignment · sat at 2.4% into the weekend"
         }
       ],
-      "note": "The NIQ $15 calls assigned overnight — the shares called away at the strike, the proceeds back in the account — and all three dials close clean: top name 16.4%, cash 18.8%, gross back to 0.90×. That is the wheel doing exactly what it is built to do, and it is the second week running that an assignment has repaired the reserve. It is also the second week running that the reserve was spent before the assignment arrived: cash ran to 2.4% and gross to 1.14× on Monday and Tuesday, into a new 500-share KEEL position and more PLTR, against money that had not settled. The grade is held down by SERV, where 200 shares were added at 4.87 to 4.90 into a name already 17% underwater. Averaging down a broken thesis is prohibited outright, no dial catches it, and it is the one thing here that was not rescued by an expiry. GRPN's calls were also rolled down from the $40 strike to $23 and $26, capping the recovery on a name 27% below cost. −2.6% on the week."
+      "note": "The NIQ $15 calls assigned overnight — the shares called away at the strike, the proceeds back in the account — and all three dials close clean: top name 16.4%, cash 18.8%, gross back to 0.90×. That is the wheel doing exactly what it is built to do, and it is the second week running that an assignment has repaired the reserve. It is also the second week running that the reserve was spent before the assignment arrived: cash ran to 2.4% and gross to 1.14× on Monday and Tuesday, into a new 500-share KEEL position and more PLTR, against money that had not settled. The grade is held down by SERV, where 200 shares were added at 4.87 to 4.90 into a name already 17% underwater. Averaging down a broken thesis is prohibited outright, no dial catches it, and it is the one thing here that was not rescued by an expiry. GRPN's calls were also rolled down from the $40 strike to $23 and $26, capping the recovery on a name 27% below cost. −2.6% on the week.",
+      "score": 64.8,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 11.8,
+          "max": 40,
+          "score": 29
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 19.8,
+          "max": 25,
+          "score": 79
+        },
+        {
+          "k": "Risk craft",
+          "pts": 20.0,
+          "max": 20,
+          "score": 100
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 0.77% of net asset value across 6 names.",
+        "Calls written or rolled on 13 contracts · BBAI, GRPN, KEEL, KVYO, SERV.",
+        "Top name PLTR at 16.4%, inside the 25% line.",
+        "Concentration coming down, 18.6% to 16.4%."
+      ],
+      "watch": [
+        "Book down 2.57% on the week."
+      ],
+      "next": []
     },
     {
       "w": "Aug 28",
       "weekLabel": "Week of Aug 24 – Aug 28, 2026",
-      "grade": "D+",
+      "grade": "C−",
       "weekRet": 1.56,
       "dials": [
         {
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "PLTR 19.1%",
-          "rule": "Inside the 20% cap · 0.9 points to spare"
+          "rule": "Inside the 25% band · 0.9 points to spare"
         },
         {
           "key": "Dial 2 · Cash buffer",
           "state": "fail",
           "value": "0.2%",
-          "rule": "Under the 10% floor · stock at 101.5% of NAV, borrowed"
+          "rule": "On margin · stock at 101.5% of NAV, borrowed"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1253,25 +3229,72 @@
           "rule": "Graded on what the sleeve returned · 1,040 contracts at 3.1% of NAV · 850 paid, 65 worthless · net +0.2% of NAV"
         }
       ],
-      "note": "The cap held and nothing else did. Cash finished the week at 0.2% of NAV — with stock at 101.5% of net asset value, meaning the book is carrying borrowed money against a 10% floor. Into that, four new names were opened: PR, VSXY, HUN and OLN. Opening positions is a choice; opening four of them on margin with no reserve is the pattern this report card exists to catch. SPCX was also added to below carry for the third time in six weeks — averaging down a broken thesis, prohibited outright, and by now a habit rather than a lapse. The forecast sleeve came back on hard: 79 trades, 1,040 contracts across ForecastX and Kalshi, 3.1% of net asset value at stake. It was written up that Friday as unscored data collection. Scored on what it returned, which is how it is graded now, it made about a sixth of a point of net asset value: 850 contracts paid out against 65 that expired worthless. Small money on a lot of motion, which is the sleeve's whole pattern. +1.6% on the week, and PLTR at 19.1% is the closest the top name has come to the cap without breaching it."
+      "note": "The cap held and nothing else did. Cash finished the week at 0.2% of NAV — with stock at 101.5% of net asset value, meaning the book is carrying borrowed money against a 10% floor. Into that, four new names were opened: PR, VSXY, HUN and OLN. Opening positions is a choice; opening four of them on margin with no reserve is the pattern this report card exists to catch. SPCX was also added to below carry for the third time in six weeks — averaging down a broken thesis, prohibited outright, and by now a habit rather than a lapse. The forecast sleeve came back on hard: 79 trades, 1,040 contracts across ForecastX and Kalshi, 3.1% of net asset value at stake. It was written up that Friday as unscored data collection. Scored on what it returned, which is how it is graded now, it made about a sixth of a point of net asset value: 850 contracts paid out against 65 that expired worthless. Small money on a lot of motion, which is the sleeve's whole pattern. +1.6% on the week, and PLTR at 19.1% is the closest the top name has come to the cap without breaching it.",
+      "score": 54.9,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 25.0,
+          "max": 40,
+          "score": 62
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 12.8,
+          "max": 25,
+          "score": 51
+        },
+        {
+          "k": "Risk craft",
+          "pts": 14.4,
+          "max": 20,
+          "score": 72
+        },
+        {
+          "k": "Liquidity",
+          "pts": 0.0,
+          "max": 10,
+          "score": 0
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 2.8,
+          "max": 5,
+          "score": 55
+        }
+      ],
+      "wins": [
+        "Book up 1.56% on the week.",
+        "Calls written or rolled on 7 contracts · BBAI, KEEL, KVYO, SERV, XNDU.",
+        "Top name PLTR at 19.1%, inside the 25% line.",
+        "Event sleeve +0.20% of net asset value on 3.1% staked."
+      ],
+      "watch": [
+        "Concentration rising, 16.4% to 19.1%.",
+        "Book carried borrowed money."
+      ],
+      "next": [
+        "Come off margin before taking any new risk.",
+        "Size the sleeve under 3% of net asset value a week."
+      ]
     },
     {
       "w": "Sep 4",
       "weekLabel": "Week of Aug 31 – Sep 4, 2026",
-      "grade": "C",
+      "grade": "B−",
       "weekRet": -1.08,
       "dials": [
         {
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "PLTR 18.1%",
-          "rule": "Inside the 20% cap · SPCX close behind at 17.9%"
+          "rule": "Inside the 25% band · SPCX close behind at 17.9%"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "warn",
           "value": "0.6%",
-          "rule": "Under the 10% floor · third straight week · off margin, but stock is 99.8% of NAV"
+          "rule": "Under the 2% floor · third straight week · off margin, but stock is 99.8% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1280,25 +3303,70 @@
           "rule": "Graded on what the sleeve returned · 230 contracts at 0.7% of NAV · every settlement paid · net +0.1% of NAV"
         }
       ],
-      "note": "A quiet week that fixed nothing. Not one equity trade was placed in five sessions — no new names, no averaging down, none of last week's escalation repeated, and the book came off margin. That is the improvement, and it is real. What did not change is the reserve: cash closed at 0.6% of NAV, a third consecutive week under the 10% floor, with stock at 99.8% of net asset value. Being fully invested is not the same as being on margin, but it leaves nothing to deploy and nothing to absorb a shock. The quieter problem is the engine. Short calls on BBAI, KEEL, SERV and XNDU all came off at zero in Friday's expiry processing and none were rewritten, so ten of twelve names now sit as uncovered stock. Covered-call premium is the one line in this book with a real edge, and for most of the collateral it is currently switched off. −1.1% on the week. The forecast sleeve ran 15 trades for 230 contracts, 0.7% of net asset value, its smallest week since reopening, and every settlement that landed in it paid: about a tenth of a point to the good."
+      "note": "A quiet week that fixed nothing. Not one equity trade was placed in five sessions — no new names, no averaging down, none of last week's escalation repeated, and the book came off margin. That is the improvement, and it is real. What did not change is the reserve: cash closed at 0.6% of NAV, a third consecutive week under the 10% floor, with stock at 99.8% of net asset value. Being fully invested is not the same as being on margin, but it leaves nothing to deploy and nothing to absorb a shock. The quieter problem is the engine. Short calls on BBAI, KEEL, SERV and XNDU all came off at zero in Friday's expiry processing and none were rewritten, so ten of twelve names now sit as uncovered stock. Covered-call premium is the one line in this book with a real edge, and for most of the collateral it is currently switched off. −1.1% on the week. The forecast sleeve ran 15 trades for 230 contracts, 0.7% of net asset value, its smallest week since reopening, and every settlement that landed in it paid: about a tenth of a point to the good.",
+      "score": 65.5,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 16.5,
+          "max": 40,
+          "score": 41
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 19.9,
+          "max": 25,
+          "score": 80
+        },
+        {
+          "k": "Risk craft",
+          "pts": 20.0,
+          "max": 20,
+          "score": 100
+        },
+        {
+          "k": "Liquidity",
+          "pts": 6.0,
+          "max": 10,
+          "score": 60
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 3.0,
+          "max": 5,
+          "score": 60
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 1.18% of net asset value.",
+        "Top name PLTR at 18.1%, inside the 25% line.",
+        "Event sleeve +0.10% of net asset value on 0.7% staked."
+      ],
+      "watch": [
+        "Book down 1.08% on the week.",
+        "Cash at 0.6%, under the 2% floor - nothing to deploy."
+      ],
+      "next": [
+        "Leave a little dry powder at the close; 2% is the floor, not a target."
+      ]
     },
     {
       "w": "Sep 11",
       "weekLabel": "Week of Sep 7 – Sep 11, 2026",
-      "grade": "C−",
+      "grade": "C",
       "weekRet": -3.13,
       "dials": [
         {
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "SPCX 18.7%",
-          "rule": "Inside the 20% cap · PLTR 17.9% just behind it"
+          "rule": "Inside the 25% band · PLTR 17.9% just behind it"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "warn",
           "value": "1.2%",
-          "rule": "Under the 10% floor · fourth straight week · off margin, but stock is 98.9% of NAV"
+          "rule": "Under the 2% floor · fourth straight week · off margin, but stock is 98.9% of NAV"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1307,12 +3375,58 @@
           "rule": "Graded on what the sleeve returned · 698 contracts at 2.1% of NAV · 655 paid, 43 worthless · net +0.2% of NAV · banned root"
         }
       ],
-      "note": "The wheel came back on, and the sleeve ran hot on a name it was not supposed to be in. Tuesday's open rewrote calls on five names — HUN, KEEL, SERV, BBAI and XNDU — which is exactly what last week's card asked for, and it worked: the SERV, BBAI and XNDU weeklies expired worthless on Friday and the premium was kept whole. Four names are covered again and the engine is earning. The sleeve is scored on what it returns, a rule restored on Sep 20 and applied back to the week it reopened. What was flagged at the time was the shape of the run: 698 contracts went out across four sessions, 673 of them JPUSD, a root the forecast engine carries on its own banned list, entered by hand at an average of 0.85 with 300 lots at 0.95 or above. The engine caps entry at 0.92 and caps a single settlement at 0.4% of net asset value; none of these tickets passed through it. This card first said every contract settled at zero. It did not, and the correction entered on Sep 20 was wrong in the other direction. Settled event contracts book in two places: the ticket that bought them takes a negative entry for what it cost, which is a cost leg and not a loss, and the settlement itself books separately — at 1 where it paid, at 0 where it expired worthless. Netting both legs, 655 of the 698 contracts paid and 43 expired worthless, and the sleeve made about two tenths of a point of net asset value. The week's −3.1% was the securities book, not the sleeve. What stands is the shape of the run: 2.1% of net asset value into a banned root, by hand, with a 100-lot bought at 0.95 — the exact ticket the engine's entry ceiling exists to refuse. The one genuine breach on this card is cash, which closed at 1.2% of net asset value, a fourth consecutive week beneath the 10% floor, though the book stayed off margin. Position size held, with SPCX taking over as the largest name at 18.7%."
+      "note": "The wheel came back on, and the sleeve ran hot on a name it was not supposed to be in. Tuesday's open rewrote calls on five names — HUN, KEEL, SERV, BBAI and XNDU — which is exactly what last week's card asked for, and it worked: the SERV, BBAI and XNDU weeklies expired worthless on Friday and the premium was kept whole. Four names are covered again and the engine is earning. The sleeve is scored on what it returns, a rule restored on Sep 20 and applied back to the week it reopened. What was flagged at the time was the shape of the run: 698 contracts went out across four sessions, 673 of them JPUSD, a root the forecast engine carries on its own banned list, entered by hand at an average of 0.85 with 300 lots at 0.95 or above. The engine caps entry at 0.92 and caps a single settlement at 0.4% of net asset value; none of these tickets passed through it. This card first said every contract settled at zero. It did not, and the correction entered on Sep 20 was wrong in the other direction. Settled event contracts book in two places: the ticket that bought them takes a negative entry for what it cost, which is a cost leg and not a loss, and the settlement itself books separately — at 1 where it paid, at 0 where it expired worthless. Netting both legs, 655 of the 698 contracts paid and 43 expired worthless, and the sleeve made about two tenths of a point of net asset value. The week's −3.1% was the securities book, not the sleeve. What stands is the shape of the run: 2.1% of net asset value into a banned root, by hand, with a 100-lot bought at 0.95 — the exact ticket the engine's entry ceiling exists to refuse. The one genuine breach on this card is cash, which closed at 1.2% of net asset value, a fourth consecutive week beneath the 10% floor, though the book stayed off margin. Position size held, with SPCX taking over as the largest name at 18.7%.",
+      "score": 55.9,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 10.0,
+          "max": 40,
+          "score": 25
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 16.4,
+          "max": 25,
+          "score": 66
+        },
+        {
+          "k": "Risk craft",
+          "pts": 20.0,
+          "max": 20,
+          "score": 100
+        },
+        {
+          "k": "Liquidity",
+          "pts": 6.0,
+          "max": 10,
+          "score": 60
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 3.5,
+          "max": 5,
+          "score": 70
+        }
+      ],
+      "wins": [
+        "Covered-call premium added 0.23% of net asset value across 5 names.",
+        "Calls written or rolled on 12 contracts · BBAI, HUN, KEEL, SERV, XNDU.",
+        "Top name SPCX at 18.7%, inside the 25% line.",
+        "Event sleeve +0.20% of net asset value on 2.1% staked."
+      ],
+      "watch": [
+        "Book down 3.13% on the week.",
+        "Cash at 1.2%, under the 2% floor - nothing to deploy."
+      ],
+      "next": [
+        "Leave a little dry powder at the close; 2% is the floor, not a target."
+      ]
     },
     {
       "w": "Sep 18",
       "weekLabel": "Week of Sep 14 – Sep 18, 2026",
-      "grade": "C",
+      "grade": "B+",
       "weekRet": 1.34,
       "now": true,
       "dials": [
@@ -1320,13 +3434,13 @@
           "key": "Dial 1 · Position size",
           "state": "pass",
           "value": "SPCX 18.8%",
-          "rule": "Inside the 20% cap · PLTR level with it at 18.8%"
+          "rule": "Inside the 25% band · PLTR level with it at 18.8%"
         },
         {
           "key": "Dial 2 · Cash buffer",
-          "state": "fail",
+          "state": "pass",
           "value": "8.8%",
-          "rule": "Under the 10% floor · fifth straight week · the closest yet, lifted by the KEEL assignment rather than a trim"
+          "rule": "Inside the 2-20% band · fifth straight week · the closest yet, lifted by the KEEL assignment rather than a trim"
         },
         {
           "key": "Dial 3 · Event sleeve",
@@ -1335,7 +3449,42 @@
           "rule": "Graded on what the sleeve returned · 700 contracts at 2.0% of NAV · settled, outcomes not yet booked · banned root at twice the engine's size"
         }
       ],
-      "note": "The covered calls did their job this week, and one of them finished it. KEEL ended Friday in the money on its 4 strike, so the shares were called away at the strike. That is the wheel completing a turn, not a loss: the stock was bought in mid-August at about 3.78, so the call sold it above cost, on top of a month of premium written against it. From purchase to assignment, the position returned roughly 10% in five weeks, and the cash it released is most of why the reserve moved. Monday rolled the calls on GRPN, KVYO and SERV out to October at fresh premium after buying the old ones back for pennies. The HUN, BBAI and XNDU calls expired worthless on Friday; the BBAI and XNDU ones had been written at a cent, which covers the stock on paper and earns almost nothing. Three names go into next week covered. Cash closed at 8.8% of net asset value: still under the 10% floor for a fifth straight week, but the nearest it has come, and it got there because a strike was hit rather than because anything was trimmed. Two small new names, ACTG and BHF, were bought midweek while the reserve was still at the bottom. The event sleeve is scored again from this week. It ran on JPUSD for a second consecutive week, the root the forecast engine bans, entered by hand: 700 contracts across three sessions at an average near 0.80, every ticket under the engine's 0.92 entry cap this time, about 2% of net asset value at stake. Every one of them has settled and none of the outcomes has been booked yet — the venue posts a placeholder at settlement and the paying rows follow days later — so this week's sleeve figure is genuinely unknown and is left blank rather than guessed. The cash balance moved as though the run paid, and the yen went one way all week, but the card will carry the number when the number exists. The root is still banned and the size is still twice what the engine would have allowed; being right about the yen does not make either of those disappear. Position size held, with SPCX and PLTR level at 18.8%. The book was up 1.3% on the week, and on the figures that have booked, all of it came from the securities book."
+      "note": "The covered calls did their job this week, and one of them finished it. KEEL ended Friday in the money on its 4 strike, so the shares were called away at the strike. That is the wheel completing a turn, not a loss: the stock was bought in mid-August at about 3.78, so the call sold it above cost, on top of a month of premium written against it. From purchase to assignment, the position returned roughly 10% in five weeks, and the cash it released is most of why the reserve moved. Monday rolled the calls on GRPN, KVYO and SERV out to October at fresh premium after buying the old ones back for pennies. The HUN, BBAI and XNDU calls expired worthless on Friday; the BBAI and XNDU ones had been written at a cent, which covers the stock on paper and earns almost nothing. Three names go into next week covered. Cash closed at 8.8% of net asset value: still under the 10% floor for a fifth straight week, but the nearest it has come, and it got there because a strike was hit rather than because anything was trimmed. Two small new names, ACTG and BHF, were bought midweek while the reserve was still at the bottom. The event sleeve is scored again from this week. It ran on JPUSD for a second consecutive week, the root the forecast engine bans, entered by hand: 700 contracts across three sessions at an average near 0.80, every ticket under the engine's 0.92 entry cap this time, about 2% of net asset value at stake. Every one of them has settled and none of the outcomes has been booked yet — the venue posts a placeholder at settlement and the paying rows follow days later — so this week's sleeve figure is genuinely unknown and is left blank rather than guessed. The cash balance moved as though the run paid, and the yen went one way all week, but the card will carry the number when the number exists. The root is still banned and the size is still twice what the engine would have allowed; being right about the yen does not make either of those disappear. Position size held, with SPCX and PLTR level at 18.8%. The book was up 1.3% on the week, and on the figures that have booked, all of it came from the securities book.",
+      "score": 76.8,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 24.3,
+          "max": 40,
+          "score": 61
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 18.7,
+          "max": 25,
+          "score": 75
+        },
+        {
+          "k": "Risk craft",
+          "pts": 20.0,
+          "max": 20,
+          "score": 100
+        },
+        {
+          "k": "Liquidity",
+          "pts": 10.0,
+          "max": 10,
+          "score": 100
+        }
+      ],
+      "wins": [
+        "Book up 1.34% on the week.",
+        "Covered-call premium added 0.59% of net asset value across 5 names.",
+        "Calls written or rolled on 7 contracts · BBAI, GRPN, KVYO, SERV, XNDU.",
+        "Top name SPCX at 18.8%, inside the 25% line."
+      ],
+      "watch": [],
+      "next": []
     }
   ],
   "career": {

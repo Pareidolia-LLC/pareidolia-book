@@ -115,7 +115,14 @@ so it runs second:
 ```bash
 python career_stats.py --write ../data/trades_*.json
 python record_stats.py --write ../data/trades_*.json
+python grade_model.py  --write ../data/trades_*.json
 ```
+
+`grade_model.py` rescores **every** card each run, so a change to the rubric is
+applied to the whole history at once rather than leaving two scales on one strip.
+It rewrites the grade, the score, the components and the three lists, and moves
+the position-size and cash dials onto the current bands; the hand-written
+assessment note is never touched.
 
 Concept 13 publishes the scanner's **compounder** profile. To put the pre-profit
 cohort on the page instead, run the scanner with `--profile emerging` before
@@ -181,6 +188,42 @@ never drift from the return series. Two consequences worth knowing:
   one card dated Aug 7. Jul 13 and Jul 25 were re-dated to Jul 17 and Jul 24. Every `weekRet` is now
   recomputed Friday-to-Friday off the inception curve rather than over an ad-hoc window.
 
+## The grade: scored, not deducted
+
+Rewritten 2026-09-20 and applied to every card. The old rubric let a single
+breach drag the letter down, so a week where the wheel worked across five names
+could still read as a D, and a book deliberately concentrated while it is small
+was permanently marked down for being small. `grade_model.py --write <dumps>`
+replaces it.
+
+Five components, each scored out of 100, then weighted:
+
+| Component | Weight | What it measures |
+|---|---|---|
+| Performance | 40 | the week's return: `50 + 8 x ret`, so +3% is a strong week and -6% is a zero |
+| Wheel execution | 25 | premium realized as a share of NAV, +10 if calls went back out, -10 if the engine sat idle all week |
+| Risk craft | 20 | the concentration band and **its direction**, margin, adds below carry |
+| Liquidity | 10 | cash inside the 2-20% band at the close |
+| Event sleeve | 5 | what the sleeve returned, less 15 if it staked more than 3% of NAV |
+
+**Concentration is a band, not a cliff.** Top name under 25% of net asset value
+is clean; 25-35% is a watch worth 15 points; past 35% is a breach worth 35 plus
+a slope. A **covered** name carries 5 points of extra room on each edge, because
+stock with calls written against it is not the same risk as naked concentration.
+Direction is scored on its own: a heavy name coming down 2 points or more earns
+credit, the same weight going up costs it.
+
+**Two caps keep it honest.** A week worse than -5% cannot grade above C-, and
+one worse than -10% cannot grade above D+. Process credit has a ceiling.
+
+The sleeve is dropped from the weighting entirely in weeks where it did not
+trade, or where its settlements have not booked yet, rather than scored as a
+zero - the remaining weights re-normalise.
+
+Each card also carries three generated lists - **what worked**, **what to
+watch**, **next week** - built from the same component facts, so the letter can
+be argued with rather than taken on faith.
+
 ## The event sleeve: graded, monitored, reviewed at year end
 
 From 2026-09-20 the sleeve is **scored on what it returns**, and the grading was
@@ -232,8 +275,8 @@ year of cards without re-reading the sentence each time:
 
 | Dial | Verdicts |
 |---|---|
-| Position size | `Inside the 20% cap` / `Over the 20% cap` |
-| Cash buffer | `Above the 10% floor` / `Under the 10% floor` / `Too close to the 10% floor to call` |
+| Position size | `Inside the 25% band` / `In the 25-35% watch band` / `Past the 35% line` (each +5 points where the name is covered) |
+| Cash buffer | `Inside the 2-20% band` / `Under the 2% floor` / `Above the 20% band` / `On margin` |
 | Event sleeve | `Graded on what the sleeve returned` (live weeks) / `Graded on what the sleeve returned, not on today's ban` (reconstructed) / `Sanctioned for data, not scored` (the Aug-Sep 2026 sanction only, now ended) |
 
 Details follow the verdict, separated by ` · `, sentence case, no trailing

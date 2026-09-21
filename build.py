@@ -251,6 +251,30 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     color:var(--muted)}
   .rc-note b{color:var(--accent); font-weight:600; font-family:var(--mono);
     font-size:10px; letter-spacing:.18em; text-transform:uppercase}
+  /* ---------- the weighted score and its three lists ---------- */
+  .rcscore{margin:0 0 14px}
+  .scorehead{display:flex; align-items:baseline; gap:10px; margin-bottom:10px}
+  .scorehead .sv{font-family:var(--display); font-size:34px; line-height:1; color:var(--bone); text-shadow:3px 3px 0 var(--outline)}
+  .scorehead .sk,.scorehead .sm{font-family:var(--mono); font-size:9.5px; letter-spacing:.19em;
+    text-transform:uppercase; color:var(--faint)}
+  .comps{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:7px 22px}
+  .comp{display:grid; grid-template-columns:118px minmax(0,1fr) 62px; gap:10px; align-items:center}
+  .comp .ck{font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+  .comp .ctrack{position:relative; height:9px; background:var(--panel-2); overflow:hidden}
+  .comp .ctrack i{position:absolute; top:0; bottom:0; left:0; background:var(--accent); display:block}
+  .comp.lo .ctrack i{background:var(--down)}
+  .comp.hi .ctrack i{background:var(--up)}
+  .comp .cp{font-family:var(--mono); font-size:9.5px; color:var(--faint); text-align:right; font-variant-numeric:tabular-nums}
+  .rclists{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--line);
+    border:2px solid var(--line); margin:14px 0 0}
+  .rclist{background:var(--panel); padding:14px 16px 13px}
+  .rclist h4{font-family:var(--mono); font-size:9px; letter-spacing:.19em; text-transform:uppercase;
+    margin:0 0 9px; color:var(--faint)}
+  .rclist.good h4{color:var(--up)} .rclist.bad h4{color:var(--down)} .rclist.todo h4{color:var(--accent)}
+  .rclist ul{margin:0; padding-left:16px}
+  .rclist li{font-family:var(--serif); font-size:13px; line-height:1.55; color:var(--muted); margin:0 0 7px}
+  .rclist li:last-child{margin-bottom:0}
+
   .rbasis{font-family:var(--serif); font-style:italic; font-size:13px; color:var(--faint);
     margin-top:12px; line-height:1.65; }
   .hlabel{font-family:var(--mono); font-size:9.5px; letter-spacing:.19em;
@@ -845,7 +869,9 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
   <section aria-label="Weekly report card">
     <p class="eyebrow">Weekly After-Action</p>
     <div class="rc-head" id="rchead"></div>
+    <div class="rcscore" id="rcscore"></div>
     <div class="dials" id="dials"></div>
+    <div class="rclists" id="rclists"></div>
     <p class="rc-note" id="rcnote"></p>
     <p class="hlabel">Prior after-actions — select a week to read the full report</p>
     <p class="hnote">Dashed cards were rebuilt from the trade record after the fact; solid cards were graded live that week.</p>
@@ -1407,6 +1433,26 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
           '<div class="dv">'+d.value+'</div><div class="rule">'+d.rule+'</div>';
         dl.appendChild(el);
       });
+      var sc=document.getElementById("rcscore");
+      sc.innerHTML = rc.components ?
+        '<div class="scorehead"><span class="sk">Score</span><span class="sv">'+rc.score.toFixed(1)+
+        '</span><span class="sm">out of 100 · weighted</span></div><div class="comps">'+
+        rc.components.map(function(c){
+          var w=Math.max(0,Math.min(100,c.score));
+          var tone=(c.score>=70?" hi":(c.score<40?" lo":""));
+          return '<div class="comp'+tone+'"><div class="ck">'+c.k+'</div>'+
+                 '<div class="ctrack"><i style="width:'+w+'%"></i></div>'+
+                 '<div class="cp">'+c.pts.toFixed(1)+' / '+c.max+'</div></div>';
+        }).join("")+'</div>' : "";
+      var lists=document.getElementById("rclists");
+      var L=[["wins","What worked","good"],["watch","What to watch","bad"],["next","Next week","todo"]];
+      var any=L.some(function(x){return (rc[x[0]]||[]).length;});
+      lists.innerHTML = any ? L.map(function(x){
+        var items=rc[x[0]]||[];
+        if(!items.length) return "";
+        return '<div class="rclist '+x[2]+'"><h4>'+x[1]+'</h4><ul>'+
+               items.map(function(i){return "<li>"+i+"</li>";}).join("")+'</ul></div>';
+      }).join("") : "";
       note.innerHTML='<b>Assessment:</b> '+rc.note+
         (rc.recon?'<div class="rbasis">Rebuilt after the fact from the executed trade record and weekly closing prices, not written that Friday. '+
         'Position size is measured; the cash line is inferred from how much of net asset value the equity book took up, '+
