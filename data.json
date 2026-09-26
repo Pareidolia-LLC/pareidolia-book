@@ -89,7 +89,8 @@
       ],
       "next": [
         "Bring ASTS under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 2.09
     },
     {
       "w": "Oct 31",
@@ -161,7 +162,8 @@
       ],
       "next": [
         "Bring ASTS under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 1.19
     },
     {
       "w": "Nov 7",
@@ -237,7 +239,8 @@
       "next": [
         "Bring ASTS under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 2.99
     },
     {
       "w": "Nov 14",
@@ -311,7 +314,8 @@
       ],
       "next": [
         "Bring ASTS under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 1.43
     },
     {
       "w": "Nov 21",
@@ -384,7 +388,8 @@
       ],
       "next": [
         "Bring ASTS under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 2.62
     },
     {
       "w": "Nov 28",
@@ -457,7 +462,8 @@
       ],
       "next": [
         "Bring ASTS under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 1.21
     },
     {
       "w": "Dec 5",
@@ -533,7 +539,8 @@
       "next": [
         "Bring ASTS under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 2.21
     },
     {
       "w": "Dec 12",
@@ -605,7 +612,8 @@
       ],
       "next": [
         "Write calls on the uncovered names - premium is the one line with a measured edge."
-      ]
+      ],
+      "premYield": 0.0
     },
     {
       "w": "Dec 19",
@@ -679,7 +687,8 @@
       ],
       "next": [
         "Bring OWL under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 0.23
     },
     {
       "w": "Dec 26",
@@ -750,7 +759,8 @@
       ],
       "next": [
         "Bring OWL under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 0.15
     },
     {
       "w": "Jan 2",
@@ -821,7 +831,8 @@
       ],
       "next": [
         "Bring OWL under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 0.0
     },
     {
       "w": "Jan 9",
@@ -893,7 +904,8 @@
       ],
       "next": [
         "Bring OWL under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 0.9
     },
     {
       "w": "Jan 16",
@@ -967,7 +979,8 @@
       ],
       "next": [
         "Bring CMA under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 1.06
     },
     {
       "w": "Jan 23",
@@ -1039,7 +1052,8 @@
         "CMA at 28.6% of net asset value, inside the 25-35% watch band.",
         "Added to a position below its carry."
       ],
-      "next": []
+      "next": [],
+      "premYield": 0.41
     },
     {
       "w": "Jan 30",
@@ -1111,7 +1125,8 @@
         "Concentration rising, 28.6% to 30.9%.",
         "Added to a position below its carry."
       ],
-      "next": []
+      "next": [],
+      "premYield": 0.19
     },
     {
       "w": "Feb 6",
@@ -1187,7 +1202,8 @@
       "next": [
         "Bring FITB under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.38
     },
     {
       "w": "Feb 13",
@@ -1262,7 +1278,8 @@
       "next": [
         "Bring FITB under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.47
     },
     {
       "w": "Feb 20",
@@ -1332,7 +1349,8 @@
         "Book down 0.54% on the week.",
         "OWL at 29.8% of net asset value, inside the 25-35% watch band."
       ],
-      "next": []
+      "next": [],
+      "premYield": 0.0
     },
     {
       "w": "Feb 27",
@@ -1395,7 +1413,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 9.25
     },
     {
       "w": "Mar 6",
@@ -1469,7 +1488,8 @@
       ],
       "next": [
         "Bring OWL under 35% before adding anywhere else."
-      ]
+      ],
+      "premYield": 10.43
     },
     {
       "w": "Mar 13",
@@ -1545,7 +1565,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 18.76
     },
     {
       "w": "Mar 20",
@@ -1619,7 +1640,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.0
     },
     {
       "w": "Mar 27",
@@ -1693,7 +1715,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 10.9
     },
     {
       "w": "Apr 3",
@@ -1768,7 +1791,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.08
     },
     {
       "w": "Apr 10",
@@ -1842,7 +1866,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 1.77
     },
     {
       "w": "Apr 17",
@@ -1916,7 +1941,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 5.86
     },
     {
       "w": "Apr 24",
@@ -1990,7 +2016,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.05
     },
     {
       "w": "May 1",
@@ -2065,7 +2092,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.63
     },
     {
       "w": "May 8",
@@ -2139,7 +2167,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 1.84
     },
     {
       "w": "May 15",
@@ -2214,7 +2243,8 @@
         "Write calls on the uncovered names - premium is the one line with a measured edge.",
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.0
     },
     {
       "w": "May 22",
@@ -2289,7 +2319,8 @@
         "Write calls on the uncovered names - premium is the one line with a measured edge.",
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.0
     },
     {
       "w": "May 29",
@@ -2363,7 +2394,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 1.36
     },
     {
       "w": "Jun 5",
@@ -2437,7 +2469,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.12
     },
     {
       "w": "Jun 12",
@@ -2511,7 +2544,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 2.74
     },
     {
       "w": "Jun 19",
@@ -2586,7 +2620,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 0.95
     },
     {
       "w": "Jun 26",
@@ -2662,7 +2697,8 @@
       "next": [
         "Bring OWL under 35% before adding anywhere else.",
         "Come off margin before taking any new risk."
-      ]
+      ],
+      "premYield": 1.05
     },
     {
       "w": "Jul 3",
@@ -2733,7 +2769,8 @@
       "watch": [
         "SRPT at 26.3% of net asset value, inside the 25-35% watch band."
       ],
-      "next": []
+      "next": [],
+      "premYield": 2.18
     },
     {
       "w": "Jul 10",
@@ -2804,7 +2841,8 @@
         "Concentration rising, 26.3% to 33.4%.",
         "Added to a position below its carry."
       ],
-      "next": []
+      "next": [],
+      "premYield": 5.13
     },
     {
       "w": "Jul 17",
@@ -2876,7 +2914,8 @@
         "SRPT at 31.0% of net asset value, inside the 25-35% watch band.",
         "Added to a position below its carry."
       ],
-      "next": []
+      "next": [],
+      "premYield": 0.39
     },
     {
       "w": "Jul 24",
@@ -2946,7 +2985,8 @@
         "Book down 3.98% on the week.",
         "SRPT at 29.9% of net asset value, inside the 25-35% watch band."
       ],
-      "next": []
+      "next": [],
+      "premYield": 1.51
     },
     {
       "w": "Jul 31",
@@ -3015,7 +3055,8 @@
       "watch": [
         "SRPT at 28.2% of net asset value, inside the 25-35% watch band."
       ],
-      "next": []
+      "next": [],
+      "premYield": 0.75
     },
     {
       "w": "Aug 7",
@@ -3086,7 +3127,8 @@
         "Cash at 30.8%, above the 20% band - capital sitting idle.",
         "Added to a position below its carry."
       ],
-      "next": []
+      "next": [],
+      "premYield": 1.65
     },
     {
       "w": "Aug 14",
@@ -3144,7 +3186,8 @@
       "watch": [
         "Added to a position below its carry."
       ],
-      "next": []
+      "next": [],
+      "premYield": 1.87
     },
     {
       "w": "Aug 21",
@@ -3202,7 +3245,8 @@
       "watch": [
         "Book down 2.57% on the week."
       ],
-      "next": []
+      "next": [],
+      "premYield": 2.89
     },
     {
       "w": "Aug 28",
@@ -3276,7 +3320,8 @@
       "next": [
         "Come off margin before taking any new risk.",
         "Size the sleeve under 3% of net asset value a week."
-      ]
+      ],
+      "premYield": 1.31
     },
     {
       "w": "Sep 4",
@@ -3348,7 +3393,8 @@
       ],
       "next": [
         "Leave a little dry powder at the close; 2% is the floor, not a target."
-      ]
+      ],
+      "premYield": 0.0
     },
     {
       "w": "Sep 11",
@@ -3421,7 +3467,8 @@
       ],
       "next": [
         "Leave a little dry powder at the close; 2% is the floor, not a target."
-      ]
+      ],
+      "premYield": 0.42
     },
     {
       "w": "Sep 18",
@@ -3489,7 +3536,8 @@
         "Top name SPCX at 18.8%, inside the 25% line."
       ],
       "watch": [],
-      "next": []
+      "next": [],
+      "premYield": 1.46
     },
     {
       "w": "Sep 25",
@@ -3517,7 +3565,7 @@
           "rule": "Graded on what the sleeve returned · 40 contracts at 0.1% of NAV · settled, outcome not yet booked · banned root, and under the engine's 100-contract minimum"
         }
       ],
-      "note": "Flat at the top line, violent underneath. The book finished the week 0.16% lower than it started, and that number hides two moves in opposite directions. GRPN ran about fifteen per cent higher on Monday, almost all of it intraday, and closed the week at 21.30 — above the 20 strike it is short into October, so the upside was capped at the strike and the rest of the move accrues to whoever bought the call. XNDU went the other way and went at once: twenty per cent of it was gone at Tuesday's open, on fifteen times the previous session's volume, and it kept sliding to 4.98 — off roughly a third on the week, with nothing written against the downside because a covered call does not defend anything. The two roughly cancelled. That is the trade-off in the engine stated plainly: premium sells the upside and buys no protection, and this week both halves of that arrived at once. XNDU now carries the worst mark in the book at better than fifty percent below carry.\n\nMonday put premium back to work. Calls went out on BBAI at 0.30 — the first real premium written on that name after two expiries sold at a cent, which covers the stock on paper and earns nothing — plus HUN at 0.06, XNDU at 0.15, and ACTG at 0.13 once that position was built out on Tuesday. The SERV calls were rolled, and rolled badly: buying the September contracts back cost more than they were sold for, and the replacements went out at two cents, which is the cent-premium fault again. On the figures that have booked, covered-call premium cost 0.27% of net asset value this week. That figure is incomplete. The Friday expiries on XNDU and SERV both finished worthless and both will pay; the broker has posted the processed rows without the P&L, the same lag the event venue runs, so the premium line will be restated upward by roughly 0.16% of net asset value on the next refresh. The letter is a C+ on either set of figures, which is why this card goes out now rather than waiting.\n\nThe reserve is the real fault of the week. Tuesday spent it: two new names sized in, ACTG and BHF, three existing ones added to below their carry in ACTG, PR and OLN, and SPCX and PLTR topped up above theirs. Cash closed at 0.1% of net asset value — the thinnest reading of the record — against a 2% floor, one week after a strike being hit had lifted the reserve to 8.8%. It took two sessions to spend a month of patience. The book is not levered and is not borrowing: gross exposure is 1.04× and the cash balance is positive. But there is nothing to meet an assignment with, nothing to defend a position with, and no capacity to act on anything that shows up next week. Averaging down three names into an empty reserve is the exact sequence this book is meant to grade against.\n\nConcentration rose with it. SPCX ran to 20.9% of net asset value and PLTR to 20.7%, each up better than two points, and each was added to on the way up rather than trimmed into strength. Neither breaches the 25% band. Both are now larger than anything else in the book, neither carries a written call, and the direction is the wrong one.\n\nThe event sleeve ran a third consecutive week on JPUSD, the root the forecast engine bans. Size collapsed to 40 contracts at 0.63, about 0.1% of net asset value, against 700 the week before. That is below the engine's own 100-contract minimum, so the ticket clears neither rule — it is smaller than the sizing rule wants, in a name the ban forbids. It settled Thursday evening and the outcome has not booked, so the sleeve's week is left blank rather than guessed and is dropped from the weighting instead of scored as a zero. Last week's does now book. The 700 contracts netted +0.5% of net asset value at a 1.52 profit factor, four tickets paying and three settling worthless; the Sep 18 card has been updated to carry the figure, as it said it would.",
+      "note": "Flat at the top line, violent underneath. The book finished the week 0.16% lower than it started, and that number hides two moves in opposite directions. GRPN ran about fifteen per cent higher on Monday, almost all of it intraday, and closed the week at 21.30 — above the 20 strike it is short into October, so the upside was capped at the strike and the rest of the move accrues to whoever bought the call. XNDU went the other way and went at once: twenty per cent of it was gone at Tuesday's open, on fifteen times the previous session's volume, and it kept sliding to 4.98 — off roughly a third on the week, with nothing written against the downside because a covered call does not defend anything. The two roughly cancelled. That is the trade-off in the engine stated plainly: premium sells the upside and buys no protection, and this week both halves of that arrived at once. XNDU now carries the worst mark in the book at better than fifty percent below carry.\n\nMonday put premium back to work. Calls went out on BBAI at 0.30 — the first real premium written on that name after two expiries sold at a cent, which covers the stock on paper and earns nothing — plus HUN at 0.06, XNDU at 0.15, and ACTG at 0.13 once that position was built out on Tuesday. The SERV calls were rolled, and rolled badly: buying the September contracts back cost more than they were sold for, and the replacements went out at two cents, which is the cent-premium fault again. The week wrote 0.75% of net asset value in premium, which this card now carries at the top: what the book charged for the upside it gave away is a different question from what it kept, and this week the two answers point opposite ways. On the figures that have booked it kept nothing — covered-call premium cost 0.27% of net asset value, the SERV roll being the whole of it. That second figure is incomplete. The Friday expiries on XNDU and SERV both finished worthless and both will pay; the broker has posted the processed rows without the P&L, the same lag the event venue runs, so the premium line will be restated upward by roughly 0.16% of net asset value on the next refresh. The letter is a C+ on either set of figures, which is why this card goes out now rather than waiting.\n\nThe reserve is the real fault of the week. Tuesday spent it: two new names sized in, ACTG and BHF, three existing ones added to below their carry in ACTG, PR and OLN, and SPCX and PLTR topped up above theirs. Cash closed at 0.1% of net asset value — the thinnest reading of the record — against a 2% floor, one week after a strike being hit had lifted the reserve to 8.8%. It took two sessions to spend a month of patience. The book is not levered and is not borrowing: gross exposure is 1.04× and the cash balance is positive. But there is nothing to meet an assignment with, nothing to defend a position with, and no capacity to act on anything that shows up next week. Averaging down three names into an empty reserve is the exact sequence this book is meant to grade against.\n\nConcentration rose with it. SPCX ran to 20.9% of net asset value and PLTR to 20.7%, each up better than two points, and each was added to on the way up rather than trimmed into strength. Neither breaches the 25% band. Both are now larger than anything else in the book, neither carries a written call, and the direction is the wrong one.\n\nThe event sleeve ran a third consecutive week on JPUSD, the root the forecast engine bans. Size collapsed to 40 contracts at 0.63, about 0.1% of net asset value, against 700 the week before. That is below the engine's own 100-contract minimum, so the ticket clears neither rule — it is smaller than the sizing rule wants, in a name the ban forbids. It settled Thursday evening and the outcome has not booked, so the sleeve's week is left blank rather than guessed and is dropped from the weighting instead of scored as a zero. Last week's does now book. The 700 contracts netted +0.5% of net asset value at a 1.52 profit factor, four tickets paying and three settling worthless; the Sep 18 card has been updated to carry the figure, as it said it would.",
       "score": 60.2,
       "components": [
         {
@@ -3556,7 +3604,8 @@
       ],
       "next": [
         "Leave a little dry powder at the close; 2% is the floor, not a target."
-      ]
+      ],
+      "premYield": 0.75
     }
   ],
   "career": {
@@ -3592,6 +3641,11 @@
         "k": "Profitable months",
         "v": "7 / 12",
         "m": "By realized P&L"
+      },
+      {
+        "k": "Premium written",
+        "v": "102.8%",
+        "m": "300 writes, each as a share of that day's book · gross of commissions"
       }
     ],
     "buckets": [
@@ -3625,7 +3679,7 @@
     ],
     "insights": [
       "Loss asymmetry is still the leak. The average loser runs 1.5× the average winner, so a 59.9% hit rate finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
-      "The engine is real: covered-call premium takes 78% of its closes at a 3.7 profit factor across 187 closes. That is the business, and everything else is management around it. It was switched off for two weeks at the start of September and switched back on in the week of Sep 7, and in the week of Sep 14 it completed a full turn: KEEL's calls were assigned at a strike above what the shares cost. The week of Sep 21 showed the other face of the same trade: GRPN ran about fifteen per cent higher in a single session into a short strike that capped it, and XNDU gapped twenty per cent lower at the open with nothing written against the fall. Premium sells the upside and buys no protection, and that week collected both halves of the bargain at once.",
+      "The engine is real: covered-call premium takes 78% of its closes at a 3.7 profit factor across 187 closes. That is the business, and everything else is management around it. It was switched off for two weeks at the start of September and switched back on in the week of Sep 7, and in the week of Sep 14 it completed a full turn: KEEL's calls were assigned at a strike above what the shares cost. The week of Sep 21 showed the other face of the same trade: GRPN ran about fifteen per cent higher in a single session into a short strike that capped it, and XNDU gapped twenty per cent lower at the open with nothing written against the fall. Premium sells the upside and buys no protection, and that week collected both halves of the bargain at once. Measured from the other end, the engine has written premium worth slightly more than the entire book across the life of the account — 102.8% of net asset value, summed sale by sale against the book on the day of each sale. The profit factor says what it kept; that says what it charged.",
       "The forecast sleeve reopened on Aug 24 to gather data for a systematic strategy under construction, and it has been graded on what it returns since Sep 20, back to the week it reopened. Scored on booked settlements it has been quietly positive and very small: about +0.15% of net asset value in the week of Aug 24, +0.12% in the week of Aug 31, +0.18% in the week of Sep 7 and +0.5% in the week of Sep 14, with the week of Sep 21 not yet booked. That is close to a full point of net asset value across four booked weeks in which it staked between a tenth of a per cent and three per cent of the book at a time, nearly all of it in JPUSD — a root the strategy bans on 96 settled events at minus four cents a contract. Winning small on a banned root is the trap the ban exists for, and the week of Sep 21 stacked a second breach on the first: 40 contracts, below the engine's own 100-contract minimum, in the name the engine forbids. Too small to be the strategy and in the wrong root to be data. The sleeve is monitored on size and on which roots it touches, its minimum is 100 contracts an action, and it is reviewed at year end on what it has actually produced.",
       "Share legs run a 0.35 profit factor across 36 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it has now held for eight consecutive weeks — the longest clean run in the record.",
       "The ledger moves on the back office's schedule, not the market's. NU's August assignment reached the trade feed a week after the fact and NIQ's followed the same path; KEEL's has not landed yet. Event contracts are the sharpest case: a settled contract books its cost against the ticket that bought it and its payout as a separate settlement row, and those rows can lag by a week — not one of the 700 contracts settled in the week of Sep 14 had booked either leg when that card went out on Sep 20, and every one of them had booked by Sep 26. Written calls run the same lag: the Sep 25 expiries on XNDU and SERV sit in the feed as processed rows with no P&L attached, so the premium line on that card is understated and will be restated upward on the next refresh. Read a fresh week as incomplete rather than as a loss. Two cards on this site were written the other way and have been corrected."

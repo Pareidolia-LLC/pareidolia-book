@@ -1424,6 +1424,12 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       head.innerHTML='<div class="grade" style="background:'+c+';box-shadow:0 0 26px -6px '+c+'">'+rc.grade+'</div>'+
         '<div><div class="wk">'+rc.weekLabel+'</div>'+
         '<div class="wk">Return this week <span class="wkret '+cls(rc.weekRet)+'">'+fmt(rc.weekRet)+'</span></div>'+
+        /* premium written that week as a share of the book - the yield charged for
+           the upside given away, whether or not it has been earned yet. Never
+           negative, so it carries no sign and no pos/neg colour. */
+        (rc.premYield==null?"":
+          '<div class="wk">Premium yield <span class="wkret">'+rc.premYield.toFixed(2)+
+          '%</span> of net asset value</div>')+
         (rc.recon?'<div class="rbadge">Reconstructed · not graded live</div>':'')+'</div>';
       dl.innerHTML="";
       rc.dials.forEach(function(d){
@@ -1505,6 +1511,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     });
     document.getElementById("careermeth").innerHTML=
       '<b>Method:</b> Counted per realized closing execution across the full account history, brokerage-reported. '+
+      'Premium written is the exception: it counts the <em>sale</em>, not the close, because the yield is charged the day the contract is sold and is a separate question from whether it was kept. '+
       'Dollar figures are withheld by design — rates, ratios, and counts only.';
   })();
 

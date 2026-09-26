@@ -51,6 +51,44 @@ EVENT_EXCH = {"FORECASTX", "KALSHI"}
 def is_event(t):
     return t.get("sec_type") in EVENT_SEC or t.get("exchange") in EVENT_EXCH
 
+
+NAV_SERIES = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          "..", "data", "nav_series.json")
+
+
+def premium_yield(tr):
+    """Premium written since inception, as a share of the book.
+
+    Every call sold is measured against net asset value on the day it was
+    written and the shares are summed, which is the only way to add a year of
+    premium into one figure without printing a dollar: a contract sold when the
+    book was a third of its current size counts for what it was worth *then*,
+    not for what the same dollar would be worth now.
+
+    Gross of commissions, and deliberately separate from the realized bucket
+    below it. This says what the engine charged for the upside it gave away;
+    the bucket says what it kept. Forecast contracts are excluded - they are
+    bought, not written, and are not the engine.
+
+    Returns (percent, executions counted, executions with no NAV for the day).
+    """
+    if not os.path.exists(NAV_SERIES):
+        return None
+    n = json.load(io.open(NAV_SERIES, encoding="utf-8"))
+    navby = dict(zip(n["dates"], n["nav"]))
+    total, counted, missing = 0.0, 0, 0
+    for t in tr:
+        if (t.get("sec_type") != "OPT" or is_event(t)
+                or t["side"] != "SELL" or t["price"] <= 0):
+            continue
+        nav = navby.get(t["trade_time"][:10].replace("-", ""))
+        if not nav:
+            missing += 1
+            continue
+        total += t["price"] * t["size"] * 100 / nav * 100
+        counted += 1
+    return total, counted, missing
+
 def load(paths):
     seen = {}
     for p in paths:
@@ -147,6 +185,7 @@ def main():
     # expiries) carry a UTC timestamp that rolls past midnight and would
     # otherwise date the ledger a day ahead of the trading session.
     span0, span1 = tr[0]["trade_time"][:10], closers[-1]["trade_time"][:10]
+    pyld = premium_yield(tr)
     career = {
         "sinceLabel": month_year(span0),
         "asOfLabel": long_date(span1),
@@ -157,7 +196,10 @@ def main():
             {"k": "Payoff ratio", "v": f"{avg_w/abs(avg_l):.2f}", "m": "Avg win ÷ avg loss"},
             {"k": "Names traded", "v": f"{len(set(t['symbol'] for t in tr))}", "m": "Distinct symbols"},
             {"k": "Profitable months", "v": f"{green} / {len(months)}", "m": "By realized P&L"},
-        ],
+        ] + ([] if pyld is None else [
+            {"k": "Premium written", "v": f"{pyld[0]:.1f}%",
+             "m": f"{pyld[1]:,} writes, each as a share of that day's book · gross of commissions"},
+        ]),
         "buckets": [
             {"name": "Covered-call premium", "tag": "wheel", "win": opt["win"], "pf": opt["pf"], "closes": opt["closes"], "tone": "up", "note": "The engine — premium capture, managed and rolled."},
             {"name": "Share legs", "tag": "securities", "win": stk["win"], "pf": stk["pf"], "closes": stk["closes"], "tone": "down", "note": "Where losses cluster — a few oversized names."},

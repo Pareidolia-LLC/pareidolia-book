@@ -114,14 +114,26 @@ def parse_dials(r):
     return top_name, top_w, cash, on_margin, sleeve_pct, sleeve_pf, sleeve_stake, bound
 
 
+EMPTY_WEEK = {"pnl": 0.0, "sold": 0.0, "written": 0, "names": set()}
+
+
 def premium_by_week(paths, ends):
-    """Covered-call premium realized, and calls written, per week ending."""
+    """Per week ending: premium realized, premium written, and calls written.
+
+    `pnl` and `sold` answer different questions and a week can easily have one
+    positive and the other negative. `pnl` is what the option legs actually
+    booked - it only moves when a contract is closed, bought back or expires, so
+    a roll that buys back dearer than it sold shows up here as a loss. `sold` is
+    the premium taken in at the moment of writing, gross of commissions: the
+    yield the book charged for the upside it gave away that week, whether or not
+    it has been earned yet.
+    """
     seen = {}
     for p in paths:
         for t in json.load(io.open(p, encoding="utf-8")).get("trades", []):
             seen[t["trade_id"]] = t
     ends = sorted(ends)
-    agg = defaultdict(lambda: {"pnl": 0.0, "written": 0, "names": set()})
+    agg = defaultdict(lambda: dict(EMPTY_WEEK, names=set()))
     for t in seen.values():
         if t.get("sec_type") != "OPT" or is_event(t):
             continue
@@ -133,6 +145,7 @@ def premium_by_week(paths, ends):
         a["pnl"] += t.get("realized_pnl") or 0.0
         if t["side"] == "SELL" and t["price"] > 0:
             a["written"] += 1
+            a["sold"] += t["price"] * t["size"] * 100
             a["names"].add(t["symbol"])
     return agg
 
@@ -161,8 +174,12 @@ def main():
         top_name, top_w, cash, margin, sl_pct, sl_pf, sl_stake, bound = parse_dials(r)
         x = extras.get(end, {})
         nav = navby.get(end.replace("-", ""))
-        p = prem.get(end, {"pnl": 0.0, "written": 0, "names": set()})
+        p = prem.get(end, dict(EMPTY_WEEK, names=set()))
         prem_pct = (p["pnl"] / nav * 100) if nav else None
+        # premium yield: what was written against the book that week, gross of
+        # commissions. Reported, not scored - the wheel component still runs off
+        # what actually booked, so adding this moves no letter.
+        yld = (p["sold"] / nav * 100) if nav else None
         # The covered-name allowance is only claimable where the holding is known to
         # carry calls, which the position list can only answer for the current week.
         # Historical weeks are scored on the naked band rather than assumed covered.
@@ -240,7 +257,7 @@ def main():
         if cap is not None:
             total = min(total, cap)
         rows.append((r, end, parts, w, total, dict(top_name=top_name, top_w=top_w, cash=cash,
-                                                   margin=margin, prem_pct=prem_pct,
+                                                   margin=margin, prem_pct=prem_pct, yld=yld,
                                                    written=p["written"], names=sorted(p["names"]),
                                                    covered=covered, prev_w=prev_w, sl_pct=sl_pct,
                                                    sl_stake=sl_stake, bound=bound,
@@ -338,6 +355,10 @@ def main():
                 changed.append("  %-7s %-3s -> %-3s  (%.1f)" % (r["w"], r["grade"], g, total))
             r["grade"] = g
             r["score"] = round(total, 1)
+            if f["yld"] is None:
+                r.pop("premYield", None)
+            else:
+                r["premYield"] = round(f["yld"], 2)
             r["components"] = comp
             r["wins"], r["watch"], r["next"] = wins[:4], watch[:4], nxt[:3]
 
@@ -352,8 +373,10 @@ def main():
         print("  spread: " + "  ".join("%s %d" % (k, dist[k]) for k in sorted(dist)))
     else:
         for r, end, parts, w, total, f in rows:
-            print("%-7s %-3s %5.1f  %s" % (r["w"], letter(total), total,
-                                           " ".join("%s %3.0f" % (k, parts[k]) for k in parts)))
+            print("%-7s %-3s %5.1f  %-46s  yield %s" % (
+                r["w"], letter(total), total,
+                " ".join("%s %3.0f" % (k, parts[k]) for k in parts),
+                "  —  " if f["yld"] is None else "%5.2f%%" % f["yld"]))
 
 
 if __name__ == "__main__":
