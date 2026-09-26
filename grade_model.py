@@ -279,10 +279,9 @@ def main():
             wins.append("Book up %.2f%% on the week." % r["weekRet"])
         else:
             watch.append("Book down %.2f%% on the week." % abs(r["weekRet"]))
-        if f["prem_pct"] and f["prem_pct"] > 0.05:
-            wins.append("Covered-call premium added %.2f%% of net asset value%s." % (
-                f["prem_pct"], (" across %d name%s" % (len(f["names"]), "" if len(f["names"]) == 1 else "s"))
-                if f["names"] else ""))
+        # No premium bullet here: the card header carries written and earned
+        # yield on every card, in both directions, which a wins-only bullet
+        # could not do.
         if f["written"]:
             wins.append("Calls written or rolled on %d contracts%s." % (
                 f["written"], (" · " + ", ".join(f["names"][:5])) if f["names"] else ""))
@@ -355,10 +354,12 @@ def main():
                 changed.append("  %-7s %-3s -> %-3s  (%.1f)" % (r["w"], r["grade"], g, total))
             r["grade"] = g
             r["score"] = round(total, 1)
-            if f["yld"] is None:
-                r.pop("premYield", None)
-            else:
-                r["premYield"] = round(f["yld"], 2)
+            r.pop("premYield", None)      # the old single figure, now a pair
+            for k, v in (("writtenYield", f["yld"]), ("earnedYield", f["prem_pct"])):
+                if v is None:
+                    r.pop(k, None)
+                else:
+                    r[k] = round(v, 2)
             r["components"] = comp
             r["wins"], r["watch"], r["next"] = wins[:4], watch[:4], nxt[:3]
 
@@ -373,10 +374,11 @@ def main():
         print("  spread: " + "  ".join("%s %d" % (k, dist[k]) for k in sorted(dist)))
     else:
         for r, end, parts, w, total, f in rows:
-            print("%-7s %-3s %5.1f  %-46s  yield %s" % (
+            pc = lambda v: "   —  " if v is None else "%6.2f%%" % v
+            print("%-7s %-3s %5.1f  %-46s  written %s  earned %s" % (
                 r["w"], letter(total), total,
                 " ".join("%s %3.0f" % (k, parts[k]) for k in parts),
-                "  —  " if f["yld"] is None else "%5.2f%%" % f["yld"]))
+                pc(f["yld"]), pc(f["prem_pct"])))
 
 
 if __name__ == "__main__":

@@ -1424,12 +1424,16 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
       head.innerHTML='<div class="grade" style="background:'+c+';box-shadow:0 0 26px -6px '+c+'">'+rc.grade+'</div>'+
         '<div><div class="wk">'+rc.weekLabel+'</div>'+
         '<div class="wk">Return this week <span class="wkret '+cls(rc.weekRet)+'">'+fmt(rc.weekRet)+'</span></div>'+
-        /* premium written that week as a share of the book - the yield charged for
-           the upside given away, whether or not it has been earned yet. Never
-           negative, so it carries no sign and no pos/neg colour. */
-        (rc.premYield==null?"":
-          '<div class="wk">Premium yield <span class="wkret">'+rc.premYield.toFixed(2)+
+        /* The insurance pair. Written is the premium charged the day the contract
+           was sold - never negative, so no sign and no colour. Earned is what the
+           option leg actually kept once it was managed to its end, which can go
+           either way, so it takes the sign and the colour. */
+        (rc.writtenYield==null?"":
+          '<div class="wk">Written yield <span class="wkret">'+rc.writtenYield.toFixed(2)+
           '%</span> of net asset value</div>')+
+        (rc.earnedYield==null?"":
+          '<div class="wk">Earned yield <span class="wkret '+cls(rc.earnedYield)+'">'+
+          fmt(rc.earnedYield)+'</span> of net asset value</div>')+
         (rc.recon?'<div class="rbadge">Reconstructed · not graded live</div>':'')+'</div>';
       dl.innerHTML="";
       rc.dials.forEach(function(d){
@@ -1511,7 +1515,7 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     });
     document.getElementById("careermeth").innerHTML=
       '<b>Method:</b> Counted per realized closing execution across the full account history, brokerage-reported. '+
-      'Premium written is the exception: it counts the <em>sale</em>, not the close, because the yield is charged the day the contract is sold and is a separate question from whether it was kept. '+
+      'Written yield is the exception: it counts the <em>sale</em>, not the close, because premium is charged the day a contract is sold. Earned yield is the same premium once the contract has been managed to its end — bought back, expired or assigned — so the gap between the two is what management cost — mostly rolls, since a call counts as newly written every time it is rewritten while only the net is ever earned. A name called away gives its option leg back here at zero and books the gain on the share leg instead, which is the wheel working, not the engine failing. '+
       'Dollar figures are withheld by design — rates, ratios, and counts only.';
   })();
 

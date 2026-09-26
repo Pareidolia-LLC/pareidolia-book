@@ -57,7 +57,7 @@ NAV_SERIES = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 
 
 def premium_yield(tr):
-    """Premium written since inception, as a share of the book.
+    """Written and earned premium since inception, as shares of the book.
 
     Every call sold is measured against net asset value on the day it was
     written and the shares are summed, which is the only way to add a year of
@@ -70,24 +70,33 @@ def premium_yield(tr):
     the bucket says what it kept. Forecast contracts are excluded - they are
     bought, not written, and are not the engine.
 
-    Returns (percent, executions counted, executions with no NAV for the day).
+    Written is the premium charged the day a contract was sold; earned is what
+    the option leg kept once it had been managed to its end. The gap between
+    them is not waste - a call that finishes in the money hands most of its
+    premium back here and books the gain on the share leg instead.
+
+    Returns (written %, writes, earned %, closes, executions with no NAV).
     """
     if not os.path.exists(NAV_SERIES):
         return None
     n = json.load(io.open(NAV_SERIES, encoding="utf-8"))
     navby = dict(zip(n["dates"], n["nav"]))
-    total, counted, missing = 0.0, 0, 0
+    written, writes, earned, closes, missing = 0.0, 0, 0.0, 0, 0
     for t in tr:
-        if (t.get("sec_type") != "OPT" or is_event(t)
-                or t["side"] != "SELL" or t["price"] <= 0):
+        if t.get("sec_type") != "OPT" or is_event(t):
             continue
         nav = navby.get(t["trade_time"][:10].replace("-", ""))
         if not nav:
             missing += 1
             continue
-        total += t["price"] * t["size"] * 100 / nav * 100
-        counted += 1
-    return total, counted, missing
+        if t["side"] == "SELL" and t["price"] > 0:
+            written += t["price"] * t["size"] * 100 / nav * 100
+            writes += 1
+        rp = t.get("realized_pnl") or 0.0
+        if abs(rp) > 1e-9:
+            earned += rp / nav * 100
+            closes += 1
+    return written, writes, earned, closes, missing
 
 def load(paths):
     seen = {}
@@ -197,8 +206,10 @@ def main():
             {"k": "Names traded", "v": f"{len(set(t['symbol'] for t in tr))}", "m": "Distinct symbols"},
             {"k": "Profitable months", "v": f"{green} / {len(months)}", "m": "By realized P&L"},
         ] + ([] if pyld is None else [
-            {"k": "Premium written", "v": f"{pyld[0]:.1f}%",
-             "m": f"{pyld[1]:,} writes, each as a share of that day's book · gross of commissions"},
+            {"k": "Written yield", "v": f"{pyld[0]:.1f}%",
+             "m": f"Premium charged, {pyld[1]:,} writes, each against that day's book"},
+            {"k": "Earned yield", "v": f"{pyld[2]:+.1f}%",
+             "m": f"Premium kept once managed, {pyld[3]:,} closes"},
         ]),
         "buckets": [
             {"name": "Covered-call premium", "tag": "wheel", "win": opt["win"], "pf": opt["pf"], "closes": opt["closes"], "tone": "up", "note": "The engine — premium capture, managed and rolled."},
@@ -218,6 +229,9 @@ def main():
     if write:
         generated = career["insights"]
         merge(career, span1)
+        if pyld and pyld[4]:
+            print("  note: %d option executions fell on days missing from "
+                  "nav_series.json and are not in the yield figures" % pyld[4])
         print("\ninsights in data.json are hand-polished and were left alone;")
         print("freshly generated for comparison:")
         for s in generated:
