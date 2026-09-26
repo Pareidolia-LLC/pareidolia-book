@@ -156,6 +156,17 @@ If any check fails, re-pull after the close.
 
 **An assignment is not in the trade feed on the day it happens.** The Aug 14 NU assignment was missing from that afternoon's `YEAR_TO_DATE` pull entirely, showed up in the `DAYS_7` pull carrying `realized_pnl: 0`, and only settled into the feed days later with its true realized P&L of +$403.92. So in the week an assignment lands, the career ledger is understated — the close gets counted on the *following* refresh, not the current one. Do not read a flat career ledger as proof the assignment was immaterial.
 
+**Nor is an expiring call.** Same lag, one venue over. A short call that expires worthless on the
+Friday first appears as a BUY at 0 carrying `realized_pnl: 0`, tagged `OCC`, stamped a few hours
+past midnight UTC — so it lands on the *Saturday* and is filed outside the week it belongs to. The
+booked version arrives days later under a **different trade id** (`CRS:` prefix), restamped
+Friday 20:20 UTC, carrying the real premium. Two consequences: a week that ends on an expiry
+reports its covered-call line understated, and the placeholder rows survive dedupe as ghosts when
+both dumps are loaded. The ghosts are harmless — every consumer filters `abs(realized_pnl) > 1e-9`
+— but the booked rows must win, so **the newest dump goes last on the command line**. Say in the
+note that the premium line is incomplete, and check whether the shortfall could move the letter
+before publishing: on Sep 25 it could not, so the card went out.
+
 ## Career record — regenerate it every refresh
 
 The career ledger is not hand-maintained. Re-pull the trade dumps, overwrite them in place, and let the script write the block:
@@ -312,6 +323,12 @@ Working files live in `trading-system/data/` (outside this repo - they contain d
 `nav_series.json`, `prices_weekly.json`, `weekly_recon.json`, `weekly_cash.json`, `weekly_cards.json`.
 
 ## Best & Worst tab
+
+**It runs last.** `record_stats.py` reads the report-card dial *states* for the discipline
+counts, and `grade_model.py --write` rewrites those states. Run in the wrong order on 2026-09-20,
+which is why the site carried "41 / 48 weeks over the 20% cap" when the graded dials said 32.
+The order for every refresh is: write the card, then `grade_model.py --write`, then
+`career_stats.py --write`, then `record_stats.py --write`, then `build.py`.
 
 `record` drives it, and **`python record_stats.py --write <trade dumps>` regenerates it** -
 same contract as `career_stats.py`: it rewrites every tile and table and leaves `notes`

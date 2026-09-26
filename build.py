@@ -3056,7 +3056,8 @@ TEMPLATE = r"""<!doctype html><html lang="en"><head>
     var sb=document.getElementById("statusbar");
     if(sb){
       var ytd=(DATA.returns&&DATA.returns[0])?DATA.returns[0].v:null;
-      var names=(DATA.positions||[]).length;
+      /* cash is a row in the ledger, not a name */
+      var names=(DATA.positions||[]).filter(function(p){return p.s!=="cash";}).length;
       var cash=null, dials=(DATA.reports&&DATA.reports.length)?
         DATA.reports[DATA.reports.length-1].dials:null;
       /* dials are {key,state,value,rule} */
