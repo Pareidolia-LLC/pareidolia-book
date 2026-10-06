@@ -28,7 +28,7 @@ Two references, built into the chrome. The brief was literal: how would those tw
 
 ### 2.2 Layout
 
-- One HTML file, one request. ~538 KB with everything inline: CSS, JS, the `DATA` blob, and the three concept datasets (Concepts 01 to 06 and 08 to 10 are static markup: six archive pieces and three deck memos; 07 is the roulette wheel over `roulette.json`). No external fonts, images, scripts, or calls after load.
+- One HTML file, one request. ~780 KB with everything inline: CSS, JS, the `DATA` blob, and the Lab's datasets (Futuresight, the two scanners, roulette) (Concepts 01 to 06 and 08 to 10 are static markup: six archive pieces and three deck memos; 07 is the roulette wheel over `roulette.json`). No external fonts, images, scripts, or calls after load.
 - Four tabs, JS-driven (`data-panel` buttons showing `#panel-*` divs). Not anchor links. The tab digits are drawn by the function rail in JS - do not add number spans to the markup or they will double up.
 - Page padding `clamp(10px,1.2vw,18px)`, no content-column cap. Card grids use 1px gaps over the rule colour rather than per-card borders, so a grid reads as one ruled panel inside its window.
 - Prose stays serif at a real measure (16px/1.78, 68ch) wherever something is read rather than scanned - the weekly assessment, The Lab's theses, all of The Story.
@@ -77,7 +77,7 @@ The former P&L, The Desk and The Mandate panels no longer exist; their sections 
 
 **Order rule:** concepts stay in chronological order by the date each was written or opened. A new concept is inserted by date and everything after it renumbers.
 
-**Grading rule (rewritten 2026-09-20):** the letter is a weighted score out of 100 - performance 40, wheel execution 25, risk craft 20, liquidity 10, event sleeve 5 - not a breach count. Concentration is a band (25% clean / 25-35% watch / 35%+ breach, +5 for a covered name) and its *direction* is scored; cash is a 2-20% band, not a floor. A week worse than -5% caps at C-, worse than -10% at D+. `grade_model.py --write` rescores all 48 cards every run and also writes `score`, `components`, `wins`, `watch`, `next`.
+**Grading rule (rewritten 2026-09-20):** the letter is a weighted score out of 100 - performance 40, wheel execution 25, risk craft 20, liquidity 10, event sleeve 5 - not a breach count. Concentration is a band (25% clean / 25-35% watch / 35%+ breach, +5 for a covered name) and its *direction* is scored; cash is a 2-20% band, not a floor. A week worse than -5% caps at C-, worse than -10% at D+. `grade_model.py --write` rescores every card every run and also writes `score`, `components`, `wins`, `watch`, `next`.
 
 **Generated blocks:** `career` comes from `career_stats.py --write`, `record` from `record_stats.py --write` (run career first - record reads its buckets). Both leave the hand-written prose (`insights`, bucket notes, `record.notes`) alone.
 
@@ -136,7 +136,7 @@ record      {accolades, failures, discipline:[{k,v,m}], wins, losses:[{t,d,s,v}]
               g/l are each name's share of ALL realized gains / losses; pf null or >50 renders as an em dash
 ```
 
-Weekly refresh touches only `data.json` (returns, positions, a new report, curve tail, book prose) plus `career_stats.py --write`. Schema detail and the settlement check live in `README.md`.
+Weekly refresh touches only `data.json` (returns, positions, a new report, curve tail, book prose) plus `career_stats.py --write`. From Oct 16, 2026 the trailing-12M tile is no longer the since-inception figure; `build.py` checks it against the curve and refuses to build if it is stale. Schema detail and the settlement check live in `README.md`.
 
 ### 6.2 Concept datasets — separate files, merged at build
 
