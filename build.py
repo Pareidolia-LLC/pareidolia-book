@@ -18,6 +18,27 @@ if _career_as_of != data.get("asOf"):
         "    python career_stats.py --write ../data/trades_ytd_2026.json ../data/trades_q4_2025.json"
         % (_career_as_of, data.get("asOf")))
 
+# Until the book is a year old, trailing 12M and since-inception are the same
+# number. From Oct 16, 2026 they part, and a refresh that carries the tile
+# forward by habit would publish the wrong one. The curve is the referee: the
+# tile must match it to a tenth of a point, and stop calling itself inception.
+_cps, _dates = data["curve"]["cps"], data["curve"]["dates"]
+_last = _dates[-1]
+_year_back = str(int(_last[:4]) - 1) + _last[4:]
+_t12 = [r for r in data["returns"] if "Trailing 12M" in r["k"]]
+if _t12 and _dates[0] <= _year_back:
+    _i = max(i for i, d in enumerate(_dates) if d <= _year_back)
+    _want = round(((1 + _cps[-1]) / (1 + _cps[_i]) - 1) * 100, 2)
+    _bad = []
+    if abs(_t12[0]["v"] - _want) > 0.1:
+        _bad.append("value is %.2f, the curve says %.2f (from %s)" % (_t12[0]["v"], _want, _dates[_i]))
+    if "inception" in _t12[0]["m"].lower():
+        _bad.append("subtitle %r - the book is over a year old" % _t12[0]["m"])
+    if _bad:
+        sys.exit("trailing-12M tile is stale: " + "; ".join(_bad) +
+                 ".\nSet returns[%d] to v=%.2f, m=\"Time-weighted, net\"."
+                 % (data["returns"].index(_t12[0]), _want))
+
 TEMPLATE = r"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
