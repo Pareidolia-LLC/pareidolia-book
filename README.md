@@ -278,6 +278,41 @@ was a third of its present size counts for what it was worth then. `career_stats
 execution falling on a day missing from `../data/nav_series.json`; 7 did as of Sep 26, all from
 before the series starts, and they are simply left out.
 
+## The annual after-action — once a year, above the week
+
+The book opened **Oct 16, 2025**, so every Oct 16 the Record tab carries two cards: the annual
+after-action first, the week's card below it as usual. `python annual_stats.py --write` generates it;
+`build.py` renders it only when `data.annual` exists, so the section stays hidden the other fifty-one
+weeks of the year and nothing has to be torn out afterwards.
+
+**It invents no new rubric.** The year is scored on the same five axes as every weekly card, so the
+annual grade can be set beside any week of the record and read the same way. Four of them — Wheel
+execution, Risk craft, Liquidity, Event sleeve — are the **mean of what the weeks themselves
+scored**, which makes the annual grade the record's own verdicts aggregated rather than a second
+opinion on the same facts.
+
+**Performance is the exception, and it has to be.** A year's return is what compounded, not what the
+weeks averaged: a book can post a positive mean weekly score and still finish the year down, because
+losses compound differently from gains. So Performance is scored on the figure the curve reports from
+inception to the anniversary, on a scale where +25% is 100 and −25% is 0.
+
+Only the weights move:
+
+| | perf | wheel | risk | liq | sleeve |
+|---|---|---|---|---|---|
+| weekly | 40 | 25 | 20 | 10 | 5 |
+| annual | **30** | 25 | **25** | 10 | **10** |
+
+A week is allowed to be dominated by its return. A year is not — over twelve months the question is
+whether the book was *run* well, so Risk craft is lifted level with Wheel execution.
+
+Beneath the grade sits a **`panel`** of year-only facts, carried unscored because they are context
+rather than marks: the grade spread across all 52 cards as one bar, green weeks against red, the
+depth of the drawdown and whether it recovered, best and worst week, and the profit factor of each of
+the three lines side by side — which is the fastest way to see where a year was actually made and
+lost. The `note` is **hand-written and never generated**; `annual_stats.py` preserves whatever is
+there and warns when it is empty.
+
 ## The event sleeve: graded, monitored, reviewed at year end
 
 From 2026-09-20 the sleeve is **scored on what it returns**, and the grading was

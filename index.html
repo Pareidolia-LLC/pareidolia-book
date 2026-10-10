@@ -200,6 +200,20 @@
   .ctip .tdate{color:var(--muted); margin-right:10px}
   .ctip .tval{font-weight:600; color:var(--accent)}
 
+  /* ---------- the annual card: the weekly card's clothes, once a year ---------- */
+  #annualsec{border-bottom:2px solid var(--line); padding-bottom:26px; margin-bottom:28px}
+  .anniv{display:inline-block; font-family:var(--mono); font-size:9.5px; letter-spacing:.2em;
+    text-transform:uppercase; color:#0A101C; background:var(--up); padding:4px 9px; margin-left:10px}
+  .anmethod{font-family:var(--mono); font-size:9.5px; line-height:1.75; letter-spacing:.06em;
+    color:var(--faint); margin-top:12px; max-width:78ch}
+  .anspread{display:flex; height:30px; margin-top:16px; border:1px solid var(--line)}
+  .anspread i{display:flex; align-items:center; justify-content:center; font-family:var(--mono);
+    font-size:10px; letter-spacing:.12em; color:#0A101C; font-weight:600; font-style:normal;
+    border-right:1px solid var(--line); min-width:0; overflow:hidden; white-space:nowrap}
+  .anspread i:last-child{border-right:0}
+  .anspreadlab{font-family:var(--mono); font-size:9.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--faint); margin-top:8px}
+
   /* ---------- after-action: the grade is an amber slab ---------- */
   .rc-head{display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin:14px 0 16px}
   .grade{font-family:var(--display); font-weight:400; font-size:58px; line-height:.9;
@@ -846,6 +860,15 @@
   </section>
   </div>
   <div class="panel" id="panel-record">
+  <section aria-label="Annual report card" id="annualsec" hidden>
+    <p class="eyebrow" id="aneyebrow"></p>
+    <div class="rc-head" id="anhead"></div>
+    <div class="rcscore" id="anscore"></div>
+    <div class="anspread" id="anspread"></div>
+    <p class="anspreadlab" id="anspreadlab"></p>
+    <div class="stats" id="anpanel"></div>
+    <p class="rc-note" id="annote"></p>
+  </section>
   <section aria-label="Weekly report card">
     <p class="eyebrow">Weekly After-Action</p>
     <div class="rc-head" id="rchead"></div>
@@ -1392,6 +1415,53 @@
       d.innerHTML='<div class="k">'+s.k+'</div><div class="v '+cls(s.v)+'">'+fmt(s.v)+'</div><div class="m">'+s.m+'</div>';
       el.appendChild(d);
     });
+  })();
+
+  /* --- the annual after-action, when there is one --- */
+  (function(){
+    var a=DATA.annual; if(!a) return;
+    var sec=document.getElementById("annualsec"); if(!sec) return;
+    function gcol(g){var t=g.charAt(0);return (t==="A")?"var(--up)":(t==="B")?"var(--accent)":(t==="C")?"var(--warn)":"var(--down)";}
+    var c=gcol(a.grade);
+    document.getElementById("aneyebrow").textContent=a.eyebrow||"Annual after-action";
+    document.getElementById("anhead").innerHTML=
+      '<div class="grade" style="background:'+c+';box-shadow:0 0 26px -6px '+c+'">'+a.grade+'</div>'+
+      '<div><div class="wk">'+(a.label||"")+' &middot; '+a.window+
+        '<span class="anniv">First anniversary</span></div>'+
+      '<div class="wk">Return for the year <span class="wkret '+cls(a.ret)+'">'+fmt(a.ret)+'</span></div></div>';
+    document.getElementById("anscore").innerHTML=
+      '<div class="scorehead"><span class="sk">Score</span><span class="sv">'+a.score.toFixed(1)+
+      '</span><span class="sm">out of 100 &middot; the same five axes as every week, weighted for a year</span></div>'+
+      '<div class="comps">'+a.components.map(function(x){
+        var w=Math.max(0,Math.min(100,x.score));
+        var tone=(x.score>=70?" hi":(x.score<40?" lo":""));
+        return '<div class="comp'+tone+'"><div class="ck">'+x.k+'</div>'+
+               '<div class="ctrack"><i style="width:'+w+'%"></i></div>'+
+               '<div class="cp">'+x.pts.toFixed(1)+' / '+x.max+'</div></div>';
+      }).join("")+'</div>'+
+      '<p class="anmethod">Four of the five axes are the mean of what the year’s weekly cards '+
+      'scored on that axis, so the annual grade is the record’s own verdicts aggregated rather '+
+      'than a second rubric. Performance is the exception: a year’s return is what compounded, '+
+      'not what the weeks averaged, so it is scored on the figure the curve reports from inception. '+
+      'The weights differ from a weekly card — 30/25/25/10/10 against 40/25/20/10/5 — '+
+      'because a week may be dominated by its return and a year may not.</p>';
+    /* the year's grades as one bar, each letter sized by how often it was earned */
+    var tot=a.spread.reduce(function(n,x){return n+x.n;},0)||1;
+    document.getElementById("anspread").innerHTML=a.spread.map(function(x){
+      return '<i style="flex:'+x.n+' 1 0;background:'+gcol(x.g)+'" title="'+x.n+' weeks graded '+x.g+'">'+
+             x.g+' '+x.n+'</i>';}).join("");
+    document.getElementById("anspreadlab").textContent=
+      "Every week of the year by grade \u2014 "+tot+" cards";
+    var pn=document.getElementById("anpanel");
+    a.panel.forEach(function(p){
+      var el=document.createElement("div"); el.className="stat";
+      el.innerHTML='<div class="k">'+p.k+'</div><div class="v">'+p.v+'</div><div class="m">'+p.m+'</div>';
+      pn.appendChild(el);
+    });
+    var nt=document.getElementById("annote");
+    if(a.note){ nt.innerHTML='<b>Assessment:</b> '+a.note.split("\n\n").join('</p><p class="rc-note">'); }
+    else { nt.remove(); }
+    sec.hidden=false;
   })();
 
   (function(){
@@ -3068,7 +3138,7 @@
      reader can sit on a ten-minute-old copy after a refresh. version.json is
      fetched uncached and compared against the hash baked in at build time. */
   (function(){
-    var BUILD="853efcb8f905";
+    var BUILD="915d679e7259";
     if(!window.fetch||BUILD.charAt(0)==="_") return;
     function notice(){
       var d=document.createElement("div");
