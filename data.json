@@ -1,21 +1,21 @@
 {
-  "asOf": "Oct 3, 2026",
+  "asOf": "Oct 10, 2026",
   "curveLabel": "Time-weighted · Since inception, Oct 2025",
   "returns": [
     {
       "k": "Return · YTD 2026",
-      "v": -4.77,
+      "v": -1.23,
       "m": "Time-weighted, net"
     },
     {
       "k": "Return · Trailing 12M",
-      "v": -5.08,
+      "v": -1.56,
       "m": "Since inception, Oct 2025"
     },
     {
       "k": "Return · Last 7 Days",
-      "v": 0.99,
-      "m": "Made on one Friday session in SPCX; eight of thirteen names closed lower"
+      "v": 3.67,
+      "m": "Nine names closed Tuesday; the return is positive and the realized ledger is not"
     }
   ],
   "reports": [
@@ -3636,7 +3636,6 @@
       "weekLabel": "Week of Sep 28 – Oct 2, 2026",
       "grade": "B−",
       "weekRet": 1.04,
-      "now": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -3652,13 +3651,13 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "pending · 500 staked",
-          "rule": "Graded on what the sleeve returned · 400 JPUSD contracts at 1.1% of NAV, settled and not yet booked · 100 INNKI contracts at 0.3% of NAV, open to Oct 30 · a fourth week on the banned root, now at the engine's minimum size rather than under it"
+          "state": "pass",
+          "value": "carried · 400 for 400",
+          "rule": "Graded on what the sleeve returned · 400 JPUSD contracts at 1.1% of NAV · every settlement paid · net +0.3% of NAV · a fourth week on the banned root, at the engine's minimum size rather than under it"
         }
       ],
-      "note": "One name made the week, in one session. The book finished up 1.04%, and it was underwater until Thursday to get there: down 1.67% by Monday's close, still down 0.63% on Wednesday, and only green on Thursday afternoon. Then SPCX gained better than seven per cent on Friday alone, on close to twice its usual volume, and carried the whole week on its own — the position added about one and a half points of net asset value while everything else, netted together, lost ground. Eight of thirteen names finished lower. That is not a week the book earned; it is a week a single holding handed it, and the holding in question is now the largest position on the sheet at 22.2% of net asset value with no call written against it.\n\nGRPN went the other way and ran the engine's trade in reverse. The shares fell about nine per cent to 19.31, back underneath the 20 strike they are short into October, and the call written against them lost roughly two thirds of its mark in the process. The option leg made money while the share leg lost more of it — which is exactly the shape of last week in mirror image, when GRPN ran fifteen per cent into the same strike and the upside was capped. A covered call does not change the direction of a name. It narrows the range of outcomes and charges for doing so, and across two weeks GRPN has now paid out both ends of that range. XNDU kept falling, down another fourteen per cent to 4.30 and now fifty-nine per cent below carry, the worst mark in the book for a second straight week.\n\nNot a single share changed hands all week. The only executions on the securities side were Monday morning's calls: seven contracts on SERV at 0.18 and two on XNDU at 0.08, both out to the October 9 expiry, for 0.49% of net asset value in written premium. The SERV write is the point worth noting — 0.18 against the two-cent replacements that were criticised on this card a week ago, which is the engine being run properly rather than kept nominally alive. Nothing booked as earned this week because nothing expired or was bought back, so the earned line reads flat; it is not a drought, it is the lag. Seven of thirteen names now carry written calls, up from five.\n\nCash finished at 0.7% of net asset value. That is a second consecutive week under the 2% floor, and the move up from 0.1% came entirely from premium collected rather than from anything being sold — which is the reserve rebuilding at the slowest rate available to it. Nothing was trimmed. SPCX put on a seven per cent session and was not touched, at the exact moment it became the largest and least protected position in the book. The discipline question this week is not what was bought; it is what was not sold.\n\nThe event sleeve ran a fourth consecutive week on JPUSD, and the size breach flagged last week is fixed while the ban breach is not. Four tickets of exactly 100 contracts went out at 0.69 to 0.80 — at the engine's 100-contract minimum rather than under it, 1.1% of net asset value at stake, against 40 contracts a week ago. All 400 settled and none of the outcomes has booked, so the sleeve's figure is left blank again and dropped from the weighting rather than scored as a zero. A second root opened alongside it: 100 INNKI contracts at an average near 0.85, about 0.3% of net asset value, and unlike everything the sleeve has traded since August these do not settle overnight — they run to October 30. That is the first event position of size taken on a horizon where a thesis can be wrong for three weeks before it is resolved, and it is not a banned root. Last week's 40 JPUSD contracts have now booked: all 40 paid, +0.1% of net asset value on 0.1% staked. Being right about the yen on a ticket the engine forbids is the outcome the ban exists for, not an argument against it.",
-      "score": 67.7,
+      "note": "One name made the week, in one session. The book finished up 1.04%, and it was underwater until Thursday to get there: down 1.67% by Monday's close, still down 0.63% on Wednesday, and only green on Thursday afternoon. Then SPCX gained better than seven per cent on Friday alone, on close to twice its usual volume, and carried the whole week on its own — the position added about one and a half points of net asset value while everything else, netted together, lost ground. Eight of thirteen names finished lower. That is not a week the book earned; it is a week a single holding handed it, and the holding in question is now the largest position on the sheet at 22.2% of net asset value with no call written against it.\n\nGRPN went the other way and ran the engine's trade in reverse. The shares fell about nine per cent to 19.31, back underneath the 20 strike they are short into October, and the call written against them lost roughly two thirds of its mark in the process. The option leg made money while the share leg lost more of it — which is exactly the shape of last week in mirror image, when GRPN ran fifteen per cent into the same strike and the upside was capped. A covered call does not change the direction of a name. It narrows the range of outcomes and charges for doing so, and across two weeks GRPN has now paid out both ends of that range. XNDU kept falling, down another fourteen per cent to 4.30 and now fifty-nine per cent below carry, the worst mark in the book for a second straight week.\n\nNot a single share changed hands all week. The only executions on the securities side were Monday morning's calls: seven contracts on SERV at 0.18 and two on XNDU at 0.08, both out to the October 9 expiry, for 0.49% of net asset value in written premium. The SERV write is the point worth noting — 0.18 against the two-cent replacements that were criticised on this card a week ago, which is the engine being run properly rather than kept nominally alive. Nothing booked as earned this week because nothing expired or was bought back, so the earned line reads flat; it is not a drought, it is the lag. Seven of thirteen names now carry written calls, up from five.\n\nCash finished at 0.7% of net asset value. That is a second consecutive week under the 2% floor, and the move up from 0.1% came entirely from premium collected rather than from anything being sold — which is the reserve rebuilding at the slowest rate available to it. Nothing was trimmed. SPCX put on a seven per cent session and was not touched, at the exact moment it became the largest and least protected position in the book. The discipline question this week is not what was bought; it is what was not sold.\n\nThe event sleeve ran a fourth consecutive week on JPUSD, and the size breach flagged last week is fixed while the ban breach is not. Four tickets of exactly 100 contracts went out at 0.69 to 0.80 — at the engine's 100-contract minimum rather than under it, 1.1% of net asset value at stake, against 40 contracts a week ago. All 400 settled, and they have since booked: every one of them paid, for +0.3% of net asset value at a 1.64 profit factor on the 1.1% staked. A second root opened alongside it: 100 INNKI contracts at an average near 0.85, about 0.3% of net asset value, and unlike everything the sleeve has traded since August these do not settle overnight — they run to October 30. That is the first event position of size taken on a horizon where a thesis can be wrong for three weeks before it is resolved, and it is not a banned root. Last week's 40 JPUSD contracts have now booked: all 40 paid, +0.1% of net asset value on 0.1% staked. Being right about the yen on a ticket the engine forbids is the outcome the ban exists for, not an argument against it.",
+      "score": 68.3,
       "writtenYield": 0.49,
       "earnedYield": 0.0,
       "components": [
@@ -3685,12 +3684,19 @@
           "pts": 6.0,
           "max": 10,
           "score": 60
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 4.0,
+          "max": 5,
+          "score": 80
         }
       ],
       "wins": [
         "Book up 1.04% on the week.",
         "Calls written or rolled on 5 contracts · SERV, XNDU.",
-        "Top name SPCX at 22.2%, inside the 25% line."
+        "Top name SPCX at 22.2%, inside the 25% line.",
+        "Event sleeve +0.30% of net asset value on 1.1% staked."
       ],
       "watch": [
         "Cash at 0.7%, under the 2% floor - nothing to deploy."
@@ -3698,30 +3704,95 @@
       "next": [
         "Leave a little dry powder at the close; 2% is the floor, not a target."
       ]
+    },
+    {
+      "w": "Oct 9",
+      "weekLabel": "Week of Oct 5 – Oct 9, 2026",
+      "grade": "B+",
+      "weekRet": 3.66,
+      "now": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "pass",
+          "value": "SPCX 21.9%",
+          "rule": "Inside the 25% band · PLTR level with it at 21.8% · the two are 43.6% of the book between them, and neither carries a call"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "warn",
+          "value": "50.5%",
+          "rule": "Above the 20% band · half the book in cash after Tuesday's liquidation · a breach in the opposite direction to last week's · nothing redeployed yet"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "pending · 200 staked",
+          "rule": "Graded on what the sleeve returned · 200 JPUSD contracts at 0.5% of NAV, settled and not yet booked · 100 INNKI contracts open to Oct 30 · a fifth week on the banned root"
+        }
+      ],
+      "note": "The book was taken apart on Tuesday. Between 13:58 and 14:13 UTC, nine names were closed in one sequence — ACTG, BBAI, GRPN, HUN, KVYO, SERV and XNDU, after VSXY and OLN had already gone on Monday — and every one of them was unwound in the right order: the short call bought back first, the shares sold second, so nothing was left naked for even a minute. What is left is four names and a forecast sleeve. Thirteen became four, and cash went from 0.7% of net asset value to 50.5% in two sessions.\n\nIt cost 14.9% of net asset value in realized losses, which is the second heaviest week of booked losses in the record and is beaten only by the OWL exit in July. GRPN alone was 5.3% of the book, XNDU 3.9%, SERV 2.7%, BBAI 1.3%, KVYO 1.0%. Those are large numbers and they belong on this card in full.\n\nThey are also not the week's return, which was positive: the book finished up 3.66%. Both statements are true and the difference between them is the whole point of keeping two ledgers. Every one of those losses was already in the marks before Tuesday — the names had been carried at those prices for weeks, and XNDU had been reported on this card at fifty-nine per cent below carry seven days ago. Selling converted paper losses into booked ones. It moved the career record hard and it moved net asset value not at all. A reader who sees a B+ on the week the book was liquidated should understand exactly that: the grade scores the week's return and the process behind it, and the damage this week recognised was done over the preceding months.\n\nOn the substance, this is the book acting on its own longest-standing criticism. The most repeated finding in this record — stated on the career ledger every week for a year — is loss asymmetry: the average loser running about one and a half times the average winner because losses were let run while winners were cut. The nine names closed were the nine that were not working. The four kept are the four that were: PLTR up better than twenty-two per cent on carry, SPCX nearly sixteen, PR slightly ahead, BHF roughly flat. Cutting losers and keeping winners is the opposite of the instinct that produced this record, and it deserves to be said plainly.\n\nWhat it does not fix is the thing that made the losses that size. This was one decision taken in fifteen minutes, not a set of stops placed at entry and honoured on the way down. The discipline this book keeps asking for is a line drawn before the position is on; clearing the deck after the fact is a different act, and a cheaper one to take credit for. The test is not this Tuesday. It is whether the next position carries an exit before it carries size.\n\nTwo consequences sit on the dials. The engine is off: there is not a single written call anywhere in the book, the first time that has been true in this record, and the 0.34% of net asset value on the earned line this week came entirely from buying calls back on the way out rather than from writing any. And cash at 50.5% is now above the 20% band rather than under the 2% floor, which is a breach in the other direction — half the book is doing nothing, one week after the complaint was that none of it was. Neither is a failure of Tuesday. Both are the open question Tuesday created, and they are what the next card will be graded on.\n\nThe sleeve ran a fifth consecutive week on JPUSD: 200 contracts at 0.81, about 0.5% of net asset value, settled and not yet booked, so the figure is blank and dropped from the weighting again. Thursday also saw the first two-sided INNKI trading of the record — 100 contracts sold at 0.50 against 50 bought between 0.16 and 0.22 — which closed the December position and left the October one untouched at 100 contracts. Last week's 400 JPUSD contracts have booked: every one paid, for +0.3% of net asset value at a 1.64 profit factor on 1.1% staked, and the Oct 2 card now carries the figure.",
+      "score": 76.2,
+      "writtenYield": 0.0,
+      "earnedYield": 0.34,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 31.7,
+          "max": 40,
+          "score": 79
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 14.6,
+          "max": 25,
+          "score": 59
+        },
+        {
+          "k": "Risk craft",
+          "pts": 20.0,
+          "max": 20,
+          "score": 100
+        },
+        {
+          "k": "Liquidity",
+          "pts": 6.0,
+          "max": 10,
+          "score": 60
+        }
+      ],
+      "wins": [
+        "Book up 3.66% on the week.",
+        "Top name SPCX at 21.9%, inside the 25% line."
+      ],
+      "watch": [
+        "Cash at 50.5%, above the 20% band - capital sitting idle."
+      ],
+      "next": []
     }
   ],
   "career": {
     "sinceLabel": "Oct 2025",
-    "asOfLabel": "Oct 3, 2026",
+    "asOfLabel": "Oct 10, 2026",
     "headline": [
       {
         "k": "Closed trades",
-        "v": "2,161",
+        "v": "2,196",
         "m": "Engagements opened, closed & booked"
       },
       {
         "k": "Win rate",
-        "v": "60.0%",
-        "m": "1,296 won · 865 lost"
+        "v": "59.6%",
+        "m": "1,308 won · 888 lost"
       },
       {
         "k": "Profit factor",
-        "v": "0.98",
+        "v": "0.83",
         "m": "Gross wins ÷ gross losses"
       },
       {
         "k": "Payoff ratio",
-        "v": "0.66",
+        "v": "0.56",
         "m": "Avg win ÷ avg loss"
       },
       {
@@ -3731,7 +3802,7 @@
       },
       {
         "k": "Profitable months",
-        "v": "7 / 12",
+        "v": "7 / 13",
         "m": "By realized P&L"
       },
       {
@@ -3741,44 +3812,44 @@
       },
       {
         "k": "Earned yield",
-        "v": "+30.8%",
-        "m": "Premium kept once managed, 189 closes"
+        "v": "+31.2%",
+        "m": "Premium kept once managed, 200 closes"
       }
     ],
     "buckets": [
       {
         "name": "Covered-call premium",
         "tag": "wheel",
-        "win": 77.8,
-        "pf": 3.67,
-        "closes": 189,
+        "win": 77.0,
+        "pf": 3.55,
+        "closes": 200,
         "tone": "up",
-        "note": "The engine. Premium taken on shares already held — managed, rolled, and bought back cheap. This is the line that pays."
+        "note": "The engine. Premium taken on shares already held — managed, rolled, and bought back cheap. The one line with a measured edge, and idle since Oct 6, when every short call was closed."
       },
       {
         "name": "Share legs",
         "tag": "securities",
-        "win": 66.7,
-        "pf": 0.35,
-        "closes": 36,
+        "win": 46.3,
+        "pf": 0.24,
+        "closes": 54,
         "tone": "down",
-        "note": "Where the casualties are. A small number of oversized names, not a failure of selection."
+        "note": "Where the casualties are. A small number of oversized names held too long rather than a failure of selection — nine of them closed in a single sequence on Oct 6, which is what moved this line."
       },
       {
         "name": "Event contracts",
         "tag": "forecast",
         "win": 58.1,
-        "pf": 0.92,
-        "closes": 1936,
+        "pf": 0.93,
+        "closes": 1942,
         "tone": "warn",
         "note": "Reopened in August for a systematic build, graded on returns again from Sep 20 and reviewed at year end. Counted from booked settlements, which lag the trade by up to a week, so the most recent weeks are always incomplete here."
       }
     ],
     "insights": [
-      "Loss asymmetry is still the leak. The average loser runs 1.5× the average winner, so a 60.0% hit rate finishes behind. The targets are being picked correctly; the losses are being let off the leash.",
-      "The engine is real: covered-call premium takes 78% of its closes at a 3.7 profit factor across 189 closes. That is the business, and everything else is management around it. It was switched off for two weeks at the start of September and switched back on in the week of Sep 7, and in the week of Sep 14 it completed a full turn: KEEL's calls were assigned at a strike above what the shares cost. GRPN has now shown both faces of the same trade in consecutive weeks: it ran about fifteen per cent into its short 20 strike in the week of Sep 21 and was capped there, then fell about nine per cent back under it in the week of Sep 28 while the call it had written gave back two thirds of its mark. Premium sells the upside and buys no protection. It narrows the range of outcomes and charges for doing so, and over those two weeks GRPN paid out both ends of the range. Measured by yield rather than by hit rate, it has charged out slightly more than the entire book in premium across the life of the account — 103.3% of net asset value written, summed sale by sale against the book on the day of each — and earned 30.8% of net asset value back on the option legs. The gap between the two is mostly rolls rather than losses — 59.7 of those 103.3 points went straight back out buying contracts in, because a call counts as newly written every time it is rewritten while only the net is ever earned. Assignment takes most of the rest and never shows as a loss: a call that finishes in the money books zero on the option leg and the gain lands on the share leg instead, which is the wheel completing a turn rather than the engine failing.",
-      "The forecast sleeve reopened on Aug 24 to gather data for a systematic strategy under construction, and it has been graded on what it returns since Sep 20, back to the week it reopened. Scored on booked settlements it has been quietly positive and very small: about +0.15% of net asset value in the week of Aug 24, +0.12% in the week of Aug 31, +0.18% in the week of Sep 7, +0.5% in the week of Sep 14 and +0.1% in the week of Sep 21, with the week of Sep 28 not yet booked. That is a full point of net asset value across five booked weeks in which it staked between a tenth of a per cent and three per cent of the book at a time, nearly all of it in JPUSD — a root the strategy bans on 96 settled events at minus four cents a contract. Winning small on a banned root is the trap the ban exists for, and the week of Sep 21 stacked a second breach on the first: 40 contracts, below the engine's own 100-contract minimum, in the name the engine forbids. The week of Sep 28 fixed the size and not the root — four tickets of exactly 100, at the minimum rather than under it, a fourth straight week on JPUSD. It also opened the sleeve's first position of size that does not settle overnight: 100 INNKI contracts running to Oct 30, on a root the engine does not ban. The sleeve is monitored on size and on which roots it touches, its minimum is 100 contracts an action, and it is reviewed at year end on what it has actually produced.",
-      "Share legs run a 0.35 profit factor across 36 closes, nearly all of it traceable to two names held past their stops. The per-name cap is scar tissue from this line, and it has now held for nine consecutive weeks — the longest clean run in the record.",
+      "Loss asymmetry has been the leak in this record from the start, and the week of Oct 5 is what it costs to close it. The average loser now runs about 1.8× the average winner against a 59.6% hit rate, which is worse than it read a week ago — not because anything deteriorated, but because nine names were closed on Oct 6 and months of deferred losses landed on the books in one session. The ratio had been flattered by what was still being held. Selection was never the problem; holding the losers was, and the share-leg line below is where that shows.",
+      "The engine is real and it is currently switched off. Covered-call premium takes 77% of its closes at a 3.6 profit factor across 200 closes — the one line in this book with a measured edge, and everything else is management around it. Every short call was bought back during the Oct 6 liquidation and none has been written since, so for the first time in this record nothing is covered. GRPN showed both faces of the trade in consecutive weeks before it went: it ran about fifteen per cent into its short 20 strike and was capped there, then fell about nine per cent back under it while the call gave up two thirds of its mark. Premium sells the upside and buys no protection. It narrows the range of outcomes and charges for doing so. Measured by yield rather than hit rate, the engine has charged out slightly more than the entire book across the life of the account — 103.3% of net asset value written, summed sale by sale against the book on the day of each — and earned 31.2% back on the option legs. The gap is mostly rolls rather than losses: 61.4 of those points went straight back out buying contracts in, because a call counts as newly written every time it is rewritten while only the net is ever earned. Assignment takes most of the rest and never shows as a loss, since a call that finishes in the money books zero on the option leg and the gain lands on the share leg instead.",
+      "The forecast sleeve reopened on Aug 24 to gather data for a systematic strategy under construction, and it has been graded on what it returns since Sep 20, back to the week it reopened. Scored on booked settlements it has been persistently positive and small: about +0.15% of net asset value in the week of Aug 24, +0.12% in the week of Aug 31, +0.18% in the week of Sep 7, +0.5% in the week of Sep 14, +0.1% in the week of Sep 21 and +0.3% in the week of Sep 28, with the week of Oct 5 not yet booked. That is better than a point and a quarter of net asset value across six booked weeks, nearly all of it in JPUSD — a root the strategy bans, on 96 settled events at minus four cents a contract. Winning small on a banned root is the trap the ban exists for, and Oct 5 made it a fifth consecutive week. The sleeve has started to change shape, though: it opened 100 INNKI contracts running to Oct 30 rather than settling overnight, and on Oct 8 it traded INNKI from both sides for the first time. Its minimum is 100 contracts an action and it is reviewed at year end on what it has actually produced.",
+      "Share legs run a 0.24 profit factor across 54 closes, and 18 of those 54 were booked in the two sessions of Oct 5 and Oct 6. That is the line this book exists to watch: the money is made on premium and given back on the shares underneath it. The per-name cap is scar tissue from exactly this, and it has now held for ten consecutive weeks — the longest clean run in the record.",
       "The ledger moves on the back office's schedule, not the market's. NU's August assignment reached the trade feed a week after the fact and NIQ's followed the same path, and KEEL's Sep 18 assignment took a week to carry its gain on the share leg. Event contracts are the sharpest case: a settled contract books its cost against the ticket that bought it and its payout as a separate settlement row, and those rows can lag by a week — not one of the 700 contracts settled in the week of Sep 14 had booked either leg when that card went out on Sep 20, and every one of them had booked by Sep 26. Written calls run the same lag, and the Sep 25 card was published saying so: its expiries on XNDU and SERV sat in the feed as processed rows with no P&L attached, and the card predicted they were worth roughly 0.16% of net asset value. They booked a week later, restamped Friday 20:20 UTC under new trade ids, worth 0.16%. The card's earned yield has been restated from −0.27% to −0.11% and its letter did not move, which is the whole reason it was safe to publish incomplete and say which part was incomplete. Read a fresh week as incomplete rather than as a loss. Two cards on this site were written the other way and have been corrected."
     ]
   },
@@ -3786,85 +3857,31 @@
     {
       "t": "SPCX",
       "s": "dir",
-      "w": 22.19,
-      "r": 13.3
+      "w": 21.89,
+      "r": 15.89
     },
     {
       "t": "PLTR",
       "s": "dir",
-      "w": 20.4,
-      "r": 10.79
-    },
-    {
-      "t": "GRPN",
-      "s": "wheel",
-      "w": 13.47,
-      "r": -28.43
-    },
-    {
-      "t": "SERV",
-      "s": "wheel",
-      "w": 11.25,
-      "r": -23.39
-    },
-    {
-      "t": "KVYO",
-      "s": "wheel",
-      "w": 10.96,
-      "r": -14.08
-    },
-    {
-      "t": "BBAI",
-      "s": "wheel",
-      "w": 4.6,
-      "r": -22.49
+      "w": 21.75,
+      "r": 22.52
     },
     {
       "t": "PR",
       "s": "dir",
-      "w": 3.86,
-      "r": -2.36
-    },
-    {
-      "t": "XNDU",
-      "s": "wheel",
-      "w": 3.0,
-      "r": -58.97
-    },
-    {
-      "t": "HUN",
-      "s": "wheel",
-      "w": 2.97,
-      "r": -12.4
-    },
-    {
-      "t": "OLN",
-      "s": "dir",
-      "w": 2.77,
-      "r": -7.85
+      "w": 3.87,
+      "r": 1.65
     },
     {
       "t": "BHF",
       "s": "dir",
-      "w": 1.74,
-      "r": 1.62
-    },
-    {
-      "t": "VSXY",
-      "s": "dir",
-      "w": 1.6,
-      "r": 1.97
-    },
-    {
-      "t": "ACTG",
-      "s": "wheel",
-      "w": 1.51,
-      "r": -2.34
+      "w": 1.64,
+      "r": -0.76
     },
     {
       "t": "Cash",
       "s": "cash",
-      "w": 0.71,
+      "w": 50.55,
       "r": null
     }
   ],
@@ -3885,14 +3902,14 @@
       "eyebrow": "Book Summary",
       "h": "Current posture",
       "p": [
-        "Thirteen names and a forecast sleeve, and no shares traded all week. The book finished up 1.04% on a single Friday session in SPCX, which gained better than seven per cent and carried the week on its own while eight of thirteen names closed lower. SPCX is now the largest position at 22.2% of net asset value, uncovered, and was not trimmed into the move. Seven of thirteen names carry written calls, up from five after Monday wrote SERV and XNDU out to October 9. Cash finished at 0.7% of net asset value — a second week under the 2% floor, rebuilt off premium rather than a sale — with stock at 100.4% and gross exposure 1.02×. The book is fully committed and not borrowing. No name breaches the 25% band."
+        "Four names and a forecast sleeve, after nine positions were closed in a single sequence on Tuesday Oct 6. What remains is what was working: PLTR and SPCX, level with each other at about 21.8% of net asset value apiece and 43.6% between them, plus small holdings in PR and BHF. Every short call in the book was bought back on the way out, so nothing is covered and the premium engine is idle for the first time in this record. Cash stands at 50.5% of net asset value — above the 20% band rather than under the 2% floor, which is a breach in the opposite direction to the one carried for the previous six weeks. Gross exposure is 0.49×. The book is not levered, not concentrated past the 25% line, and not yet redeployed."
       ]
     },
     {
       "eyebrow": "Concept of operations",
       "ul": [
-        "Covered-call premium on liquid small-cap momentum names — the engine, currently written on seven of thirteen.",
-        "Cash is materiel, not an idle balance — currently rebuilding off premium alone, which is the slowest route back.",
+        "Covered-call premium on liquid small-cap momentum names — the engine, currently written on nothing.",
+        "Cash is materiel, not an idle balance — currently half the book, awaiting a redeployment that has not been made.",
         "Outright holds taken selectively, sized small, each carrying a thesis before sizing: entry, target and exit.",
         "A forecast-contract sleeve, running for data ahead of a systematic strategy under construction."
       ]
@@ -4277,7 +4294,13 @@
       -0.06606301,
       -0.05880697,
       -0.05038831,
-      -0.05084334
+      -0.05084334,
+      -0.02411294,
+      -0.02132364,
+      -0.02535955,
+      -0.02893841,
+      -0.01559229,
+      -0.01557347
     ],
     "dates": [
       "20251016",
@@ -4535,7 +4558,13 @@
       "20260930",
       "20261001",
       "20261002",
-      "20261003"
+      "20261003",
+      "20261005",
+      "20261006",
+      "20261007",
+      "20261008",
+      "20261009",
+      "20261010"
     ]
   },
   "record": {
@@ -4567,8 +4596,8 @@
       },
       {
         "k": "The engine",
-        "v": "3.67 pf",
-        "m": "Covered-call premium, 78% of 189 closes won"
+        "v": "3.55 pf",
+        "m": "Covered-call premium, 77% of 200 closes won"
       }
     ],
     "failures": [
@@ -4599,24 +4628,24 @@
       },
       {
         "k": "Still below the peak",
-        "v": "-14.25%",
+        "v": "-11.07%",
         "m": "Distance from the high-water mark"
       }
     ],
     "discipline": [
       {
         "k": "Weeks over the 20% cap",
-        "v": "32 / 50",
+        "v": "32 / 51",
         "m": "Single-name concentration"
       },
       {
         "k": "Weeks carrying margin",
-        "v": "22 / 50",
+        "v": "22 / 51",
         "m": "Stock value above net asset value"
       },
       {
         "k": "Weeks fully inside every limit",
-        "v": "3 / 50",
+        "v": "3 / 51",
         "m": "Cap held and reserve intact"
       }
     ],
@@ -4666,22 +4695,22 @@
         "v": "-8.51%"
       },
       {
+        "t": "GRPN",
+        "d": "Oct 6, 2026",
+        "s": "STK",
+        "v": "-5.35%"
+      },
+      {
         "t": "SRPT",
         "d": "Aug 7, 2026",
         "s": "STK",
         "v": "-3.05%"
       },
       {
-        "t": "SRPT",
-        "d": "Mar 25, 2026",
-        "s": "OPT",
-        "v": "-1.35%"
-      },
-      {
-        "t": "SRPT",
-        "d": "Mar 25, 2026",
-        "s": "OPT",
-        "v": "-1.32%"
+        "t": "SERV",
+        "d": "Oct 6, 2026",
+        "s": "STK",
+        "v": "-2.51%"
       }
     ],
     "names": [
@@ -4690,98 +4719,98 @@
         "closes": 111,
         "win": 77,
         "pf": 0.58,
-        "g": 22.5,
-        "l": 38.4
+        "g": 22.0,
+        "l": 31.6
       },
       {
         "t": "SRPT",
         "closes": 18,
         "win": 50,
         "pf": 0.97,
-        "g": 9.8,
-        "l": 10.0
+        "g": 9.6,
+        "l": 8.2
+      },
+      {
+        "t": "GRPN",
+        "closes": 11,
+        "win": 73,
+        "pf": 0.36,
+        "g": 3.0,
+        "l": 6.9
       },
       {
         "t": "ASTS",
         "closes": 10,
         "win": 90,
         "pf": 1.03,
-        "g": 4.1,
-        "l": 3.9
+        "g": 4.0,
+        "l": 3.2
+      },
+      {
+        "t": "SERV",
+        "closes": 21,
+        "win": 57,
+        "pf": 0.4,
+        "g": 1.9,
+        "l": 4.0
+      },
+      {
+        "t": "XNDU",
+        "closes": 11,
+        "win": 55,
+        "pf": 0.12,
+        "g": 0.7,
+        "l": 4.7
       },
       {
         "t": "FITB",
         "closes": 2,
         "win": 100,
         "pf": null,
-        "g": 5.5,
+        "g": 5.3,
         "l": 0.0
-      },
-      {
-        "t": "GRPN",
-        "closes": 8,
-        "win": 75,
-        "pf": 2.28,
-        "g": 2.5,
-        "l": 1.1
       },
       {
         "t": "NIQ",
         "closes": 1,
         "win": 100,
         "pf": null,
-        "g": 2.9,
+        "g": 2.8,
         "l": 0.0
       },
       {
-        "t": "SERV",
+        "t": "BBAI",
         "closes": 17,
-        "win": 71,
-        "pf": 4.8,
-        "g": 2.0,
-        "l": 0.4
+        "win": 59,
+        "pf": 0.47,
+        "g": 0.9,
+        "l": 1.5
       },
       {
         "t": "NU",
         "closes": 3,
         "win": 100,
         "pf": null,
-        "g": 2.0,
+        "g": 1.9,
         "l": 0.0
-      },
-      {
-        "t": "KEEL",
-        "closes": 5,
-        "win": 80,
-        "pf": 3.56,
-        "g": 1.3,
-        "l": 0.3
-      },
-      {
-        "t": "XNDU",
-        "closes": 7,
-        "win": 57,
-        "pf": 1.49,
-        "g": 0.7,
-        "l": 0.5
       }
     ],
     "events": [
       {
         "t": "JPUSD",
-        "closes": 470,
+        "closes": 476,
         "win": 53,
-        "pf": 0.93,
-        "g": 20.2,
-        "l": 21.3
+        "pf": 0.96,
+        "g": 20.9,
+        "l": 18.0
       },
       {
         "t": "CFBTC",
         "closes": 260,
         "win": 46,
         "pf": 1.11,
-        "g": 8.3,
-        "l": 7.4
+        "g": 8.1,
+        "l": 6.0
       },
       {
         "t": "CBBTC",
@@ -4789,15 +4818,15 @@
         "win": 66,
         "pf": 1.04,
         "g": 2.0,
-        "l": 1.9
+        "l": 1.6
       },
       {
         "t": "CFETH",
         "closes": 78,
         "win": 59,
         "pf": 0.97,
-        "g": 1.4,
-        "l": 1.4
+        "g": 1.3,
+        "l": 1.1
       },
       {
         "t": "CBETH",
@@ -4805,15 +4834,15 @@
         "win": 66,
         "pf": 0.82,
         "g": 0.9,
-        "l": 1.1
+        "l": 0.9
       },
       {
-        "t": "COMCO",
-        "closes": 39,
-        "win": 49,
-        "pf": 0.35,
-        "g": 0.4,
-        "l": 1.2
+        "t": "CBSOL",
+        "closes": 130,
+        "win": 80,
+        "pf": 1.61,
+        "g": 1.0,
+        "l": 0.5
       }
     ],
     "notes": [
