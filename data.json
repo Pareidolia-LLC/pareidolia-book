@@ -1,21 +1,21 @@
 {
-  "asOf": "Oct 17, 2026",
+  "asOf": "Oct 24, 2026",
   "curveLabel": "Time-weighted · Since inception, Oct 2025",
   "returns": [
     {
       "k": "Return · YTD 2026",
-      "v": -5.89,
+      "v": -3.38,
       "m": "Time-weighted, net"
     },
     {
       "k": "Return · Trailing 12M",
-      "v": -6.2,
-      "m": "Rolling year, time-weighted"
+      "v": -6.94,
+      "m": "Rolling year, time-weighted — now shedding late 2025"
     },
     {
       "k": "Return · Last 7 Days",
-      "v": -4.72,
-      "m": "The balance rose on a contribution; the return did not"
+      "v": 2.12,
+      "m": "Five of six names higher; BHF the exception"
     }
   ],
   "reports": [
@@ -3779,9 +3779,8 @@
     {
       "w": "Oct 16",
       "weekLabel": "Week of Oct 12 – Oct 16, 2026",
-      "grade": "D−",
+      "grade": "D",
       "weekRet": -4.21,
-      "now": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -3797,13 +3796,13 @@
         },
         {
           "key": "Dial 3 · Event sleeve",
-          "state": "warn",
-          "value": "pending · 300 staked",
-          "rule": "Graded on what the sleeve returned · 300 JPUSD contracts at 0.8% of NAV, settled and not yet booked · an eighth week on the banned root — every week since the sleeve reopened"
+          "state": "pass",
+          "value": "carried · pf 1.46",
+          "rule": "Graded on what the sleeve returned · 300 JPUSD contracts at 0.8% of NAV · two tickets paid, one settled worthless · net +0.1% of NAV · an eighth week on the banned root — every week since the sleeve reopened"
         }
       ],
-      "note": "The deck was cleared on Oct 6 and refilled within nine days. Thursday and Friday put roughly fifty-five per cent of net asset value back into the market across six names, two of them new — XOM and CRGY, both energy — and the rest added to positions already held. Cash went from 50.5% of the book to 1.8%, under the 2% floor again, two weeks after the complaint on this card was that half the book was idle. The reserve has now been outside its band in both directions inside a month.\n\nThe week's return was −4.21%, and net asset value rose anyway. Those are not in conflict: partner capital worth about eight per cent of the book was contributed on Friday. Time-weighted return is the figure this book is graded on precisely because it cannot be moved by adding money, and it says the market took 4.2% out of the book this week. The balance went up because more was put in. Last week the card had to explain a positive return beside heavy realized losses; this week it explains a rising balance beside a negative return. Both are the same lesson from opposite ends — the number that matters is the one a deposit cannot flatter.\n\nThe buying was into a falling tape and the marks already show it. PLTR was bought at about 196.25 on Thursday and 195.68 on Friday and finished the week marked at 184.05, roughly six per cent below the entry within two sessions and the single largest position in the book. SPCX was added to twice at around 145 to 147 and sits at 145.48. Of the six names held, five are above water and only on CRGY, up seven per cent, and PR, up five, is the margin meaningful. The two that absorbed most of the capital are the two with the least to show for it.\n\nConcentration is the breach of the week and it is a real one. PLTR is 32.9% of net asset value and SPCX 30.7% — both inside the 25-35% watch band rather than past the hard line, but together they are 63.6% of the book, neither carries a written call, and both got there by being bought rather than by appreciating. The top name went from 21.9% to 32.9% in five sessions. That is the sizing pattern this record has documented for a year, repeating nine days after the week that was supposed to have ended it.\n\nLast week's card closed by saying the test was not Tuesday's liquidation but “whether the next position carries an exit before it carries size.” This is the next position, and there is no exit visible on it: no stops recorded, no calls written against anything, and the engine idle for a second week running. The wheel is the one line in this book with a measured edge and it has now been switched off for the two weeks in which the most capital was committed. The grade is a D−, and the components are not close: performance 16 out of 100, wheel execution 40 after the idle penalty, risk craft 77 on the concentration move.\n\nThe sleeve ran an eighth consecutive week on JPUSD — every week since it reopened on Aug 24, without exception — 300 contracts at 0.84 to 0.87, about 0.8% of net asset value, all settled and none booked, so the figure is blank and dropped from the weighting again. Last week's 200 contracts have booked and they were a drag: one ticket paid, one settled worthless, and with a small INNKI round trip netted in the week came to −0.2% of net asset value at a 0.65 profit factor. That is the first losing week the sleeve has posted since it was put back on the card, and it moved the Oct 9 letter from B+ to B. Two further roots were opened on Saturday, outside this week and so on next week's card: a Texas Senate election contract running to Nov 30, and an XRP contract. Neither is banned; neither is the engine either.",
-      "score": 39.9,
+      "note": "The deck was cleared on Oct 6 and refilled within nine days. Thursday and Friday put roughly fifty-five per cent of net asset value back into the market across six names, two of them new — XOM and CRGY, both energy — and the rest added to positions already held. Cash went from 50.5% of the book to 1.8%, under the 2% floor again, two weeks after the complaint on this card was that half the book was idle. The reserve has now been outside its band in both directions inside a month.\n\nThe week's return was −4.21%, and net asset value rose anyway. Those are not in conflict: partner capital worth about eight per cent of the book was contributed on Friday. Time-weighted return is the figure this book is graded on precisely because it cannot be moved by adding money, and it says the market took 4.2% out of the book this week. The balance went up because more was put in. Last week the card had to explain a positive return beside heavy realized losses; this week it explains a rising balance beside a negative return. Both are the same lesson from opposite ends — the number that matters is the one a deposit cannot flatter.\n\nThe buying was into a falling tape and the marks already show it. PLTR was bought at about 196.25 on Thursday and 195.68 on Friday and finished the week marked at 184.05, roughly six per cent below the entry within two sessions and the single largest position in the book. SPCX was added to twice at around 145 to 147 and sits at 145.48. Of the six names held, five are above water and only on CRGY, up seven per cent, and PR, up five, is the margin meaningful. The two that absorbed most of the capital are the two with the least to show for it.\n\nConcentration is the breach of the week and it is a real one. PLTR is 32.9% of net asset value and SPCX 30.7% — both inside the 25-35% watch band rather than past the hard line, but together they are 63.6% of the book, neither carries a written call, and both got there by being bought rather than by appreciating. The top name went from 21.9% to 32.9% in five sessions. That is the sizing pattern this record has documented for a year, repeating nine days after the week that was supposed to have ended it.\n\nLast week's card closed by saying the test was not Tuesday's liquidation but “whether the next position carries an exit before it carries size.” This is the next position, and there is no exit visible on it: no stops recorded, no calls written against anything, and the engine idle for a second week running. The wheel is the one line in this book with a measured edge and it has now been switched off for the two weeks in which the most capital was committed. The grade is a D−, and the components are not close: performance 16 out of 100, wheel execution 40 after the idle penalty, risk craft 77 on the concentration move.\n\nThe sleeve ran an eighth consecutive week on JPUSD — every week since it reopened on Aug 24, without exception — 300 contracts at 0.84 to 0.87, about 0.8% of net asset value. They have since booked: the 0.84 and 0.87 tickets both paid at one and the 0.86 settled worthless, for +0.1% of net asset value at a 1.46 profit factor. Scoring it moved this card from a D− to a D. Last week's 200 contracts have booked and they were a drag: one ticket paid, one settled worthless, and with a small INNKI round trip netted in the week came to −0.2% of net asset value at a 0.65 profit factor. That is the first losing week the sleeve has posted since it was put back on the card, and it moved the Oct 9 letter from B+ to B. Two further roots were opened on Saturday, outside this week and so on next week's card: a Texas Senate election contract running to Nov 30, and an XRP contract. Neither is banned; neither is the engine either.",
+      "score": 40.9,
       "writtenYield": 0.0,
       "earnedYield": 0.0,
       "components": [
@@ -3830,9 +3829,17 @@
           "pts": 6.0,
           "max": 10,
           "score": 60
+        },
+        {
+          "k": "Event sleeve",
+          "pts": 3.0,
+          "max": 5,
+          "score": 60
         }
       ],
-      "wins": [],
+      "wins": [
+        "Event sleeve +0.10% of net asset value on 0.8% staked."
+      ],
       "watch": [
         "Book down 4.21% on the week.",
         "The engine sat idle: no premium written all week.",
@@ -3843,25 +3850,93 @@
         "Write calls on the uncovered names - premium is the one line with a measured edge.",
         "Leave a little dry powder at the close; 2% is the floor, not a target."
       ]
+    },
+    {
+      "w": "Oct 23",
+      "weekLabel": "Week of Oct 19 – Oct 23, 2026",
+      "grade": "B−",
+      "weekRet": 1.96,
+      "now": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "warn",
+          "value": "PLTR 34.4%",
+          "rule": "In the 25-35% watch band · six tenths of a point from the 35% line · SPCX 30.4% alongside it · 64.7% of the book between them, neither covered"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "warn",
+          "value": "0.2%",
+          "rule": "Under the 2% floor · second-thinnest of the record · a fifth straight week outside the band, counting both directions · off margin, stock at 98.9% of NAV"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "warn",
+          "value": "pending · 1,200 staked",
+          "rule": "Graded on what the sleeve returned · 1,200 contracts at 2.2% of NAV across three roots, none booked · 600 JPUSD, a ninth week on the banned root · 500 AXXTX on one Texas Senate race, held as both a put and a call · 100 CFXRP"
+        }
+      ],
+      "note": "The engine came back on, and it came back on in the wrong places. Three calls were written — one on PR at a single cent, two on CRGY at 0.05 and 0.12 — for 0.06% of net asset value in premium, the smallest written week on the record that is not a zero. The PR contract is already the argument against itself: sold for a cent on Tuesday, it is marked at 0.19 by Friday because the stock ran nearly nine per cent, so a position that collected one dollar of premium has given up eighteen on the option leg. This card has called the cent-premium habit a fault four times since August. It is still a fault.\n\nWhere the calls went matters more than that they went. PR and CRGY are the two smallest equity holdings in the book at 8.1% and 8.7% of net asset value. PLTR at 34.4% and SPCX at 30.4% — 64.7% of the book between them — carry nothing. The engine was switched back on everywhere except where the risk actually is, which is the same shape as writing a cent: it produces the appearance of the wheel running without the substance of it.\n\nThe week itself was good. The book returned 1.96% and five of six names finished higher — PR up 8.9%, PLTR 8.7%, CRGY 7.0%, XOM and SPCX three and a half each. The exception is BHF, down 7.1% against carry, and it was added to on Tuesday below its average cost. That is the fourth add to a position that has not worked since it was opened, and it is the pattern the career ledger has named as the standing leak for a year.\n\nConcentration moved the wrong way again. PLTR went from 32.9% to 34.4% of net asset value, which leaves it six tenths of a point from the 35% line where the dial stops calling it a watch and starts calling it a breach. There is also a concentration the dial cannot see: XOM, CRGY and PR are 28.4% of the book across three names and all three are energy. No single-name limit is touched by that and it is still one position wearing three tickets. Cash closed at 0.2%, the second-thinnest reading of the record and a fifth straight week outside the 2-20% band, counting both directions.\n\nThe sleeve nearly tripled: 1,200 contracts across three roots for about 2.2% of net asset value, against 0.8% a week ago, and none of it booked. Six hundred of those are JPUSD at 0.68 to 0.76, which makes nine straight weeks on the root the forecast engine bans — every week since the sleeve reopened in August. The larger development is AXXTX: five hundred contracts bought through Friday on a single Texas Senate race, now the sleeve's biggest commitment to one event. The book holds both a Talarico put and a Paxton call in it. Those are not two positions, they are one view written twice — the put pays if Talarico loses, the call pays if Paxton wins — so the sleeve is not diversified across that race, it is doubled into it.\n\nLast week's JPUSD has booked: two tickets paid at one and the 0.86 settled worthless, for +0.1% of net asset value at a 1.46 profit factor, which moved the Oct 16 card from a D− to a D.\n\nOne figure on this page will look wrong and is not. Year-to-date reads −3.38% and improving; trailing twelve months reads −6.94% and got worse this week despite the book gaining 1.96%. Both are correct. The rolling year has just started shedding late October 2025, which was the strongest stretch this account has had — the week of Oct 24, 2025 alone was worth three per cent — and as those sessions age out of the window the trailing figure will keep deteriorating on its own. That is arithmetic about the past, not information about the present, and the weekly cards are where the present is.",
+      "score": 67.7,
+      "writtenYield": 0.06,
+      "earnedYield": 0.0,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 26.3,
+          "max": 40,
+          "score": 66
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 15.0,
+          "max": 25,
+          "score": 60
+        },
+        {
+          "k": "Risk craft",
+          "pts": 17.0,
+          "max": 20,
+          "score": 85
+        },
+        {
+          "k": "Liquidity",
+          "pts": 6.0,
+          "max": 10,
+          "score": 60
+        }
+      ],
+      "wins": [
+        "Book up 1.96% on the week.",
+        "Calls written or rolled on 3 contracts · CRGY, PR."
+      ],
+      "watch": [
+        "PLTR at 34.4% of net asset value, inside the 25-35% watch band.",
+        "Cash at 0.2%, under the 2% floor - nothing to deploy."
+      ],
+      "next": [
+        "Leave a little dry powder at the close; 2% is the floor, not a target."
+      ]
     }
   ],
   "career": {
     "sinceLabel": "Oct 2025",
-    "asOfLabel": "Oct 17, 2026",
+    "asOfLabel": "Oct 24, 2026",
     "headline": [
       {
         "k": "Closed trades",
-        "v": "2,209",
+        "v": "2,213",
         "m": "Engagements opened, closed & booked"
       },
       {
         "k": "Win rate",
         "v": "59.5%",
-        "m": "1,314 won · 895 lost"
+        "m": "1,317 won · 896 lost"
       },
       {
         "k": "Profit factor",
-        "v": "0.82",
+        "v": "0.83",
         "m": "Gross wins ÷ gross losses"
       },
       {
@@ -3882,7 +3957,7 @@
       {
         "k": "Written yield",
         "v": "103.3%",
-        "m": "Premium charged, 305 writes, each against that day's book"
+        "m": "Premium charged, 308 writes, each against that day's book"
       },
       {
         "k": "Earned yield",
@@ -3913,16 +3988,16 @@
         "name": "Event contracts",
         "tag": "forecast",
         "win": 58.1,
-        "pf": 0.92,
-        "closes": 1955,
+        "pf": 0.93,
+        "closes": 1959,
         "tone": "warn",
         "note": "Reopened in August for a systematic build, graded on returns again from Sep 20 and reviewed at year end. Counted from booked settlements, which lag the trade by up to a week, so the most recent weeks are always incomplete here."
       }
     ],
     "insights": [
       "Loss asymmetry has been the leak in this record from the start, and the week of Oct 5 is what it costs to close it. The average loser now runs about 1.8× the average winner against a 59.5% hit rate, which is worse than it read a week ago — not because anything deteriorated, but because nine names were closed on Oct 6 and months of deferred losses landed on the books in one session. The ratio had been flattered by what was still being held. Selection was never the problem; holding the losers was, and the share-leg line below is where that shows.",
-      "The engine is real and it is currently switched off. Covered-call premium takes 77% of its closes at a 3.6 profit factor across 200 closes — the one line in this book with a measured edge, and everything else is management around it. Every short call was bought back during the Oct 6 liquidation and none has been written since, so for the first time in this record nothing is covered. GRPN showed both faces of the trade in consecutive weeks before it went: it ran about fifteen per cent into its short 20 strike and was capped there, then fell about nine per cent back under it while the call gave up two thirds of its mark. Premium sells the upside and buys no protection. It narrows the range of outcomes and charges for doing so. Measured by yield rather than hit rate, the engine has charged out slightly more than the entire book across the life of the account — 103.3% of net asset value written, summed sale by sale against the book on the day of each — and earned 31.2% back on the option legs. The gap is mostly rolls rather than losses: 61.4 of those points went straight back out buying contracts in, because a call counts as newly written every time it is rewritten while only the net is ever earned. Assignment takes most of the rest and never shows as a loss, since a call that finishes in the money books zero on the option leg and the gain lands on the share leg instead.",
-      "The forecast sleeve reopened on Aug 24 to gather data for a systematic strategy under construction, and it has been graded on what it returns since Sep 20, back to the week it reopened. Scored on booked settlements it has been persistently positive and small: about +0.15% of net asset value in the week of Aug 24, +0.12% in the week of Aug 31, +0.18% in the week of Sep 7, +0.5% in the week of Sep 14, +0.1% in the week of Sep 21, +0.3% in the week of Sep 28 and −0.2% in the week of Oct 5 — its first losing week since it went back on the card — with the week of Oct 12 not yet booked. That is +1.11% of net asset value across seven booked weeks, nearly all of it in JPUSD — a root the strategy bans, on 96 settled events at minus four cents a contract. Winning small on a banned root is the trap the ban exists for, and Oct 12 made it eight weeks running — JPUSD has been bought in every single week since the sleeve reopened. That count was published as “six” and was wrong: the Sep 18 card called itself a second consecutive week when it was a fourth, and every card after it inherited the error. All five have been corrected, and the claim is now derived from the trade record each week rather than carried forward. The sleeve has started to change shape, though. It opened 100 INNKI contracts running to Oct 30 rather than settling overnight, traded INNKI from both sides on Oct 8 for a small net gain, and on Oct 17 opened two roots it had never touched — a Texas Senate election contract running to Nov 30, and an XRP contract. Neither is banned. Neither is the engine either, and the year-end review has to decide which of those two facts matters more. Its minimum is 100 contracts an action and it is reviewed at year end on what it has actually produced.",
+      "The engine is real, and it has just been restarted at a size that barely counts. Covered-call premium takes 77% of its closes at a 3.6 profit factor across 200 closes — the one line in this book with a measured edge, and everything else is management around it. Every short call was bought back during the Oct 6 liquidation and nothing was written for a fortnight — the first stretch in this record with nothing covered. Writing resumed in the week of Oct 19 on two names for 0.06% of net asset value, the smallest non-zero written week on the books, and on the two smallest holdings rather than on the two that are 64.7% of it. A cent of premium on PR was marked at nineteen by Friday. Restarting the engine on what does not need covering is not the same act as running it. GRPN showed both faces of the trade in consecutive weeks before it went: it ran about fifteen per cent into its short 20 strike and was capped there, then fell about nine per cent back under it while the call gave up two thirds of its mark. Premium sells the upside and buys no protection. It narrows the range of outcomes and charges for doing so. Measured by yield rather than hit rate, the engine has charged out slightly more than the entire book across the life of the account — 103.3% of net asset value written, summed sale by sale against the book on the day of each — and earned 31.2% back on the option legs. The gap is mostly rolls rather than losses: 61.4 of those points went straight back out buying contracts in, because a call counts as newly written every time it is rewritten while only the net is ever earned. Assignment takes most of the rest and never shows as a loss, since a call that finishes in the money books zero on the option leg and the gain lands on the share leg instead.",
+      "The forecast sleeve reopened on Aug 24 to gather data for a systematic strategy under construction, and it has been graded on what it returns since Sep 20, back to the week it reopened. Scored on booked settlements it has been persistently positive and small: about +0.15% of net asset value in the week of Aug 24, +0.12% in the week of Aug 31, +0.18% in the week of Sep 7, +0.5% in the week of Sep 14, +0.1% in the week of Sep 21, +0.3% in the week of Sep 28 −0.2% in the week of Oct 5 — its first losing week since it went back on the card — and +0.1% in the week of Oct 12, with the week of Oct 19 not yet booked. That is +1.24% of net asset value across eight booked weeks, nearly all of it in JPUSD — a root the strategy bans, on 96 settled events at minus four cents a contract. Winning small on a banned root is the trap the ban exists for, and Oct 19 made it nine weeks running — JPUSD has been bought in every single week since the sleeve reopened. That count was published as “six” and was wrong: the Sep 18 card called itself a second consecutive week when it was a fourth, and every card after it inherited the error. All five have been corrected, and the claim is now derived from the trade record each week rather than carried forward. The sleeve has started to change shape, though. It opened 100 INNKI contracts running to Oct 30 rather than settling overnight, traded INNKI from both sides on Oct 8 for a small net gain, and from Oct 17 it opened two roots it had never touched — an XRP contract, and a Texas Senate election running to Nov 30. The second has become the sleeve's largest single commitment to one event: five hundred contracts through Oct 23 and seven hundred and fifty by the Saturday, held as both a Talarico put and a Paxton call, which is one view written twice rather than two positions. Neither root is banned. Neither is the engine either, and the year-end review has to decide which of those two facts matters more. Its minimum is 100 contracts an action and it is reviewed at year end on what it has actually produced.",
       "Share legs run a 0.24 profit factor across 54 closes, and 18 of those 54 were booked in the two sessions of Oct 5 and Oct 6. That is the line this book exists to watch: the money is made on premium and given back on the shares underneath it. The per-name cap is scar tissue from exactly this, and it held for ten consecutive weeks through to Oct 9 — the longest clean run in the record — before the redeployment of Oct 15 and 16 took the top name from 21.9% to 32.9% of net asset value in five sessions and ended it.",
       "The ledger moves on the back office's schedule, not the market's. NU's August assignment reached the trade feed a week after the fact and NIQ's followed the same path, and KEEL's Sep 18 assignment took a week to carry its gain on the share leg. Event contracts are the sharpest case: a settled contract books its cost against the ticket that bought it and its payout as a separate settlement row, and those rows can lag by a week — not one of the 700 contracts settled in the week of Sep 14 had booked either leg when that card went out on Sep 20, and every one of them had booked by Sep 26. Written calls run the same lag, and the Sep 25 card was published saying so: its expiries on XNDU and SERV sat in the feed as processed rows with no P&L attached, and the card predicted they were worth roughly 0.16% of net asset value. They booked a week later, restamped Friday 20:20 UTC under new trade ids, worth 0.16%. The card's earned yield has been restated from −0.27% to −0.11% and its letter did not move, which is the whole reason it was safe to publish incomplete and say which part was incomplete. Read a fresh week as incomplete rather than as a loss. Two cards on this site were written the other way and have been corrected."
     ]
@@ -3931,43 +4006,43 @@
     {
       "t": "PLTR",
       "s": "dir",
-      "w": 32.88,
-      "r": 1.32
+      "w": 34.35,
+      "r": 8.69
     },
     {
       "t": "SPCX",
       "s": "dir",
-      "w": 30.71,
-      "r": 2.04
+      "w": 30.35,
+      "r": 3.52
     },
     {
       "t": "XOM",
       "s": "dir",
-      "w": 11.64,
-      "r": 1.25
+      "w": 11.6,
+      "r": 3.58
     },
     {
       "t": "CRGY",
-      "s": "dir",
-      "w": 8.95,
-      "r": 6.97
+      "s": "wheel",
+      "w": 8.72,
+      "r": 7.03
     },
     {
       "t": "PR",
-      "s": "dir",
-      "w": 7.99,
-      "r": 4.96
+      "s": "wheel",
+      "w": 8.07,
+      "r": 8.89
     },
     {
       "t": "BHF",
       "s": "dir",
-      "w": 5.41,
-      "r": -2.84
+      "w": 5.75,
+      "r": -7.05
     },
     {
       "t": "Cash",
       "s": "cash",
-      "w": 1.83,
+      "w": 0.17,
       "r": null
     }
   ],
@@ -3988,14 +4063,14 @@
       "eyebrow": "Book Summary",
       "h": "Current posture",
       "p": [
-        "Six names, no written calls, and a forecast sleeve. The book was redeployed on Oct 15 and 16, nine days after being cut to four names and half cash: roughly fifty-five per cent of net asset value went back into the market across PLTR, SPCX, XOM, CRGY, PR and BHF, with XOM and CRGY new. Partner capital worth about eight per cent of the book was contributed on the Friday. PLTR now stands at 32.9% of net asset value and SPCX at 30.7% — both inside the 25-35% watch band, 63.6% of the book between them, and neither covered. Cash finished at 1.8%, back under the 2% floor. Gross exposure is 0.98× and the book is not borrowing. The premium engine has been idle for two weeks, which are the two weeks in which the most capital was committed."
+        "Six names, two of them covered, and a forecast sleeve across three roots. The premium engine restarted this week after a fortnight idle, but on the two smallest holdings and at token prices — one cent on PR, five and twelve on CRGY — for 0.06% of net asset value written. PLTR at 34.4% of net asset value and SPCX at 30.4% are 64.7% of the book between them and neither carries a call; PLTR sits six tenths of a point below the 35% line. A second concentration sits underneath the first: XOM, CRGY and PR are 28.4% across three names and all three are energy. Cash closed at 0.2%, a fifth straight week outside the 2-20% band. Gross exposure is 0.99× and the book is not borrowing."
       ]
     },
     {
       "eyebrow": "Concept of operations",
       "ul": [
-        "Covered-call premium on liquid small-cap momentum names — the engine, idle for a second week.",
-        "Cash is materiel, not an idle balance — spent back to the floor nine days after sitting at half the book.",
+        "Covered-call premium on liquid small-cap momentum names — the engine, restarted this week on two of six names.",
+        "Cash is materiel, not an idle balance — at 0.2%, there is none to deploy.",
         "Outright holds taken selectively, sized small, each carrying a thesis before sizing: entry, target and exit.",
         "A forecast-contract sleeve, running for data ahead of a systematic strategy under construction."
       ]
@@ -4392,7 +4467,13 @@
       -0.03530617,
       -0.04073968,
       -0.05698924,
-      -0.06201355
+      -0.06201355,
+      -0.03904117,
+      -0.04488976,
+      -0.00974175,
+      -0.05298592,
+      -0.03852509,
+      -0.03698679
     ],
     "dates": [
       "20251016",
@@ -4662,7 +4743,13 @@
       "20261014",
       "20261015",
       "20261016",
-      "20261017"
+      "20261017",
+      "20261019",
+      "20261020",
+      "20261021",
+      "20261022",
+      "20261023",
+      "20261024"
     ]
   },
   "record": {
@@ -4726,24 +4813,24 @@
       },
       {
         "k": "Still below the peak",
-        "v": "-15.26%",
+        "v": "-13.00%",
         "m": "Distance from the high-water mark"
       }
     ],
     "discipline": [
       {
         "k": "Weeks over the 20% cap",
-        "v": "32 / 52",
+        "v": "32 / 53",
         "m": "Single-name concentration"
       },
       {
         "k": "Weeks carrying margin",
-        "v": "22 / 52",
+        "v": "22 / 53",
         "m": "Stock value above net asset value"
       },
       {
         "k": "Weeks fully inside every limit",
-        "v": "3 / 52",
+        "v": "3 / 53",
         "m": "Cap held and reserve intact"
       }
     ],
@@ -4817,8 +4904,8 @@
         "closes": 111,
         "win": 77,
         "pf": 0.58,
-        "g": 21.9,
-        "l": 31.3
+        "g": 21.8,
+        "l": 31.2
       },
       {
         "t": "SRPT",
@@ -4881,7 +4968,7 @@
         "closes": 17,
         "win": 59,
         "pf": 0.47,
-        "g": 0.9,
+        "g": 0.8,
         "l": 1.5
       },
       {
@@ -4896,18 +4983,18 @@
     "events": [
       {
         "t": "JPUSD",
-        "closes": 479,
+        "closes": 483,
         "win": 53,
-        "pf": 0.94,
-        "g": 21.2,
-        "l": 18.5
+        "pf": 0.95,
+        "g": 21.7,
+        "l": 18.8
       },
       {
         "t": "CFBTC",
         "closes": 260,
         "win": 46,
         "pf": 1.11,
-        "g": 8.1,
+        "g": 8.0,
         "l": 6.0
       },
       {
@@ -4915,7 +5002,7 @@
         "closes": 188,
         "win": 66,
         "pf": 1.04,
-        "g": 2.0,
+        "g": 1.9,
         "l": 1.5
       },
       {
