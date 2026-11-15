@@ -1,21 +1,21 @@
 {
-  "asOf": "Nov 6, 2026",
+  "asOf": "Nov 13, 2026",
   "curveLabel": "Time-weighted · Since inception, Oct 2025",
   "returns": [
     {
       "k": "Return · YTD 2026",
-      "v": -17.42,
-      "m": "Time-weighted, net"
-    },
-    {
-      "k": "Return · Trailing 12M",
       "v": -13.71,
       "m": "Time-weighted, net"
     },
     {
+      "k": "Return · Trailing 12M",
+      "v": -8.02,
+      "m": "Time-weighted, net"
+    },
+    {
       "k": "Return · Last 7 Days",
-      "v": -10.12,
-      "m": "A broad rout, and an election bet that paid nothing"
+      "v": 4.5,
+      "m": "A recovery week in which nothing was traded"
     }
   ],
   "reports": [
@@ -3990,7 +3990,6 @@
       "weekLabel": "Week of Nov 2 – Nov 6, 2026",
       "grade": "F",
       "weekRet": -10.12,
-      "now": true,
       "dials": [
         {
           "key": "Dial 1 · Position size",
@@ -4058,11 +4057,80 @@
         "Write calls on the uncovered names - premium is the one line with a measured edge.",
         "Leave a little dry powder at the close; 2% is the floor, not a target."
       ]
+    },
+    {
+      "w": "Nov 13",
+      "weekLabel": "Week of Nov 9 – Nov 13, 2026",
+      "grade": "B",
+      "weekRet": 4.5,
+      "now": true,
+      "dials": [
+        {
+          "key": "Dial 1 · Position size",
+          "state": "warn",
+          "value": "PLTR 32.6%",
+          "rule": "In the 25-35% watch band · SPCX 31.7% alongside it · 64.3% of the book in two names · the weights are where last week left them because nothing was traded"
+        },
+        {
+          "key": "Dial 2 · Cash buffer",
+          "state": "warn",
+          "value": "0.2%",
+          "rule": "Under the 2% floor · an eighth straight week outside the band · off margin, stock at 99.6% of NAV · unchanged to the cent, the account did not move all week"
+        },
+        {
+          "key": "Dial 3 · Event sleeve",
+          "state": "pass",
+          "value": "quiet · nothing bought",
+          "rule": "Graded on what the sleeve returned · no contracts bought and none open · the first week since it reopened in August with no position at all"
+        }
+      ],
+      "note": "The first week in the entire record with no trades in it, and it came straight after the worst week bar one. Not a share bought or sold, not a call written, not an event contract touched. The book recovered 4.50% by standing still. That deserves to be said plainly, because the pattern this card has caught over and over is the opposite one: size added after a loss, a sleeve run hot into a drawdown, a cheap call sold to feel busy. A week of doing nothing after a 10% fall is the single hardest thing on the list, and it was done. Every name came back some distance — PR is now 1.6% under its carry against 7.2% a week ago, XOM 4.2% against 6.1%, PLTR 9.0% against 11.5% — and not one of those recoveries was helped or hindered by a decision. What the quiet does not fix is the shape. PLTR at 32.6% and SPCX at 31.7% still hold 64.3% of the book between them, both uncovered, which is the same exposure that produced the fall and then produced the bounce. Cash sits at 0.19% of net asset value, unchanged to the cent, an eighth consecutive week outside the 2-20% band. Standing still is the right response to a bad week; it is not a reserve, and it is not a plan for the next one. The two short calls, the CRGY 16 and the PR 30, are marked at a hundredth of a cent and expire on Friday. They will be kept in full, which is the cleanest outcome cent premium can produce and still not much of one. A note for next week's figures: the account was marked down 1.15% over the weekend, so Friday's close of 28,230 reads as 27,905 by Sunday. That revaluation belongs to the sessions ahead, not to this card, which is dated Friday like every card now is.",
+      "score": 70.9,
+      "writtenYield": 0.0,
+      "earnedYield": 0.0,
+      "components": [
+        {
+          "k": "Performance",
+          "pts": 34.4,
+          "max": 40,
+          "score": 86
+        },
+        {
+          "k": "Wheel execution",
+          "pts": 10.0,
+          "max": 25,
+          "score": 40
+        },
+        {
+          "k": "Risk craft",
+          "pts": 17.0,
+          "max": 20,
+          "score": 85
+        },
+        {
+          "k": "Liquidity",
+          "pts": 6.0,
+          "max": 10,
+          "score": 60
+        }
+      ],
+      "wins": [
+        "Book up 4.50% on the week."
+      ],
+      "watch": [
+        "The engine sat idle: no premium written all week.",
+        "PLTR at 32.6% of net asset value, inside the 25-35% watch band.",
+        "Cash at 0.2%, under the 2% floor - nothing to deploy."
+      ],
+      "next": [
+        "Write calls on the uncovered names - premium is the one line with a measured edge.",
+        "Leave a little dry powder at the close; 2% is the floor, not a target."
+      ]
     }
   ],
   "career": {
     "sinceLabel": "Oct 2025",
-    "asOfLabel": "Nov 6, 2026",
+    "asOfLabel": "Nov 13, 2026",
     "headline": [
       {
         "k": "Closed trades",
@@ -4146,38 +4214,38 @@
     {
       "t": "PLTR",
       "s": "dir",
-      "w": 32.54,
-      "r": -11.5
+      "w": 32.59,
+      "r": -8.99
     },
     {
       "t": "SPCX",
       "s": "dir",
-      "w": 32.45,
-      "r": -4.86
+      "w": 31.74,
+      "r": -4.43
     },
     {
       "t": "XOM",
       "s": "dir",
-      "w": 12.23,
-      "r": -6.07
+      "w": 12.15,
+      "r": -4.22
     },
     {
       "t": "CRGY",
       "s": "wheel",
-      "w": 8.26,
-      "r": -12.84
+      "w": 8.6,
+      "r": -6.78
     },
     {
       "t": "PR",
       "s": "wheel",
-      "w": 8.0,
-      "r": -7.16
+      "w": 8.26,
+      "r": -1.6
     },
     {
       "t": "BHF",
       "s": "dir",
-      "w": 6.27,
-      "r": -12.8
+      "w": 6.29,
+      "r": -10.16
     },
     {
       "t": "Cash",
@@ -4616,7 +4684,12 @@
       -0.1067585,
       -0.1471095,
       -0.2103094,
-      -0.1769715
+      -0.1769715,
+      -0.1471778,
+      -0.143789,
+      -0.1372161,
+      -0.1339273,
+      -0.1399438
     ],
     "dates": [
       "20251016",
@@ -4895,7 +4968,12 @@
       "20261103",
       "20261104",
       "20261105",
-      "20261106"
+      "20261106",
+      "20261109",
+      "20261110",
+      "20261111",
+      "20261112",
+      "20261113"
     ]
   },
   "record": {
@@ -4959,24 +5037,24 @@
       },
       {
         "k": "Still below the peak",
-        "v": "-25.65%",
+        "v": "-22.30%",
         "m": "Distance from the high-water mark"
       }
     ],
     "discipline": [
       {
         "k": "Weeks over the 20% cap",
-        "v": "32 / 55",
+        "v": "32 / 56",
         "m": "Single-name concentration"
       },
       {
         "k": "Weeks carrying margin",
-        "v": "22 / 55",
+        "v": "22 / 56",
         "m": "Stock value above net asset value"
       },
       {
         "k": "Weeks fully inside every limit",
-        "v": "3 / 55",
+        "v": "3 / 56",
         "m": "Cap held and reserve intact"
       }
     ],
